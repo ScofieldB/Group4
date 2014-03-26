@@ -72,6 +72,8 @@
     <Compile Include="NewPasswordfrm.Designer.cs">
       <DependentUpon>NewPasswordfrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Patient.cs" />
+    <Compile Include="PatientGetSet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

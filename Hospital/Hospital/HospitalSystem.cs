@@ -16,7 +16,7 @@ namespace Hospital {
         //Global variables
         string UserID; //String value of the UserID/StaffID
         string Role; //String value of the role User logged in under.
-        
+
         public HospitalSystem() {
             InitializeComponent();
         }
@@ -63,6 +63,51 @@ namespace Hospital {
             Close();
         }
 
-       
+        private void Seabtn_Click(object sender, EventArgs e) {
+            //take content of seatxt and make it a varible
+            PatientGetSet pat = new PatientGetSet();
+            int PID;
+
+            //
+            PID = Int32.Parse(Seatxt.Text);
+            pat = Patient.Search(PID);
+
+            PIDtxt.Text = pat.getPatient().ToString();
+            Surtxt.Text = pat.getSN();
+            Firtxt.Text = pat.getFN();
+            DOBtxt.Text = pat.getDOB().ToString();
+            Gentxt.Text = pat.getGender();
+            NOKtxt.Text = pat.getNextKin();
+            NOKNtxt.Text = pat.getKP().ToString();
+            Addtxt.Text = pat.getAddress();
+            Homtxt.Text = pat.getPhone().ToString();
+            Mobtxt.Text = pat.getMobile().ToString();
+            CovTtxt.Text = pat.getCoverT().ToString();
+            CovNtxt.Text = pat.getCoverN().ToString();
+            Altxt.Text = pat.getAllergies();
+            Statxt.Text = pat.getStatus().ToString();
+        }
+
+        private void Newbtn_Click(object sender, EventArgs e) {
+
+        }
+
+        private void Clrbtn_Click(object sender, EventArgs e) {
+            PIDtxt.Text = "";
+            Surtxt.Text = "";
+            Firtxt.Text = "";
+            DOBtxt.Text = "";
+            Gentxt.Text = "";
+            NOKtxt.Text = "";
+            NOKNtxt.Text = "";
+            Addtxt.Text = "";
+            Homtxt.Text = "";
+            Mobtxt.Text = "";
+            CovTtxt.Text = "";
+            CovNtxt.Text = "";
+            Altxt.Text = "";
+            Statxt.Text = "";
+        }
+
     }
 }

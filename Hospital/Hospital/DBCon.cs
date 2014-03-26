@@ -10,7 +10,7 @@ namespace Hospital {
     class DBCon {
 
         public static SqlConnection DBConnect() {
-            SqlConnection con = new SqlConnection(@"Server=Ultrabook;Integrated Security=true;Database=INB201;");
+            SqlConnection con = new SqlConnection(@"Server=8isshit;Integrated Security=true;Database=INB201;");
             return con;
         }
     }

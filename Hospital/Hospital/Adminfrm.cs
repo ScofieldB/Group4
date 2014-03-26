@@ -43,11 +43,11 @@ namespace Hospital {
 
 
             if (Surname == "") {
-                MessageBox.Show("Username " + Usernametxt.Text + " is not a valid userame "
+                MessageBox.Show("Username " + Usernametxt.Text + " is not a valid userame"
                                 + Surname, "User Not Added",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
-                MessageBox.Show("Username " + Usernametxt.Text + " has now been added to system with password: "
+                MessageBox.Show("Username " + Usernametxt.Text + " has now been added to system with password"
                                 + Surname, "User Added",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -66,25 +66,6 @@ namespace Hospital {
             Usernametxt.Text = "";
         }
 
-
-        /* This feature will be deleted later. atm only here for me to update plaintext password in db to 
-         * a hashed pw
-         */
-        private void button1_Click_1(object sender, EventArgs e) {
-            SqlConnection con = DBCon.DBConnect();
-
-            HashPassword hash = new HashPassword();
-            string password = hash.getHash(Passwordtxt.Text);
-
-            con.Open();
-            SqlCommand command = new SqlCommand(null, con);
-            command.CommandText = "UPDATE [dbo].[Users] SET [Password] = @pw, [Confirmed] = '0' WHERE StaffID = @id";
-            command.Parameters.AddWithValue("@id", Usernametxt.Text);
-            command.Parameters.AddWithValue("@pw", password);
-            command.ExecuteNonQuery();
-
-            con.Close();
-        }
 
 
     }
