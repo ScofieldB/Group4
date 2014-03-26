@@ -72,6 +72,7 @@ namespace Hospital {
             PID = Int32.Parse(Seatxt.Text);
             pat = Patient.Search(PID);
 
+            //Test Comment, getset
             PIDtxt.Text = pat.getPatient().ToString();
             Surtxt.Text = pat.getSN();
             Firtxt.Text = pat.getFN();
