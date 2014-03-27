@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Hospital {
     class PatientGetSet {
 
-        private int patient, phone, mobile, covertype, covernumber, kinphone;
+        private int patient, phone, mobile, covertype, covernumber, kinphone = 0;
 
-        private string firstname, surname, address, allergies, nextofkin, gender, room;
+        private string firstname, surname, address, allergies, nextofkin, gender, room = "";
 
         private bool status;
 

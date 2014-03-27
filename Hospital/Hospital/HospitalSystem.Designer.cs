@@ -25,13 +25,17 @@
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
             this.Logoutbtn = new System.Windows.Forms.Button();
+            this.Seabtn = new System.Windows.Forms.Button();
+            this.Sealbl = new System.Windows.Forms.Label();
+            this.Seatxt = new System.Windows.Forms.TextBox();
+            this.PatInfolbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 213);
+            this.label1.Location = new System.Drawing.Point(12, 325);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(909, 38);
             this.label1.TabIndex = 0;
@@ -47,11 +51,52 @@
             this.Logoutbtn.UseVisualStyleBackColor = true;
             this.Logoutbtn.Click += new System.EventHandler(this.Logoutbtn_Click);
             // 
+            // Seabtn
+            // 
+            this.Seabtn.Location = new System.Drawing.Point(206, 23);
+            this.Seabtn.Margin = new System.Windows.Forms.Padding(4);
+            this.Seabtn.Name = "Seabtn";
+            this.Seabtn.Size = new System.Drawing.Size(100, 28);
+            this.Seabtn.TabIndex = 35;
+            this.Seabtn.Text = "Search";
+            this.Seabtn.UseVisualStyleBackColor = true;
+            this.Seabtn.Click += new System.EventHandler(this.Seabtn_Click);
+            // 
+            // Sealbl
+            // 
+            this.Sealbl.AutoSize = true;
+            this.Sealbl.Location = new System.Drawing.Point(9, 30);
+            this.Sealbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Sealbl.Name = "Sealbl";
+            this.Sealbl.Size = new System.Drawing.Size(79, 17);
+            this.Sealbl.TabIndex = 34;
+            this.Sealbl.Text = "Search PID";
+            // 
+            // Seatxt
+            // 
+            this.Seatxt.Location = new System.Drawing.Point(100, 26);
+            this.Seatxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Seatxt.Name = "Seatxt";
+            this.Seatxt.Size = new System.Drawing.Size(97, 22);
+            this.Seatxt.TabIndex = 33;
+            // 
+            // PatInfolbl
+            // 
+            this.PatInfolbl.AutoSize = true;
+            this.PatInfolbl.Location = new System.Drawing.Point(654, 23);
+            this.PatInfolbl.Name = "PatInfolbl";
+            this.PatInfolbl.Size = new System.Drawing.Size(0, 17);
+            this.PatInfolbl.TabIndex = 36;
+            // 
             // HospitalSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 525);
+            this.Controls.Add(this.PatInfolbl);
+            this.Controls.Add(this.Seabtn);
+            this.Controls.Add(this.Sealbl);
+            this.Controls.Add(this.Seatxt);
             this.Controls.Add(this.Logoutbtn);
             this.Controls.Add(this.label1);
             this.Name = "HospitalSystem";
@@ -65,5 +110,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Logoutbtn;
+        private System.Windows.Forms.Button Seabtn;
+        private System.Windows.Forms.Label Sealbl;
+        private System.Windows.Forms.TextBox Seatxt;
+        private System.Windows.Forms.Label PatInfolbl;
     }
 }

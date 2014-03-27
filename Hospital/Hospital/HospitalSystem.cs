@@ -38,5 +38,24 @@ namespace Hospital {
             Close();
         }
 
+        private void Seabtn_Click(object sender, EventArgs e) {
+            int PID = Int32.Parse(Seatxt.Text);
+            pat = Patient.Search(PID);
+            
+            //Blank is used as if empty record then database doesnt return a date as null but
+            //returns a date 1/01/0001
+            DateTime blank = new DateTime(0001, 1, 01);
+
+
+            PatInfolbl.Text = "Patient Info: \r\n";
+            PatInfolbl.Text += pat.getFN() + " " + pat.getSN() + "\r\n";
+
+            //Check if date is db equivalent of Null
+            if (pat.getDOB() != blank) {
+                PatInfolbl.Text += pat.getDOB();
+            }
+        }
+
+
     }
 }
