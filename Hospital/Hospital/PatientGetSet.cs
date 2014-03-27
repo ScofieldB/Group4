@@ -9,7 +9,7 @@ namespace Hospital {
 
         private int patient, phone, mobile, covertype, covernumber, kinphone;
 
-        private string firstname, surname, address, allergies, nextofkin, gender;
+        private string firstname, surname, address, allergies, nextofkin, gender, room;
 
         private bool status;
 
@@ -87,6 +87,15 @@ namespace Hospital {
         public void setGender(string Gen) {
             gender = Gen;
         }
+
+        public string getRoom() {
+            return room;
+        }
+
+        public void setRoom(string rm) {
+            room = rm;
+        }
+
         public bool getStatus() {
             return status;
         }

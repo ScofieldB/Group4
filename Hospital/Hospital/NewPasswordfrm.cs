@@ -35,7 +35,7 @@ namespace Hospital {
                 login.newPassword(userID, NewPwtxt.Text);
 
                 MessageBox.Show("Username: " + userID + " password has now been updated.", "New Password updated",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 ActiveForm.Close();
             } else {
                 MessageBox.Show("Passwords did not match. Please try again", "New Password fail",

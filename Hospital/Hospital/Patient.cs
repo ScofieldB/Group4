@@ -49,6 +49,7 @@ namespace Hospital {
                 if (!reader.IsDBNull(13)) {
                     pat.setKP(reader.GetInt32(13));
                 }
+                pat.setRoom(reader.GetString(14));
             }
             reader.Close();
             con.Close();

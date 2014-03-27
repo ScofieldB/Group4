@@ -52,12 +52,19 @@
       <DependentUpon>Adminfrm.cs</DependentUpon>
     </Compile>
     <Compile Include="DBCon.cs" />
+    <Compile Include="Facilities.cs" />
     <Compile Include="HashPassword.cs" />
     <Compile Include="HospitalSystem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HospitalSystem.Designer.cs">
       <DependentUpon>HospitalSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reception.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reception.Designer.cs">
+      <DependentUpon>Reception.cs</DependentUpon>
     </Compile>
     <Compile Include="Loginfrm.cs">
       <SubType>Form</SubType>
@@ -82,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HospitalSystem.resx">
       <DependentUpon>HospitalSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reception.resx">
+      <DependentUpon>Reception.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loginfrm.resx">
       <DependentUpon>Loginfrm.cs</DependentUpon>

@@ -46,6 +46,11 @@ namespace Hospital {
                         adminform.setHome(ActiveForm);
                         ActiveForm.Hide();
                         adminform.Show();
+                    } else if(user.getRole() == "Receptionist") {
+                        Reception reception = new Reception(user.getUser(), user.getRole());
+                        reception.setHome(ActiveForm);
+                        ActiveForm.Hide();
+                        reception.Show();
                     } else {
                         HospitalSystem mainprogram = new HospitalSystem(user.getUser(), user.getRole());
                         mainprogram.setHome(ActiveForm);

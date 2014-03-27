@@ -41,7 +41,7 @@ local.properties
 *.user
 *.sln.docstates
 
-Hosptial/Hospital/DBCon.cs
+Hospital/Hospital/DBcon.cs
 
 # Build results
 
