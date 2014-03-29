@@ -25,7 +25,27 @@ namespace Hospital {
             InitializeComponent();
             UserID = user;
             Role = role;
+            if(role == "Doctor"){
+                Button Surgerybtn = new Button();
+                Surgerybtn.Name = "Surgerybtn";
+                Surgerybtn.Size = new Size(150, 30);
+                Surgerybtn.Text = "Book Surgery";
+                Surgerybtn.Location = new Point(700, 400);
+                Surgerybtn.Click += new EventHandler(Surgerybtn_Click);
+                Controls.Add(Surgerybtn);
+
+                Button Xraybtn = new Button();
+                Xraybtn.Name = "Xraybtn";
+                Xraybtn.Size = new Size(150, 30);
+                Xraybtn.Text = "Book X-Ray";
+                Xraybtn.Location = new Point(700, 440);
+                Xraybtn.Click += new EventHandler(Xraybtn_Click);
+                Controls.Add(Xraybtn);
+            }
         }
+
+  
+
 
         public void setHome(Form logout) {
             home = logout;
@@ -53,6 +73,42 @@ namespace Hospital {
             //Check if date is db equivalent of Null
             if (pat.getDOB() != blank) {
                 PatInfolbl.Text += pat.getDOB();
+            }
+        }
+
+        private void Surgerybtn_Click(object sender, EventArgs e) {
+            Facilities fac = new Facilities();
+
+            bool success = fac.bookSurgery(pat);
+            if (success == true) {
+                MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for surgery.", "Surgery booked",
+                MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                int PID = Int32.Parse(Seatxt.Text);
+                pat = Patient.Search(PID);
+
+                label1.Text = pat.getRoom();
+            } else {
+                MessageBox.Show("Patient surgery was not booked.", "Surgery not booked",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Xraybtn_Click(object sender, EventArgs e) {
+            Facilities fac = new Facilities();
+
+            bool success = fac.bookImaging(pat);
+            if (success == true) {
+                MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for Xray.", "Xray booked",
+                MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+                int PID = Int32.Parse(Seatxt.Text);
+                pat = Patient.Search(PID);
+
+                label1.Text = pat.getRoom();
+            } else {
+                MessageBox.Show("Patient Xray was not booked.", "Xray not booked",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
