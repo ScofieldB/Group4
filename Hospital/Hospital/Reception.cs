@@ -43,28 +43,30 @@ namespace Hospital {
         }
 
         private void Seabtn_Click(object sender, EventArgs e) {
-            //take content of seatxt and make it a varible
-            
-            //
-            int PID = Int32.Parse(Seatxt.Text);
-            pat = Patient.Search(PID);
+            try {
+                int PID = Int32.Parse(Seatxt.Text);
+                pat = Patient.Search(PID);
 
-            //Test Comment, getset
-            PIDtxt.Text = pat.getPatient().ToString();
-            Surtxt.Text = pat.getSN();
-            Firtxt.Text = pat.getFN();
-            DOBtxt.Text = pat.getDOB().ToString();
-            Gentxt.Text = pat.getGender();
-            NOKtxt.Text = pat.getNextKin();
-            NOKNtxt.Text = pat.getKP().ToString();
-            Addtxt.Text = pat.getAddress();
-            Homtxt.Text = pat.getPhone().ToString();
-            Mobtxt.Text = pat.getMobile().ToString();
-            CovTtxt.Text = pat.getCoverT().ToString();
-            CovNtxt.Text = pat.getCoverN().ToString();
-            Altxt.Text = pat.getAllergies();
-            Statxt.Text = pat.getStatus().ToString();
-            Roomtxt.Text = pat.getRoom().ToString();
+                //Test Comment, getset
+                PIDtxt.Text = pat.getPatient().ToString();
+                Surtxt.Text = pat.getSN();
+                Firtxt.Text = pat.getFN();
+                DOBtxt.Text = pat.getDOB().ToString();
+                Gentxt.Text = pat.getGender();
+                NOKtxt.Text = pat.getNextKin();
+                NOKNtxt.Text = pat.getKP().ToString();
+                Addtxt.Text = pat.getAddress();
+                Homtxt.Text = pat.getPhone().ToString();
+                Mobtxt.Text = pat.getMobile().ToString();
+                CovTtxt.Text = pat.getCoverT().ToString();
+                CovNtxt.Text = pat.getCoverN().ToString();
+                Altxt.Text = pat.getAllergies();
+                Statxt.Text = pat.getStatus().ToString();
+                Roomtxt.Text = pat.getRoom().ToString();
+            } catch (Exception) {
+                MessageBox.Show("Patient ID must be valid number.", "Incorrect Patiet Id",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Newbtn_Click(object sender, EventArgs e) {

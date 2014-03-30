@@ -29,6 +29,7 @@
             this.Sealbl = new System.Windows.Forms.Label();
             this.Seatxt = new System.Windows.Forms.TextBox();
             this.PatInfolbl = new System.Windows.Forms.Label();
+            this.currentRoomtxt = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -88,11 +89,20 @@
             this.PatInfolbl.Size = new System.Drawing.Size(0, 17);
             this.PatInfolbl.TabIndex = 36;
             // 
+            // currentRoomtxt
+            // 
+            this.currentRoomtxt.AutoSize = true;
+            this.currentRoomtxt.Location = new System.Drawing.Point(491, 23);
+            this.currentRoomtxt.Name = "currentRoomtxt";
+            this.currentRoomtxt.Size = new System.Drawing.Size(0, 17);
+            this.currentRoomtxt.TabIndex = 37;
+            // 
             // HospitalSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 525);
+            this.Controls.Add(this.currentRoomtxt);
             this.Controls.Add(this.PatInfolbl);
             this.Controls.Add(this.Seabtn);
             this.Controls.Add(this.Sealbl);
@@ -114,5 +124,6 @@
         private System.Windows.Forms.Label Sealbl;
         private System.Windows.Forms.TextBox Seatxt;
         private System.Windows.Forms.Label PatInfolbl;
+        private System.Windows.Forms.Label currentRoomtxt;
     }
 }
