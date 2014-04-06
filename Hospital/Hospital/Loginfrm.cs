@@ -12,12 +12,11 @@ using System.Data.SqlClient;
 namespace Hospital {
     public partial class Loginfrm : Form {
 
-
-
         public Loginfrm() {
             InitializeComponent();
         }
 
+        // Exit the program
         private void Exitbtn_Click(object sender, EventArgs e) {
             Close();
         }
@@ -38,16 +37,17 @@ namespace Hospital {
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
 
+                //Check if user has user generated generated password
                 if (user.getConfirmed() == true) {
+                    
                     //Opens appropriate form depending on which role user is
-
                     if (user.getRole() == "Admin") {
                         Adminfrm adminform = new Adminfrm();
                         adminform.setHome(ActiveForm);
                         ActiveForm.Hide();
                         adminform.Show();
                     } else if(user.getRole() == "Receptionist") {
-                        Reception reception = new Reception(user.getUser(), user.getRole());
+                        Reception reception = new Reception(user.getUser());
                         reception.setHome(ActiveForm);
                         ActiveForm.Hide();
                         reception.Show();
@@ -58,6 +58,11 @@ namespace Hospital {
                         mainprogram.Show();
 
                     }
+
+                /*
+                 * If password is not user generated but was System Admin generated then ensure 
+                 * user must update password.
+                 */
                 } else {
                     NewPasswordfrm newpw = new NewPasswordfrm(user.getUser());
                     newpw.Show();

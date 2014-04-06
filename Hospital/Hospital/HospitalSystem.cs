@@ -22,6 +22,15 @@ namespace Hospital {
             InitializeComponent();
         }
 
+
+        /*
+         * Costructor that sets up Hopsital form used by doctors and medical technicians.
+         * Will set up different button display based upon which role is passed as parameter.
+         * 
+         * Paramaters:
+         *      string user - sets global variable UserID
+         *      string role - sets global variable Role
+         */
         public HospitalSystem(string user, string role) {
             InitializeComponent();
             UserID = user;
@@ -55,7 +64,10 @@ namespace Hospital {
 
   
 
-
+        /*
+         * setHome is used for navigational purposes to and from the
+         * Login screen.
+         */
         public void setHome(Form logout) {
             home = logout;
         }
@@ -67,7 +79,12 @@ namespace Hospital {
             Close();
         }
 
-        private void Seabtn_Click(object sender, EventArgs e) {
+        
+        /*
+         * When a search via PatientID is undertaken then a patients first name, 
+         * surname, date of birth and current room location are displayed.
+         */
+        private void Searchbtn_Click(object sender, EventArgs e) {
             try {
                 int PID = Int32.Parse(Seatxt.Text);
                 pat = Patient.Search(PID);
@@ -90,6 +107,11 @@ namespace Hospital {
             }
         }
 
+
+        /*
+         * Books patient for a Surgery and display message of completion
+         * or error.   
+         */
         private void Surgerybtn_Click(object sender, EventArgs e) {
 
             if (pat.getPatient() != -1) {
@@ -111,6 +133,11 @@ namespace Hospital {
             }
         }
 
+
+        /*
+         * Books patient for a Xray and display message of completion
+         * or error.
+         */
         private void Xraybtn_Click(object sender, EventArgs e) {
 
             if(pat.getPatient() != -1){
@@ -133,6 +160,10 @@ namespace Hospital {
         }
 
 
+        /*
+         * When surgery or xray is complete return patient back to
+         * emergency room.
+         */
         private void Finishbtn_Click(object sender, EventArgs e) {
             if (pat.getPatient() != -1) {
                 fac.returnPatientToDoctor(pat);

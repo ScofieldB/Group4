@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Hospital {
     public partial class Reception : Form {
+
         private Form home;
         private PatientGetSet pat = new PatientGetSet();
 
@@ -22,15 +23,23 @@ namespace Hospital {
             InitializeComponent();
         }
 
-        public Reception(string user, string role) {
+
+        /*
+         * Sets up form and updates UserID variable with user parameter passed.
+         */
+        public Reception(string user) {
             InitializeComponent();
             UserID = user;
-            Role = role;
 
             //Demo to confirm works by updating label on form
-            Welcomelbl.Text = "Welcome User:" + UserID + " Role: " + Role;
+            Welcomelbl.Text = "Welcome User:" + UserID;
         }
 
+
+        /*
+         * setHome is used for navigational purposes to and from the
+         * Login screen.
+         */
         public void setHome(Form logout) {
             home = logout;
         }
@@ -42,7 +51,11 @@ namespace Hospital {
             Close();
         }
 
-        private void Seabtn_Click(object sender, EventArgs e) {
+        /*
+         * When patient is searched for update user information into
+         * text boxes on screen.
+         */
+        private void Searchbtn_Click(object sender, EventArgs e) {
             try {
                 int PID = Int32.Parse(Seatxt.Text);
                 pat = Patient.Search(PID);
@@ -73,6 +86,10 @@ namespace Hospital {
 
         }
 
+
+        /*
+         * Clears the information displayed on screen.
+         */
         private void Clrbtn_Click(object sender, EventArgs e) {
             PIDtxt.Text = "";
             Surtxt.Text = "";
@@ -91,6 +108,9 @@ namespace Hospital {
             Roomtxt.Text = "";
         }
 
+        /*
+         * Admit patient into Emergency room and display message of confirmation or error.
+         */
         private void Admitbtn_Click(object sender, EventArgs e) {
             Facilities fac = new Facilities();
 

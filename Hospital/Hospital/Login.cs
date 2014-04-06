@@ -8,6 +8,11 @@ using System.Threading.Tasks;
 namespace Hospital {
     class Login {
 
+        /*
+         * Confirms user password matches that on database and if so
+         * return the users role and whether user has user generated password.
+         * If password does not match one stored on database return empty userID
+         */
         public User getDetails(string username, string password) {
             User user = new User();
             
@@ -39,6 +44,10 @@ namespace Hospital {
         }
 
 
+        /*
+         * When user updates their password first hash the password and then
+         * update database with hashed pw.
+         */
         public void newPassword(string userID, string newPw) {
             HashPassword hash = new HashPassword();
             string md5Hash = hash.getHash(newPw);

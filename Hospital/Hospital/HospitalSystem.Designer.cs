@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
             this.Logoutbtn = new System.Windows.Forms.Button();
-            this.Seabtn = new System.Windows.Forms.Button();
+            this.Searchbtn = new System.Windows.Forms.Button();
             this.Sealbl = new System.Windows.Forms.Label();
             this.Seatxt = new System.Windows.Forms.TextBox();
             this.PatInfolbl = new System.Windows.Forms.Label();
@@ -52,16 +52,16 @@
             this.Logoutbtn.UseVisualStyleBackColor = true;
             this.Logoutbtn.Click += new System.EventHandler(this.Logoutbtn_Click);
             // 
-            // Seabtn
+            // Searchbtn
             // 
-            this.Seabtn.Location = new System.Drawing.Point(206, 23);
-            this.Seabtn.Margin = new System.Windows.Forms.Padding(4);
-            this.Seabtn.Name = "Seabtn";
-            this.Seabtn.Size = new System.Drawing.Size(100, 28);
-            this.Seabtn.TabIndex = 35;
-            this.Seabtn.Text = "Search";
-            this.Seabtn.UseVisualStyleBackColor = true;
-            this.Seabtn.Click += new System.EventHandler(this.Seabtn_Click);
+            this.Searchbtn.Location = new System.Drawing.Point(206, 23);
+            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.Searchbtn.Name = "Searchbtn";
+            this.Searchbtn.Size = new System.Drawing.Size(100, 28);
+            this.Searchbtn.TabIndex = 35;
+            this.Searchbtn.Text = "Search";
+            this.Searchbtn.UseVisualStyleBackColor = true;
+            this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
             // 
             // Sealbl
             // 
@@ -104,7 +104,7 @@
             this.ClientSize = new System.Drawing.Size(959, 525);
             this.Controls.Add(this.currentRoomtxt);
             this.Controls.Add(this.PatInfolbl);
-            this.Controls.Add(this.Seabtn);
+            this.Controls.Add(this.Searchbtn);
             this.Controls.Add(this.Sealbl);
             this.Controls.Add(this.Seatxt);
             this.Controls.Add(this.Logoutbtn);
@@ -120,7 +120,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Logoutbtn;
-        private System.Windows.Forms.Button Seabtn;
+        private System.Windows.Forms.Button Searchbtn;
         private System.Windows.Forms.Label Sealbl;
         private System.Windows.Forms.TextBox Seatxt;
         private System.Windows.Forms.Label PatInfolbl;

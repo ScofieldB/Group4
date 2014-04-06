@@ -10,13 +10,17 @@ namespace Hospital {
 
         private SqlConnection con = DBCon.DBConnect();
 
-        public string addUser(string user, string role) {
+        /*
+         * Add user access to system with specified userID and role.
+         * Sets default password for new user to their surname.
+         */
+        public string addUser(string userID, string role) {
             bool userExist = false;
             string Surname = "";
             con.Open();
 
             SqlCommand command = new SqlCommand("SELECT Count(*) FROM Staff WHERE StaffID = @id", con);
-            command.Parameters.AddWithValue("@id", user);
+            command.Parameters.AddWithValue("@id", userID);
             SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read()) {
@@ -29,7 +33,7 @@ namespace Hospital {
 
             if (userExist) {
                 command.CommandText = "SELECT Surname FROM [INB201].[dbo].[Staff] WHERE StaffID = @id";
-                command.Parameters.AddWithValue("@id", user);
+                command.Parameters.AddWithValue("@id", userID);
                 reader = command.ExecuteReader();
                 while (reader.Read()) {
                     Surname = reader.GetString(0);
@@ -44,7 +48,7 @@ namespace Hospital {
                 String md5Hash = System.Text.Encoding.ASCII.GetString(data);
 
                 command.CommandText = "INSERT INTO Users (StaffID, Password, Role, Confirmed) " + "VALUES (@id, @pw, @role, '0')";
-                command.Parameters.AddWithValue("@id", user);
+                command.Parameters.AddWithValue("@id", userID);
                 command.Parameters.AddWithValue("@role", role);
                 command.Parameters.AddWithValue("@pw", md5Hash);
                 command.ExecuteNonQuery();
@@ -55,6 +59,9 @@ namespace Hospital {
         }
 
 
+        /*
+         * Remove specified userID from system.
+         */
         public void deleteUser(string user) {
             con.Open();
             SqlCommand command = new SqlCommand(null, con);

@@ -10,6 +10,11 @@ namespace Hospital {
 
         private SqlConnection con = DBCon.DBConnect();
 
+
+        /*
+         * Update database with patient allocated to Emergency and update
+         * the room bed allocations.
+         */
         public bool admitPatient(int patID){
             bool admitted = false;
             string room = "";
@@ -48,6 +53,11 @@ namespace Hospital {
             return admitted;
         }
 
+
+        /*
+         * Update database that patient is now moved to Surgery room and update
+         * room bed allocations.
+         */
         public bool bookSurgery(PatientGetSet pat) {
             bool success = false;
 
@@ -77,6 +87,11 @@ namespace Hospital {
             return success;
         }
 
+
+        /*
+         * Update database that patient is now moved to Imaging room and update
+         * room bed allocations.
+         */
         public bool bookImaging(PatientGetSet pat) {
             bool success = false;
 
@@ -105,6 +120,11 @@ namespace Hospital {
             return success;
         }
 
+
+        /*
+         * Update database when sending patient back to doctor and update
+         * room bed allocations.
+         */
         public void returnPatientToDoctor(PatientGetSet pat){
             bool success = false;
             string newRoom = "";
@@ -132,6 +152,10 @@ namespace Hospital {
             }
         }
 
+
+        /*
+         * Update patient to new room and change room bed allocations within database.
+         */
         private void updateFacilities(PatientGetSet pat, int newRoomCapacity, string newRoom) {
             int currentRoomCapacity = 0;
             SqlCommand command = new SqlCommand("", con);

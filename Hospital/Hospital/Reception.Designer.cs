@@ -27,12 +27,14 @@
             this.Logoutbtn = new System.Windows.Forms.Button();
             this.ProgramTabs = new System.Windows.Forms.TabControl();
             this.RecPG = new System.Windows.Forms.TabPage();
+            this.Roomtxt = new System.Windows.Forms.TextBox();
+            this.Roomlbl = new System.Windows.Forms.Label();
             this.Admitbtn = new System.Windows.Forms.Button();
             this.Clrbtn = new System.Windows.Forms.Button();
             this.CovTtxt = new System.Windows.Forms.TextBox();
             this.Gentxt = new System.Windows.Forms.TextBox();
             this.Statxt = new System.Windows.Forms.TextBox();
-            this.Seabtn = new System.Windows.Forms.Button();
+            this.Searchbtn = new System.Windows.Forms.Button();
             this.Sealbl = new System.Windows.Forms.Label();
             this.Seatxt = new System.Windows.Forms.TextBox();
             this.Newbtn = new System.Windows.Forms.Button();
@@ -97,8 +99,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.Roomlbl = new System.Windows.Forms.Label();
-            this.Roomtxt = new System.Windows.Forms.TextBox();
             this.ProgramTabs.SuspendLayout();
             this.RecPG.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -146,7 +146,7 @@
             this.RecPG.Controls.Add(this.CovTtxt);
             this.RecPG.Controls.Add(this.Gentxt);
             this.RecPG.Controls.Add(this.Statxt);
-            this.RecPG.Controls.Add(this.Seabtn);
+            this.RecPG.Controls.Add(this.Searchbtn);
             this.RecPG.Controls.Add(this.Sealbl);
             this.RecPG.Controls.Add(this.Seatxt);
             this.RecPG.Controls.Add(this.Newbtn);
@@ -184,6 +184,22 @@
             this.RecPG.TabIndex = 0;
             this.RecPG.Text = "Admition";
             this.RecPG.UseVisualStyleBackColor = true;
+            // 
+            // Roomtxt
+            // 
+            this.Roomtxt.Location = new System.Drawing.Point(23, 198);
+            this.Roomtxt.Name = "Roomtxt";
+            this.Roomtxt.Size = new System.Drawing.Size(133, 22);
+            this.Roomtxt.TabIndex = 39;
+            // 
+            // Roomlbl
+            // 
+            this.Roomlbl.AutoSize = true;
+            this.Roomlbl.Location = new System.Drawing.Point(20, 176);
+            this.Roomlbl.Name = "Roomlbl";
+            this.Roomlbl.Size = new System.Drawing.Size(45, 17);
+            this.Roomlbl.TabIndex = 38;
+            this.Roomlbl.Text = "Room";
             // 
             // Admitbtn
             // 
@@ -230,16 +246,16 @@
             this.Statxt.Size = new System.Drawing.Size(132, 22);
             this.Statxt.TabIndex = 33;
             // 
-            // Seabtn
+            // Searchbtn
             // 
-            this.Seabtn.Location = new System.Drawing.Point(217, 7);
-            this.Seabtn.Margin = new System.Windows.Forms.Padding(4);
-            this.Seabtn.Name = "Seabtn";
-            this.Seabtn.Size = new System.Drawing.Size(100, 28);
-            this.Seabtn.TabIndex = 32;
-            this.Seabtn.Text = "Search";
-            this.Seabtn.UseVisualStyleBackColor = true;
-            this.Seabtn.Click += new System.EventHandler(this.Seabtn_Click);
+            this.Searchbtn.Location = new System.Drawing.Point(217, 7);
+            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.Searchbtn.Name = "Searchbtn";
+            this.Searchbtn.Size = new System.Drawing.Size(100, 28);
+            this.Searchbtn.TabIndex = 32;
+            this.Searchbtn.Text = "Search";
+            this.Searchbtn.UseVisualStyleBackColor = true;
+            this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
             // 
             // Sealbl
             // 
@@ -878,22 +894,6 @@
             this.button3.Text = "Search";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // Roomlbl
-            // 
-            this.Roomlbl.AutoSize = true;
-            this.Roomlbl.Location = new System.Drawing.Point(20, 176);
-            this.Roomlbl.Name = "Roomlbl";
-            this.Roomlbl.Size = new System.Drawing.Size(45, 17);
-            this.Roomlbl.TabIndex = 38;
-            this.Roomlbl.Text = "Room";
-            // 
-            // Roomtxt
-            // 
-            this.Roomtxt.Location = new System.Drawing.Point(23, 198);
-            this.Roomtxt.Name = "Roomtxt";
-            this.Roomtxt.Size = new System.Drawing.Size(133, 22);
-            this.Roomtxt.TabIndex = 39;
-            // 
             // Reception
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -950,7 +950,7 @@
         private System.Windows.Forms.Label Allbl;
         private System.Windows.Forms.Button Newbtn;
         private System.Windows.Forms.Button Savbtn;
-        private System.Windows.Forms.Button Seabtn;
+        private System.Windows.Forms.Button Searchbtn;
         private System.Windows.Forms.Label Sealbl;
         private System.Windows.Forms.TextBox Seatxt;
         private System.Windows.Forms.TabPage tabPage1;

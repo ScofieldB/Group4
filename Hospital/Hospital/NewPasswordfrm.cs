@@ -17,6 +17,9 @@ namespace Hospital {
             InitializeComponent();
         }
 
+        /*
+         * Constructor that sets global variable.
+         */
         public NewPasswordfrm(string User) {
             InitializeComponent();
             userID = User;
@@ -43,6 +46,9 @@ namespace Hospital {
             }
         }
 
+        /*
+         * Cancels the new password setup and returns user to the login screen.
+         */
         private void Cancelbtn_Click(object sender, EventArgs e) {
             ActiveForm.Close();
         }
