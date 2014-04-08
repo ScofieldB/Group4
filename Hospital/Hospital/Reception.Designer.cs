@@ -118,7 +118,7 @@
             // Logoutbtn
             // 
             this.Logoutbtn.Location = new System.Drawing.Point(650, 11);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Logoutbtn.Name = "Logoutbtn";
             this.Logoutbtn.Size = new System.Drawing.Size(56, 19);
             this.Logoutbtn.TabIndex = 1;
@@ -178,7 +178,7 @@
             this.RecPG.Controls.Add(this.PIDtxt);
             this.RecPG.Location = new System.Drawing.Point(4, 22);
             this.RecPG.Name = "RecPG";
-            this.RecPG.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.RecPG.Padding = new System.Windows.Forms.Padding(3);
             this.RecPG.Size = new System.Drawing.Size(701, 345);
             this.RecPG.TabIndex = 0;
             this.RecPG.Text = "Admition";
@@ -187,7 +187,7 @@
             // Roomtxt
             // 
             this.Roomtxt.Location = new System.Drawing.Point(17, 161);
-            this.Roomtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Roomtxt.Margin = new System.Windows.Forms.Padding(2);
             this.Roomtxt.Name = "Roomtxt";
             this.Roomtxt.Size = new System.Drawing.Size(101, 20);
             this.Roomtxt.TabIndex = 39;
@@ -205,7 +205,7 @@
             // Admitbtn
             // 
             this.Admitbtn.Location = new System.Drawing.Point(620, 318);
-            this.Admitbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Admitbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Admitbtn.Name = "Admitbtn";
             this.Admitbtn.Size = new System.Drawing.Size(75, 23);
             this.Admitbtn.TabIndex = 37;
@@ -836,7 +836,7 @@
             this.Controls.Add(this.ProgramTabs);
             this.Controls.Add(this.Logoutbtn);
             this.Controls.Add(this.Welcomelbl);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Reception";
             this.Text = "HospitalSystem";
             this.ProgramTabs.ResumeLayout(false);
