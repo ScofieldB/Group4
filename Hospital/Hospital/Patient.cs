@@ -76,10 +76,5 @@ namespace Hospital {
             //Mystery method must be made to display full contents of my reader (of the new record) to text boxes
             //Each method does the same display thing
         }
-
-        /*
-         Save btn ? magical update method that uses the textboxes as inputs for each col in patients
-         * 
-         */
     }
 }

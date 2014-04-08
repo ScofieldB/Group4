@@ -84,6 +84,45 @@ namespace Hospital {
 
         private void Newbtn_Click(object sender, EventArgs e) {
 
+            //at some point I need to move this to patient class, also check for input values
+            SqlConnection con = DBCon.DBConnect();
+
+            con.Open();
+            SqlCommand command = new SqlCommand("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
+            "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone,"+
+            "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mb, @all, @covert, @covern, @stat, @nok,"+
+            " @nokp, @room); SELECT scope_identity();", con);
+
+            command.Parameters.Add("@first", System.Data.SqlDbType.NVarChar, 20);
+            command.Parameters["@first"].Value = Firtxt.Text;
+            command.Parameters.Add("@sur", System.Data.SqlDbType.NVarChar, 20);
+            command.Parameters["@sur"].Value = Surtxt.Text;
+            command.Parameters.Add("@gen", System.Data.SqlDbType.NVarChar, 1);
+            command.Parameters["@gen"].Value = Gentxt.Text;
+            command.Parameters.Add("@dob", System.Data.SqlDbType.Date);
+            command.Parameters["@dob"].Value = DOBtxt.Text;//Date will need some work to get correct formatting
+            command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500);
+            command.Parameters["@add"].Value = Addtxt.Text;
+            command.Parameters.Add("@ph", System.Data.SqlDbType.Int);
+            command.Parameters["@ph"].Value = Homtxt.Text;
+            command.Parameters.Add("@mob", System.Data.SqlDbType.Int);
+            command.Parameters["@mob"].Value = Mobtxt.Text;
+            command.Parameters.Add("@all", System.Data.SqlDbType.NVarChar, 500);
+            command.Parameters["@all"].Value = Altxt.Text;
+            command.Parameters.Add("@covert", System.Data.SqlDbType.Int);
+            command.Parameters["@covert"].Value = CovTtxt.Text;
+            command.Parameters.Add("@covern", System.Data.SqlDbType.Int);
+            command.Parameters["@covern"].Value = CovNtxt.Text;
+            command.Parameters.Add("@stat", System.Data.SqlDbType.Bit);
+            command.Parameters["@stat"].Value = Statxt.Text;
+            command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500);
+            command.Parameters["@nok"].Value = NOKtxt.Text;
+            command.Parameters.Add("@nokp", System.Data.SqlDbType.Int);
+            command.Parameters["@nokp"].Value = NOKNtxt.Text;
+            command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4);
+            command.Parameters["@room"].Value = NOKNtxt.Text;
+
+            
         }
 
 
@@ -135,6 +174,10 @@ namespace Hospital {
                 MessageBox.Show("Please search for a patient.", "Search required",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Savbtn_Click(object sender, EventArgs e) {
+            //
         }
 
     }
