@@ -278,6 +278,7 @@
             this.Newbtn.TabIndex = 29;
             this.Newbtn.Text = "New Patient";
             this.Newbtn.UseVisualStyleBackColor = true;
+            this.Newbtn.Click += new System.EventHandler(this.Newbtn_Click);
             // 
             // Savbtn
             // 

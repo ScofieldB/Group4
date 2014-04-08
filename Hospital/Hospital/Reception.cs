@@ -91,7 +91,7 @@ namespace Hospital {
             //at some point I need to move this to patient class, also check for input values (this actually auto checks that)
             //seems the reason I get no error message is due to some datatype issues
 
-            if (string.IsNullOrEmpty(PIDtxt.Text) || string.IsNullOrEmpty(Surtxt.Text) || string.IsNullOrEmpty(Firtxt.Text) ||
+            if (string.IsNullOrEmpty(Surtxt.Text) || string.IsNullOrEmpty(Firtxt.Text) ||
                 string.IsNullOrEmpty(DOBtxt.Text) || string.IsNullOrEmpty(Gentxt.Text) || string.IsNullOrEmpty(NOKtxt.Text) ||
                 string.IsNullOrEmpty(NOKNtxt.Text) || string.IsNullOrEmpty(Addtxt.Text) || string.IsNullOrEmpty(Homtxt.Text) ||
                 string.IsNullOrEmpty(Mobtxt.Text) || string.IsNullOrEmpty(CovTtxt.Text) || string.IsNullOrEmpty(CovNtxt.Text) ||
@@ -102,52 +102,52 @@ namespace Hospital {
             }
 
             else {
-                using (SqlConnection con = DBCon.DBConnect()) {
+                SqlConnection con = DBCon.DBConnect();
 
-                    con.Open();
+                con.Open();
 
-                    string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
-                    "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
-                    "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
-                    " @nokp, @room); SET @PAT_ID = SCOPE_IDENTITY();");
+                string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
+                "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
+                "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
+                " @nokp, @room); SET @PATID = SCOPE_IDENTITY();");
 
-                    using (SqlCommand command = new SqlCommand(insertquery, con)) {
+                SqlCommand command = new SqlCommand(insertquery, con);
 
-                        //Matching datatype with what is listed in the database, will attempt to find a point of 
-                        //checking inputs prior to this point, when I move it to a class of it's own
-                        command.Parameters.Add("@first", System.Data.SqlDbType.NVarChar, 20).Value = Firtxt.Text;
-                        command.Parameters.Add("@sur", System.Data.SqlDbType.NVarChar, 20).Value = Surtxt.Text;
-                        command.Parameters.Add("@gen", System.Data.SqlDbType.NVarChar, 1).Value = Gentxt.Text;
-                        command.Parameters.Add("@dob", System.Data.SqlDbType.Date).Value = DOBtxt.Text;//Date will need some work to get correct formatting
-                        command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500).Value = Addtxt.Text;
-                        command.Parameters.Add("@ph", System.Data.SqlDbType.Int).Value = Homtxt.Text;
-                        command.Parameters.Add("@mob", System.Data.SqlDbType.Int).Value = Mobtxt.Text;
-                        command.Parameters.Add("@all", System.Data.SqlDbType.NVarChar, 500).Value = Altxt.Text;
-                        command.Parameters.Add("@covert", System.Data.SqlDbType.Int).Value = CovTtxt.Text;
-                        command.Parameters.Add("@covern", System.Data.SqlDbType.Int).Value = CovNtxt.Text;
-                        command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = Statxt.Text;
-                        command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500).Value = NOKtxt.Text;
-                        command.Parameters.Add("@nokp", System.Data.SqlDbType.Int).Value = NOKNtxt.Text;
-                        command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4).Value = Roomtxt.Text;
+                //Matching datatype with what is listed in the database, will attempt to find a point of 
+                //checking inputs prior to this point, when I move it to a class of it's own
+                command.Parameters.Add("@first", System.Data.SqlDbType.NVarChar, 20).Value = Firtxt.Text;
+                command.Parameters.Add("@sur", System.Data.SqlDbType.NVarChar, 20).Value = Surtxt.Text;
+                command.Parameters.Add("@gen", System.Data.SqlDbType.NVarChar, 1).Value = Gentxt.Text;
+                command.Parameters.Add("@dob", System.Data.SqlDbType.Date).Value = DOBtxt.Text;//Date will need some work to get correct formatting
+                command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500).Value = Addtxt.Text;
+                command.Parameters.Add("@ph", System.Data.SqlDbType.Int).Value = Homtxt.Text;
+                command.Parameters.Add("@mob", System.Data.SqlDbType.Int).Value = Mobtxt.Text;
+                command.Parameters.Add("@all", System.Data.SqlDbType.NVarChar, 500).Value = Altxt.Text;
+                command.Parameters.Add("@covert", System.Data.SqlDbType.Int).Value = CovTtxt.Text;
+                command.Parameters.Add("@covern", System.Data.SqlDbType.Int).Value = CovNtxt.Text;
+                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = Statxt.Text;
+                command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500).Value = NOKtxt.Text;
+                command.Parameters.Add("@nokp", System.Data.SqlDbType.Int).Value = NOKNtxt.Text;
+                command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4).Value = Roomtxt.Text;
+                command.Parameters.Add("@PATID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
-                        //try {
 
-                        command.ExecuteScalar();
+                try {
 
-                        int PID = Convert.ToInt32(command.Parameters["@PAT_ID"].Value);
-                        PIDtxt.Text = PID.ToString();
+                    command.ExecuteScalar();
 
-                        con.Close();
+                    int PID = Convert.ToInt32(command.Parameters["@PATID"].Value);
+                    PIDtxt.Text = PID.ToString();
 
-                        // }
-                        // catch (Exception) { //this will need to be expanded or changed at somepoint to check each input field
-                        //     MessageBox.Show("Patient details must be valid for each input field.", "Incorrect Patiet Information Layout",
-                        //          MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //  }
-                        //   finally {
-                        //      con.Close();
-                        // }
-                    }
+                    con.Close();
+
+                }
+                catch (Exception) { //this will need to be expanded or changed at somepoint to check each input field
+                    MessageBox.Show("Patient details must be valid for each input field.", "Incorrect Patiet Information Layout",
+                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally {
+                    con.Close();
                 }
             }
         }
@@ -210,8 +210,6 @@ namespace Hospital {
          */
         private void Savbtn_Click(object sender, EventArgs e) {
             //update query to push current contents of textboxes to database, spits out a complete message
-
-
             //change this later to only include the notnull fields
             if (string.IsNullOrEmpty(PIDtxt.Text) || string.IsNullOrEmpty(Surtxt.Text) || string.IsNullOrEmpty(Firtxt.Text) ||
                string.IsNullOrEmpty(DOBtxt.Text) || string.IsNullOrEmpty(Gentxt.Text) || string.IsNullOrEmpty(NOKtxt.Text) ||
@@ -243,7 +241,6 @@ namespace Hospital {
 
                 SqlConnection con = DBCon.DBConnect();
                 con.Open();
-
 
                 string updatequery = ("UPDATE [Patient] SET FirstName = @first, Surname = @sur, Gender = @gen," +
                 "DOB = @dob, Address = @add, Phone = @ph, Mobile = @mob, Allergies = @all, CoverType = @covert," +
