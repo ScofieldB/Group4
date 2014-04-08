@@ -74,7 +74,7 @@ namespace Hospital {
                 CovTtxt.Text = pat.getCoverT().ToString();
                 CovNtxt.Text = pat.getCoverN().ToString();
                 Altxt.Text = pat.getAllergies();
-                Statxt.Text = pat.getStatus().ToString();
+                Statxt.Text = pat.getStatus().ToString();//dropdown box eventually
                 Roomtxt.Text = pat.getRoom().ToString();
             }
             catch (Exception) {
@@ -83,6 +83,9 @@ namespace Hospital {
             }
         }
 
+        /*
+        *Takes entered details, populates them with new PK, returns new PK
+         */
         private void Newbtn_Click(object sender, EventArgs e) {
 
             //at some point I need to move this to patient class, also check for input values (this actually auto checks that)
@@ -94,12 +97,14 @@ namespace Hospital {
                 string.IsNullOrEmpty(Mobtxt.Text) || string.IsNullOrEmpty(CovTtxt.Text) || string.IsNullOrEmpty(CovNtxt.Text) ||
                 string.IsNullOrEmpty(Altxt.Text) || string.IsNullOrEmpty(Statxt.Text) || string.IsNullOrEmpty(Roomtxt.Text)) {
 
-                    MessageBox.Show("Please insert some patient information into all required fields.", "Incorrect Patiet Information",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please insert some patient information into all required fields.", "Incorrect Patiet Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             else {
                 using (SqlConnection con = DBCon.DBConnect()) {
+
+                    con.Open();
 
                     string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
                     "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
@@ -125,24 +130,23 @@ namespace Hospital {
                         command.Parameters.Add("@nokp", System.Data.SqlDbType.Int).Value = NOKNtxt.Text;
                         command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4).Value = Roomtxt.Text;
 
-                        try {
-                            con.Open();
+                        //try {
 
-                            command.ExecuteScalar();
+                        command.ExecuteScalar();
 
-                            int PID = Convert.ToInt32(command.Parameters["@PAT_ID"].Value);
-                            PIDtxt.Text = PID.ToString();
+                        int PID = Convert.ToInt32(command.Parameters["@PAT_ID"].Value);
+                        PIDtxt.Text = PID.ToString();
 
-                            con.Close();
+                        con.Close();
 
-                        }
-                        catch (Exception) { //this will need to be expanded or changed at somepoint to check each input field
-                            MessageBox.Show("Patient details must be valid for each input field.", "Incorrect Patiet Information Layout",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        finally {
-                            con.Close();
-                        }
+                        // }
+                        // catch (Exception) { //this will need to be expanded or changed at somepoint to check each input field
+                        //     MessageBox.Show("Patient details must be valid for each input field.", "Incorrect Patiet Information Layout",
+                        //          MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //  }
+                        //   finally {
+                        //      con.Close();
+                        // }
                     }
                 }
             }
@@ -165,7 +169,7 @@ namespace Hospital {
             CovTtxt.Text = "";
             CovNtxt.Text = "";
             Altxt.Text = "";
-            Statxt.Text = "";
+            Statxt.Text = "";//needs to become drop down box
             Roomtxt.Text = "";
         }
 
@@ -201,14 +205,77 @@ namespace Hospital {
             }
         }
 
+        /*
+        * Updates currently present information in text fields corrosponding to ID field.
+         */
         private void Savbtn_Click(object sender, EventArgs e) {
             //update query to push current contents of textboxes to database, spits out a complete message
 
 
+            //change this later to only include the notnull fields
+            if (string.IsNullOrEmpty(PIDtxt.Text) || string.IsNullOrEmpty(Surtxt.Text) || string.IsNullOrEmpty(Firtxt.Text) ||
+               string.IsNullOrEmpty(DOBtxt.Text) || string.IsNullOrEmpty(Gentxt.Text) || string.IsNullOrEmpty(NOKtxt.Text) ||
+               string.IsNullOrEmpty(NOKNtxt.Text) || string.IsNullOrEmpty(Addtxt.Text) || string.IsNullOrEmpty(Homtxt.Text) ||
+               string.IsNullOrEmpty(Mobtxt.Text) || string.IsNullOrEmpty(CovTtxt.Text) || string.IsNullOrEmpty(CovNtxt.Text) ||
+               string.IsNullOrEmpty(Altxt.Text) || string.IsNullOrEmpty(Statxt.Text) || string.IsNullOrEmpty(Roomtxt.Text)) {
+
+                MessageBox.Show("Please insert some patient information into all required fields.", "Incorrect Patiet Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else {
+
+                int PID = Int32.Parse(PIDtxt.Text);
+                string surname = Surtxt.Text;
+                string firstname = Firtxt.Text;
+                DateTime DOB = DateTime.Parse(DOBtxt.Text);
+                string gender = Gentxt.Text;
+                string nextofkin = NOKtxt.Text;
+                int kinphone = Int32.Parse(NOKNtxt.Text);
+                string address = Addtxt.Text;
+                int home = Int32.Parse(Homtxt.Text);
+                int mobile = Int32.Parse(Mobtxt.Text);
+                int covertype = Int32.Parse(CovTtxt.Text);
+                int covernum = Int32.Parse(CovNtxt.Text);
+                string allergies = Altxt.Text;
+                bool status = Boolean.Parse(Statxt.Text);//needs to be changed to a drop down box
+                string room = Roomtxt.Text;
+
+                SqlConnection con = DBCon.DBConnect();
+                con.Open();
 
 
+                string updatequery = ("UPDATE [Patient] SET PatientID = @pid, FirstName = @first, Surname = @sur, Gender = @gen," +
+                "DOB = @dob, Address = @add, Phone = @ph, Mobile = @mb, Allergies = @all, CoverType = @covert," +
+                "CoverNumber = @covern, Status = @stat, NextOfKin = @nok, NextOfKinPhone = @nokp, Room = @room");
+                SqlCommand command = new SqlCommand(updatequery, con);
 
+                command.Parameters.AddWithValue("@pid", PID);
+                command.Parameters.AddWithValue("@first", firstname);
+                command.Parameters.AddWithValue("@sur", surname);
+                command.Parameters.AddWithValue("@gen", gender);
+                command.Parameters.AddWithValue("@dob", DOB);
+                command.Parameters.AddWithValue("@add", address);
+                command.Parameters.AddWithValue("@ph", home);
+                command.Parameters.AddWithValue("@mob", mobile);
+                command.Parameters.AddWithValue("@all", allergies);
+                command.Parameters.AddWithValue("@covert", covertype);
+                command.Parameters.AddWithValue("@covern", covernum);
+                command.Parameters.AddWithValue("@stat", status);
+                command.Parameters.AddWithValue("@nok", nextofkin);
+                command.Parameters.AddWithValue("@nokp", kinphone);
+                command.Parameters.AddWithValue("@room", room);
 
+                try {
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Update Succesfully");
+                }
+                catch (Exception) {
+                    MessageBox.Show("Something shat itself", "Ah crap",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                con.Close();
+            }
         }
     }
 }
