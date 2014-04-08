@@ -108,7 +108,7 @@ namespace Hospital {
 
                     string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
                     "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
-                    "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mb, @all, @covert, @covern, @stat, @nok," +
+                    "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
                     " @nokp, @room); SET @PAT_ID = SCOPE_IDENTITY();");
 
                     using (SqlCommand command = new SqlCommand(insertquery, con)) {
@@ -245,9 +245,9 @@ namespace Hospital {
                 con.Open();
 
 
-                string updatequery = ("UPDATE [Patient] SET PatientID = @pid, FirstName = @first, Surname = @sur, Gender = @gen," +
-                "DOB = @dob, Address = @add, Phone = @ph, Mobile = @mb, Allergies = @all, CoverType = @covert," +
-                "CoverNumber = @covern, Status = @stat, NextOfKin = @nok, NextOfKinPhone = @nokp, Room = @room");
+                string updatequery = ("UPDATE [Patient] SET FirstName = @first, Surname = @sur, Gender = @gen," +
+                "DOB = @dob, Address = @add, Phone = @ph, Mobile = @mob, Allergies = @all, CoverType = @covert," +
+                "CoverNumber = @covern, Status = @stat, NextOfKin = @nok, NextOfKinPhone = @nokp, Room = @room WHERE PatientID = @pid");
                 SqlCommand command = new SqlCommand(updatequery, con);
 
                 command.Parameters.AddWithValue("@pid", PID);
