@@ -83,45 +83,59 @@ namespace Hospital {
         }
 
         private void Newbtn_Click(object sender, EventArgs e) {
+           try {
+                //at some point I need to move this to patient class, also check for input values
+                SqlConnection con = DBCon.DBConnect();
+              
+                SqlCommand command = new SqlCommand("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
+                "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
+                "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mb, @all, @covert, @covern, @stat, @nok," +
+                " @nokp, @room); SET @PAT_ID = scope_identity();", con);
 
-            //at some point I need to move this to patient class, also check for input values
-            SqlConnection con = DBCon.DBConnect();
+                //Matching datatype with what is listed in the database, will attempt to find a point of 
+                //checking inputs prior to this point, when I move it to a class of it's own
+                command.Parameters.Add("@first", System.Data.SqlDbType.NVarChar, 20);
+                command.Parameters["@first"].Value = Firtxt.Text;
+                command.Parameters.Add("@sur", System.Data.SqlDbType.NVarChar, 20);
+                command.Parameters["@sur"].Value = Surtxt.Text;
+                command.Parameters.Add("@gen", System.Data.SqlDbType.NVarChar, 1);
+                command.Parameters["@gen"].Value = Gentxt.Text;
+                command.Parameters.Add("@dob", System.Data.SqlDbType.Date);
+                command.Parameters["@dob"].Value = DOBtxt.Text;//Date will need some work to get correct formatting
+                command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500);
+                command.Parameters["@add"].Value = Addtxt.Text;
+                command.Parameters.Add("@ph", System.Data.SqlDbType.Int);
+                command.Parameters["@ph"].Value = Homtxt.Text;
+                command.Parameters.Add("@mob", System.Data.SqlDbType.Int);
+                command.Parameters["@mob"].Value = Mobtxt.Text;
+                command.Parameters.Add("@all", System.Data.SqlDbType.NVarChar, 500);
+                command.Parameters["@all"].Value = Altxt.Text;
+                command.Parameters.Add("@covert", System.Data.SqlDbType.Int);
+                command.Parameters["@covert"].Value = CovTtxt.Text;
+                command.Parameters.Add("@covern", System.Data.SqlDbType.Int);
+                command.Parameters["@covern"].Value = CovNtxt.Text;
+                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit);
+                command.Parameters["@stat"].Value = Statxt.Text;
+                command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500);
+                command.Parameters["@nok"].Value = NOKtxt.Text;
+                command.Parameters.Add("@nokp", System.Data.SqlDbType.Int);
+                command.Parameters["@nokp"].Value = NOKNtxt.Text;
+                command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4);
+                command.Parameters["@room"].Value = NOKNtxt.Text;
 
-            con.Open();
-            SqlCommand command = new SqlCommand("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
-            "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone,"+
-            "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mb, @all, @covert, @covern, @stat, @nok,"+
-            " @nokp, @room); SELECT scope_identity();", con);
+                con.Open();
 
-            command.Parameters.Add("@first", System.Data.SqlDbType.NVarChar, 20);
-            command.Parameters["@first"].Value = Firtxt.Text;
-            command.Parameters.Add("@sur", System.Data.SqlDbType.NVarChar, 20);
-            command.Parameters["@sur"].Value = Surtxt.Text;
-            command.Parameters.Add("@gen", System.Data.SqlDbType.NVarChar, 1);
-            command.Parameters["@gen"].Value = Gentxt.Text;
-            command.Parameters.Add("@dob", System.Data.SqlDbType.Date);
-            command.Parameters["@dob"].Value = DOBtxt.Text;//Date will need some work to get correct formatting
-            command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500);
-            command.Parameters["@add"].Value = Addtxt.Text;
-            command.Parameters.Add("@ph", System.Data.SqlDbType.Int);
-            command.Parameters["@ph"].Value = Homtxt.Text;
-            command.Parameters.Add("@mob", System.Data.SqlDbType.Int);
-            command.Parameters["@mob"].Value = Mobtxt.Text;
-            command.Parameters.Add("@all", System.Data.SqlDbType.NVarChar, 500);
-            command.Parameters["@all"].Value = Altxt.Text;
-            command.Parameters.Add("@covert", System.Data.SqlDbType.Int);
-            command.Parameters["@covert"].Value = CovTtxt.Text;
-            command.Parameters.Add("@covern", System.Data.SqlDbType.Int);
-            command.Parameters["@covern"].Value = CovNtxt.Text;
-            command.Parameters.Add("@stat", System.Data.SqlDbType.Bit);
-            command.Parameters["@stat"].Value = Statxt.Text;
-            command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500);
-            command.Parameters["@nok"].Value = NOKtxt.Text;
-            command.Parameters.Add("@nokp", System.Data.SqlDbType.Int);
-            command.Parameters["@nokp"].Value = NOKNtxt.Text;
-            command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4);
-            command.Parameters["@room"].Value = NOKNtxt.Text;
+                command.ExecuteScalar();
 
+                int PID = Convert.ToInt32(command.Parameters["@PAT_ID"].Value);
+                PIDtxt.Text = PID.ToString();
+
+                con.Close();
+
+            }catch (Exception){ //this will need to be expanded or changed at somepoint to check each input field
+                MessageBox.Show("Patient details must be valid for each input field.", "Incorrect Patiet Information Layout",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
         }
 
@@ -177,7 +191,7 @@ namespace Hospital {
         }
 
         private void Savbtn_Click(object sender, EventArgs e) {
-            //
+            //update query to push current contents of textboxes to database, spits out a complete message
         }
 
     }
