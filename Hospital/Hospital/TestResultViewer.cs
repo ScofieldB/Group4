@@ -13,7 +13,7 @@ namespace Hospital
 {
     public partial class TestResultViewer : Form
     {
-        private Size Multiplier;
+        private Size Multiplier = new Size(2, 2);
 
         public TestResultViewer()
         {
@@ -22,7 +22,6 @@ namespace Hospital
 
         public void ZoomIn()
         {
-            Multiplier = new Size(2, 2);
 
             Image MyImage = pictureBox1.Image;
 
@@ -39,7 +38,6 @@ namespace Hospital
 
         public void ZoomOut()
         {
-            Multiplier = new Size(2, 2);
 
             Image MyImage = pictureBox1.Image;
 
@@ -72,7 +70,9 @@ namespace Hospital
 
         private void RotateRightButton_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            Image im = pictureBox1.Image;
+            im.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            pictureBox1.Image = im;
         }
 
         private void BackButton_Click(object sender, EventArgs e) {
