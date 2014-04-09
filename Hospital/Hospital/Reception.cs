@@ -17,7 +17,6 @@ namespace Hospital {
 
         //Global variables
         string UserID; //String value of the UserID/StaffID
-        string Role; //String value of the role User logged in under.
 
         public Reception() {
             InitializeComponent();
