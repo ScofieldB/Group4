@@ -53,28 +53,26 @@ namespace Hospital
             pictureBox1.Image = MyBitMap;
         }
 
-        private void ZoomIn_Click(object sender, EventArgs e)
+        private void ZoomInButton_Click(object sender, EventArgs e)
         {
             ZoomIn();
         }
 
-        private void ZoomOut_Click(object sender, EventArgs e)
+        private void ZoomOutButton_Click(object sender, EventArgs e)
         {
             ZoomOut();
         }
 
-        private void RotateLeft_Click(object sender, EventArgs e)
+        private void RotateLeftButton_Click(object sender, EventArgs e)
         {
             Image im = pictureBox1.Image;
             im.RotateFlip(RotateFlipType.Rotate90FlipNone);
             pictureBox1.Image = im;
         }
 
-        private void RotateRight_Click(object sender, EventArgs e)
+        private void RotateRightButton_Click(object sender, EventArgs e)
         {
-            Image im = pictureBox1.Image;
-            im.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            pictureBox1.Image = im;
+            pictureBox1.Image.RotateFlip(RotateFlipType.Rotate270FlipNone);
         }
 
         private void BackButton_Click(object sender, EventArgs e) {

@@ -39,61 +39,59 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 11);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox1.MaximumSize = new System.Drawing.Size(800, 492);
+            this.pictureBox1.ImageLocation = "C:\\Users\\chris\\Documents\\xray jpeg test.jpg";
+            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox1.MaximumSize = new System.Drawing.Size(600, 400);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(800, 492);
+            this.pictureBox1.Size = new System.Drawing.Size(600, 400);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // ZoomInButton
             // 
-            this.ZoomInButton.Location = new System.Drawing.Point(861, 126);
-            this.ZoomInButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ZoomInButton.Location = new System.Drawing.Point(646, 102);
             this.ZoomInButton.Name = "ZoomInButton";
-            this.ZoomInButton.Size = new System.Drawing.Size(100, 28);
+            this.ZoomInButton.Size = new System.Drawing.Size(75, 23);
             this.ZoomInButton.TabIndex = 1;
             this.ZoomInButton.Text = "Zoom In";
             this.ZoomInButton.UseVisualStyleBackColor = true;
-            this.ZoomInButton.Click += new System.EventHandler(this.ZoomIn_Click);
+            this.ZoomInButton.Click += new System.EventHandler(this.ZoomInButton_Click);
             // 
             // ZoomOutButton
             // 
-            this.ZoomOutButton.Location = new System.Drawing.Point(861, 161);
-            this.ZoomOutButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ZoomOutButton.Location = new System.Drawing.Point(646, 131);
             this.ZoomOutButton.Name = "ZoomOutButton";
-            this.ZoomOutButton.Size = new System.Drawing.Size(100, 28);
+            this.ZoomOutButton.Size = new System.Drawing.Size(75, 23);
             this.ZoomOutButton.TabIndex = 2;
             this.ZoomOutButton.Text = "Zoom Out";
             this.ZoomOutButton.UseVisualStyleBackColor = true;
+            this.ZoomOutButton.Click += new System.EventHandler(this.ZoomOutButton_Click);
             // 
             // RotateLeftButton
             // 
-            this.RotateLeftButton.Location = new System.Drawing.Point(861, 244);
-            this.RotateLeftButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RotateLeftButton.Location = new System.Drawing.Point(646, 198);
             this.RotateLeftButton.Name = "RotateLeftButton";
-            this.RotateLeftButton.Size = new System.Drawing.Size(100, 28);
+            this.RotateLeftButton.Size = new System.Drawing.Size(75, 23);
             this.RotateLeftButton.TabIndex = 3;
             this.RotateLeftButton.Text = "Rotate Left";
             this.RotateLeftButton.UseVisualStyleBackColor = true;
+            this.RotateLeftButton.Click += new System.EventHandler(this.RotateLeftButton_Click);
             // 
             // RotateRightButton
             // 
-            this.RotateRightButton.Location = new System.Drawing.Point(861, 279);
-            this.RotateRightButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RotateRightButton.Location = new System.Drawing.Point(646, 227);
             this.RotateRightButton.Name = "RotateRightButton";
-            this.RotateRightButton.Size = new System.Drawing.Size(100, 28);
+            this.RotateRightButton.Size = new System.Drawing.Size(75, 23);
             this.RotateRightButton.TabIndex = 4;
             this.RotateRightButton.Text = "RotateRight";
             this.RotateRightButton.UseVisualStyleBackColor = true;
+            this.RotateRightButton.Click += new System.EventHandler(this.RotateRightButton_Click);
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(861, 364);
-            this.BackButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BackButton.Location = new System.Drawing.Point(646, 296);
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(100, 28);
+            this.BackButton.Size = new System.Drawing.Size(75, 23);
             this.BackButton.TabIndex = 5;
             this.BackButton.Text = "Back";
             this.BackButton.UseVisualStyleBackColor = true;
@@ -101,16 +99,15 @@
             // 
             // TestResultViewer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 514);
+            this.ClientSize = new System.Drawing.Size(733, 418);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.RotateRightButton);
             this.Controls.Add(this.RotateLeftButton);
             this.Controls.Add(this.ZoomOutButton);
             this.Controls.Add(this.ZoomInButton);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TestResultViewer";
             this.Text = "Test Result";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
