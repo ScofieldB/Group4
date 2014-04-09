@@ -216,7 +216,7 @@ namespace Hospital {
         private void updateTable(int PID)                   //view history
         {
             SqlConnection con = DBCon.DBConnect();
-            SqlCommand command = new SqlCommand("SELECT * FROM History WHERE PatientID = @pid", con);
+            SqlCommand command = new SqlCommand("SELECT StaffID, History, Date FROM History WHERE PatientID = @pid ORDER BY Date DESC", con);
             command.Parameters.AddWithValue("@pid", PID);
 
             SqlDataAdapter DataAdapter = new SqlDataAdapter();
