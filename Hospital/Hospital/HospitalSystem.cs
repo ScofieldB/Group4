@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,8 @@ namespace Hospital {
         //Global variables
         string UserID; //String value of the UserID/StaffID
         string Role; //String value of the role User logged in under.
+        string TypedHistory;
+        int PID;
 
         public HospitalSystem() {
             InitializeComponent();
@@ -84,15 +87,18 @@ namespace Hospital {
          * When a search via PatientID is undertaken then a patients first name, 
          * surname, date of birth and current room location are displayed.
          */
-        private void Searchbtn_Click(object sender, EventArgs e) {
+        private void Searchbtn_Click(object sender, EventArgs e) 
+            {
             try {
-                int PID = Int32.Parse(Seatxt.Text);
+                PID = Int32.Parse(Seatxt.Text);
                 pat = Patient.Search(PID);
+
 
                 //Blank is used as if empty record then database doesnt return a date as null but
                 //returns a date 1/01/0001
                 DateTime blank = new DateTime(0001, 1, 01);
 
+                updateTable(PID);
 
                 PatInfolbl.Text = "Patient Info: \r\n";
                 PatInfolbl.Text += pat.getFN() + " " + pat.getSN() + "\r\n";
@@ -175,5 +181,36 @@ namespace Hospital {
             }
         }
 
+        private void addHistorybtn_Click(object sender, EventArgs e)                //add history
+        {
+            TypedHistory = addHistorytbx.Text;
+
+            SqlConnection con = DBCon.DBConnect();
+            con.Open();
+            SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
+            command.Parameters.AddWithValue("@pid", PID);
+            command.Parameters.AddWithValue("@userid", UserID);
+            command.Parameters.AddWithValue("@typedhistory", TypedHistory);
+            command.ExecuteNonQuery();
+            updateTable(PID);
+            con.Close();
+
+        }
+
+        private void updateTable(int PID)                   //view history
+        {
+            SqlConnection con = DBCon.DBConnect();
+            SqlCommand command = new SqlCommand("SELECT * FROM History WHERE PatientID = @pid", con);
+            command.Parameters.AddWithValue("@pid", PID);
+
+            SqlDataAdapter DataAdapter = new SqlDataAdapter();
+            DataAdapter.SelectCommand = command;
+            DataSet ds = new DataSet();
+            con.Open();
+            DataAdapter.Fill(ds, "History");
+            con.Close();
+            historyDataGridView.DataSource = ds;
+            historyDataGridView.DataMember = "History";
+        }
     }
 }
