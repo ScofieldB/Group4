@@ -37,10 +37,10 @@
             // 
             // Logoutbtn
             // 
-            this.Logoutbtn.Location = new System.Drawing.Point(638, 21);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.Logoutbtn.Location = new System.Drawing.Point(851, 26);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Logoutbtn.Name = "Logoutbtn";
-            this.Logoutbtn.Size = new System.Drawing.Size(56, 19);
+            this.Logoutbtn.Size = new System.Drawing.Size(75, 23);
             this.Logoutbtn.TabIndex = 1;
             this.Logoutbtn.Text = "Logout";
             this.Logoutbtn.UseVisualStyleBackColor = true;
@@ -48,9 +48,10 @@
             // 
             // Searchbtn
             // 
-            this.Searchbtn.Location = new System.Drawing.Point(154, 19);
+            this.Searchbtn.Location = new System.Drawing.Point(205, 23);
+            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Searchbtn.Name = "Searchbtn";
-            this.Searchbtn.Size = new System.Drawing.Size(75, 23);
+            this.Searchbtn.Size = new System.Drawing.Size(100, 28);
             this.Searchbtn.TabIndex = 35;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
@@ -59,35 +60,35 @@
             // Sealbl
             // 
             this.Sealbl.AutoSize = true;
-            this.Sealbl.Location = new System.Drawing.Point(7, 24);
+            this.Sealbl.Location = new System.Drawing.Point(9, 30);
+            this.Sealbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Sealbl.Name = "Sealbl";
-            this.Sealbl.Size = new System.Drawing.Size(62, 13);
+            this.Sealbl.Size = new System.Drawing.Size(79, 17);
             this.Sealbl.TabIndex = 34;
             this.Sealbl.Text = "Search PID";
             // 
             // Seatxt
             // 
-            this.Seatxt.Location = new System.Drawing.Point(75, 21);
+            this.Seatxt.Location = new System.Drawing.Point(100, 26);
+            this.Seatxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Seatxt.Name = "Seatxt";
-            this.Seatxt.Size = new System.Drawing.Size(74, 20);
+            this.Seatxt.Size = new System.Drawing.Size(97, 22);
             this.Seatxt.TabIndex = 33;
             // 
             // PatInfolbl
             // 
             this.PatInfolbl.AutoSize = true;
-            this.PatInfolbl.Location = new System.Drawing.Point(490, 19);
-            this.PatInfolbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PatInfolbl.Location = new System.Drawing.Point(653, 23);
             this.PatInfolbl.Name = "PatInfolbl";
-            this.PatInfolbl.Size = new System.Drawing.Size(0, 13);
+            this.PatInfolbl.Size = new System.Drawing.Size(0, 17);
             this.PatInfolbl.TabIndex = 36;
             // 
             // currentRoomtxt
             // 
             this.currentRoomtxt.AutoSize = true;
-            this.currentRoomtxt.Location = new System.Drawing.Point(368, 19);
-            this.currentRoomtxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.currentRoomtxt.Location = new System.Drawing.Point(491, 23);
             this.currentRoomtxt.Name = "currentRoomtxt";
-            this.currentRoomtxt.Size = new System.Drawing.Size(0, 13);
+            this.currentRoomtxt.Size = new System.Drawing.Size(0, 17);
             this.currentRoomtxt.TabIndex = 37;
             // 
             // historyDataGridView
@@ -96,17 +97,19 @@
             this.historyDataGridView.AllowUserToDeleteRows = false;
             this.historyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.historyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.historyDataGridView.Location = new System.Drawing.Point(35, 76);
+            this.historyDataGridView.Location = new System.Drawing.Point(47, 94);
+            this.historyDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.historyDataGridView.Name = "historyDataGridView";
             this.historyDataGridView.ReadOnly = true;
-            this.historyDataGridView.Size = new System.Drawing.Size(633, 150);
+            this.historyDataGridView.Size = new System.Drawing.Size(844, 185);
             this.historyDataGridView.TabIndex = 38;
             // 
             // addHistorybtn
             // 
-            this.addHistorybtn.Location = new System.Drawing.Point(593, 342);
+            this.addHistorybtn.Location = new System.Drawing.Point(47, 343);
+            this.addHistorybtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addHistorybtn.Name = "addHistorybtn";
-            this.addHistorybtn.Size = new System.Drawing.Size(75, 23);
+            this.addHistorybtn.Size = new System.Drawing.Size(100, 28);
             this.addHistorybtn.TabIndex = 39;
             this.addHistorybtn.Text = "Add History";
             this.addHistorybtn.UseVisualStyleBackColor = true;
@@ -114,16 +117,17 @@
             // 
             // addHistorytbx
             // 
-            this.addHistorytbx.Location = new System.Drawing.Point(35, 254);
+            this.addHistorytbx.Location = new System.Drawing.Point(47, 313);
+            this.addHistorytbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addHistorytbx.Name = "addHistorytbx";
-            this.addHistorytbx.Size = new System.Drawing.Size(419, 20);
+            this.addHistorytbx.Size = new System.Drawing.Size(554, 22);
             this.addHistorytbx.TabIndex = 40;
             // 
             // HospitalSystem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(719, 427);
+            this.ClientSize = new System.Drawing.Size(959, 526);
             this.Controls.Add(this.addHistorytbx);
             this.Controls.Add(this.addHistorybtn);
             this.Controls.Add(this.historyDataGridView);
@@ -133,7 +137,7 @@
             this.Controls.Add(this.Sealbl);
             this.Controls.Add(this.Seatxt);
             this.Controls.Add(this.Logoutbtn);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "HospitalSystem";
             this.Text = "HospitalSystem";
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).EndInit();

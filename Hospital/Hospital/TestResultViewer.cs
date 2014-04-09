@@ -75,6 +75,10 @@ namespace Hospital
             Image im = pictureBox1.Image;
             im.RotateFlip(RotateFlipType.Rotate270FlipNone);
             pictureBox1.Image = im;
+        }
+
+        private void BackButton_Click(object sender, EventArgs e) {
+            ActiveForm.Close();
         } 
     }
 }

@@ -39,6 +39,15 @@ namespace Hospital {
             UserID = user;
             Role = role;
             if(role == "Doctor"){
+                Button ViewImgbtn = new Button();
+                ViewImgbtn.Name = "ViewImgbtn";
+                ViewImgbtn.Size = new Size(150, 30);
+                ViewImgbtn.Text = "View Image";
+                ViewImgbtn.Location = new Point(700, 360);
+                ViewImgbtn.Click += new EventHandler(ViewImgbtn_Click);
+                Controls.Add(ViewImgbtn);
+
+
                 Button Surgerybtn = new Button();
                 Surgerybtn.Name = "Surgerybtn";
                 Surgerybtn.Size = new Size(150, 30);
@@ -81,6 +90,13 @@ namespace Hospital {
             home.Show();
             Close();
         }
+
+
+        private void ViewImgbtn_Click(object sender, EventArgs e) {
+            TestResultViewer Tests = new TestResultViewer();
+            Tests.Show();
+        }
+
 
         
         /*

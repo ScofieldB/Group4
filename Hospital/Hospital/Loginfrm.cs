@@ -56,7 +56,6 @@ namespace Hospital {
                         mainprogram.setHome(ActiveForm);
                         ActiveForm.Hide();
                         mainprogram.Show();
-
                     }
 
                 /*
