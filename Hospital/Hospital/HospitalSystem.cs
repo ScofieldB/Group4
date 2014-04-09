@@ -39,38 +39,16 @@ namespace Hospital {
             UserID = user;
             Role = role;
             if(role == "Doctor"){
-                Button ViewImgbtn = new Button();
-                ViewImgbtn.Name = "ViewImgbtn";
-                ViewImgbtn.Size = new Size(150, 30);
-                ViewImgbtn.Text = "View Image";
-                ViewImgbtn.Location = new Point(750, 360);
-                ViewImgbtn.Click += new EventHandler(ViewImgbtn_Click);
-                Controls.Add(ViewImgbtn);
+                ViewImgbtn.Visible = true;
+                Surgerybtn.Visible = true;
+                Xraybtn.Visible = true;
+                Finishbtn.Visible = false;
 
-
-                Button Surgerybtn = new Button();
-                Surgerybtn.Name = "Surgerybtn";
-                Surgerybtn.Size = new Size(150, 30);
-                Surgerybtn.Text = "Book Surgery";
-                Surgerybtn.Location = new Point(750, 400);
-                Surgerybtn.Click += new EventHandler(Surgerybtn_Click);
-                Controls.Add(Surgerybtn);
-
-                Button Xraybtn = new Button();
-                Xraybtn.Name = "Xraybtn";
-                Xraybtn.Size = new Size(150, 30);
-                Xraybtn.Text = "Book X-Ray";
-                Xraybtn.Location = new Point(750, 440);
-                Xraybtn.Click += new EventHandler(Xraybtn_Click);
-                Controls.Add(Xraybtn);
             } else if (role == "MedTech") {
-                Button Finishbtn = new Button();
-                Finishbtn.Name = "Fininishbtn";
-                Finishbtn.Size = new Size(150, 30);
-                Finishbtn.Text = "Finish";
-                Finishbtn.Location = new Point(700, 400);
-                Finishbtn.Click += new EventHandler(Finishbtn_Click);
-                Controls.Add(Finishbtn);
+                ViewImgbtn.Visible = false;
+                Surgerybtn.Visible = false;
+                Xraybtn.Visible = false;
+                Finishbtn.Visible = true;
             }
         }
 

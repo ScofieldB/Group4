@@ -32,6 +32,10 @@
             this.historyDataGridView = new System.Windows.Forms.DataGridView();
             this.addHistorybtn = new System.Windows.Forms.Button();
             this.addHistorytbx = new System.Windows.Forms.TextBox();
+            this.ViewImgbtn = new System.Windows.Forms.Button();
+            this.Surgerybtn = new System.Windows.Forms.Button();
+            this.Xraybtn = new System.Windows.Forms.Button();
+            this.Finishbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,11 +127,58 @@
             this.addHistorytbx.Size = new System.Drawing.Size(554, 22);
             this.addHistorytbx.TabIndex = 40;
             // 
+            // ViewImgbtn
+            // 
+            this.ViewImgbtn.Location = new System.Drawing.Point(750, 373);
+            this.ViewImgbtn.Name = "ViewImgbtn";
+            this.ViewImgbtn.Size = new System.Drawing.Size(150, 30);
+            this.ViewImgbtn.TabIndex = 41;
+            this.ViewImgbtn.Text = "View Image";
+            this.ViewImgbtn.UseVisualStyleBackColor = true;
+            this.ViewImgbtn.Visible = false;
+            this.ViewImgbtn.Click += new System.EventHandler(this.ViewImgbtn_Click);
+            // 
+            // Surgerybtn
+            // 
+            this.Surgerybtn.Location = new System.Drawing.Point(750, 409);
+            this.Surgerybtn.Name = "Surgerybtn";
+            this.Surgerybtn.Size = new System.Drawing.Size(150, 30);
+            this.Surgerybtn.TabIndex = 42;
+            this.Surgerybtn.Text = "Book Surgery";
+            this.Surgerybtn.UseVisualStyleBackColor = true;
+            this.Surgerybtn.Visible = false;
+            this.Surgerybtn.Click += new System.EventHandler(this.Surgerybtn_Click);
+            // 
+            // Xraybtn
+            // 
+            this.Xraybtn.Location = new System.Drawing.Point(750, 446);
+            this.Xraybtn.Name = "Xraybtn";
+            this.Xraybtn.Size = new System.Drawing.Size(150, 30);
+            this.Xraybtn.TabIndex = 43;
+            this.Xraybtn.Text = "Book Xray";
+            this.Xraybtn.UseVisualStyleBackColor = true;
+            this.Xraybtn.Visible = false;
+            this.Xraybtn.Click += new System.EventHandler(this.Xraybtn_Click);
+            // 
+            // Finishbtn
+            // 
+            this.Finishbtn.Location = new System.Drawing.Point(750, 373);
+            this.Finishbtn.Name = "Finishbtn";
+            this.Finishbtn.Size = new System.Drawing.Size(150, 30);
+            this.Finishbtn.TabIndex = 44;
+            this.Finishbtn.Text = "Finish";
+            this.Finishbtn.UseVisualStyleBackColor = true;
+            this.Finishbtn.Click += new System.EventHandler(this.Finishbtn_Click);
+            // 
             // HospitalSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 526);
+            this.Controls.Add(this.Finishbtn);
+            this.Controls.Add(this.Xraybtn);
+            this.Controls.Add(this.Surgerybtn);
+            this.Controls.Add(this.ViewImgbtn);
             this.Controls.Add(this.addHistorytbx);
             this.Controls.Add(this.addHistorybtn);
             this.Controls.Add(this.historyDataGridView);
@@ -157,5 +208,9 @@
         private System.Windows.Forms.DataGridView historyDataGridView;
         private System.Windows.Forms.Button addHistorybtn;
         private System.Windows.Forms.TextBox addHistorytbx;
+        private System.Windows.Forms.Button ViewImgbtn;
+        private System.Windows.Forms.Button Surgerybtn;
+        private System.Windows.Forms.Button Xraybtn;
+        private System.Windows.Forms.Button Finishbtn;
     }
 }
