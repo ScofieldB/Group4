@@ -43,7 +43,7 @@ namespace Hospital {
                 ViewImgbtn.Name = "ViewImgbtn";
                 ViewImgbtn.Size = new Size(150, 30);
                 ViewImgbtn.Text = "View Image";
-                ViewImgbtn.Location = new Point(700, 360);
+                ViewImgbtn.Location = new Point(750, 360);
                 ViewImgbtn.Click += new EventHandler(ViewImgbtn_Click);
                 Controls.Add(ViewImgbtn);
 
@@ -52,7 +52,7 @@ namespace Hospital {
                 Surgerybtn.Name = "Surgerybtn";
                 Surgerybtn.Size = new Size(150, 30);
                 Surgerybtn.Text = "Book Surgery";
-                Surgerybtn.Location = new Point(700, 400);
+                Surgerybtn.Location = new Point(750, 400);
                 Surgerybtn.Click += new EventHandler(Surgerybtn_Click);
                 Controls.Add(Surgerybtn);
 
@@ -60,7 +60,7 @@ namespace Hospital {
                 Xraybtn.Name = "Xraybtn";
                 Xraybtn.Size = new Size(150, 30);
                 Xraybtn.Text = "Book X-Ray";
-                Xraybtn.Location = new Point(700, 440);
+                Xraybtn.Location = new Point(750, 440);
                 Xraybtn.Click += new EventHandler(Xraybtn_Click);
                 Controls.Add(Xraybtn);
             } else if (role == "MedTech") {

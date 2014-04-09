@@ -37,7 +37,7 @@
             // 
             // Logoutbtn
             // 
-            this.Logoutbtn.Location = new System.Drawing.Point(851, 26);
+            this.Logoutbtn.Location = new System.Drawing.Point(825, 27);
             this.Logoutbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Logoutbtn.Name = "Logoutbtn";
             this.Logoutbtn.Size = new System.Drawing.Size(75, 23);
@@ -49,7 +49,7 @@
             // Searchbtn
             // 
             this.Searchbtn.Location = new System.Drawing.Point(205, 23);
-            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Searchbtn.Name = "Searchbtn";
             this.Searchbtn.Size = new System.Drawing.Size(100, 28);
             this.Searchbtn.TabIndex = 35;
@@ -70,7 +70,7 @@
             // Seatxt
             // 
             this.Seatxt.Location = new System.Drawing.Point(100, 26);
-            this.Seatxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Seatxt.Margin = new System.Windows.Forms.Padding(4);
             this.Seatxt.Name = "Seatxt";
             this.Seatxt.Size = new System.Drawing.Size(97, 22);
             this.Seatxt.TabIndex = 33;
@@ -98,16 +98,16 @@
             this.historyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.historyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.historyDataGridView.Location = new System.Drawing.Point(47, 94);
-            this.historyDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.historyDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.historyDataGridView.Name = "historyDataGridView";
             this.historyDataGridView.ReadOnly = true;
-            this.historyDataGridView.Size = new System.Drawing.Size(844, 185);
+            this.historyDataGridView.Size = new System.Drawing.Size(853, 185);
             this.historyDataGridView.TabIndex = 38;
             // 
             // addHistorybtn
             // 
             this.addHistorybtn.Location = new System.Drawing.Point(47, 343);
-            this.addHistorybtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addHistorybtn.Margin = new System.Windows.Forms.Padding(4);
             this.addHistorybtn.Name = "addHistorybtn";
             this.addHistorybtn.Size = new System.Drawing.Size(100, 28);
             this.addHistorybtn.TabIndex = 39;
@@ -118,7 +118,7 @@
             // addHistorytbx
             // 
             this.addHistorytbx.Location = new System.Drawing.Point(47, 313);
-            this.addHistorytbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addHistorytbx.Margin = new System.Windows.Forms.Padding(4);
             this.addHistorytbx.Name = "addHistorytbx";
             this.addHistorytbx.Size = new System.Drawing.Size(554, 22);
             this.addHistorytbx.TabIndex = 40;
