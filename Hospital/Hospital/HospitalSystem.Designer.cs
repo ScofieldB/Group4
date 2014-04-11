@@ -190,7 +190,7 @@
             this.Controls.Add(this.Logoutbtn);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "HospitalSystem";
-            this.Text = "HospitalSystem";
+            this.Text = "1";
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -13,7 +13,7 @@ namespace Hospital {
     *happen at each display/close). Generate new patient Id.
     */
     class Patient {
-        public static PatientGetSet Search(int PID) { //not sure about void here
+        public static PatientGetSet SearchPID(int PID) { //not sure about void here
 
             PatientGetSet pat = new PatientGetSet();
 
@@ -31,9 +31,24 @@ namespace Hospital {
                 pat.setSN(reader.GetString(2));
                 pat.setGender(reader.GetString(3));
                 pat.setDOB(reader.GetDateTime(4));
-                pat.setAddress(reader.GetString(5));
-                pat.setPhone(reader.GetInt32(6));
-                pat.setMobile(reader.GetInt32(7));
+
+                if (!reader.IsDBNull(5)) {
+                    pat.setAddress(reader.GetString(5));
+                } else {
+                    pat.setAddress("");
+                }
+
+                if (!reader.IsDBNull(6)) {
+                    pat.setPhone(reader.GetInt32(6));
+                } else {
+                    pat.setPhone(0);
+                }
+
+                if (!reader.IsDBNull(7)) {
+                    pat.setMobile(reader.GetInt32(7));
+                } else {
+                    pat.setMobile(0);
+                }
 
                 if (!reader.IsDBNull(8)) {
                     pat.setAllergies(reader.GetString(8));
@@ -45,21 +60,82 @@ namespace Hospital {
                     pat.setCoverN(reader.GetInt32(10));
                 }
                 pat.setStatus(reader.GetBoolean(11));
-                pat.setNextKin(reader.GetString(12));
+                
+                if (!reader.IsDBNull(12)) {
+                    pat.setNextKin(reader.GetString(12));
+                } else {
+                    pat.setNextKin("");
+                }
                 if (!reader.IsDBNull(13)) {
                     pat.setKP(reader.GetInt32(13));
-                }
-                if (!reader.IsDBNull(14)) {
-                    pat.setRoom(reader.GetString(14));
                 } else {
-                    pat.setRoom("");
+                    pat.setKP(0);
                 }
+                
+                pat.setRoom(reader.GetString(14));
                 
             }
             reader.Close();
             con.Close();
 
             return pat;
+        }
+
+        public static PatientGetSet[] searchPatientSurname(string surname) {
+            PatientGetSet[] Patients;
+            int Patientcount = 0;
+
+            SqlConnection con = DBCon.DBConnect();
+
+            con.Open();
+
+            SqlCommand command = new SqlCommand("SELECT Count(*) FROM Patient WHERE Surname = @surname", con);
+            command.Parameters.AddWithValue("@surname", surname);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read()) {
+                Patientcount = reader.GetInt32(0);
+            }
+
+            reader.Close();
+            command.Parameters.Clear();
+            
+
+            if (Patientcount == 1) {
+                Patients = new PatientGetSet[1];
+
+                command.CommandText = "SELECT PatientID FROM Patient WHERE Surname = @surname";
+                command.Parameters.AddWithValue("@surname", surname);
+                reader = command.ExecuteReader();
+
+                while (reader.Read()) {
+                    Patients[0] = SearchPID(reader.GetInt32(0));
+                }
+
+            } else {
+                int PosInPatients = 0;
+                int[] PID = new int[Patientcount];
+                string[] FirstN = new string[Patientcount];
+                DateTime[] DOB = new DateTime[Patientcount];
+                string[] Address = new string[Patientcount];
+                Patients = new PatientGetSet[Patientcount];
+
+                command.CommandText = "SELECT PatientID FROM Patient WHERE Surname = @surname";
+                command.Parameters.AddWithValue("@surname", surname);
+                reader = command.ExecuteReader();
+
+                while (reader.Read()) {
+                    PID[PosInPatients] = reader.GetInt32(0);
+                    PosInPatients++;
+                }
+
+                for (int i = 0; i < PID.Length; i++) {
+                    PatientGetSet pat = SearchPID(PID[i]);
+                    Patients[i] = pat;
+                }
+            }
+            
+            return Patients;
         }
 
         public void NewPatient() {

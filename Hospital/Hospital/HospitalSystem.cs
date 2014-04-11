@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Hospital {
     public partial class HospitalSystem : Form {
-        private Form home;
+        private Form homeScreen;
         private PatientGetSet pat = new PatientGetSet();
         private Facilities fac = new Facilities();
 
@@ -19,7 +19,6 @@ namespace Hospital {
         string UserID; //String value of the UserID/StaffID
         string Role; //String value of the role User logged in under.
         string TypedHistory;
-        int PID;
 
         public HospitalSystem() {
             InitializeComponent();
@@ -59,13 +58,29 @@ namespace Hospital {
          * Login screen.
          */
         public void setHome(Form logout) {
-            home = logout;
+            homeScreen = logout;
         }
 
+        public void setPatient(PatientGetSet patient) {
+            pat = patient;
+
+            //Blank is used as if empty record then database doesnt return a date as null but
+            //returns a date 1/01/0001
+            DateTime blank = new DateTime(0001, 1, 01);
+            updateTable(pat.getPatient());
+
+            PatInfolbl.Text = "Patient Info: \r\n";
+            PatInfolbl.Text += pat.getFN() + " " + pat.getSN() + "\r\n";
+            currentRoomtxt.Text = "Current Room: " + pat.getRoom();
+            //Check if date is db equivalent of Null
+            if (pat.getDOB() != blank) {
+                PatInfolbl.Text += pat.getDOB();
+            }
+        }
 
         // Logout user by returning to login screen
         private void Logoutbtn_Click(object sender, EventArgs e) {
-            home.Show();
+            homeScreen.Show();
             Close();
         }
 
@@ -78,31 +93,29 @@ namespace Hospital {
 
         
         /*
-         * When a search via PatientID is undertaken then a patients first name, 
+         * When a search via Surname is undertaken then a patients first name, 
          * surname, date of birth and current room location are displayed.
          */
-        private void Searchbtn_Click(object sender, EventArgs e) 
-            {
-            try {
-                PID = Int32.Parse(Seatxt.Text);
-                pat = Patient.Search(PID);
+        private void Searchbtn_Click(object sender, EventArgs e) {
+            if (Seatxt.Text != "") {
+                PatientGetSet[] patients;
+                string Surname = Seatxt.Text;
 
+                patients = Patient.searchPatientSurname(Surname);
 
-                //Blank is used as if empty record then database doesnt return a date as null but
-                //returns a date 1/01/0001
-                DateTime blank = new DateTime(0001, 1, 01);
-
-                updateTable(PID);
-
-                PatInfolbl.Text = "Patient Info: \r\n";
-                PatInfolbl.Text += pat.getFN() + " " + pat.getSN() + "\r\n";
-                currentRoomtxt.Text = "Current Room: " + pat.getRoom();
-                //Check if date is db equivalent of Null
-                if (pat.getDOB() != blank) {
-                    PatInfolbl.Text += pat.getDOB();
+                if (patients.Length == 0) {
+                    MessageBox.Show("Patient could not be found in system.", "Patient try again.",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else if (patients.Length == 1) {
+                    setPatient(patients[0]);
+                } else {
+                    ChoosePatient choosePat = new ChoosePatient(homeScreen, ActiveForm, Surname, patients);
+                    ActiveForm.Close();
+                    choosePat.Show();
                 }
-            } catch (Exception) {
-                MessageBox.Show("Patient ID must be valid number.", "Incorrect Patiet Id",
+
+            } else {
+                MessageBox.Show("Please input a Surname to search.", "Surname must be input",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -120,7 +133,7 @@ namespace Hospital {
                     MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for surgery.", "Surgery booked",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                    pat = Patient.Search(pat.getPatient());
+                    pat = Patient.SearchPID(pat.getPatient());
 
                     currentRoomtxt.Text = "Current Room: " + pat.getRoom();
                 } else {
@@ -146,7 +159,7 @@ namespace Hospital {
                     MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for Xray.", "Xray booked",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                    pat = Patient.Search(pat.getPatient());
+                    pat = Patient.SearchPID(pat.getPatient());
 
                     currentRoomtxt.Text = "Current Room: " + pat.getRoom();
                 } else {
@@ -167,7 +180,7 @@ namespace Hospital {
         private void Finishbtn_Click(object sender, EventArgs e) {
             if (pat.getPatient() != -1) {
                 fac.returnPatientToDoctor(pat);
-                pat = Patient.Search(pat.getPatient());
+                pat = Patient.SearchPID(pat.getPatient());
                 currentRoomtxt.Text = "Current Room: " + pat.getRoom(); 
             } else {
                 MessageBox.Show("Please search for a patient.", "Patient Search required",
@@ -182,11 +195,11 @@ namespace Hospital {
             SqlConnection con = DBCon.DBConnect();
             con.Open();
             SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
-            command.Parameters.AddWithValue("@pid", PID);
+            command.Parameters.AddWithValue("@pid", pat.getPatient());
             command.Parameters.AddWithValue("@userid", UserID);
             command.Parameters.AddWithValue("@typedhistory", TypedHistory);
             command.ExecuteNonQuery();
-            updateTable(PID);
+            updateTable(pat.getPatient());
             con.Close();
 
         }

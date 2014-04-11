@@ -51,6 +51,12 @@
     <Compile Include="Adminfrm.Designer.cs">
       <DependentUpon>Adminfrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChoosePatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChoosePatient.Designer.cs">
+      <DependentUpon>ChoosePatient.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBCon.cs" />
     <Compile Include="Facilities.cs" />
     <Compile Include="HashPassword.cs" />
@@ -92,6 +98,9 @@
     <Compile Include="User.cs" />
     <EmbeddedResource Include="Adminfrm.resx">
       <DependentUpon>Adminfrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChoosePatient.resx">
+      <DependentUpon>ChoosePatient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HospitalSystem.resx">
       <DependentUpon>HospitalSystem.cs</DependentUpon>

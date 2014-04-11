@@ -44,6 +44,27 @@ namespace Hospital {
         }
 
 
+        public void setPatient(PatientGetSet patient) {
+
+            pat = patient;
+
+            PIDtxt.Text = pat.getPatient().ToString();
+            Surtxt.Text = pat.getSN();
+            Firtxt.Text = pat.getFN();
+            DOBtxt.Text = pat.getDOB().ToString();
+            Gentxt.Text = pat.getGender();
+            NOKtxt.Text = pat.getNextKin();
+            NOKNtxt.Text = pat.getKP().ToString();
+            Addtxt.Text = pat.getAddress();
+            Homtxt.Text = pat.getPhone().ToString();
+            Mobtxt.Text = pat.getMobile().ToString();
+            CovTtxt.Text = pat.getCoverT().ToString();
+            CovNtxt.Text = pat.getCoverN().ToString();
+            Altxt.Text = pat.getAllergies();
+            Statxt.Text = pat.getStatus().ToString();
+            Roomtxt.Text = pat.getRoom().ToString();
+        }
+
         // Logout user by returning to login screen
         private void Logoutbtn_Click(object sender, EventArgs e) {
             home.Show();
@@ -55,29 +76,25 @@ namespace Hospital {
          * text boxes on screen.
          */
         private void Searchbtn_Click(object sender, EventArgs e) {
-            try {
-                int PID = Int32.Parse(Seatxt.Text);
-                pat = Patient.Search(PID);
+            if (Seatxt.Text != "") {
+                PatientGetSet[] patients;
+                string Surname = Seatxt.Text;
 
-                //Test Comment, getset
-                PIDtxt.Text = pat.getPatient().ToString();
-                Surtxt.Text = pat.getSN();
-                Firtxt.Text = pat.getFN();
-                DOBtxt.Text = pat.getDOB().ToString();
-                Gentxt.Text = pat.getGender();
-                NOKtxt.Text = pat.getNextKin();
-                NOKNtxt.Text = pat.getKP().ToString();
-                Addtxt.Text = pat.getAddress();
-                Homtxt.Text = pat.getPhone().ToString();
-                Mobtxt.Text = pat.getMobile().ToString();
-                CovTtxt.Text = pat.getCoverT().ToString();
-                CovNtxt.Text = pat.getCoverN().ToString();
-                Altxt.Text = pat.getAllergies();
-                Statxt.Text = pat.getStatus().ToString();//dropdown box eventually
-                Roomtxt.Text = pat.getRoom().ToString();
-            }
-            catch (Exception) {
-                MessageBox.Show("Patient ID must be valid number.", "Incorrect Patiet Id",
+                patients = Patient.searchPatientSurname(Surname);
+
+                if(patients.Length == 0){
+                    clearFields();
+                    MessageBox.Show("Patient could not be found in system. Please add new patient.", "Patient not found.",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } else if (patients.Length == 1) {
+                    setPatient(patients[0]);
+                } else {
+                    ChoosePatient choosePat = new ChoosePatient(home, ActiveForm, Surname, patients);
+                    ActiveForm.Close();
+                    choosePat.Show();
+                }
+            } else {
+                MessageBox.Show("Please input a Surname to search.", "Surname must be input",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -151,10 +168,8 @@ namespace Hospital {
             }
         }
 
-        /*
-         * Clears the information displayed on screen.
-         */
-        private void Clrbtn_Click(object sender, EventArgs e) {
+        private void clearFields() {
+            pat = null;
             PIDtxt.Text = "";
             Surtxt.Text = "";
             Firtxt.Text = "";
@@ -173,6 +188,13 @@ namespace Hospital {
         }
 
         /*
+         * Clears the information displayed on screen.
+         */
+        private void Clrbtn_Click(object sender, EventArgs e) {
+            clearFields();
+        }
+
+        /*
          * Admit patient into Emergency room and display message of confirmation or error.
          */
         private void Admitbtn_Click(object sender, EventArgs e) {
@@ -185,7 +207,7 @@ namespace Hospital {
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
                     int PID = Int32.Parse(Seatxt.Text);
-                    pat = Patient.Search(PID);
+                    pat = Patient.SearchPID(PID);
 
                     Roomtxt.Text = pat.getRoom();
                 }

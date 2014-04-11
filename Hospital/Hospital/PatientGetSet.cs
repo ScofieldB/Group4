@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hospital {
-    class PatientGetSet {
+    public class PatientGetSet {
 
         private int patient = -1, phone, mobile, covertype, covernumber, kinphone;
 
