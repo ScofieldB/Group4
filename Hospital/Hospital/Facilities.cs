@@ -40,7 +40,6 @@ namespace Hospital {
                 command.ExecuteNonQuery();
 
                 command.Parameters.Clear();
-
                 command.CommandText = "UPDATE Facilities SET Capacity = @cap WHERE Room = @room";
                 command.Parameters.AddWithValue("@cap", capacity - 1);
                 command.Parameters.AddWithValue("@room", room);
@@ -193,5 +192,39 @@ namespace Hospital {
             command.Parameters.AddWithValue("@id", pat.getPatient());
             command.ExecuteNonQuery();
         }
+
+
+        /*
+         * Discharges patient from the Emergency room.
+         */
+        public void DischargePatient(int patID) {
+            int capacity = 0;
+
+            con.Open();
+
+            SqlCommand command = new SqlCommand("UPDATE Patient SET Room = '0' WHERE PatientID = @id", con);
+            command.Parameters.AddWithValue("@id", patID);
+            command.ExecuteNonQuery();
+
+            command.Parameters.Clear();
+
+
+            command.CommandText = "SELECT Capacity FROM Facilities WHERE RoomType = 'Emergency'";
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read()) {
+                capacity = reader.GetInt32(0);
+            }
+            reader.Close();
+
+
+            command.Parameters.Clear();
+            command.CommandText = "UPDATE Facilities SET Capacity = @cap WHERE RoomType = 'Emergency'";
+            command.Parameters.AddWithValue("@cap", capacity + 1);
+            command.ExecuteNonQuery();
+
+            con.Close();
+        }
     }
+
 }

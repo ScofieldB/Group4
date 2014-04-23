@@ -13,12 +13,13 @@ namespace Hospital {
     *happen at each display/close). Generate new patient Id.
     */
     class Patient {
+        
+
         public static PatientGetSet SearchPID(int PID) { //not sure about void here
 
             PatientGetSet pat = new PatientGetSet();
 
             SqlConnection con = DBCon.DBConnect();
-
             con.Open();
             SqlCommand command = new SqlCommand("SELECT * FROM Patient WHERE PatientID = @id", con);
             command.Parameters.AddWithValue("@id", PID);
@@ -140,21 +141,17 @@ namespace Hospital {
 
         public void NewPatient() {
 
-            //Btn click calls
-
-
-            // SqlConnection con = DBCon.DBConnect();
-
-            //con.Open();
-
-            //Insert into statement for adding to database
-            //collate text boxs as inputs for insert into statement, scalar mod to return newly generated ID
-            //Mystery method must be made to display full contents of my reader (of the new record) to text boxes
-            //Each method does the same display thing
+       
         }
 
         public void UpdatePatient() {
 
+        }
+
+
+        public static void DischargePatient(PatientGetSet pat) {
+            Facilities fac = new Facilities();
+            fac.DischargePatient(pat.getPatient());
         }
     }
 }

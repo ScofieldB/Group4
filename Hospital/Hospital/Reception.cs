@@ -32,6 +32,11 @@ namespace Hospital {
 
             //Demo to confirm works by updating label on form
             Welcomelbl.Text = "Welcome User:" + UserID;
+
+            Admitbtn.Visible = false;
+            Newbtn.Visible = true;
+            Dischargebtn.Visible = false;
+            Savbtn.Visible = false;
         }
 
 
@@ -51,18 +56,32 @@ namespace Hospital {
             PIDtxt.Text = pat.getPatient().ToString();
             Surtxt.Text = pat.getSN();
             Firtxt.Text = pat.getFN();
-            DOBtxt.Text = pat.getDOB().ToString();
-            Gentxt.Text = pat.getGender();
+            DOBtxt.Text = pat.getDOB().ToString("dd/MM/yyyy");
+            if (pat.getGender() == "M") {
+                GenderCmb.SelectedIndex = 0;
+            } else {
+                GenderCmb.SelectedIndex = 1;
+            }
             NOKtxt.Text = pat.getNextKin();
             NOKNtxt.Text = pat.getKP().ToString();
             Addtxt.Text = pat.getAddress();
             Homtxt.Text = pat.getPhone().ToString();
             Mobtxt.Text = pat.getMobile().ToString();
-            CovTtxt.Text = pat.getCoverT().ToString();
+            covTypeCmb.SelectedIndex = pat.getCoverT();
             CovNtxt.Text = pat.getCoverN().ToString();
             Altxt.Text = pat.getAllergies();
-            Statxt.Text = pat.getStatus().ToString();
-            Roomtxt.Text = pat.getRoom().ToString();
+            statusCmb.SelectedIndex = 0;
+            CurrentRoomlbl.Text = pat.getRoom().ToString();
+            Admitbtn.Visible = true;
+
+            if (pat.getRoom() == "0") {
+                Dischargebtn.Visible = false;
+            } else {
+                Dischargebtn.Visible = true;
+            }
+
+            Savbtn.Visible = true;
+            Newbtn.Visible = false;
         }
 
         // Logout user by returning to login screen
@@ -82,10 +101,11 @@ namespace Hospital {
 
                 patients = Patient.searchPatientSurname(Surname);
 
-                if(patients.Length == 0){
+                if (patients.Length == 0) {
                     clearFields();
                     MessageBox.Show("Patient could not be found in system. Please add new patient.", "Patient not found.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Admitbtn.Visible = false;
                 } else if (patients.Length == 1) {
                     setPatient(patients[0]);
                 } else {
@@ -96,6 +116,7 @@ namespace Hospital {
             } else {
                 MessageBox.Show("Please input a Surname to search.", "Surname must be input",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Admitbtn.Visible = false;
             }
         }
 
@@ -103,69 +124,135 @@ namespace Hospital {
         *Takes entered details, populates them with new PK, returns new PK
          */
         private void Newbtn_Click(object sender, EventArgs e) {
+            bool success = true;
+            SqlConnection con = DBCon.DBConnect();
 
-            //at some point I need to move this to patient class, also check for input values (this actually auto checks that)
-            //seems the reason I get no error message is due to some datatype issues
+            con.Open();
 
-            if (string.IsNullOrEmpty(Surtxt.Text) || string.IsNullOrEmpty(Firtxt.Text) ||
-                string.IsNullOrEmpty(DOBtxt.Text) || string.IsNullOrEmpty(Gentxt.Text) || string.IsNullOrEmpty(NOKtxt.Text) ||
-                string.IsNullOrEmpty(NOKNtxt.Text) || string.IsNullOrEmpty(Addtxt.Text) || string.IsNullOrEmpty(Homtxt.Text) ||
-                string.IsNullOrEmpty(Mobtxt.Text) || string.IsNullOrEmpty(CovTtxt.Text) || string.IsNullOrEmpty(CovNtxt.Text) ||
-                string.IsNullOrEmpty(Altxt.Text) || string.IsNullOrEmpty(Statxt.Text) || string.IsNullOrEmpty(Roomtxt.Text)) {
+            string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
+            "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
+            "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
+            " @nokp, @room); SET @PATID = SCOPE_IDENTITY();");
 
-                MessageBox.Show("Please insert some patient information into all required fields.", "Incorrect Patiet Information",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            SqlCommand command = new SqlCommand(insertquery, con);
 
-            else {
-                SqlConnection con = DBCon.DBConnect();
-
-                con.Open();
-
-                string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
-                "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
-                "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
-                " @nokp, @room); SET @PATID = SCOPE_IDENTITY();");
-
-                SqlCommand command = new SqlCommand(insertquery, con);
-
-                //Matching datatype with what is listed in the database, will attempt to find a point of 
-                //checking inputs prior to this point, when I move it to a class of it's own
+            //Matching datatype with what is listed in the database, will attempt to find a point of 
+            //checking inputs prior to this point, when I move it to a class of it's own
+            if (Firtxt.Text != "") {
                 command.Parameters.Add("@first", System.Data.SqlDbType.NVarChar, 20).Value = Firtxt.Text;
-                command.Parameters.Add("@sur", System.Data.SqlDbType.NVarChar, 20).Value = Surtxt.Text;
-                command.Parameters.Add("@gen", System.Data.SqlDbType.NVarChar, 1).Value = Gentxt.Text;
-                command.Parameters.Add("@dob", System.Data.SqlDbType.Date).Value = DOBtxt.Text;//Date will need some work to get correct formatting
-                command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500).Value = Addtxt.Text;
-                command.Parameters.Add("@ph", System.Data.SqlDbType.Int).Value = Homtxt.Text;
-                command.Parameters.Add("@mob", System.Data.SqlDbType.Int).Value = Mobtxt.Text;
-                command.Parameters.Add("@all", System.Data.SqlDbType.NVarChar, 500).Value = Altxt.Text;
-                command.Parameters.Add("@covert", System.Data.SqlDbType.Int).Value = CovTtxt.Text;
-                command.Parameters.Add("@covern", System.Data.SqlDbType.Int).Value = CovNtxt.Text;
-                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = Statxt.Text;
-                command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500).Value = NOKtxt.Text;
-                command.Parameters.Add("@nokp", System.Data.SqlDbType.Int).Value = NOKNtxt.Text;
-                command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4).Value = Roomtxt.Text;
-                command.Parameters.Add("@PATID", SqlDbType.Int).Direction = ParameterDirection.Output;
-
-
-                try {
-
-                    command.ExecuteScalar();
-
-                    int PID = Convert.ToInt32(command.Parameters["@PATID"].Value);
-                    PIDtxt.Text = PID.ToString();
-
-                    con.Close();
-
-                }
-                catch (Exception) { //this will need to be expanded or changed at somepoint to check each input field
-                    MessageBox.Show("Patient details must be valid for each input field.", "Incorrect Patiet Information Layout",
-                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally {
-                    con.Close();
-                }
+                SurErrLbl.Visible = false;
+            } else {
+                SurErrLbl.Visible = true;
             }
+
+            if (Surtxt.Text != "") {
+                command.Parameters.Add("@sur", System.Data.SqlDbType.NVarChar, 20).Value = Surtxt.Text;
+                FnErrLbl.Visible = false;
+            } else {
+                FnErrLbl.Visible = true;
+            }
+
+            if (GenderCmb.SelectedIndex == 0) {
+                command.Parameters.Add("@gen", System.Data.SqlDbType.NVarChar, 1).Value = "M";
+            } else {
+                command.Parameters.Add("@gen", System.Data.SqlDbType.NVarChar, 1).Value = "F";
+            }
+
+            DateTime DOB;
+            if (DateTime.TryParse(DOBtxt.Text, out DOB)) {
+                command.Parameters.Add("@dob", System.Data.SqlDbType.Date).Value = DOB;
+                DOBErrLbl.Visible = false;
+            } else {
+                DOBErrLbl.Visible = true;
+            }
+
+            if (Addtxt.Text != "") {
+                command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500).Value = Addtxt.Text;
+            } else {
+                command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500).Value = "Unknown";
+            }
+
+            int homePhone;
+            if (Int32.TryParse(Homtxt.Text, out homePhone)) {
+                command.Parameters.Add("@ph", System.Data.SqlDbType.Int).Value = homePhone;
+            } else {
+                command.Parameters.Add("@ph", System.Data.SqlDbType.Int).Value = 0;
+            }
+
+            int mobPhone;
+            if (Int32.TryParse(Mobtxt.Text, out mobPhone)) {
+                command.Parameters.Add("@mob", System.Data.SqlDbType.Int).Value = mobPhone;
+            } else {
+                command.Parameters.Add("@mob", System.Data.SqlDbType.Int).Value = 0;
+            }
+
+            if (Altxt.Text != "") {
+                command.Parameters.Add("@all", System.Data.SqlDbType.NVarChar, 500).Value = Altxt.Text;
+            } else {
+                command.Parameters.Add("@all", System.Data.SqlDbType.NVarChar, 500).Value = "Unknown";
+            }
+
+            if (covTypeCmb.SelectedIndex > 0) {
+                command.Parameters.Add("@covert", System.Data.SqlDbType.Int).Value = Int32.Parse(covTypeCmb.SelectedText);
+            } else {
+                command.Parameters.Add("@covert", System.Data.SqlDbType.Int).Value = 0;
+            }
+
+            int covNum;
+            if (Int32.TryParse(CovNtxt.Text, out covNum)) {
+                command.Parameters.Add("@covern", System.Data.SqlDbType.Int).Value = CovNtxt.Text;
+            } else {
+                command.Parameters.Add("@covern", System.Data.SqlDbType.Int).Value = 0;
+            }
+
+            if (statusCmb.SelectedIndex == 0) {
+                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = 1;
+            } else {
+                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = 2;
+            }
+
+            if (NOKtxt.Text != "") {
+                command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500).Value = NOKtxt.Text;
+            } else {
+                command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500).Value = "Unknown";
+            }
+
+            int NOKNum;
+            if (Int32.TryParse(NOKNtxt.Text, out NOKNum)) {
+                command.Parameters.Add("@nokp", System.Data.SqlDbType.Int).Value = NOKNtxt.Text;
+            } else {
+                command.Parameters.Add("@nokp", System.Data.SqlDbType.Int).Value = 0;
+            }
+
+            command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4).Value = "0";
+
+
+            command.Parameters.Add("@PATID", SqlDbType.Int).Direction = ParameterDirection.Output;
+
+
+            try {
+
+                command.ExecuteScalar();
+
+                int PID = Convert.ToInt32(command.Parameters["@PATID"].Value);
+                PIDtxt.Text = PID.ToString();
+
+                con.Close();
+
+            } catch (Exception) { //this will need to be expanded or changed at somepoint to check each input field
+                success = false;
+                MessageBox.Show("Patient details must be valid for each input field.", "Incorrect Patiet Information Layout",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } finally {
+                con.Close();
+            }
+
+            if (success == true) {
+                setPatient(Patient.SearchPID(Int32.Parse(PIDtxt.Text)));
+                MessageBox.Show("Patient: " + Surtxt.Text + ", " + Firtxt.Text + " is now admitted.", "Patient Admitted",
+                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+
         }
 
         private void clearFields() {
@@ -174,17 +261,19 @@ namespace Hospital {
             Surtxt.Text = "";
             Firtxt.Text = "";
             DOBtxt.Text = "";
-            Gentxt.Text = "";
+            GenderCmb.SelectedIndex = 0;
             NOKtxt.Text = "";
             NOKNtxt.Text = "";
             Addtxt.Text = "";
             Homtxt.Text = "";
             Mobtxt.Text = "";
-            CovTtxt.Text = "";
+            covTypeCmb.SelectedItem = 0;
             CovNtxt.Text = "";
             Altxt.Text = "";
-            Statxt.Text = "";//needs to become drop down box
-            Roomtxt.Text = "";
+            statusCmb.SelectedIndex = 0;
+            CurrentRoomlbl.Text = "";
+            Savbtn.Visible = false;
+            Newbtn.Visible = true;
         }
 
         /*
@@ -200,27 +289,24 @@ namespace Hospital {
         private void Admitbtn_Click(object sender, EventArgs e) {
             Facilities fac = new Facilities();
 
-            if (PIDtxt.Text != "" && PIDtxt.Text != "0" && Roomtxt.Text == "0") {
+            if (PIDtxt.Text != "" && PIDtxt.Text != "0" && CurrentRoomlbl.Text == "0") {
                 bool success = fac.admitPatient(pat.getPatient());
                 if (success == true) {
-                    MessageBox.Show("Patient: " + pat.getPatient() + " is now admitted.", "Patient Admitted",
+                    MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now admitted.", "Patient Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                    int PID = Int32.Parse(Seatxt.Text);
-                    pat = Patient.SearchPID(PID);
-
-                    Roomtxt.Text = pat.getRoom();
-                }
-                else {
+                    pat = Patient.SearchPID(pat.getPatient());
+                    CurrentRoomlbl.Text = pat.getRoom();
+                    Admitbtn.Visible = false;
+                    Dischargebtn.Visible = true;
+                    updateHistory("Admitted");
+                } else {
                     MessageBox.Show("Patient was not admitted. Emergency room full", "Patient not Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else if (PIDtxt.Text != "" && Roomtxt.Text != "0") {
-                MessageBox.Show("Patient is currently admitted to hospital and is in room " + Roomtxt.Text, "Patient currently in hospital",
+            } else if (PIDtxt.Text != "" && CurrentRoomlbl.Text != "0") {
+                MessageBox.Show("Patient is currently admitted to hospital and is in room " + CurrentRoomlbl.Text, "Patient currently in hospital",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else {
+            } else {
                 MessageBox.Show("Please search for a patient.", "Search required",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -230,35 +316,92 @@ namespace Hospital {
         * Updates currently present information in text fields corrosponding to ID field.
          */
         private void Savbtn_Click(object sender, EventArgs e) {
-            //update query to push current contents of textboxes to database, spits out a complete message
-            //change this later to only include the notnull fields
-            if (string.IsNullOrEmpty(PIDtxt.Text) || string.IsNullOrEmpty(Surtxt.Text) || string.IsNullOrEmpty(Firtxt.Text) ||
-               string.IsNullOrEmpty(DOBtxt.Text) || string.IsNullOrEmpty(Gentxt.Text) || string.IsNullOrEmpty(NOKtxt.Text) ||
-               string.IsNullOrEmpty(NOKNtxt.Text) || string.IsNullOrEmpty(Addtxt.Text) || string.IsNullOrEmpty(Homtxt.Text) ||
-               string.IsNullOrEmpty(Mobtxt.Text) || string.IsNullOrEmpty(CovTtxt.Text) || string.IsNullOrEmpty(CovNtxt.Text) ||
-               string.IsNullOrEmpty(Altxt.Text) || string.IsNullOrEmpty(Statxt.Text) || string.IsNullOrEmpty(Roomtxt.Text)) {
+            if (pat != null) {
+                int PID = pat.getPatient();
+                
+                string surname;
+                if(Surtxt.Text == ""){
+                    surname = pat.getSN();
+                } else {
+                    surname = Surtxt.Text;
+                }
 
-                MessageBox.Show("Please insert some patient information into all required fields.", "Incorrect Patiet Information",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                string firstname;
+                if(Firtxt.Text == ""){
+                    firstname = pat.getFN();
+                } else {
+                    firstname = Firtxt.Text;
+                }
+                
+                DateTime DOB;
+                if (DateTime.TryParse(DOBtxt.Text, out DOB)) {
+                    //Do Nothing
+                } else {
+                    DOB = pat.getDOB();
+                }
 
-            else {
+                string gender;
+                if (GenderCmb.SelectedIndex == 0) {
+                    gender = "M";
+                } else {
+                    gender = "F";
+                }
 
-                int PID = Int32.Parse(PIDtxt.Text);
-                string surname = Surtxt.Text;
-                string firstname = Firtxt.Text;
-                DateTime DOB = DateTime.Parse(DOBtxt.Text);
-                string gender = Gentxt.Text;
                 string nextofkin = NOKtxt.Text;
-                int kinphone = Int32.Parse(NOKNtxt.Text);
+
+                int kinphone;
+                if (Int32.TryParse(NOKNtxt.Text, out kinphone)) {
+                    //Do Nothing
+                } else {
+                    kinphone = 0;
+                }
+
                 string address = Addtxt.Text;
-                int home = Int32.Parse(Homtxt.Text);
-                int mobile = Int32.Parse(Mobtxt.Text);
-                int covertype = Int32.Parse(CovTtxt.Text);
-                int covernum = Int32.Parse(CovNtxt.Text);
+
+                int home;
+                if (Int32.TryParse(Homtxt.Text, out home)) {
+                    //Do Nothing
+                } else {
+                    home = 0;
+                }
+
+                int mobile = 0;//Default Value
+                if (Int32.TryParse(Mobtxt.Text, out mobile)) {
+                    //Do Nothing
+                } else {
+                    mobile = 0;
+                }
+
+                int covertype;
+
+                try {
+                    covertype = Int32.Parse(covTypeCmb.SelectedText);
+                } catch (Exception) {
+                    covertype = 0;
+                }
+
+                int covernum;
+                if (covTypeCmb.SelectedIndex > 0) {
+                    covernum = Int32.Parse(CovNtxt.Text);
+                } else {
+                    covernum = 0;
+                }
+
                 string allergies = Altxt.Text;
-                bool status = Boolean.Parse(Statxt.Text);//needs to be changed to a drop down box
-                string room = Roomtxt.Text;
+
+                bool status;
+                if (statusCmb.SelectedIndex == 0) {
+                    status = true; ;
+                } else {
+                    status = false;
+                }
+
+                string room;
+                if (CurrentRoomlbl.Text != "") {
+                    room = CurrentRoomlbl.Text;
+                } else {
+                    room = "0";
+                }
 
                 SqlConnection con = DBCon.DBConnect();
                 con.Open();
@@ -284,16 +427,50 @@ namespace Hospital {
                 command.Parameters.AddWithValue("@nokp", kinphone);
                 command.Parameters.AddWithValue("@room", room);
 
-                try {
-                    command.ExecuteNonQuery();
-                    MessageBox.Show("Update Succesfully");
-                }
-                catch (Exception) {
-                    MessageBox.Show("Something shat itself", "Ah crap",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                command.ExecuteNonQuery();
+                
+                //Update labels on screen
+                setPatient(Patient.SearchPID(pat.getPatient()));
+                updateHistory("Update");
+                MessageBox.Show("Update Succesfully");
                 con.Close();
+            } else {
+                MessageBox.Show("Please fill in missing fields.", "Patient update not saved",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void Dischargebtn_Click(object sender, EventArgs e) {
+            Patient.DischargePatient(pat);
+            MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged.", "Patient Discharged",
+                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            pat = Patient.SearchPID(pat.getPatient());
+            CurrentRoomlbl.Text = pat.getRoom();
+            Dischargebtn.Visible = false;
+            Admitbtn.Visible = true;
+            updateHistory("Discharged");
+        }
+
+        private void updateHistory(string historyType) {
+            string TypedHistory;
+            
+            if(historyType == "Admitted"){
+                TypedHistory = historyType + " to Hospital";
+            } else if (historyType == "Discharged") {
+                TypedHistory = historyType + " from Hospital";
+            } else {
+                TypedHistory = "Patient Details updated";
+            }
+
+            SqlConnection con = DBCon.DBConnect();
+            con.Open();
+            SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
+            command.Parameters.AddWithValue("@pid", pat.getPatient());
+            command.Parameters.AddWithValue("@userid", UserID);
+            command.Parameters.AddWithValue("@typedhistory", TypedHistory);
+            command.ExecuteNonQuery();
+            con.Close();
+        }
+
     }
 }

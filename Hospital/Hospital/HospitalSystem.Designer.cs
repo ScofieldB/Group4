@@ -44,7 +44,7 @@
             this.Logoutbtn.Location = new System.Drawing.Point(825, 27);
             this.Logoutbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Logoutbtn.Name = "Logoutbtn";
-            this.Logoutbtn.Size = new System.Drawing.Size(75, 23);
+            this.Logoutbtn.Size = new System.Drawing.Size(75, 30);
             this.Logoutbtn.TabIndex = 1;
             this.Logoutbtn.Text = "Logout";
             this.Logoutbtn.UseVisualStyleBackColor = true;
@@ -52,10 +52,10 @@
             // 
             // Searchbtn
             // 
-            this.Searchbtn.Location = new System.Drawing.Point(205, 23);
+            this.Searchbtn.Location = new System.Drawing.Point(303, 24);
             this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Searchbtn.Name = "Searchbtn";
-            this.Searchbtn.Size = new System.Drawing.Size(100, 28);
+            this.Searchbtn.Size = new System.Drawing.Size(100, 30);
             this.Searchbtn.TabIndex = 35;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
@@ -67,16 +67,16 @@
             this.Sealbl.Location = new System.Drawing.Point(9, 30);
             this.Sealbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Sealbl.Name = "Sealbl";
-            this.Sealbl.Size = new System.Drawing.Size(79, 17);
+            this.Sealbl.Size = new System.Drawing.Size(118, 17);
             this.Sealbl.TabIndex = 34;
-            this.Sealbl.Text = "Search PID";
+            this.Sealbl.Text = "Search Surname:";
             // 
             // Seatxt
             // 
-            this.Seatxt.Location = new System.Drawing.Point(100, 26);
+            this.Seatxt.Location = new System.Drawing.Point(135, 25);
             this.Seatxt.Margin = new System.Windows.Forms.Padding(4);
             this.Seatxt.Name = "Seatxt";
-            this.Seatxt.Size = new System.Drawing.Size(97, 22);
+            this.Seatxt.Size = new System.Drawing.Size(160, 22);
             this.Seatxt.TabIndex = 33;
             // 
             // PatInfolbl
