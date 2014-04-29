@@ -17,14 +17,16 @@ namespace Hospital {
         private Form previousForm;
         private string SurnameSearched;
         private static int chosenIndex;
+        private string UserID;
 
         public ChoosePatient() {
             InitializeComponent();
         }
 
 
-        public ChoosePatient(Form home, Form previous, string Surname, PatientGetSet[] pats) {
+        public ChoosePatient(string User, Form home, Form previous, string Surname, PatientGetSet[] pats) {
             homeScreen = home;
+            UserID = User;
             previousForm = previous;
             patients = pats;
             SurnameSearched = Surname;
@@ -46,7 +48,7 @@ namespace Hospital {
 
         private void Confirmbtn_Click(object sender, EventArgs e) {
             if (previousForm.Name == "Reception") {
-                Reception reception = new Reception();
+                Reception reception = new Reception(UserID);
                 reception.setPatient(chosen);
                 reception.setHome(homeScreen);
                 ActiveForm.Close();

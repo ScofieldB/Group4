@@ -109,7 +109,7 @@ namespace Hospital {
                 } else if (patients.Length == 1) {
                     setPatient(patients[0]);
                 } else {
-                    ChoosePatient choosePat = new ChoosePatient(homeScreen, ActiveForm, Surname, patients);
+                    ChoosePatient choosePat = new ChoosePatient(UserID, homeScreen, ActiveForm, Surname, patients);
                     ActiveForm.Close();
                     choosePat.Show();
                 }
