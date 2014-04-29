@@ -466,7 +466,7 @@ namespace Hospital {
             con.Open();
             SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
             command.Parameters.AddWithValue("@pid", pat.getPatient());
-            command.Parameters.AddWithValue("@userid", 1004);
+            command.Parameters.AddWithValue("@userid", UserID);
             command.Parameters.AddWithValue("@typedhistory", TypedHistory);
             command.ExecuteNonQuery();
             con.Close();
