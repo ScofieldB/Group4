@@ -66,23 +66,25 @@
             this.covTypeCmb = new System.Windows.Forms.ComboBox();
             this.statusCmb = new System.Windows.Forms.ComboBox();
             this.CurrentRoomlbl = new System.Windows.Forms.Label();
+            this.hardCopybtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Welcomelbl
             // 
             this.Welcomelbl.AutoSize = true;
-            this.Welcomelbl.Location = new System.Drawing.Point(17, 17);
+            this.Welcomelbl.Location = new System.Drawing.Point(13, 14);
+            this.Welcomelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Welcomelbl.Name = "Welcomelbl";
-            this.Welcomelbl.Size = new System.Drawing.Size(72, 17);
+            this.Welcomelbl.Size = new System.Drawing.Size(56, 13);
             this.Welcomelbl.TabIndex = 0;
             this.Welcomelbl.Text = "Reception";
             // 
             // Logoutbtn
             // 
-            this.Logoutbtn.Location = new System.Drawing.Point(834, 17);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Logoutbtn.Location = new System.Drawing.Point(626, 14);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Logoutbtn.Name = "Logoutbtn";
-            this.Logoutbtn.Size = new System.Drawing.Size(110, 30);
+            this.Logoutbtn.Size = new System.Drawing.Size(82, 24);
             this.Logoutbtn.TabIndex = 1;
             this.Logoutbtn.Text = "Logout";
             this.Logoutbtn.UseVisualStyleBackColor = true;
@@ -90,10 +92,9 @@
             // 
             // Searchbtn
             // 
-            this.Searchbtn.Location = new System.Drawing.Point(435, 50);
-            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.Searchbtn.Location = new System.Drawing.Point(326, 41);
             this.Searchbtn.Name = "Searchbtn";
-            this.Searchbtn.Size = new System.Drawing.Size(110, 30);
+            this.Searchbtn.Size = new System.Drawing.Size(82, 24);
             this.Searchbtn.TabIndex = 32;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
@@ -102,124 +103,112 @@
             // Sealbl
             // 
             this.Sealbl.AutoSize = true;
-            this.Sealbl.Location = new System.Drawing.Point(146, 57);
-            this.Sealbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Sealbl.Location = new System.Drawing.Point(110, 46);
             this.Sealbl.Name = "Sealbl";
-            this.Sealbl.Size = new System.Drawing.Size(118, 17);
+            this.Sealbl.Size = new System.Drawing.Size(89, 13);
             this.Sealbl.TabIndex = 31;
             this.Sealbl.Text = "Search Surname:";
             // 
             // Seatxt
             // 
-            this.Seatxt.Location = new System.Drawing.Point(267, 54);
-            this.Seatxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Seatxt.Location = new System.Drawing.Point(200, 44);
             this.Seatxt.Name = "Seatxt";
-            this.Seatxt.Size = new System.Drawing.Size(160, 22);
+            this.Seatxt.Size = new System.Drawing.Size(121, 20);
             this.Seatxt.TabIndex = 30;
             // 
             // Altxt
             // 
-            this.Altxt.Location = new System.Drawing.Point(564, 381);
-            this.Altxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Altxt.Location = new System.Drawing.Point(423, 310);
             this.Altxt.Name = "Altxt";
-            this.Altxt.Size = new System.Drawing.Size(380, 22);
+            this.Altxt.Size = new System.Drawing.Size(286, 20);
             this.Altxt.TabIndex = 65;
             // 
             // CovNtxt
             // 
-            this.CovNtxt.Location = new System.Drawing.Point(564, 333);
-            this.CovNtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.CovNtxt.Location = new System.Drawing.Point(423, 271);
             this.CovNtxt.Name = "CovNtxt";
-            this.CovNtxt.Size = new System.Drawing.Size(132, 22);
+            this.CovNtxt.Size = new System.Drawing.Size(100, 20);
             this.CovNtxt.TabIndex = 58;
             // 
             // Mobtxt
             // 
-            this.Mobtxt.Location = new System.Drawing.Point(564, 236);
-            this.Mobtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Mobtxt.Location = new System.Drawing.Point(423, 192);
             this.Mobtxt.Name = "Mobtxt";
-            this.Mobtxt.Size = new System.Drawing.Size(132, 22);
+            this.Mobtxt.Size = new System.Drawing.Size(100, 20);
             this.Mobtxt.TabIndex = 57;
             // 
             // Homtxt
             // 
-            this.Homtxt.Location = new System.Drawing.Point(564, 188);
-            this.Homtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Homtxt.Location = new System.Drawing.Point(423, 153);
             this.Homtxt.Name = "Homtxt";
-            this.Homtxt.Size = new System.Drawing.Size(132, 22);
+            this.Homtxt.Size = new System.Drawing.Size(100, 20);
             this.Homtxt.TabIndex = 56;
             // 
             // Addtxt
             // 
-            this.Addtxt.Location = new System.Drawing.Point(564, 140);
-            this.Addtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Addtxt.Location = new System.Drawing.Point(423, 114);
             this.Addtxt.Name = "Addtxt";
-            this.Addtxt.Size = new System.Drawing.Size(380, 22);
+            this.Addtxt.Size = new System.Drawing.Size(286, 20);
             this.Addtxt.TabIndex = 55;
             // 
             // NOKNtxt
             // 
-            this.NOKNtxt.Location = new System.Drawing.Point(330, 381);
-            this.NOKNtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.NOKNtxt.Location = new System.Drawing.Point(248, 310);
             this.NOKNtxt.Name = "NOKNtxt";
-            this.NOKNtxt.Size = new System.Drawing.Size(178, 22);
+            this.NOKNtxt.Size = new System.Drawing.Size(134, 20);
             this.NOKNtxt.TabIndex = 52;
             // 
             // NOKtxt
             // 
-            this.NOKtxt.Location = new System.Drawing.Point(330, 333);
-            this.NOKtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.NOKtxt.Location = new System.Drawing.Point(248, 271);
             this.NOKtxt.Name = "NOKtxt";
-            this.NOKtxt.Size = new System.Drawing.Size(211, 22);
+            this.NOKtxt.Size = new System.Drawing.Size(159, 20);
             this.NOKtxt.TabIndex = 51;
             // 
             // DOBtxt
             // 
-            this.DOBtxt.Location = new System.Drawing.Point(330, 237);
-            this.DOBtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.DOBtxt.Location = new System.Drawing.Point(248, 193);
             this.DOBtxt.Name = "DOBtxt";
-            this.DOBtxt.Size = new System.Drawing.Size(178, 22);
+            this.DOBtxt.Size = new System.Drawing.Size(134, 20);
             this.DOBtxt.TabIndex = 48;
             // 
             // Firtxt
             // 
-            this.Firtxt.Location = new System.Drawing.Point(330, 189);
-            this.Firtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Firtxt.Location = new System.Drawing.Point(248, 154);
             this.Firtxt.Name = "Firtxt";
-            this.Firtxt.Size = new System.Drawing.Size(211, 22);
+            this.Firtxt.Size = new System.Drawing.Size(159, 20);
             this.Firtxt.TabIndex = 47;
             // 
             // Surtxt
             // 
-            this.Surtxt.Location = new System.Drawing.Point(330, 140);
-            this.Surtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Surtxt.Location = new System.Drawing.Point(248, 114);
             this.Surtxt.Name = "Surtxt";
-            this.Surtxt.Size = new System.Drawing.Size(211, 22);
+            this.Surtxt.Size = new System.Drawing.Size(159, 20);
             this.Surtxt.TabIndex = 46;
             // 
             // PIDtxt
             // 
-            this.PIDtxt.Location = new System.Drawing.Point(148, 140);
-            this.PIDtxt.Margin = new System.Windows.Forms.Padding(4);
+            this.PIDtxt.Location = new System.Drawing.Point(111, 114);
             this.PIDtxt.Name = "PIDtxt";
-            this.PIDtxt.Size = new System.Drawing.Size(133, 22);
+            this.PIDtxt.Size = new System.Drawing.Size(101, 20);
             this.PIDtxt.TabIndex = 41;
             // 
             // Roomlbl
             // 
             this.Roomlbl.AutoSize = true;
-            this.Roomlbl.Location = new System.Drawing.Point(145, 214);
+            this.Roomlbl.Location = new System.Drawing.Point(109, 174);
+            this.Roomlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Roomlbl.Name = "Roomlbl";
-            this.Roomlbl.Size = new System.Drawing.Size(45, 17);
+            this.Roomlbl.Size = new System.Drawing.Size(35, 13);
             this.Roomlbl.TabIndex = 73;
             this.Roomlbl.Text = "Room";
             // 
             // Admitbtn
             // 
-            this.Admitbtn.Location = new System.Drawing.Point(13, 215);
-            this.Admitbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Admitbtn.Location = new System.Drawing.Point(10, 175);
+            this.Admitbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Admitbtn.Name = "Admitbtn";
-            this.Admitbtn.Size = new System.Drawing.Size(110, 30);
+            this.Admitbtn.Size = new System.Drawing.Size(82, 24);
             this.Admitbtn.TabIndex = 72;
             this.Admitbtn.Text = "Admit";
             this.Admitbtn.UseVisualStyleBackColor = true;
@@ -227,10 +216,9 @@
             // 
             // Clrbtn
             // 
-            this.Clrbtn.Location = new System.Drawing.Point(13, 178);
-            this.Clrbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.Clrbtn.Location = new System.Drawing.Point(10, 145);
             this.Clrbtn.Name = "Clrbtn";
-            this.Clrbtn.Size = new System.Drawing.Size(110, 30);
+            this.Clrbtn.Size = new System.Drawing.Size(82, 24);
             this.Clrbtn.TabIndex = 71;
             this.Clrbtn.Text = "Clear All";
             this.Clrbtn.UseVisualStyleBackColor = true;
@@ -238,10 +226,9 @@
             // 
             // Newbtn
             // 
-            this.Newbtn.Location = new System.Drawing.Point(13, 140);
-            this.Newbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.Newbtn.Location = new System.Drawing.Point(10, 114);
             this.Newbtn.Name = "Newbtn";
-            this.Newbtn.Size = new System.Drawing.Size(110, 30);
+            this.Newbtn.Size = new System.Drawing.Size(82, 24);
             this.Newbtn.TabIndex = 67;
             this.Newbtn.Text = "New Patient";
             this.Newbtn.UseVisualStyleBackColor = true;
@@ -249,10 +236,9 @@
             // 
             // Savbtn
             // 
-            this.Savbtn.Location = new System.Drawing.Point(13, 140);
-            this.Savbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.Savbtn.Location = new System.Drawing.Point(10, 114);
             this.Savbtn.Name = "Savbtn";
-            this.Savbtn.Size = new System.Drawing.Size(110, 30);
+            this.Savbtn.Size = new System.Drawing.Size(82, 24);
             this.Savbtn.TabIndex = 66;
             this.Savbtn.Text = "Save Changes";
             this.Savbtn.UseVisualStyleBackColor = true;
@@ -261,148 +247,135 @@
             // Allbl
             // 
             this.Allbl.AutoSize = true;
-            this.Allbl.Location = new System.Drawing.Point(560, 362);
-            this.Allbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Allbl.Location = new System.Drawing.Point(420, 294);
             this.Allbl.Name = "Allbl";
-            this.Allbl.Size = new System.Drawing.Size(62, 17);
+            this.Allbl.Size = new System.Drawing.Size(46, 13);
             this.Allbl.TabIndex = 64;
             this.Allbl.Text = "Allergies";
             // 
             // CovNlbl
             // 
             this.CovNlbl.AutoSize = true;
-            this.CovNlbl.Location = new System.Drawing.Point(560, 314);
-            this.CovNlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CovNlbl.Location = new System.Drawing.Point(420, 255);
             this.CovNlbl.Name = "CovNlbl";
-            this.CovNlbl.Size = new System.Drawing.Size(99, 17);
+            this.CovNlbl.Size = new System.Drawing.Size(75, 13);
             this.CovNlbl.TabIndex = 63;
             this.CovNlbl.Text = "Cover Number";
             // 
             // CovTlbl
             // 
             this.CovTlbl.AutoSize = true;
-            this.CovTlbl.Location = new System.Drawing.Point(560, 266);
-            this.CovTlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CovTlbl.Location = new System.Drawing.Point(420, 216);
             this.CovTlbl.Name = "CovTlbl";
-            this.CovTlbl.Size = new System.Drawing.Size(81, 17);
+            this.CovTlbl.Size = new System.Drawing.Size(62, 13);
             this.CovTlbl.TabIndex = 62;
             this.CovTlbl.Text = "Cover Type";
             // 
             // Moblbl
             // 
             this.Moblbl.AutoSize = true;
-            this.Moblbl.Location = new System.Drawing.Point(560, 216);
-            this.Moblbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Moblbl.Location = new System.Drawing.Point(420, 176);
             this.Moblbl.Name = "Moblbl";
-            this.Moblbl.Size = new System.Drawing.Size(103, 17);
+            this.Moblbl.Size = new System.Drawing.Size(78, 13);
             this.Moblbl.TabIndex = 61;
             this.Moblbl.Text = "Mobile Number";
             // 
             // Homlbl
             // 
             this.Homlbl.AutoSize = true;
-            this.Homlbl.Location = new System.Drawing.Point(560, 168);
-            this.Homlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Homlbl.Location = new System.Drawing.Point(420, 136);
             this.Homlbl.Name = "Homlbl";
-            this.Homlbl.Size = new System.Drawing.Size(99, 17);
+            this.Homlbl.Size = new System.Drawing.Size(75, 13);
             this.Homlbl.TabIndex = 60;
             this.Homlbl.Text = "Home Number";
             // 
             // Addlbl
             // 
             this.Addlbl.AutoSize = true;
-            this.Addlbl.Location = new System.Drawing.Point(560, 120);
-            this.Addlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Addlbl.Location = new System.Drawing.Point(420, 98);
             this.Addlbl.Name = "Addlbl";
-            this.Addlbl.Size = new System.Drawing.Size(111, 17);
+            this.Addlbl.Size = new System.Drawing.Size(82, 13);
             this.Addlbl.TabIndex = 59;
             this.Addlbl.Text = "Current Address";
             // 
             // Stalbl
             // 
             this.Stalbl.AutoSize = true;
-            this.Stalbl.Location = new System.Drawing.Point(145, 168);
-            this.Stalbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Stalbl.Location = new System.Drawing.Point(109, 136);
             this.Stalbl.Name = "Stalbl";
-            this.Stalbl.Size = new System.Drawing.Size(48, 17);
+            this.Stalbl.Size = new System.Drawing.Size(37, 13);
             this.Stalbl.TabIndex = 54;
             this.Stalbl.Text = "Status";
             // 
             // NOKNlbl
             // 
             this.NOKNlbl.AutoSize = true;
-            this.NOKNlbl.Location = new System.Drawing.Point(326, 362);
-            this.NOKNlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NOKNlbl.Location = new System.Drawing.Point(244, 294);
             this.NOKNlbl.Name = "NOKNlbl";
-            this.NOKNlbl.Size = new System.Drawing.Size(130, 17);
+            this.NOKNlbl.Size = new System.Drawing.Size(99, 13);
             this.NOKNlbl.TabIndex = 53;
             this.NOKNlbl.Text = "Next of Kin Number";
             // 
             // Kinlbl
             // 
             this.Kinlbl.AutoSize = true;
-            this.Kinlbl.Location = new System.Drawing.Point(326, 314);
-            this.Kinlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Kinlbl.Location = new System.Drawing.Point(244, 255);
             this.Kinlbl.Name = "Kinlbl";
-            this.Kinlbl.Size = new System.Drawing.Size(76, 17);
+            this.Kinlbl.Size = new System.Drawing.Size(59, 13);
             this.Kinlbl.TabIndex = 50;
             this.Kinlbl.Text = "Next of Kin";
             // 
             // Genlbl
             // 
             this.Genlbl.AutoSize = true;
-            this.Genlbl.Location = new System.Drawing.Point(326, 266);
-            this.Genlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Genlbl.Location = new System.Drawing.Point(244, 216);
             this.Genlbl.Name = "Genlbl";
-            this.Genlbl.Size = new System.Drawing.Size(56, 17);
+            this.Genlbl.Size = new System.Drawing.Size(42, 13);
             this.Genlbl.TabIndex = 49;
             this.Genlbl.Text = "Gender";
             // 
             // DOBlbl
             // 
             this.DOBlbl.AutoSize = true;
-            this.DOBlbl.Location = new System.Drawing.Point(326, 218);
-            this.DOBlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DOBlbl.Location = new System.Drawing.Point(244, 177);
             this.DOBlbl.Name = "DOBlbl";
-            this.DOBlbl.Size = new System.Drawing.Size(182, 17);
+            this.DOBlbl.Size = new System.Drawing.Size(138, 13);
             this.DOBlbl.TabIndex = 45;
             this.DOBlbl.Text = "Date Of Birth (dd/mm/yyyy) ";
             // 
             // Firlbl
             // 
             this.Firlbl.AutoSize = true;
-            this.Firlbl.Location = new System.Drawing.Point(326, 168);
-            this.Firlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Firlbl.Location = new System.Drawing.Point(244, 136);
             this.Firlbl.Name = "Firlbl";
-            this.Firlbl.Size = new System.Drawing.Size(70, 17);
+            this.Firlbl.Size = new System.Drawing.Size(52, 13);
             this.Firlbl.TabIndex = 44;
             this.Firlbl.Text = "Firstname";
             // 
             // Surlbl
             // 
             this.Surlbl.AutoSize = true;
-            this.Surlbl.Location = new System.Drawing.Point(326, 120);
-            this.Surlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Surlbl.Location = new System.Drawing.Point(244, 98);
             this.Surlbl.Name = "Surlbl";
-            this.Surlbl.Size = new System.Drawing.Size(65, 17);
+            this.Surlbl.Size = new System.Drawing.Size(49, 13);
             this.Surlbl.TabIndex = 43;
             this.Surlbl.Text = "Surname";
             // 
             // PIDlbl
             // 
             this.PIDlbl.AutoSize = true;
-            this.PIDlbl.Location = new System.Drawing.Point(145, 120);
-            this.PIDlbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PIDlbl.Location = new System.Drawing.Point(109, 98);
             this.PIDlbl.Name = "PIDlbl";
-            this.PIDlbl.Size = new System.Drawing.Size(69, 17);
+            this.PIDlbl.Size = new System.Drawing.Size(54, 13);
             this.PIDlbl.TabIndex = 42;
             this.PIDlbl.Text = "Paitent ID";
             // 
             // Dischargebtn
             // 
-            this.Dischargebtn.Location = new System.Drawing.Point(13, 215);
+            this.Dischargebtn.Location = new System.Drawing.Point(10, 175);
+            this.Dischargebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Dischargebtn.Name = "Dischargebtn";
-            this.Dischargebtn.Size = new System.Drawing.Size(110, 30);
+            this.Dischargebtn.Size = new System.Drawing.Size(82, 24);
             this.Dischargebtn.TabIndex = 76;
             this.Dischargebtn.Text = "Discharge";
             this.Dischargebtn.UseVisualStyleBackColor = true;
@@ -415,9 +388,10 @@
             this.GenderCmb.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.GenderCmb.Location = new System.Drawing.Point(329, 283);
+            this.GenderCmb.Location = new System.Drawing.Point(247, 230);
+            this.GenderCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GenderCmb.Name = "GenderCmb";
-            this.GenderCmb.Size = new System.Drawing.Size(179, 24);
+            this.GenderCmb.Size = new System.Drawing.Size(135, 21);
             this.GenderCmb.TabIndex = 77;
             // 
             // SurErrLbl
@@ -425,9 +399,10 @@
             this.SurErrLbl.AutoSize = true;
             this.SurErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SurErrLbl.ForeColor = System.Drawing.Color.Red;
-            this.SurErrLbl.Location = new System.Drawing.Point(307, 120);
+            this.SurErrLbl.Location = new System.Drawing.Point(230, 98);
+            this.SurErrLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SurErrLbl.Name = "SurErrLbl";
-            this.SurErrLbl.Size = new System.Drawing.Size(16, 20);
+            this.SurErrLbl.Size = new System.Drawing.Size(14, 17);
             this.SurErrLbl.TabIndex = 78;
             this.SurErrLbl.Text = "*";
             this.SurErrLbl.Visible = false;
@@ -437,9 +412,10 @@
             this.FnErrLbl.AutoSize = true;
             this.FnErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FnErrLbl.ForeColor = System.Drawing.Color.Red;
-            this.FnErrLbl.Location = new System.Drawing.Point(307, 168);
+            this.FnErrLbl.Location = new System.Drawing.Point(230, 136);
+            this.FnErrLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FnErrLbl.Name = "FnErrLbl";
-            this.FnErrLbl.Size = new System.Drawing.Size(16, 20);
+            this.FnErrLbl.Size = new System.Drawing.Size(14, 17);
             this.FnErrLbl.TabIndex = 79;
             this.FnErrLbl.Text = "*";
             this.FnErrLbl.Visible = false;
@@ -449,9 +425,10 @@
             this.DOBErrLbl.AutoSize = true;
             this.DOBErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DOBErrLbl.ForeColor = System.Drawing.Color.Red;
-            this.DOBErrLbl.Location = new System.Drawing.Point(307, 220);
+            this.DOBErrLbl.Location = new System.Drawing.Point(230, 179);
+            this.DOBErrLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DOBErrLbl.Name = "DOBErrLbl";
-            this.DOBErrLbl.Size = new System.Drawing.Size(16, 20);
+            this.DOBErrLbl.Size = new System.Drawing.Size(14, 17);
             this.DOBErrLbl.TabIndex = 80;
             this.DOBErrLbl.Text = "*";
             this.DOBErrLbl.Visible = false;
@@ -463,9 +440,10 @@
             "0",
             "1",
             "2"});
-            this.covTypeCmb.Location = new System.Drawing.Point(564, 287);
+            this.covTypeCmb.Location = new System.Drawing.Point(423, 233);
+            this.covTypeCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.covTypeCmb.Name = "covTypeCmb";
-            this.covTypeCmb.Size = new System.Drawing.Size(132, 24);
+            this.covTypeCmb.Size = new System.Drawing.Size(100, 21);
             this.covTypeCmb.TabIndex = 81;
             // 
             // statusCmb
@@ -474,24 +452,37 @@
             this.statusCmb.Items.AddRange(new object[] {
             "In-Patient",
             "Out-Patient"});
-            this.statusCmb.Location = new System.Drawing.Point(148, 189);
+            this.statusCmb.Location = new System.Drawing.Point(111, 154);
+            this.statusCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.statusCmb.Name = "statusCmb";
-            this.statusCmb.Size = new System.Drawing.Size(133, 24);
+            this.statusCmb.Size = new System.Drawing.Size(101, 21);
             this.statusCmb.TabIndex = 82;
             // 
             // CurrentRoomlbl
             // 
             this.CurrentRoomlbl.AutoSize = true;
-            this.CurrentRoomlbl.Location = new System.Drawing.Point(148, 237);
+            this.CurrentRoomlbl.Location = new System.Drawing.Point(111, 193);
+            this.CurrentRoomlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CurrentRoomlbl.Name = "CurrentRoomlbl";
-            this.CurrentRoomlbl.Size = new System.Drawing.Size(0, 17);
+            this.CurrentRoomlbl.Size = new System.Drawing.Size(0, 13);
             this.CurrentRoomlbl.TabIndex = 83;
+            // 
+            // hardCopybtn
+            // 
+            this.hardCopybtn.Location = new System.Drawing.Point(10, 205);
+            this.hardCopybtn.Name = "hardCopybtn";
+            this.hardCopybtn.Size = new System.Drawing.Size(82, 23);
+            this.hardCopybtn.TabIndex = 84;
+            this.hardCopybtn.Text = "Hard Copy";
+            this.hardCopybtn.UseVisualStyleBackColor = true;
+            this.hardCopybtn.Click += new System.EventHandler(this.hardCopybtn_Click);
             // 
             // Reception
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 514);
+            this.ClientSize = new System.Drawing.Size(733, 418);
+            this.Controls.Add(this.hardCopybtn);
             this.Controls.Add(this.CurrentRoomlbl);
             this.Controls.Add(this.statusCmb);
             this.Controls.Add(this.covTypeCmb);
@@ -535,7 +526,7 @@
             this.Controls.Add(this.Sealbl);
             this.Controls.Add(this.Seatxt);
             this.Controls.Add(this.Searchbtn);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Reception";
             this.Text = "Reception";
             this.ResumeLayout(false);
@@ -588,5 +579,6 @@
         private System.Windows.Forms.ComboBox covTypeCmb;
         private System.Windows.Forms.ComboBox statusCmb;
         private System.Windows.Forms.Label CurrentRoomlbl;
+        private System.Windows.Forms.Button hardCopybtn;
     }
 }

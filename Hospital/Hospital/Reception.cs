@@ -472,5 +472,19 @@ namespace Hospital {
             con.Close();
         }
 
+        /*Calls GeneratePDF methods, requires some entry into search text box
+         checks for if empty or space, should limit to num/regex or surname*/
+        private void hardCopybtn_Click(object sender, EventArgs e) {
+            if (Seatxt.Text != "" && Seatxt.Text != " ") {
+                //call here
+                MessageBox.Show("Comming Soon.TM", "Soon.TM.",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else {
+                MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

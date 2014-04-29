@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\..\Desktop\itext\itextsharp-all-5.5.0\itextsharp-dll-core\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.pdfa">
+      <HintPath>..\..\..\..\..\Desktop\itext\itextsharp-all-5.5.0\itextsharp-dll-pdfa\itextsharp.pdfa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +65,7 @@
     </Compile>
     <Compile Include="DBCon.cs" />
     <Compile Include="Facilities.cs" />
+    <Compile Include="GeneratePDF.cs" />
     <Compile Include="HashPassword.cs" />
     <Compile Include="HospitalSystem.cs">
       <SubType>Form</SubType>
