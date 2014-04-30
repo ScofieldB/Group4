@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
@@ -26,7 +27,13 @@ namespace Hospital {
          
          */
 
+        private SqlConnection con = DBCon.DBConnect();
 
+        public void genPDF() { 
+        
 
+        
+        
+        }
     }
 }
