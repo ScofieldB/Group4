@@ -14,6 +14,7 @@ namespace Hospital {
 
         private Form home;
         private PatientGetSet pat = new PatientGetSet();
+        private string Role = "Reception";
 
         //Global variables
         string UserID; //String value of the UserID/StaffID
@@ -37,6 +38,7 @@ namespace Hospital {
             Newbtn.Visible = true;
             Dischargebtn.Visible = false;
             Savbtn.Visible = false;
+            hardCopybtn.Visible = false;
         }
 
 
@@ -82,6 +84,7 @@ namespace Hospital {
 
             Savbtn.Visible = true;
             Newbtn.Visible = false;
+            hardCopybtn.Visible = true;
         }
 
         // Logout user by returning to login screen
@@ -109,7 +112,7 @@ namespace Hospital {
                 } else if (patients.Length == 1) {
                     setPatient(patients[0]);
                 } else {
-                    ChoosePatient choosePat = new ChoosePatient(UserID, home, ActiveForm, Surname, patients);
+                    ChoosePatient choosePat = new ChoosePatient(UserID, Role, home, this, Surname, patients);
                     ActiveForm.Close();
                     choosePat.Show();
                 }
@@ -475,7 +478,7 @@ namespace Hospital {
         /*Calls GeneratePDF methods, requires some entry into search text box
          checks for if empty or space, should limit to num/regex or surname*/
         private void hardCopybtn_Click(object sender, EventArgs e) {
-            if (Seatxt.Text != "" && Seatxt.Text != " ") {
+            if (Surtxt.Text != "" && Surtxt.Text != " ") {
                 //call here
                 MessageBox.Show("Comming Soon.TM", "Soon.TM.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);

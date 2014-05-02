@@ -18,14 +18,11 @@ namespace Hospital {
         private string SurnameSearched;
         private static int chosenIndex;
         private string UserID;
+        private string Role;
 
-        public ChoosePatient() {
-            InitializeComponent();
-        }
-
-
-        public ChoosePatient(string User, Form home, Form previous, string Surname, PatientGetSet[] pats) {
+        public ChoosePatient(string User, string role, Form home, Form previous, string Surname, PatientGetSet[] pats) {
             homeScreen = home;
+            Role = role;
             UserID = User;
             previousForm = previous;
             patients = pats;
@@ -54,7 +51,7 @@ namespace Hospital {
                 ActiveForm.Close();
                 reception.Show();
             } else {
-                HospitalSystem system = new HospitalSystem();
+                HospitalSystem system = new HospitalSystem(UserID, Role);
                 system.setPatient(chosen);
                 system.setHome(homeScreen);
                 ActiveForm.Close();

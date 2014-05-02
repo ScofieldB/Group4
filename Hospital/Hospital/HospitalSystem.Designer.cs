@@ -34,7 +34,7 @@
             this.addHistorytbx = new System.Windows.Forms.TextBox();
             this.ViewImgbtn = new System.Windows.Forms.Button();
             this.Surgerybtn = new System.Windows.Forms.Button();
-            this.Xraybtn = new System.Windows.Forms.Button();
+            this.Imagingbtn = new System.Windows.Forms.Button();
             this.Finishbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -149,16 +149,16 @@
             this.Surgerybtn.Visible = false;
             this.Surgerybtn.Click += new System.EventHandler(this.Surgerybtn_Click);
             // 
-            // Xraybtn
+            // Imagingbtn
             // 
-            this.Xraybtn.Location = new System.Drawing.Point(750, 446);
-            this.Xraybtn.Name = "Xraybtn";
-            this.Xraybtn.Size = new System.Drawing.Size(150, 30);
-            this.Xraybtn.TabIndex = 43;
-            this.Xraybtn.Text = "Book Xray";
-            this.Xraybtn.UseVisualStyleBackColor = true;
-            this.Xraybtn.Visible = false;
-            this.Xraybtn.Click += new System.EventHandler(this.Xraybtn_Click);
+            this.Imagingbtn.Location = new System.Drawing.Point(750, 446);
+            this.Imagingbtn.Name = "Imagingbtn";
+            this.Imagingbtn.Size = new System.Drawing.Size(150, 30);
+            this.Imagingbtn.TabIndex = 43;
+            this.Imagingbtn.Text = "Book Imaging";
+            this.Imagingbtn.UseVisualStyleBackColor = true;
+            this.Imagingbtn.Visible = false;
+            this.Imagingbtn.Click += new System.EventHandler(this.Imagingbtn_Click);
             // 
             // Finishbtn
             // 
@@ -176,7 +176,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 526);
             this.Controls.Add(this.Finishbtn);
-            this.Controls.Add(this.Xraybtn);
+            this.Controls.Add(this.Imagingbtn);
             this.Controls.Add(this.Surgerybtn);
             this.Controls.Add(this.ViewImgbtn);
             this.Controls.Add(this.addHistorytbx);
@@ -210,7 +210,7 @@
         private System.Windows.Forms.TextBox addHistorytbx;
         private System.Windows.Forms.Button ViewImgbtn;
         private System.Windows.Forms.Button Surgerybtn;
-        private System.Windows.Forms.Button Xraybtn;
+        private System.Windows.Forms.Button Imagingbtn;
         private System.Windows.Forms.Button Finishbtn;
     }
 }

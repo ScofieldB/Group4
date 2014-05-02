@@ -14,11 +14,11 @@ namespace Hospital {
         private Form homeScreen;
         private PatientGetSet pat = new PatientGetSet();
         private Facilities fac = new Facilities();
+        private FinanceCmbItem typeBooked;
 
         //Global variables
-        string UserID; //String value of the UserID/StaffID
-        string Role; //String value of the role User logged in under.
-        string TypedHistory;
+        private string UserID; //String value of the UserID/StaffID
+        private string Role; //String value of the role User logged in under.
 
         public HospitalSystem() {
             InitializeComponent();
@@ -37,21 +37,21 @@ namespace Hospital {
             InitializeComponent();
             UserID = user;
             Role = role;
-            if(role == "Doctor"){
-                ViewImgbtn.Visible = true;
-                Surgerybtn.Visible = true;
-                Xraybtn.Visible = true;
+            if (role == "Doctor") {
+                ViewImgbtn.Visible = false;
+                Surgerybtn.Visible = false;
+                Imagingbtn.Visible = false;
                 Finishbtn.Visible = false;
 
             } else if (role == "MedTech") {
                 ViewImgbtn.Visible = false;
                 Surgerybtn.Visible = false;
-                Xraybtn.Visible = false;
+                Imagingbtn.Visible = false;
                 Finishbtn.Visible = true;
             }
         }
 
-  
+
 
         /*
          * setHome is used for navigational purposes to and from the
@@ -72,9 +72,24 @@ namespace Hospital {
             PatInfolbl.Text = "Patient Info: \r\n";
             PatInfolbl.Text += pat.getFN() + " " + pat.getSN() + "\r\n";
             currentRoomtxt.Text = "Current Room: " + pat.getRoom();
-            //Check if date is db equivalent of Null
+
             if (pat.getDOB() != blank) {
                 PatInfolbl.Text += pat.getDOB();
+            }
+
+            if (Role == "Doctor") {
+                Finishbtn.Visible = false;
+                if (pat.getRoom() == "E100") {
+                    Surgerybtn.Visible = true;
+                    Imagingbtn.Visible = true;
+                } else {
+                    Surgerybtn.Visible = false;
+                    Imagingbtn.Visible = false;
+                }
+                
+            } else {
+                Finishbtn.Visible = true;
+
             }
         }
 
@@ -91,7 +106,7 @@ namespace Hospital {
         }
 
 
-        
+
         /*
          * When a search via Surname is undertaken then a patients first name, 
          * surname, date of birth and current room location are displayed.
@@ -109,7 +124,7 @@ namespace Hospital {
                 } else if (patients.Length == 1) {
                     setPatient(patients[0]);
                 } else {
-                    ChoosePatient choosePat = new ChoosePatient(UserID, homeScreen, ActiveForm, Surname, patients);
+                    ChoosePatient choosePat = new ChoosePatient(UserID, Role, homeScreen, this, Surname, patients);
                     ActiveForm.Close();
                     choosePat.Show();
                 }
@@ -120,6 +135,15 @@ namespace Hospital {
             }
         }
 
+        private void updatePatient() {
+            pat = Patient.SearchPID(pat.getPatient());
+
+            currentRoomtxt.Text = "Current Room: " + pat.getRoom();
+            addHistory("Patiet is booked for " + typeBooked.ToString());
+            Surgerybtn.Visible = false;
+            Imagingbtn.Visible = false;
+        }
+
 
         /*
          * Books patient for a Surgery and display message of completion
@@ -128,16 +152,20 @@ namespace Hospital {
         private void Surgerybtn_Click(object sender, EventArgs e) {
 
             if (pat.getPatient() != -1) {
-                bool success = fac.bookSurgery(pat);
-                if (success == true) {
-                    MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for surgery.", "Surgery booked",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-
-                    pat = Patient.SearchPID(pat.getPatient());
-
-                    currentRoomtxt.Text = "Current Room: " + pat.getRoom();
-                } else {
-                    MessageBox.Show("Patient surgery was not booked.", "Surgery not booked",
+                Finance finance = new Finance("Surgery", this);
+                finance.ShowDialog();
+                if (typeBooked != null) {
+                    bool success = fac.bookSurgery(pat, typeBooked);
+                    if (success == true) {
+                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.ToString(), "Surgery booked",
+                        MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        updatePatient();
+                    } else {
+                        MessageBox.Show("Patient surgery was not booked.", "Surgery not booked",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } else { //Should never occur.
+                    MessageBox.Show("Somethign went wrong. Please try again", "Please try again",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             } else {
@@ -146,24 +174,33 @@ namespace Hospital {
             }
         }
 
+        public void setBookedType(FinanceCmbItem type) {
+            typeBooked = type;
+        }
+
 
         /*
-         * Books patient for a Xray and display message of completion
+         * Books patient for a Imaging and display message of completion
          * or error.
          */
-        private void Xraybtn_Click(object sender, EventArgs e) {
+        private void Imagingbtn_Click(object sender, EventArgs e) {
 
-            if(pat.getPatient() != -1){
-                bool success = fac.bookImaging(pat);
-                if (success == true) {
-                    MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for Xray.", "Xray booked",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            if (pat.getPatient() != -1) {
+                Finance finance = new Finance("Imaging", this);
+                finance.ShowDialog();
+                if (typeBooked != null) {
+                    bool success = fac.bookImaging(pat);
+                    if (success == true) {
+                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for Xray.", "Xray booked",
+                        MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        updatePatient();
 
-                    pat = Patient.SearchPID(pat.getPatient());
-
-                    currentRoomtxt.Text = "Current Room: " + pat.getRoom();
-                } else {
-                    MessageBox.Show("Patient Xray was not booked.", "Xray not booked",
+                    } else {
+                        MessageBox.Show("Patient Xray was not booked.", "Xray not booked",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } else { //Should never occur.
+                    MessageBox.Show("Somethign went wrong. Please try again", "Please try again",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             } else {
@@ -181,27 +218,27 @@ namespace Hospital {
             if (pat.getPatient() != -1) {
                 fac.returnPatientToDoctor(pat);
                 pat = Patient.SearchPID(pat.getPatient());
-                currentRoomtxt.Text = "Current Room: " + pat.getRoom(); 
+                currentRoomtxt.Text = "Current Room: " + pat.getRoom();
             } else {
                 MessageBox.Show("Please search for a patient.", "Patient Search required",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void addHistorybtn_Click(object sender, EventArgs e)                //add history
-        {
-            TypedHistory = addHistorytbx.Text;
+        private void addHistorybtn_Click(object sender, EventArgs e) { //add history input via user
+            addHistory(addHistorytbx.Text);
+        }
 
+        private void addHistory(string history) {
             SqlConnection con = DBCon.DBConnect();
             con.Open();
             SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
             command.Parameters.AddWithValue("@pid", pat.getPatient());
             command.Parameters.AddWithValue("@userid", UserID);
-            command.Parameters.AddWithValue("@typedhistory", TypedHistory);
+            command.Parameters.AddWithValue("@typedhistory", history);
             command.ExecuteNonQuery();
-            updateTable(pat.getPatient());
             con.Close();
-
+            updateTable(pat.getPatient());
         }
 
         private void updateTable(int PID)                   //view history
