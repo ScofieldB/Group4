@@ -99,13 +99,19 @@ namespace Hospital {
             Close();
         }
 
-
+        // Allows the user to view images of the selected patient
         private void ViewImgbtn_Click(object sender, EventArgs e) {
-            TestResultViewer Tests = new TestResultViewer();
-            Tests.Show();
+            if (pat.getPatient() != -1)
+            {
+                TestResultViewer Tests = new TestResultViewer();
+                Tests.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please search for a patient.", "Patient Search required",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
-
 
         /*
          * When a search via Surname is undertaken then a patients first name, 
