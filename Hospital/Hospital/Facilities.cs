@@ -82,10 +82,13 @@ namespace Hospital {
                     updateFacilities(pat, newRoomCapacity, newRoom);
                 }
 
-                command.CommandText = "UPDATE [INB201].[dbo].[Patient] SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
-                command.Parameters.AddWithValue("@cost", cost);
-                command.Parameters.AddWithValue("patID", pat.getPatient());
-                command.ExecuteNonQuery();
+                //If user has no Private cover then charge the patient
+                if (pat.getCoverT() == 0) {
+                    command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
+                    command.Parameters.AddWithValue("@cost", cost);
+                    command.Parameters.AddWithValue("patID", pat.getPatient());
+                    command.ExecuteNonQuery();
+                }
 
                 con.Close();
             }

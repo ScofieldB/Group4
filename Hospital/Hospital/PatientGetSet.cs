@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Hospital {
     public class PatientGetSet {
 
-        private int patient = -1, phone, mobile, covertype, covernumber, kinphone;
+        private int patient = -1, phone, mobile, covertype, covernumber, kinphone, charges;
 
         private string firstname, surname, address, allergies, nextofkin, gender, room;
 
@@ -50,6 +50,12 @@ namespace Hospital {
         }
         public void setKP(int KP) {
             kinphone = KP;
+        }
+        public int getCharges() {
+            return charges;
+        }
+        public void setCharges(int newCharge) {
+            charges = newCharge;
         }
         public string getFN() {
             return firstname;

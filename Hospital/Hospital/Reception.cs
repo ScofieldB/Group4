@@ -74,6 +74,7 @@ namespace Hospital {
             Altxt.Text = pat.getAllergies();
             statusCmb.SelectedIndex = 0;
             CurrentRoomlbl.Text = pat.getRoom().ToString();
+
             Admitbtn.Visible = true;
 
             if (pat.getRoom() == "0") {
@@ -295,7 +296,8 @@ namespace Hospital {
             if (PIDtxt.Text != "" && PIDtxt.Text != "0" && CurrentRoomlbl.Text == "0") {
                 bool success = fac.admitPatient(pat.getPatient());
                 if (success == true) {
-                    MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now admitted.", "Patient Admitted",
+                    Patient.updateAdmitCharge(pat.getPatient(), pat.getCoverT());
+                    MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now admitted. -> " + pat.getCharges(), "Patient Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     pat = Patient.SearchPID(pat.getPatient());
                     CurrentRoomlbl.Text = pat.getRoom();
@@ -444,9 +446,14 @@ namespace Hospital {
         }
 
         private void Dischargebtn_Click(object sender, EventArgs e) {
-            Patient.DischargePatient(pat);
-            MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged.", "Patient Discharged",
-                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            int charges = Patient.DischargePatient(pat);
+            MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged with a final bill of $" 
+                            + charges, "Patient Discharged", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            
+            //--------------------------
+            //Export charges to PDF Bill here
+            //--------------------------
+
             pat = Patient.SearchPID(pat.getPatient());
             CurrentRoomlbl.Text = pat.getRoom();
             Dischargebtn.Visible = false;

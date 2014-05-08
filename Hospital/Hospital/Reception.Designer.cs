@@ -463,9 +463,10 @@
             // 
             this.covTypeCmb.FormattingEnabled = true;
             this.covTypeCmb.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2"});
+            "No Cover",
+            "Small",
+            "Medium",
+            "Premium"});
             this.covTypeCmb.Location = new System.Drawing.Point(564, 287);
             this.covTypeCmb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.covTypeCmb.Name = "covTypeCmb";
