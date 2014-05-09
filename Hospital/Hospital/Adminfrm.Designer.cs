@@ -31,12 +31,13 @@
             this.Usernamelbl = new System.Windows.Forms.Label();
             this.Rolelbl = new System.Windows.Forms.Label();
             this.Rolecmb = new System.Windows.Forms.ComboBox();
+            this.reportbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Newbtn
             // 
             this.Newbtn.Location = new System.Drawing.Point(150, 150);
-            this.Newbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Newbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Newbtn.Name = "Newbtn";
             this.Newbtn.Size = new System.Drawing.Size(76, 19);
             this.Newbtn.TabIndex = 0;
@@ -47,7 +48,7 @@
             // Deletebtn
             // 
             this.Deletebtn.Location = new System.Drawing.Point(312, 150);
-            this.Deletebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Deletebtn.Margin = new System.Windows.Forms.Padding(2);
             this.Deletebtn.Name = "Deletebtn";
             this.Deletebtn.Size = new System.Drawing.Size(70, 19);
             this.Deletebtn.TabIndex = 1;
@@ -58,7 +59,7 @@
             // Logoutbtn
             // 
             this.Logoutbtn.Location = new System.Drawing.Point(460, 10);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Logoutbtn.Name = "Logoutbtn";
             this.Logoutbtn.Size = new System.Drawing.Size(56, 19);
             this.Logoutbtn.TabIndex = 2;
@@ -80,7 +81,7 @@
             // Usernametxt
             // 
             this.Usernametxt.Location = new System.Drawing.Point(220, 74);
-            this.Usernametxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Usernametxt.Margin = new System.Windows.Forms.Padding(2);
             this.Usernametxt.Name = "Usernametxt";
             this.Usernametxt.Size = new System.Drawing.Size(173, 20);
             this.Usernametxt.TabIndex = 8;
@@ -115,16 +116,27 @@
             "Reception",
             "Admin"});
             this.Rolecmb.Location = new System.Drawing.Point(221, 97);
-            this.Rolecmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Rolecmb.Margin = new System.Windows.Forms.Padding(2);
             this.Rolecmb.Name = "Rolecmb";
             this.Rolecmb.Size = new System.Drawing.Size(173, 21);
             this.Rolecmb.TabIndex = 14;
+            // 
+            // reportbtn
+            // 
+            this.reportbtn.Location = new System.Drawing.Point(449, 209);
+            this.reportbtn.Name = "reportbtn";
+            this.reportbtn.Size = new System.Drawing.Size(75, 19);
+            this.reportbtn.TabIndex = 15;
+            this.reportbtn.Text = "Reports";
+            this.reportbtn.UseVisualStyleBackColor = true;
+            this.reportbtn.Click += new System.EventHandler(this.reportbtn_Click);
             // 
             // Adminfrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(536, 240);
+            this.Controls.Add(this.reportbtn);
             this.Controls.Add(this.Rolecmb);
             this.Controls.Add(this.Rolelbl);
             this.Controls.Add(this.Usernametxt);
@@ -133,7 +145,7 @@
             this.Controls.Add(this.Logoutbtn);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.Newbtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Adminfrm";
             this.Text = "Admin";
             this.ResumeLayout(false);
@@ -151,5 +163,6 @@
         private System.Windows.Forms.Label Usernamelbl;
         private System.Windows.Forms.Label Rolelbl;
         private System.Windows.Forms.ComboBox Rolecmb;
+        private System.Windows.Forms.Button reportbtn;
     }
 }

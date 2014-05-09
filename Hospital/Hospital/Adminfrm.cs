@@ -66,7 +66,15 @@ namespace Hospital {
             Usernametxt.Text = "";
         }
 
-
-
+        /*
+         * Opens new window with selection of reports for Admin
+         * Very crude currently, might need to change to a tabular design like receptionist
+         * No logout or back functions implemented yet
+         */
+        private void reportbtn_Click(object sender, EventArgs e) {
+            AdminRepfrm adminrepform = new AdminRepfrm();
+            ActiveForm.Hide();
+            adminrepform.Show();
+        }
     }
 }
