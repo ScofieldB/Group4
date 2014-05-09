@@ -70,8 +70,6 @@ namespace Hospital {
             //Clear users input
             Usernametxt.Text = "";
             Passwordtxt.Text = "";
-
         }
     }
-
 }
