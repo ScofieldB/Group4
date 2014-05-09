@@ -494,7 +494,7 @@ namespace Hospital {
                 //crystalReportViewer1.ReportSource = cryRpt;
                 //crystalReportViewer1.Refresh(); - these are to display the pdf on the recp form
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\Ima\Documents\GitHub\Group4\Hospital\test.pdf"); //output location, may need to be manually changed
-                MessageBox.Show("Exported Successful");
+                MessageBox.Show("Export to PDF Successful.");
             }
             else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
