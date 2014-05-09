@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace Hospital {
     public partial class Reception : Form {
@@ -482,13 +484,17 @@ namespace Hospital {
             con.Close();
         }
 
-        /*Calls GeneratePDF methods, requires some entry into search text box
-         checks for if empty or space, should limit to num/regex or surname*/
+        /*Button click calls relevant crystal report methods for out putting a hard copy
+         issues: currently a stock premade report, need to have it some how take cues from what is
+         searched here. Currently just testing that button click 'generates' and outputs a pdf*/
         private void hardCopybtn_Click(object sender, EventArgs e) {
             if (Surtxt.Text != "" && Surtxt.Text != " ") {
-                //call here
-                MessageBox.Show("Comming Soon.TM", "Soon.TM.",
-                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ReportDocument cryRpt = new ReportDocument();
+                cryRpt.Load(@"C:\Users\Ima\Documents\GitHub\Group4\Hospital\Hospital\CrystalReport1.rpt");//source file location for the premade report, may need to be manually changed
+                //crystalReportViewer1.ReportSource = cryRpt;
+                //crystalReportViewer1.Refresh(); - these are to display the pdf on the recp form
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\Ima\Documents\GitHub\Group4\Hospital\test.pdf"); //output location, may need to be manually changed
+                MessageBox.Show("Exported Successful");
             }
             else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
