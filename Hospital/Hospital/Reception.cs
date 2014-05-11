@@ -486,13 +486,15 @@ namespace Hospital {
 
         /*Button click calls relevant crystal report methods for out putting a hard copy
          issues: currently a stock premade report, need to have it some how take cues from what is
-         searched here. Currently just testing that button click 'generates' and outputs a pdf*/
+         searched here. Currently just testing that button click 'generates' and outputs a pdf
+         
+         Report needs to take PIDtext.Text as input for the select statement run by the crystal report, how do I do this?
+            
+         */
         private void hardCopybtn_Click(object sender, EventArgs e) {
             if (Surtxt.Text != "" && Surtxt.Text != " ") {
                 ReportDocument cryRpt = new ReportDocument();
                 cryRpt.Load(@"C:\Users\Ima\Documents\GitHub\Group4\Hospital\Hospital\CrystalReport1.rpt");//source file location for the premade report, may need to be manually changed
-                //crystalReportViewer1.ReportSource = cryRpt;
-                //crystalReportViewer1.Refresh(); - these are to display the pdf on the recp form
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\Ima\Documents\GitHub\Group4\Hospital\test.pdf"); //output location, may need to be manually changed
                 MessageBox.Show("Export to PDF Successful.");
             }
