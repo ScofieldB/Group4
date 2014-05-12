@@ -14,6 +14,7 @@ namespace Hospital {
     public partial class AdminRepfrm : Form {
 
         private Form home;
+        private Form back;
 
         public AdminRepfrm() {
             InitializeComponent();
@@ -22,14 +23,15 @@ namespace Hospital {
         //On click, generate new instance of AdminReport and exports it.
         private void TestRepbtn_Click(object sender, EventArgs e) {
             ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load(@"C:\Users\Ima\Documents\GitHub\Group4\Hospital\Hospital\AdminReport.rpt");//source file location for the premade report, may need to be manually changed
-            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\Ima\Documents\GitHub\Group4\Hospital\AdminTest.pdf"); //output location, may need to be manually changed
+            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\AdminReport.rpt");//source file location for the premade report, may need to be manually changed
+            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\AdminTest.pdf"); //output location, may need to be manually changed
             MessageBox.Show("Export to PDF Successful.");
         }
 
         // Used to set variable used to go back to login screen
-        public void setHome(Form logout) {
+        public void setHome(Form logout, Form back) {
             home = logout;
+            this.back = back;
         }
 
         private void LogBtn_Click(object sender, EventArgs e) {
@@ -38,7 +40,8 @@ namespace Hospital {
         }
 
         private void BackBtn_Click(object sender, EventArgs e) {
-
+            back.Show();
+            Close();
         }
     }
 }

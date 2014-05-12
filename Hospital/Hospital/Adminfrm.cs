@@ -73,6 +73,7 @@ namespace Hospital {
          */
         private void reportbtn_Click(object sender, EventArgs e) {
             AdminRepfrm adminrepform = new AdminRepfrm();
+            adminrepform.setHome(home, ActiveForm);
             ActiveForm.Hide();
             adminrepform.Show();
         }
