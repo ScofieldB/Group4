@@ -493,16 +493,30 @@ namespace Hospital {
          */
         private void hardCopybtn_Click(object sender, EventArgs e) {
             if (Surtxt.Text != "" && Surtxt.Text != " ") {
+
+                SqlConnection con = DBCon.DBConnect();
+                con.Open();
+                SqlCommand command = new SqlCommand("SELECT Patient.PatientID, Patient.FirstName, Patient.Surname, Patient.Gender, Patient.DOB, Patient.Address, Patient.Phone, Patient.Mobile, Patient.Allergies, Patient.CoverType, Patient.CoverNumber, Patient.Status, Patient.NextOfKin, Patient.NextOfKinPhone, Patient.Room, History.StaffID, History.History, History.Date FROM INB201.dbo.History History INNER JOIN INB201.dbo.Patient Patient ON History.PatientID=Patient.PatientID WHERE Patient.PatientID='" + PIDtxt.Text + "'", con);
+                command.Parameters.AddWithValue("@PID", PIDtxt.Text);
+                command.CommandType = CommandType.Text;
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                DataSet dataset = new DataSet();
+                adapter.Fill(dataset, "DataSet1");
+                
                 ReportDocument cryRpt = new ReportDocument();
+
                 cryRpt.Load(@"C:\Users\Ima\Documents\GitHub\Group4\Hospital\Hospital\CrystalReport1.rpt");//source file location for the premade report, may need to be manually changed
+
+                cryRpt.SetDataSource(dataset.Tables["Patient"]);
+
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\Ima\Documents\GitHub\Group4\Hospital\test.pdf"); //output location, may need to be manually changed
                 MessageBox.Show("Export to PDF Successful.");
+                con.Close();
             }
             else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }
