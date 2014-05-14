@@ -262,6 +262,7 @@ namespace Hospital {
 
         private void clearFields() {
             pat = null;
+            Seatxt.Text = "";
             PIDtxt.Text = "";
             Surtxt.Text = "";
             Firtxt.Text = "";
@@ -327,21 +328,21 @@ namespace Hospital {
         private void Savbtn_Click(object sender, EventArgs e) {
             if (pat != null) {
                 int PID = pat.getPatient();
-                
+
                 string surname;
-                if(Surtxt.Text == ""){
+                if (Surtxt.Text == "") {
                     surname = pat.getSN();
                 } else {
                     surname = Surtxt.Text;
                 }
 
                 string firstname;
-                if(Firtxt.Text == ""){
+                if (Firtxt.Text == "") {
                     firstname = pat.getFN();
                 } else {
                     firstname = Firtxt.Text;
                 }
-                
+
                 DateTime DOB;
                 if (DateTime.TryParse(DOBtxt.Text, out DOB)) {
                     //Do Nothing
@@ -422,7 +423,7 @@ namespace Hospital {
                 command.Parameters.AddWithValue("@room", room);
 
                 command.ExecuteNonQuery();
-                
+
                 //Update labels on screen
                 setPatient(Patient.SearchPID(pat.getPatient()));
                 updateHistory("Update");
@@ -436,9 +437,9 @@ namespace Hospital {
 
         private void Dischargebtn_Click(object sender, EventArgs e) {
             int charges = Patient.DischargePatient(pat);
-            MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged with a final bill of $" 
+            MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged with a final bill of $"
                             + charges, "Patient Discharged", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            
+
             //--------------------------
             //Export charges to PDF Bill here
             //--------------------------
@@ -452,8 +453,8 @@ namespace Hospital {
 
         private void updateHistory(string historyType) {
             string TypedHistory;
-            
-            if(historyType == "Admitted"){
+
+            if (historyType == "Admitted") {
                 TypedHistory = historyType + " to Hospital";
             } else if (historyType == "Discharged") {
                 TypedHistory = historyType + " from Hospital";
@@ -501,8 +502,7 @@ namespace Hospital {
 
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\Ima\Documents\GitHub\Group4\Hospital\test.pdf"); //output location, may need to be manually changed
                 MessageBox.Show("Export to PDF Successful.");
-            }
-            else {
+            } else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

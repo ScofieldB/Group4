@@ -10,12 +10,12 @@ namespace Hospital {
      * A object to represent a user, that stores username, role and if password has been confirmed.
      */
     public class User {
-        
+
         private string username;
         private string role;
         private bool confirmed;
 
-        public string getUser(){
+        public string getUser() {
             return username;
         }
 

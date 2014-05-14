@@ -18,11 +18,11 @@ namespace Hospital {
         public Finance(string type, HospitalSystem previous) {
             previousForm = previous;
             InitializeComponent();
-            if(type == "Surgery"){
+            if (type == "Surgery") {
                 Choices("SF%");
-            } else if (type == "Imaging"){
+            } else if (type == "Imaging") {
                 Choices("IF%");
-            }            
+            }
         }
 
         private void Confirmbtn_Click(object sender, EventArgs e) {

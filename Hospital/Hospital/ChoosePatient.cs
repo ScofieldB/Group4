@@ -30,7 +30,7 @@ namespace Hospital {
             InitializeComponent();
             SearchSurnamelbl.Text += Surname;
 
-            for(int i = 0; i < patients.Length; i++){
+            for (int i = 0; i < patients.Length; i++) {
                 chooseCmb.Items.Add("Firstname: " + patients[i].getFN() + "  --  DOB: " + patients[i].getDOB().ToString() +
                     "  --  Address: " + patients[i].getAddress());
             }

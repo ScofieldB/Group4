@@ -16,7 +16,7 @@ namespace Hospital {
          * Update database with patient allocated to Emergency and update
          * the room bed allocations.
          */
-        public bool admitPatient(int patID){
+        public bool admitPatient(int patID) {
             bool admitted = false;
             string room = "";
             int capacity = 0;
@@ -45,7 +45,7 @@ namespace Hospital {
                 command.Parameters.AddWithValue("@cap", capacity - 1);
                 command.Parameters.AddWithValue("@room", room);
                 command.ExecuteNonQuery();
-            
+
             }
 
             con.Close();
@@ -91,12 +91,12 @@ namespace Hospital {
                     command.ExecuteNonQuery();
                 }
 
-           
+
                 command.Parameters.Clear();
                 command.CommandText = "UPDATE Finance SET Counter = Counter + 1 WHERE Type = @type";
                 command.Parameters.AddWithValue("@type", typeBooked.Type);
                 command.ExecuteNonQuery();
-                
+
                 con.Close();
             }
             return success;
@@ -146,7 +146,7 @@ namespace Hospital {
          * Update database when sending patient back to doctor and update
          * room bed allocations.
          */
-        public void returnPatientToDoctor(PatientGetSet pat){
+        public void returnPatientToDoctor(PatientGetSet pat) {
             bool success = false;
             string newRoom = "";
             int newRoomCapacity = 0;

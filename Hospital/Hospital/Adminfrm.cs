@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 namespace Hospital {
     public partial class Adminfrm : Form {
         private Form home;
-        
+
         public Adminfrm() {
             InitializeComponent();
         }

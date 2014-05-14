@@ -39,14 +39,14 @@ namespace Hospital {
 
                 //Check if user has user generated generated password
                 if (user.getConfirmed() == true) {
-                    
+
                     //Opens appropriate form depending on which role user is
                     if (user.getRole() == "Admin") {
                         Adminfrm adminform = new Adminfrm();
                         adminform.setHome(ActiveForm);
                         ActiveForm.Hide();
                         adminform.Show();
-                    } else if(user.getRole() == "Receptionist") {
+                    } else if (user.getRole() == "Receptionist") {
                         Reception reception = new Reception(user.getUser());
                         reception.setHome(ActiveForm);
                         ActiveForm.Hide();
@@ -58,10 +58,10 @@ namespace Hospital {
                         mainprogram.Show();
                     }
 
-                /*
-                 * If password is not user generated but was System Admin generated then ensure 
-                 * user must update password.
-                 */
+                    /*
+                     * If password is not user generated but was System Admin generated then ensure 
+                     * user must update password.
+                     */
                 } else {
                     NewPasswordfrm newpw = new NewPasswordfrm(user.getUser());
                     newpw.Show();

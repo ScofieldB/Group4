@@ -13,7 +13,7 @@ namespace Hospital {
     *happen at each display/close). Generate new patient Id.
     */
     class Patient {
-        
+
 
         public static PatientGetSet SearchPID(int PID) { //not sure about void here
 
@@ -61,7 +61,7 @@ namespace Hospital {
                     pat.setCoverN(reader.GetInt32(10));
                 }
                 pat.setStatus(reader.GetBoolean(11));
-                
+
                 if (!reader.IsDBNull(12)) {
                     pat.setNextKin(reader.GetString(12));
                 } else {
@@ -72,7 +72,7 @@ namespace Hospital {
                 } else {
                     pat.setKP("Unknown");
                 }
-                
+
                 pat.setRoom(reader.GetString(14));
                 pat.setCharges(reader.GetInt32(15));
             }
@@ -100,7 +100,7 @@ namespace Hospital {
 
             reader.Close();
             command.Parameters.Clear();
-            
+
 
             if (Patientcount == 1) {
                 Patients = new PatientGetSet[1];
@@ -135,13 +135,13 @@ namespace Hospital {
                     Patients[i] = pat;
                 }
             }
-            
+
             return Patients;
         }
 
         public void NewPatient() {
 
-       
+
         }
 
         public void UpdatePatient() {

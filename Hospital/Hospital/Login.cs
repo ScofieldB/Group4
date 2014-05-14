@@ -15,7 +15,7 @@ namespace Hospital {
          */
         public User getDetails(string username, string password) {
             User user = new User();
-            
+
             HashPassword hash = new HashPassword();
             password = hash.getHash(password);
             string checkpw = "";

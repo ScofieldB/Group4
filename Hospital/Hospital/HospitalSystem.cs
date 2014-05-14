@@ -88,7 +88,7 @@ namespace Hospital {
                     Imagingbtn.Visible = false;
                     ViewImgbtn.Visible = false;
                 }
-                
+
             } else {
                 Finishbtn.Visible = true;
             }
@@ -102,13 +102,10 @@ namespace Hospital {
 
         // Allows the user to view images of the selected patient
         private void ViewImgbtn_Click(object sender, EventArgs e) {
-            if (pat.getPatient() != -1)
-            {
+            if (pat.getPatient() != -1) {
                 TestResultViewer Tests = new TestResultViewer();
                 Tests.Show();
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("Please search for a patient.", "Patient Search required",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
