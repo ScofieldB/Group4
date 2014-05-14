@@ -40,15 +40,15 @@ namespace Hospital {
                 }
 
                 if (!reader.IsDBNull(6)) {
-                    pat.setPhone(reader.GetInt32(6));
+                    pat.setPhone(reader.GetString(6));
                 } else {
-                    pat.setPhone(0);
+                    pat.setPhone("Unknown");
                 }
 
                 if (!reader.IsDBNull(7)) {
-                    pat.setMobile(reader.GetInt32(7));
+                    pat.setMobile(reader.GetString(7));
                 } else {
-                    pat.setMobile(0);
+                    pat.setMobile("Unknown");
                 }
 
                 if (!reader.IsDBNull(8)) {
@@ -68,9 +68,9 @@ namespace Hospital {
                     pat.setNextKin("");
                 }
                 if (!reader.IsDBNull(13)) {
-                    pat.setKP(reader.GetInt32(13));
+                    pat.setKP(reader.GetString(13));
                 } else {
-                    pat.setKP(0);
+                    pat.setKP("Unknown");
                 }
                 
                 pat.setRoom(reader.GetString(14));

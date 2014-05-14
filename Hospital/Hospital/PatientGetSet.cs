@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Hospital {
     public class PatientGetSet {
 
-        private int patient = -1, phone, mobile, covertype, covernumber, kinphone, charges;
+        private int patient = -1, covertype, covernumber, charges;
 
-        private string firstname, surname, address, allergies, nextofkin, gender, room;
+        private string firstname, surname, address, allergies, nextofkin, gender, room, phone, mobile, kinphone;
 
         private bool status;
 
@@ -21,16 +21,16 @@ namespace Hospital {
         public void setPatient(int PID) {
             patient = PID;
         }
-        public int getPhone() {
+        public string getPhone() {
             return phone;
         }
-        public void setPhone(int PH) {
+        public void setPhone(string PH) {
             phone = PH;
         }
-        public int getMobile() {
+        public string getMobile() {
             return mobile;
         }
-        public void setMobile(int MB) {
+        public void setMobile(string MB) {
             mobile = MB;
         }
         public int getCoverT() {
@@ -45,10 +45,10 @@ namespace Hospital {
         public void setCoverN(int CN) {
             covernumber = CN;
         }
-        public int getKP() {
+        public string getKP() {
             return kinphone;
         }
-        public void setKP(int KP) {
+        public void setKP(string KP) {
             kinphone = KP;
         }
         public int getCharges() {

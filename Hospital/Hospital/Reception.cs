@@ -36,6 +36,7 @@ namespace Hospital {
             //Demo to confirm works by updating label on form
             Welcomelbl.Text = "Welcome User:" + UserID;
 
+            clearFields();
             Admitbtn.Visible = false;
             Newbtn.Visible = true;
             Dischargebtn.Visible = false;
@@ -77,11 +78,12 @@ namespace Hospital {
             statusCmb.SelectedIndex = 0;
             CurrentRoomlbl.Text = pat.getRoom().ToString();
 
-            Admitbtn.Visible = true;
 
             if (pat.getRoom() == "0") {
+                Admitbtn.Visible = true;
                 Dischargebtn.Visible = false;
             } else {
+                Admitbtn.Visible = false;
                 Dischargebtn.Visible = true;
             }
 
@@ -137,8 +139,8 @@ namespace Hospital {
 
             string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
             "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
-            "Room) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
-            " @nokp, @room); SET @PATID = SCOPE_IDENTITY();");
+            "Room, TotalCharges) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
+            " @nokp, @room, 0); SET @PATID = SCOPE_IDENTITY();");
 
             SqlCommand command = new SqlCommand(insertquery, con);
 
@@ -178,18 +180,16 @@ namespace Hospital {
                 command.Parameters.Add("@add", System.Data.SqlDbType.NVarChar, 500).Value = "Unknown";
             }
 
-            int homePhone;
-            if (Int32.TryParse(Homtxt.Text, out homePhone)) {
-                command.Parameters.Add("@ph", System.Data.SqlDbType.Int).Value = homePhone;
+            if (Homtxt.Text != "") {
+                command.Parameters.AddWithValue("@ph", Homtxt.Text);
             } else {
-                command.Parameters.Add("@ph", System.Data.SqlDbType.Int).Value = 0;
+                command.Parameters.AddWithValue("@ph", "Unknown");
             }
 
-            int mobPhone;
-            if (Int32.TryParse(Mobtxt.Text, out mobPhone)) {
-                command.Parameters.Add("@mob", System.Data.SqlDbType.Int).Value = mobPhone;
+            if (Mobtxt.Text != "") {
+                command.Parameters.AddWithValue("@mob", Mobtxt.Text);
             } else {
-                command.Parameters.Add("@mob", System.Data.SqlDbType.Int).Value = 0;
+                command.Parameters.AddWithValue("@mob", "Unknown");
             }
 
             if (Altxt.Text != "") {
@@ -223,11 +223,10 @@ namespace Hospital {
                 command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500).Value = "Unknown";
             }
 
-            int NOKNum;
-            if (Int32.TryParse(NOKNtxt.Text, out NOKNum)) {
-                command.Parameters.Add("@nokp", System.Data.SqlDbType.Int).Value = NOKNtxt.Text;
+            if (NOKNtxt.Text != "") {
+                command.Parameters.AddWithValue("@nokp", NOKNtxt.Text);
             } else {
-                command.Parameters.Add("@nokp", System.Data.SqlDbType.Int).Value = 0;
+                command.Parameters.AddWithValue("@nokp", "Unknown");
             }
 
             command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4).Value = "0";
@@ -273,13 +272,16 @@ namespace Hospital {
             Addtxt.Text = "";
             Homtxt.Text = "";
             Mobtxt.Text = "";
-            covTypeCmb.SelectedItem = 0;
+            covTypeCmb.SelectedIndex = 0;
             CovNtxt.Text = "";
             Altxt.Text = "";
             statusCmb.SelectedIndex = 0;
             CurrentRoomlbl.Text = "";
             Savbtn.Visible = false;
             Newbtn.Visible = true;
+            DOBErrLbl.Visible = false;
+            SurErrLbl.Visible = false;
+            FnErrLbl.Visible = false;
         }
 
         /*
@@ -356,28 +358,13 @@ namespace Hospital {
 
                 string nextofkin = NOKtxt.Text;
 
-                int kinphone;
-                if (Int32.TryParse(NOKNtxt.Text, out kinphone)) {
-                    //Do Nothing
-                } else {
-                    kinphone = 0;
-                }
+                string kinphone = NOKNtxt.Text;
 
                 string address = Addtxt.Text;
 
-                int home;
-                if (Int32.TryParse(Homtxt.Text, out home)) {
-                    //Do Nothing
-                } else {
-                    home = 0;
-                }
+                string homePhone = Homtxt.Text;
 
-                int mobile = 0;//Default Value
-                if (Int32.TryParse(Mobtxt.Text, out mobile)) {
-                    //Do Nothing
-                } else {
-                    mobile = 0;
-                }
+                string Mobile = Mobtxt.Text;
 
                 int covertype;
 
@@ -424,8 +411,8 @@ namespace Hospital {
                 command.Parameters.AddWithValue("@gen", gender);
                 command.Parameters.AddWithValue("@dob", DOB);
                 command.Parameters.AddWithValue("@add", address);
-                command.Parameters.AddWithValue("@ph", home);
-                command.Parameters.AddWithValue("@mob", mobile);
+                command.Parameters.AddWithValue("@ph", homePhone);
+                command.Parameters.AddWithValue("@mob", Mobile);
                 command.Parameters.AddWithValue("@all", allergies);
                 command.Parameters.AddWithValue("@covert", covertype);
                 command.Parameters.AddWithValue("@covern", covernum);
