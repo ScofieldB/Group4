@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Hospital {
     class Facilities {
@@ -90,6 +91,12 @@ namespace Hospital {
                     command.ExecuteNonQuery();
                 }
 
+           
+                command.Parameters.Clear();
+                command.CommandText = "UPDATE Finance SET Counter = Counter + 1 WHERE Type = @type";
+                command.Parameters.AddWithValue("@type", typeBooked.Type);
+                command.ExecuteNonQuery();
+                
                 con.Close();
             }
             return success;
@@ -100,8 +107,9 @@ namespace Hospital {
          * Update database that patient is now moved to Imaging room and update
          * room bed allocations.
          */
-        public bool bookImaging(PatientGetSet pat) {
+        public bool bookImaging(PatientGetSet pat, FinanceCmbItem typeBooked) {
             bool success = false;
+            int cost = typeBooked.Cost;
 
             string newRoom = "";
             int newRoomCapacity = 0;
@@ -122,6 +130,11 @@ namespace Hospital {
                 if (success == true) {
                     updateFacilities(pat, newRoomCapacity, newRoom);
                 }
+
+                command.Parameters.Clear();
+                command.CommandText = "UPDATE Finance SET Counter = Counter + 1 WHERE Type = @type";
+                command.Parameters.AddWithValue("@type", typeBooked.Type);
+                command.ExecuteNonQuery();
 
                 con.Close();
             }

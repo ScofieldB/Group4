@@ -44,7 +44,7 @@ namespace Hospital {
                 Finishbtn.Visible = false;
 
             } else if (role == "MedTech") {
-                ViewImgbtn.Visible = false;
+                ViewImgbtn.Visible = true;
                 Surgerybtn.Visible = false;
                 Imagingbtn.Visible = false;
                 Finishbtn.Visible = true;
@@ -82,14 +82,15 @@ namespace Hospital {
                 if (pat.getRoom() == "E100") {
                     Surgerybtn.Visible = true;
                     Imagingbtn.Visible = true;
+                    ViewImgbtn.Visible = true;
                 } else {
                     Surgerybtn.Visible = false;
                     Imagingbtn.Visible = false;
+                    ViewImgbtn.Visible = false;
                 }
                 
             } else {
                 Finishbtn.Visible = true;
-
             }
         }
 
@@ -148,6 +149,7 @@ namespace Hospital {
             addHistory("Patiet is booked for " + typeBooked.ToString());
             Surgerybtn.Visible = false;
             Imagingbtn.Visible = false;
+            ViewImgbtn.Visible = true;
         }
 
 
@@ -195,7 +197,7 @@ namespace Hospital {
                 Finance finance = new Finance("Imaging", this);
                 finance.ShowDialog();
                 if (typeBooked != null) {
-                    bool success = fac.bookImaging(pat);
+                    bool success = fac.bookImaging(pat, typeBooked);
                     if (success == true) {
                         MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for Xray.", "Xray booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
