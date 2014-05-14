@@ -34,6 +34,8 @@
             this.RotateLeftButton = new System.Windows.Forms.Button();
             this.RotateRightButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
+            this.ImageSelectorCB = new System.Windows.Forms.ComboBox();
+            this.addImageBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +51,7 @@
             // 
             // ZoomInButton
             // 
-            this.ZoomInButton.Location = new System.Drawing.Point(646, 102);
+            this.ZoomInButton.Location = new System.Drawing.Point(646, 168);
             this.ZoomInButton.Name = "ZoomInButton";
             this.ZoomInButton.Size = new System.Drawing.Size(75, 23);
             this.ZoomInButton.TabIndex = 1;
@@ -59,7 +61,7 @@
             // 
             // ZoomOutButton
             // 
-            this.ZoomOutButton.Location = new System.Drawing.Point(646, 131);
+            this.ZoomOutButton.Location = new System.Drawing.Point(646, 197);
             this.ZoomOutButton.Name = "ZoomOutButton";
             this.ZoomOutButton.Size = new System.Drawing.Size(75, 23);
             this.ZoomOutButton.TabIndex = 2;
@@ -69,7 +71,7 @@
             // 
             // RotateLeftButton
             // 
-            this.RotateLeftButton.Location = new System.Drawing.Point(646, 198);
+            this.RotateLeftButton.Location = new System.Drawing.Point(646, 264);
             this.RotateLeftButton.Name = "RotateLeftButton";
             this.RotateLeftButton.Size = new System.Drawing.Size(75, 23);
             this.RotateLeftButton.TabIndex = 3;
@@ -79,7 +81,7 @@
             // 
             // RotateRightButton
             // 
-            this.RotateRightButton.Location = new System.Drawing.Point(646, 227);
+            this.RotateRightButton.Location = new System.Drawing.Point(646, 293);
             this.RotateRightButton.Name = "RotateRightButton";
             this.RotateRightButton.Size = new System.Drawing.Size(75, 23);
             this.RotateRightButton.TabIndex = 4;
@@ -89,7 +91,7 @@
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(646, 296);
+            this.BackButton.Location = new System.Drawing.Point(646, 362);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(75, 23);
             this.BackButton.TabIndex = 5;
@@ -97,11 +99,32 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
+            // ImageSelectorCB
+            // 
+            this.ImageSelectorCB.FormattingEnabled = true;
+            this.ImageSelectorCB.Location = new System.Drawing.Point(620, 34);
+            this.ImageSelectorCB.Name = "ImageSelectorCB";
+            this.ImageSelectorCB.Size = new System.Drawing.Size(101, 21);
+            this.ImageSelectorCB.TabIndex = 6;
+            this.ImageSelectorCB.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // addImageBtn
+            // 
+            this.addImageBtn.Location = new System.Drawing.Point(646, 62);
+            this.addImageBtn.Name = "addImageBtn";
+            this.addImageBtn.Size = new System.Drawing.Size(75, 23);
+            this.addImageBtn.TabIndex = 7;
+            this.addImageBtn.Text = "Add";
+            this.addImageBtn.UseVisualStyleBackColor = true;
+            this.addImageBtn.Click += new System.EventHandler(this.addImageBtn_Click);
+            // 
             // TestResultViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 418);
+            this.Controls.Add(this.addImageBtn);
+            this.Controls.Add(this.ImageSelectorCB);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.RotateRightButton);
             this.Controls.Add(this.RotateLeftButton);
@@ -123,6 +146,8 @@
         private System.Windows.Forms.Button RotateLeftButton;
         private System.Windows.Forms.Button RotateRightButton;
         private System.Windows.Forms.Button BackButton;
+        private System.Windows.Forms.ComboBox ImageSelectorCB;
+        private System.Windows.Forms.Button addImageBtn;
 
     }
 }
