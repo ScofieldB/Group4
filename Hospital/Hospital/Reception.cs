@@ -324,6 +324,8 @@ namespace Hospital {
 
         /*
         * Updates currently present information in text fields corrosponding to ID field.
+         * 
+         * Regex the fuck out of this
          */
         private void Savbtn_Click(object sender, EventArgs e) {
             if (pat != null) {
@@ -472,25 +474,24 @@ namespace Hospital {
             con.Close();
         }
 
-        /*Button click calls relevant crystal report methods for out putting a hard copy
-         issues: currently a stock premade report, need to have it some how take cues from what is
-         searched here. Currently just testing that button click 'generates' and outputs a pdf
-         
-         Report needs to take PIDtext.Text as input for the select statement run by the crystal report, how do I do this?
-            
+        /* Function Button click calls relevant crystal report methods for out putting a hard copy
+         * of the searched patients personal details and history, based on predefined report structure.
+         * Report uses PIDtext.Text as a parameter for filtering in crystal report            
          */
         private void hardCopybtn_Click(object sender, EventArgs e) {
             if (Surtxt.Text != "" && Surtxt.Text != " ") {
 
-
+                //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
                 cryRpt.Load(@"C:\Users\Ima\Documents\GitHub\Group4\Hospital\Hospital\CrystalReport1.rpt");//source file location for the premade report, may need to be manually changed
 
+                //Variable delecaration and assignment
                 ParameterFieldDefinitions crParameterFieldDefinitions;
                 ParameterFieldDefinition crParameterFieldDefinition;
                 ParameterValues crParameterValues = new ParameterValues();
                 ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
 
+                //Assigns textbox value to relatable reviving methods in crystal report and assigns values
                 crParameterDiscreteValue.Value = PIDtxt.Text;
                 crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
                 crParameterFieldDefinition = crParameterFieldDefinitions["getPID"];
@@ -500,6 +501,7 @@ namespace Hospital {
                 crParameterValues.Add(crParameterDiscreteValue);
                 crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
 
+                //Exports generated report to PDF format
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\Ima\Documents\GitHub\Group4\Hospital\test.pdf"); //output location, may need to be manually changed
                 MessageBox.Show("Export to PDF Successful.");
             } else {
