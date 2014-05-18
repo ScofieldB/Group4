@@ -32,13 +32,13 @@ namespace Hospital
             try
             {
                 SqlConnection con = DBCon.DBConnect();
-                string query = "SELECT [TestOrdered] FROM [INB201].[dbo].[Tests]";
+                string query = "SELECT TestOrdered FROM [INB201].[dbo].[Tests]";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 con.Open();
                 DataSet ds = new DataSet();
                 da.Fill(ds, "Test");
-                ImageSelectorCB.DisplayMember = "[TestOrdered]";
-                ImageSelectorCB.ValueMember = "[TestOrdered]";
+                ImageSelectorCB.DisplayMember = "TestOrdered";
+                ImageSelectorCB.ValueMember = "TestOrdered";
                 ImageSelectorCB.DataSource = ds.Tables["Test"];
             }
             catch (Exception ex)
@@ -106,11 +106,10 @@ namespace Hospital
             ActiveForm.Close();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+
             if (ImageSelectorCB.SelectedItem != null)
             {
-                DataRowView drv = ImageSelectorCB.SelectedItem as DataRowView;
                 Imagename =  ImageSelectorCB.SelectedValue.ToString();
             }
         }
@@ -123,7 +122,7 @@ namespace Hospital
                 con.Open();
 
                 //Retrieve BLOB from database into DataSet.
-                SqlCommand cmd = new SqlCommand("SELECT [TestResults] FROM [INB201].[dbo].[Tests] WHERE [TestOrdered] =" + Imagename, con);
+                SqlCommand cmd = new SqlCommand("SELECT TestResults FROM [INB201].[dbo].[Tests] WHERE TestOrdered = '" + Imagename + "'", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 da.Fill(ds, "[INB201].[dbo].[Tests]");
@@ -133,7 +132,7 @@ namespace Hospital
                 {   //BLOB is read into Byte array, then used to construct MemoryStream,
                     //then passed to PictureBox.
                     Byte[] byteTestResultsImage = new Byte[0];
-                    byteTestResultsImage = (Byte[])(ds.Tables["[INB201].[dbo].[Tests]"].Rows[RowCount - 1]["[TestResults]"]);
+                    byteTestResultsImage = (Byte[])(ds.Tables["[INB201].[dbo].[Tests]"].Rows[RowCount - 1]["TestResults"]);
                     MemoryStream ImageMemoryStream = new MemoryStream(byteTestResultsImage);
                     pictureBox1.Image = Image.FromStream(ImageMemoryStream);
                 }
@@ -141,6 +140,12 @@ namespace Hospital
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }
+        }
+
+        private void addTestResultLinkBTN_Click(object sender, EventArgs e)
+        {
+            TestResultAdd Tests = new TestResultAdd();
+            Tests.Show();
         } 
     }
 }

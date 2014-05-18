@@ -52,8 +52,8 @@ namespace Hospital
             {
                 //Set up connection to be opened.
                 SqlConnection con = DBCon.DBConnect();
-                SqlCommand cmd = new SqlCommand("INSERT INTO [INB201].[dbo].[Tests] ([TestResults], [DateUploaded]) VALUES (@[TestResults], CurrentDT)", con);
-                String ImageFilePath = @" + FilePathtb.Text + ";
+                SqlCommand cmd = new SqlCommand("INSERT INTO [INB201].[dbo].[Tests] (PatientID, TestOrdered, TestResults, OrderedByStaffID, UploadedByStaffID, DateOrdered, DateUploaded) VALUES (100000, 'xray-test-loaded', @TestResults, 1006, 1006, 13/05/2014, 14/05/2014)", con);
+                String ImageFilePath = @"C:\Users\chris\Desktop\xray-test.jpg";
 
                 //Read jpg into file stream, and from there into Byte array.
                 FileStream ImageFileStream = new FileStream(ImageFilePath, FileMode.Open, FileAccess.Read);
@@ -62,8 +62,8 @@ namespace Hospital
                 ImageFileStream.Close();
 
                 //Create parameter for insert command and add to SqlCommand object.
-                SqlParameter prm = new SqlParameter("@[TestResults]", SqlDbType.VarBinary, bytTestResultsImage.Length, ParameterDirection.Input, false,
-                            0, 0, null, DataRowVersion.Current, bytTestResultsImage);
+                SqlParameter prm = new SqlParameter("@TestResults", SqlDbType.VarBinary, bytTestResultsImage.Length, ParameterDirection.Input, false,
+                          0, 0, null, DataRowVersion.Current,  bytTestResultsImage);
                 cmd.Parameters.Add(prm);
 
                 //Open connection, execute query, close connection.

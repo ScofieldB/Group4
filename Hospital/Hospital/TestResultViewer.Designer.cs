@@ -36,6 +36,7 @@
             this.BackButton = new System.Windows.Forms.Button();
             this.ImageSelectorCB = new System.Windows.Forms.ComboBox();
             this.addImageBtn = new System.Windows.Forms.Button();
+            this.addTestResultLinkBTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,11 +119,22 @@
             this.addImageBtn.UseVisualStyleBackColor = true;
             this.addImageBtn.Click += new System.EventHandler(this.addImageBtn_Click);
             // 
+            // addTestResultLinkBTN
+            // 
+            this.addTestResultLinkBTN.Location = new System.Drawing.Point(646, 117);
+            this.addTestResultLinkBTN.Name = "addTestResultLinkBTN";
+            this.addTestResultLinkBTN.Size = new System.Drawing.Size(75, 23);
+            this.addTestResultLinkBTN.TabIndex = 8;
+            this.addTestResultLinkBTN.Text = "Add new File";
+            this.addTestResultLinkBTN.UseVisualStyleBackColor = true;
+            this.addTestResultLinkBTN.Click += new System.EventHandler(this.addTestResultLinkBTN_Click);
+            // 
             // TestResultViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 418);
+            this.Controls.Add(this.addTestResultLinkBTN);
             this.Controls.Add(this.addImageBtn);
             this.Controls.Add(this.ImageSelectorCB);
             this.Controls.Add(this.BackButton);
@@ -148,6 +160,7 @@
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.ComboBox ImageSelectorCB;
         private System.Windows.Forms.Button addImageBtn;
+        private System.Windows.Forms.Button addTestResultLinkBTN;
 
     }
 }
