@@ -325,7 +325,7 @@ namespace Hospital {
         /*
         * Updates currently present information in text fields corrosponding to ID field.
          * 
-         * Regex the fuck out of this
+         * Regex needed in this
          */
         private void Savbtn_Click(object sender, EventArgs e) {
             if (pat != null) {

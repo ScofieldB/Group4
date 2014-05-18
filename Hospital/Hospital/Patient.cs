@@ -12,7 +12,7 @@ namespace Hospital {
     *info, reception can modify and save patient information, forced? (can just make the update command
     *happen at each display/close). Generate new patient Id.
     */
-    class Patient {
+    public class Patient {
 
 
         public static PatientGetSet SearchPID(int PID) { //not sure about void here

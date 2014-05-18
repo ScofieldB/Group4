@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hospital {
-    class Admin {
+    public class Admin {
 
         private SqlConnection con = DBCon.DBConnect();
 
@@ -41,7 +41,7 @@ namespace Hospital {
                 reader.Close();
                 command.Parameters.Clear();
 
-                //Used for hasing password
+                //Used for hashing password
                 System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
                 byte[] data = System.Text.Encoding.ASCII.GetBytes(Surname);
                 data = x.ComputeHash(data);

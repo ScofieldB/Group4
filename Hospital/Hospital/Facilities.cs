@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Hospital {
-    class Facilities {
+    public class Facilities {
 
         private SqlConnection con = DBCon.DBConnect();
 
@@ -18,7 +18,9 @@ namespace Hospital {
          */
         public bool admitPatient(int patID) {
             bool admitted = false;
+            bool canAdmit = false;
             string room = "";
+            string patRoom = "";
             int capacity = 0;
 
             con.Open();
@@ -27,25 +29,39 @@ namespace Hospital {
             SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read()) {
-                admitted = true;
+                canAdmit = true;
                 room = reader.GetString(0);
                 capacity = reader.GetInt32(1);
             }
 
             reader.Close();
 
-            if (admitted == true) {
-                command.CommandText = "UPDATE Patient SET Room = @room WHERE PatientID = @id";
-                command.Parameters.AddWithValue("@room", room);
+            if (canAdmit == true) {
+                command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
                 command.Parameters.AddWithValue("@id", patID);
-                command.ExecuteNonQuery();
+                reader = command.ExecuteReader();
 
-                command.Parameters.Clear();
-                command.CommandText = "UPDATE Facilities SET Capacity = @cap WHERE Room = @room";
-                command.Parameters.AddWithValue("@cap", capacity - 1);
-                command.Parameters.AddWithValue("@room", room);
-                command.ExecuteNonQuery();
+                while (reader.Read()) {
+                    patRoom = reader.GetString(0);
+                }
+                reader.Close();
 
+                if (patRoom.StartsWith("0")) {
+                    admitted = true;
+                    command.Parameters.Clear();
+                    command.CommandText = "UPDATE Patient SET Room = @room WHERE PatientID = @id";
+                    command.Parameters.AddWithValue("@room", room);
+                    command.Parameters.AddWithValue("@id", patID);
+                    command.ExecuteNonQuery();
+
+                    command.Parameters.Clear();
+                    command.CommandText = "UPDATE Facilities SET Capacity = @cap WHERE Room = @room";
+                    command.Parameters.AddWithValue("@cap", capacity - 1);
+                    command.Parameters.AddWithValue("@room", room);
+                    command.ExecuteNonQuery();
+                } else {
+                    admitted = false;
+                }
             }
 
             con.Close();
@@ -60,7 +76,6 @@ namespace Hospital {
          */
         public bool bookSurgery(PatientGetSet pat, FinanceCmbItem typeBooked) {
             bool success = false;
-            int cost = typeBooked.Cost;
 
             string newRoom = "";
             int newRoomCapacity = 0;
@@ -79,25 +94,16 @@ namespace Hospital {
                 }
                 reader.Close();
 
+                con.Close();
+
                 if (success == true) {
                     updateFacilities(pat, newRoomCapacity, newRoom);
+                    checkCover(pat, typeBooked);      
                 }
 
-                //If user has no Private cover then charge the patient
-                if (pat.getCoverT() == 0) {
-                    command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
-                    command.Parameters.AddWithValue("@cost", cost);
-                    command.Parameters.AddWithValue("patID", pat.getPatient());
-                    command.ExecuteNonQuery();
-                }
+                   
 
-
-                command.Parameters.Clear();
-                command.CommandText = "UPDATE Finance SET Counter = Counter + 1 WHERE Type = @type";
-                command.Parameters.AddWithValue("@type", typeBooked.Type);
-                command.ExecuteNonQuery();
-
-                con.Close();
+                
             }
             return success;
         }
@@ -126,17 +132,12 @@ namespace Hospital {
                 }
 
                 reader.Close();
-
+                con.Close();
                 if (success == true) {
                     updateFacilities(pat, newRoomCapacity, newRoom);
+                    checkCover(pat, typeBooked);      
                 }
 
-                command.Parameters.Clear();
-                command.CommandText = "UPDATE Finance SET Counter = Counter + 1 WHERE Type = @type";
-                command.Parameters.AddWithValue("@type", typeBooked.Type);
-                command.ExecuteNonQuery();
-
-                con.Close();
             }
             return success;
         }
@@ -164,12 +165,13 @@ namespace Hospital {
                 }
 
                 reader.Close();
+                con.Close();
 
                 if (success == true) {
                     updateFacilities(pat, newRoomCapacity, newRoom);
                 }
 
-                con.Close();
+                
             }
         }
 
@@ -180,6 +182,8 @@ namespace Hospital {
         private void updateFacilities(PatientGetSet pat, int newRoomCapacity, string newRoom) {
             int currentRoomCapacity = 0;
             SqlCommand command = new SqlCommand("", con);
+
+            con.Open();
 
             //Find capacity of room patient currently is.
             command.CommandText = "SELECT Capacity FROM Facilities WHERE Room = @room;";
@@ -213,6 +217,8 @@ namespace Hospital {
             command.Parameters.AddWithValue("@room", newRoom);
             command.Parameters.AddWithValue("@id", pat.getPatient());
             command.ExecuteNonQuery();
+
+            con.Close();
         }
 
 
@@ -239,10 +245,31 @@ namespace Hospital {
             }
             reader.Close();
 
-
             command.Parameters.Clear();
             command.CommandText = "UPDATE Facilities SET Capacity = @cap WHERE RoomType = 'Emergency'";
             command.Parameters.AddWithValue("@cap", capacity + 1);
+            command.ExecuteNonQuery();
+
+            con.Close();
+        }
+
+
+
+        private void checkCover(PatientGetSet pat, FinanceCmbItem typeBooked) {
+            SqlCommand command = new SqlCommand("", con);
+            con.Open();
+            //If user has no Private cover then charge the patient
+            if (pat.getCoverT() == 0) {
+                
+                command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
+                command.Parameters.AddWithValue("@cost", typeBooked.Cost);
+                command.Parameters.AddWithValue("patID", pat.getPatient());
+                command.ExecuteNonQuery();
+            }
+
+            command.Parameters.Clear();
+            command.CommandText = "UPDATE Finance SET Counter = Counter + 1 WHERE Type = @type";
+            command.Parameters.AddWithValue("@type", typeBooked.Type);
             command.ExecuteNonQuery();
 
             con.Close();
