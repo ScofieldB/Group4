@@ -80,7 +80,7 @@ namespace Hospital {
             string newRoom = "";
             int newRoomCapacity = 0;
 
-            if (!pat.getRoom().StartsWith("S")) {
+            if (pat.getRoom().StartsWith("E")) {
                 con.Open();
 
                 //Find any available Surgery rooms
@@ -100,9 +100,6 @@ namespace Hospital {
                     updateFacilities(pat, newRoomCapacity, newRoom);
                     checkCover(pat, typeBooked);      
                 }
-
-                   
-
                 
             }
             return success;
@@ -119,7 +116,7 @@ namespace Hospital {
 
             string newRoom = "";
             int newRoomCapacity = 0;
-            if (!pat.getRoom().StartsWith("I")) {
+            if (pat.getRoom().StartsWith("E")) {
                 con.Open();
 
                 SqlCommand command = new SqlCommand("Select Room, Capacity from Facilities WHERE RoomType = 'Imaging' AND Capacity > 0;", con);
@@ -152,10 +149,10 @@ namespace Hospital {
             string newRoom = "";
             int newRoomCapacity = 0;
 
-            if (!pat.getRoom().StartsWith("E")) {
+            if (pat.getRoom().StartsWith("S") || pat.getRoom().StartsWith("I")) {
                 con.Open();
 
-                SqlCommand command = new SqlCommand("Select Room, Capacity from Facilities WHERE RoomType = 'Emergency' AND Capacity > 0;", con);
+                SqlCommand command = new SqlCommand("Select Room, Capacity from [INB201].[dbo].[Facilities] WHERE RoomType = 'Emergency' AND Capacity > 0;", con);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read()) {
@@ -171,7 +168,6 @@ namespace Hospital {
                     updateFacilities(pat, newRoomCapacity, newRoom);
                 }
 
-                
             }
         }
 

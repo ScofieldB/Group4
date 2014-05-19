@@ -224,6 +224,8 @@ namespace Hospital {
                 fac.returnPatientToDoctor(pat);
                 pat = Patient.SearchPID(pat.getPatient());
                 currentRoomtxt.Text = "Current Room: " + pat.getRoom();
+                MessageBox.Show("Procedure completed", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Finishbtn.Visible = false;
             } else {
                 MessageBox.Show("Please search for a patient.", "Patient Search required",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 
 namespace Hospital {
-    class DBCon {
+    public class DBCon {
 
         /*
          * Connection and connection string used to connect to database.

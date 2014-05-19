@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hospital {
-    class HashPassword {
+    public class HashPassword {
 
         /* 
          * getHash is used to encrypt the string paramater into a md5 hashed string and return the 
