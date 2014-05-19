@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using System.Text.RegularExpressions;
 
 namespace Hospital {
     public partial class Reception : Form {
@@ -103,7 +104,8 @@ namespace Hospital {
          * text boxes on screen.
          */
         private void Searchbtn_Click(object sender, EventArgs e) {
-            if (Seatxt.Text != "") {
+            Regex regex = new Regex("^[- a-zA-Z]{1,20}$");//allows lower and upper case english, hypen and space
+            if (regex.IsMatch(Seatxt.Text)) {
                 PatientGetSet[] patients;
                 string Surname = Seatxt.Text;
 
@@ -122,7 +124,7 @@ namespace Hospital {
                     choosePat.Show();
                 }
             } else {
-                MessageBox.Show("Please input a Surname to search.", "Surname must be input",
+                MessageBox.Show("Please input a Surname to search. Englsih aplhabet only with upper and lower case, along with hypen or space with length of 1 to 20.", "Surname must be input",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Admitbtn.Visible = false;
             }
@@ -257,7 +259,6 @@ namespace Hospital {
                 MessageBox.Show("Patient: " + Surtxt.Text + ", " + Firtxt.Text + " is now admitted.", "Patient Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
-
         }
 
         private void clearFields() {
@@ -509,5 +510,7 @@ namespace Hospital {
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //here
     }
 }

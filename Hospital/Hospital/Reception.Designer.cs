@@ -30,12 +30,8 @@
             this.Seatxt = new System.Windows.Forms.TextBox();
             this.Altxt = new System.Windows.Forms.TextBox();
             this.CovNtxt = new System.Windows.Forms.TextBox();
-            this.Mobtxt = new System.Windows.Forms.TextBox();
-            this.Homtxt = new System.Windows.Forms.TextBox();
             this.Addtxt = new System.Windows.Forms.TextBox();
-            this.NOKNtxt = new System.Windows.Forms.TextBox();
             this.NOKtxt = new System.Windows.Forms.TextBox();
-            this.DOBtxt = new System.Windows.Forms.TextBox();
             this.Firtxt = new System.Windows.Forms.TextBox();
             this.Surtxt = new System.Windows.Forms.TextBox();
             this.PIDtxt = new System.Windows.Forms.TextBox();
@@ -67,6 +63,10 @@
             this.statusCmb = new System.Windows.Forms.ComboBox();
             this.CurrentRoomlbl = new System.Windows.Forms.Label();
             this.hardCopybtn = new System.Windows.Forms.Button();
+            this.Homtxt = new System.Windows.Forms.MaskedTextBox();
+            this.Mobtxt = new System.Windows.Forms.MaskedTextBox();
+            this.DOBtxt = new System.Windows.Forms.MaskedTextBox();
+            this.NOKNtxt = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // Welcomelbl
@@ -82,7 +82,7 @@
             // Logoutbtn
             // 
             this.Logoutbtn.Location = new System.Drawing.Point(626, 14);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Logoutbtn.Name = "Logoutbtn";
             this.Logoutbtn.Size = new System.Drawing.Size(82, 24);
             this.Logoutbtn.TabIndex = 1;
@@ -130,20 +130,6 @@
             this.CovNtxt.Size = new System.Drawing.Size(100, 20);
             this.CovNtxt.TabIndex = 58;
             // 
-            // Mobtxt
-            // 
-            this.Mobtxt.Location = new System.Drawing.Point(423, 192);
-            this.Mobtxt.Name = "Mobtxt";
-            this.Mobtxt.Size = new System.Drawing.Size(100, 20);
-            this.Mobtxt.TabIndex = 57;
-            // 
-            // Homtxt
-            // 
-            this.Homtxt.Location = new System.Drawing.Point(423, 153);
-            this.Homtxt.Name = "Homtxt";
-            this.Homtxt.Size = new System.Drawing.Size(100, 20);
-            this.Homtxt.TabIndex = 56;
-            // 
             // Addtxt
             // 
             this.Addtxt.Location = new System.Drawing.Point(423, 114);
@@ -151,26 +137,12 @@
             this.Addtxt.Size = new System.Drawing.Size(286, 20);
             this.Addtxt.TabIndex = 55;
             // 
-            // NOKNtxt
-            // 
-            this.NOKNtxt.Location = new System.Drawing.Point(248, 310);
-            this.NOKNtxt.Name = "NOKNtxt";
-            this.NOKNtxt.Size = new System.Drawing.Size(134, 20);
-            this.NOKNtxt.TabIndex = 52;
-            // 
             // NOKtxt
             // 
             this.NOKtxt.Location = new System.Drawing.Point(248, 271);
             this.NOKtxt.Name = "NOKtxt";
             this.NOKtxt.Size = new System.Drawing.Size(159, 20);
             this.NOKtxt.TabIndex = 51;
-            // 
-            // DOBtxt
-            // 
-            this.DOBtxt.Location = new System.Drawing.Point(248, 193);
-            this.DOBtxt.Name = "DOBtxt";
-            this.DOBtxt.Size = new System.Drawing.Size(134, 20);
-            this.DOBtxt.TabIndex = 48;
             // 
             // Firtxt
             // 
@@ -190,6 +162,7 @@
             // 
             this.PIDtxt.Location = new System.Drawing.Point(111, 114);
             this.PIDtxt.Name = "PIDtxt";
+            this.PIDtxt.ReadOnly = true;
             this.PIDtxt.Size = new System.Drawing.Size(101, 20);
             this.PIDtxt.TabIndex = 41;
             // 
@@ -206,7 +179,7 @@
             // Admitbtn
             // 
             this.Admitbtn.Location = new System.Drawing.Point(10, 175);
-            this.Admitbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Admitbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Admitbtn.Name = "Admitbtn";
             this.Admitbtn.Size = new System.Drawing.Size(82, 24);
             this.Admitbtn.TabIndex = 72;
@@ -373,7 +346,7 @@
             // Dischargebtn
             // 
             this.Dischargebtn.Location = new System.Drawing.Point(10, 175);
-            this.Dischargebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Dischargebtn.Margin = new System.Windows.Forms.Padding(2);
             this.Dischargebtn.Name = "Dischargebtn";
             this.Dischargebtn.Size = new System.Drawing.Size(82, 24);
             this.Dischargebtn.TabIndex = 76;
@@ -389,7 +362,7 @@
             "Male",
             "Female"});
             this.GenderCmb.Location = new System.Drawing.Point(247, 230);
-            this.GenderCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GenderCmb.Margin = new System.Windows.Forms.Padding(2);
             this.GenderCmb.Name = "GenderCmb";
             this.GenderCmb.Size = new System.Drawing.Size(135, 21);
             this.GenderCmb.TabIndex = 77;
@@ -442,7 +415,7 @@
             "Medium",
             "Premium"});
             this.covTypeCmb.Location = new System.Drawing.Point(423, 233);
-            this.covTypeCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.covTypeCmb.Margin = new System.Windows.Forms.Padding(2);
             this.covTypeCmb.Name = "covTypeCmb";
             this.covTypeCmb.Size = new System.Drawing.Size(100, 21);
             this.covTypeCmb.TabIndex = 81;
@@ -454,7 +427,7 @@
             "In-Patient",
             "Out-Patient"});
             this.statusCmb.Location = new System.Drawing.Point(111, 154);
-            this.statusCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusCmb.Margin = new System.Windows.Forms.Padding(2);
             this.statusCmb.Name = "statusCmb";
             this.statusCmb.Size = new System.Drawing.Size(101, 21);
             this.statusCmb.TabIndex = 82;
@@ -479,12 +452,52 @@
             this.hardCopybtn.Visible = false;
             this.hardCopybtn.Click += new System.EventHandler(this.hardCopybtn_Click);
             // 
+            // Homtxt
+            // 
+            this.Homtxt.Location = new System.Drawing.Point(423, 154);
+            this.Homtxt.Mask = "(00)0000-0000";
+            this.Homtxt.Name = "Homtxt";
+            this.Homtxt.Size = new System.Drawing.Size(79, 20);
+            this.Homtxt.TabIndex = 85;
+            this.Homtxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // Mobtxt
+            // 
+            this.Mobtxt.Location = new System.Drawing.Point(423, 188);
+            this.Mobtxt.Mask = "(00)0000-0000";
+            this.Mobtxt.Name = "Mobtxt";
+            this.Mobtxt.Size = new System.Drawing.Size(79, 20);
+            this.Mobtxt.TabIndex = 86;
+            this.Mobtxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // DOBtxt
+            // 
+            this.DOBtxt.Location = new System.Drawing.Point(247, 196);
+            this.DOBtxt.Mask = "00/00/0000";
+            this.DOBtxt.Name = "DOBtxt";
+            this.DOBtxt.Size = new System.Drawing.Size(96, 20);
+            this.DOBtxt.TabIndex = 87;
+            this.DOBtxt.ValidatingType = typeof(System.DateTime);
+            // 
+            // NOKNtxt
+            // 
+            this.NOKNtxt.Location = new System.Drawing.Point(248, 311);
+            this.NOKNtxt.Mask = "(00)0000-0000";
+            this.NOKNtxt.Name = "NOKNtxt";
+            this.NOKNtxt.Size = new System.Drawing.Size(73, 20);
+            this.NOKNtxt.TabIndex = 88;
+            this.NOKNtxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
             // Reception
             // 
             this.AcceptButton = this.Searchbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 418);
+            this.Controls.Add(this.NOKNtxt);
+            this.Controls.Add(this.DOBtxt);
+            this.Controls.Add(this.Mobtxt);
+            this.Controls.Add(this.Homtxt);
             this.Controls.Add(this.hardCopybtn);
             this.Controls.Add(this.CurrentRoomlbl);
             this.Controls.Add(this.statusCmb);
@@ -496,12 +509,8 @@
             this.Controls.Add(this.Dischargebtn);
             this.Controls.Add(this.Altxt);
             this.Controls.Add(this.CovNtxt);
-            this.Controls.Add(this.Mobtxt);
-            this.Controls.Add(this.Homtxt);
             this.Controls.Add(this.Addtxt);
-            this.Controls.Add(this.NOKNtxt);
             this.Controls.Add(this.NOKtxt);
-            this.Controls.Add(this.DOBtxt);
             this.Controls.Add(this.Firtxt);
             this.Controls.Add(this.Surtxt);
             this.Controls.Add(this.PIDtxt);
@@ -529,7 +538,7 @@
             this.Controls.Add(this.Sealbl);
             this.Controls.Add(this.Seatxt);
             this.Controls.Add(this.Searchbtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Reception";
             this.Text = "Reception";
             this.ResumeLayout(false);
@@ -546,12 +555,8 @@
         private System.Windows.Forms.TextBox Seatxt;
         private System.Windows.Forms.TextBox Altxt;
         private System.Windows.Forms.TextBox CovNtxt;
-        private System.Windows.Forms.TextBox Mobtxt;
-        private System.Windows.Forms.TextBox Homtxt;
         private System.Windows.Forms.TextBox Addtxt;
-        private System.Windows.Forms.TextBox NOKNtxt;
         private System.Windows.Forms.TextBox NOKtxt;
-        private System.Windows.Forms.TextBox DOBtxt;
         private System.Windows.Forms.TextBox Firtxt;
         private System.Windows.Forms.TextBox Surtxt;
         private System.Windows.Forms.TextBox PIDtxt;
@@ -583,5 +588,9 @@
         private System.Windows.Forms.ComboBox statusCmb;
         private System.Windows.Forms.Label CurrentRoomlbl;
         private System.Windows.Forms.Button hardCopybtn;
+        private System.Windows.Forms.MaskedTextBox Homtxt;
+        private System.Windows.Forms.MaskedTextBox Mobtxt;
+        private System.Windows.Forms.MaskedTextBox DOBtxt;
+        private System.Windows.Forms.MaskedTextBox NOKNtxt;
     }
 }
