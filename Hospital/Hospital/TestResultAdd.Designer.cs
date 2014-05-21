@@ -81,7 +81,9 @@
             this.Controls.Add(this.Uploadbtn);
             this.Controls.Add(this.FilePathtb);
             this.Controls.Add(this.Loadbtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TestResultAdd";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TestResultAdd";
             this.ResumeLayout(false);
             this.PerformLayout();

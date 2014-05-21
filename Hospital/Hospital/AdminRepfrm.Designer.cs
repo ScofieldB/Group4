@@ -78,7 +78,9 @@
             this.Controls.Add(this.LogBtn);
             this.Controls.Add(this.TestRepbtn);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminRepfrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminRepfrm";
             this.ResumeLayout(false);
             this.PerformLayout();

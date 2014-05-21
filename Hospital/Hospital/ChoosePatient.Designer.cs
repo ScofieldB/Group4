@@ -53,7 +53,7 @@
             // 
             this.chooseCmb.FormattingEnabled = true;
             this.chooseCmb.Location = new System.Drawing.Point(32, 118);
-            this.chooseCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chooseCmb.Margin = new System.Windows.Forms.Padding(2);
             this.chooseCmb.Name = "chooseCmb";
             this.chooseCmb.Size = new System.Drawing.Size(386, 21);
             this.chooseCmb.TabIndex = 2;
@@ -62,7 +62,7 @@
             // Confirmbtn
             // 
             this.Confirmbtn.Location = new System.Drawing.Point(174, 167);
-            this.Confirmbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Confirmbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Confirmbtn.Name = "Confirmbtn";
             this.Confirmbtn.Size = new System.Drawing.Size(86, 28);
             this.Confirmbtn.TabIndex = 3;
@@ -80,8 +80,10 @@
             this.Controls.Add(this.chooseCmb);
             this.Controls.Add(this.Chooselbl);
             this.Controls.Add(this.SearchSurnamelbl);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ChoosePatient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChoosePatient";
             this.ResumeLayout(false);
             this.PerformLayout();

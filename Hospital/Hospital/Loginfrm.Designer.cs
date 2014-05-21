@@ -107,8 +107,10 @@
             this.Controls.Add(this.Usernamelbl);
             this.Controls.Add(this.Exitbtn);
             this.Controls.Add(this.Loginbtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Loginfrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();

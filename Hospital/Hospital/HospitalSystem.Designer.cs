@@ -42,7 +42,7 @@
             // Logoutbtn
             // 
             this.Logoutbtn.Location = new System.Drawing.Point(619, 22);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Logoutbtn.Name = "Logoutbtn";
             this.Logoutbtn.Size = new System.Drawing.Size(56, 24);
             this.Logoutbtn.TabIndex = 1;
@@ -126,7 +126,7 @@
             // ViewImgbtn
             // 
             this.ViewImgbtn.Location = new System.Drawing.Point(562, 303);
-            this.ViewImgbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ViewImgbtn.Margin = new System.Windows.Forms.Padding(2);
             this.ViewImgbtn.Name = "ViewImgbtn";
             this.ViewImgbtn.Size = new System.Drawing.Size(112, 24);
             this.ViewImgbtn.TabIndex = 41;
@@ -138,7 +138,7 @@
             // Surgerybtn
             // 
             this.Surgerybtn.Location = new System.Drawing.Point(562, 332);
-            this.Surgerybtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Surgerybtn.Margin = new System.Windows.Forms.Padding(2);
             this.Surgerybtn.Name = "Surgerybtn";
             this.Surgerybtn.Size = new System.Drawing.Size(112, 24);
             this.Surgerybtn.TabIndex = 42;
@@ -150,7 +150,7 @@
             // Imagingbtn
             // 
             this.Imagingbtn.Location = new System.Drawing.Point(562, 362);
-            this.Imagingbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Imagingbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Imagingbtn.Name = "Imagingbtn";
             this.Imagingbtn.Size = new System.Drawing.Size(112, 24);
             this.Imagingbtn.TabIndex = 43;
@@ -162,7 +162,7 @@
             // Finishbtn
             // 
             this.Finishbtn.Location = new System.Drawing.Point(562, 303);
-            this.Finishbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Finishbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Finishbtn.Name = "Finishbtn";
             this.Finishbtn.Size = new System.Drawing.Size(112, 24);
             this.Finishbtn.TabIndex = 44;
@@ -189,9 +189,11 @@
             this.Controls.Add(this.Sealbl);
             this.Controls.Add(this.Seatxt);
             this.Controls.Add(this.Logoutbtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "HospitalSystem";
             this.Text = "1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -66,7 +66,7 @@
             // NewPwtxt
             // 
             this.NewPwtxt.Location = new System.Drawing.Point(186, 93);
-            this.NewPwtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NewPwtxt.Margin = new System.Windows.Forms.Padding(2);
             this.NewPwtxt.Name = "NewPwtxt";
             this.NewPwtxt.PasswordChar = '*';
             this.NewPwtxt.Size = new System.Drawing.Size(172, 20);
@@ -75,7 +75,7 @@
             // VerifyPwtxt
             // 
             this.VerifyPwtxt.Location = new System.Drawing.Point(186, 131);
-            this.VerifyPwtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.VerifyPwtxt.Margin = new System.Windows.Forms.Padding(2);
             this.VerifyPwtxt.Name = "VerifyPwtxt";
             this.VerifyPwtxt.PasswordChar = '*';
             this.VerifyPwtxt.Size = new System.Drawing.Size(172, 20);
@@ -84,7 +84,7 @@
             // NewUserbtn
             // 
             this.NewUserbtn.Location = new System.Drawing.Point(186, 179);
-            this.NewUserbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NewUserbtn.Margin = new System.Windows.Forms.Padding(2);
             this.NewUserbtn.Name = "NewUserbtn";
             this.NewUserbtn.Size = new System.Drawing.Size(56, 19);
             this.NewUserbtn.TabIndex = 5;
@@ -95,7 +95,7 @@
             // Cancelbtn
             // 
             this.Cancelbtn.Location = new System.Drawing.Point(299, 179);
-            this.Cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Cancelbtn.Name = "Cancelbtn";
             this.Cancelbtn.Size = new System.Drawing.Size(56, 19);
             this.Cancelbtn.TabIndex = 6;
@@ -116,8 +116,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Titlelbl);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NewPasswordfrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewPassword";
             this.ResumeLayout(false);
             this.PerformLayout();

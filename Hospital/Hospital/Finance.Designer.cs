@@ -43,7 +43,7 @@
             // 
             this.Choicescmb.FormattingEnabled = true;
             this.Choicescmb.Location = new System.Drawing.Point(51, 83);
-            this.Choicescmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Choicescmb.Margin = new System.Windows.Forms.Padding(2);
             this.Choicescmb.Name = "Choicescmb";
             this.Choicescmb.Size = new System.Drawing.Size(331, 21);
             this.Choicescmb.TabIndex = 1;
@@ -51,7 +51,7 @@
             // Confirmbtn
             // 
             this.Confirmbtn.Location = new System.Drawing.Point(122, 158);
-            this.Confirmbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Confirmbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Confirmbtn.Name = "Confirmbtn";
             this.Confirmbtn.Size = new System.Drawing.Size(56, 19);
             this.Confirmbtn.TabIndex = 2;
@@ -62,7 +62,7 @@
             // Cancelbtn
             // 
             this.Cancelbtn.Location = new System.Drawing.Point(256, 158);
-            this.Cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Cancelbtn.Name = "Cancelbtn";
             this.Cancelbtn.Size = new System.Drawing.Size(56, 19);
             this.Cancelbtn.TabIndex = 3;
@@ -80,8 +80,10 @@
             this.Controls.Add(this.Confirmbtn);
             this.Controls.Add(this.Choicescmb);
             this.Controls.Add(this.Chooselbl);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Finance";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Finance";
             this.ResumeLayout(false);
             this.PerformLayout();

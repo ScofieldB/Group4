@@ -70,6 +70,7 @@ namespace Hospital
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
+                ActiveForm.Close();
             }
             catch (Exception ex)
             { MessageBox.Show(ex.Message); }

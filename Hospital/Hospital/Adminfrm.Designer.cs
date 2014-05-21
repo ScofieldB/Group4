@@ -146,8 +146,10 @@
             this.Controls.Add(this.Logoutbtn);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.Newbtn);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Adminfrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
             this.ResumeLayout(false);
             this.PerformLayout();
