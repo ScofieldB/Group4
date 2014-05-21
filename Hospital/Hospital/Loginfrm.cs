@@ -71,5 +71,6 @@ namespace Hospital {
             Usernametxt.Text = "";
             Passwordtxt.Text = "";
         }
+
     }
 }
