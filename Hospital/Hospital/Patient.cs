@@ -139,42 +139,11 @@ namespace Hospital {
             return Patients;
         }
 
-        public void NewPatient() {
-
-
-        }
-
-        public void UpdatePatient() {
-
-        }
-
 
         public static int DischargePatient(PatientGetSet pat) {
-            int totalCharges = 0;
             Facilities fac = new Facilities();
-            fac.DischargePatient(pat.getPatient());
-
-            SqlConnection con = DBCon.DBConnect();
-
-            con.Open();
-
-            SqlCommand command = new SqlCommand("SELECT TotalCharges FROM Patient WHERE PatientID = @patID", con);
-            command.Parameters.AddWithValue("@patID", pat.getPatient());
-            SqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read()) {
-                totalCharges = reader.GetInt32(0);
-            }
-
-            reader.Close();
-
-            command.Parameters.Clear();
-            command.CommandText = "UPDATE Patient SET TotalCharges = 0 WHERE PatientID = @patID";
-            command.Parameters.AddWithValue("patID", pat.getPatient());
-            command.ExecuteNonQuery();
-
-            con.Close();
-
+            int totalCharges = fac.DischargePatient(pat.getPatient());
+    
             return totalCharges;
         }
 
@@ -203,7 +172,6 @@ namespace Hospital {
 
             con.Close();
 
-            //
         }
     }
 }

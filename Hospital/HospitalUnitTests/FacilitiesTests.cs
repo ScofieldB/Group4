@@ -10,7 +10,7 @@ namespace HospitalUnitTests {
 
         //Ensure Patient 100025 is currently not addmitted before running this test.
         [TestMethod]
-        public void TestAdmitPatientFirstTime() {
+        public void TestAdmitPatientValid() {
             bool result = facilities.admitPatient(100025);
             Assert.IsTrue(result);
             facilities.DischargePatient(100025);
@@ -48,26 +48,10 @@ namespace HospitalUnitTests {
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
         public void TestDischargePatientInvalidId() {
-            string room = "";
             int patId = 25;
             facilities.DischargePatient(patId);
-
-            SqlConnection con = Hospital.DBCon.DBConnect();
-
-            con.Open();
-            SqlCommand command = new SqlCommand(null, con);
-            command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
-            command.Parameters.AddWithValue("@id", patId);
-
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read()) {
-                room = reader.GetString(0);
-            }
-            reader.Close();
-            con.Close();
-
-            Assert.AreEqual("", room, true);
         }
 
 
@@ -98,8 +82,6 @@ namespace HospitalUnitTests {
 
         //Test BookSurgery
 
-
-        //Ensure Patient 100015 is currently addmitted and in room E100 before running this test.
         [TestMethod]
         public void TestBookSurgeryValid() {
             Hospital.PatientGetSet pat = new Hospital.PatientGetSet();
@@ -176,7 +158,6 @@ namespace HospitalUnitTests {
 
         // Test bookImaging
 
-        //Ensure Patient 100013 is currently addmitted and in room E100 before running this test.
         [TestMethod]
         public void TestBookImagingValid() {
             Hospital.PatientGetSet pat = new Hospital.PatientGetSet();

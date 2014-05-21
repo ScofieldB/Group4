@@ -152,7 +152,7 @@ namespace Hospital {
             if (pat.getRoom().StartsWith("S") || pat.getRoom().StartsWith("I")) {
                 con.Open();
 
-                SqlCommand command = new SqlCommand("Select Room, Capacity from [INB201].[dbo].[Facilities] WHERE RoomType = 'Emergency' AND Capacity > 0;", con);
+                SqlCommand command = new SqlCommand("Select Room, Capacity from Facilities WHERE RoomType = 'Emergency' AND Capacity > 0;", con);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read()) {
@@ -221,32 +221,62 @@ namespace Hospital {
         /*
          * Discharges patient from the Emergency room.
          */
-        public void DischargePatient(int patID) {
+        public int DischargePatient(int patId) {
             int capacity = 0;
-
-            con.Open();
-
-            SqlCommand command = new SqlCommand("UPDATE Patient SET Room = '0' WHERE PatientID = @id", con);
-            command.Parameters.AddWithValue("@id", patID);
-            command.ExecuteNonQuery();
-
-            command.Parameters.Clear();
+            int totalCharges = 0;
 
 
-            command.CommandText = "SELECT Capacity FROM Facilities WHERE RoomType = 'Emergency'";
-            SqlDataReader reader = command.ExecuteReader();
+            PatientGetSet pat = Patient.SearchPID(patId); ;
 
-            while (reader.Read()) {
-                capacity = reader.GetInt32(0);
+            if (pat.getRoom().StartsWith("E")) {
+
+                con.Open();
+    
+                SqlCommand command = new SqlCommand(null, con);
+
+                command.Parameters.Clear();
+                command.CommandText = "UPDATE Patient SET Room = '0' WHERE PatientID = @id";
+                command.Parameters.AddWithValue("@id", pat.getPatient());
+                command.ExecuteNonQuery();
+
+                command.Parameters.Clear();
+
+
+                command.CommandText = "SELECT Capacity FROM Facilities WHERE RoomType = 'Emergency'";
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read()) {
+                    capacity = reader.GetInt32(0);
+                }
+                reader.Close();
+
+                command.Parameters.Clear();
+                command.CommandText = "UPDATE Facilities SET Capacity = @cap WHERE RoomType = 'Emergency'";
+                command.Parameters.AddWithValue("@cap", capacity + 1);
+                command.ExecuteNonQuery();
+
+                command.Parameters.Clear();
+                command.CommandText = "SELECT TotalCharges FROM Patient WHERE PatientID = @patID";
+                command.Parameters.AddWithValue("@patID", pat.getPatient());
+                reader = command.ExecuteReader();
+
+                while (reader.Read()) {
+                    totalCharges = reader.GetInt32(0);
+                }
+
+                reader.Close();
+
+
+                //Clear the charges from the Patient file.
+                command.Parameters.Clear();
+                command.CommandText = "UPDATE Patient SET TotalCharges = 0 WHERE PatientID = @patID";
+                command.Parameters.AddWithValue("patID", pat.getPatient());
+                command.ExecuteNonQuery();
+
+                con.Close();
             }
-            reader.Close();
-
-            command.Parameters.Clear();
-            command.CommandText = "UPDATE Facilities SET Capacity = @cap WHERE RoomType = 'Emergency'";
-            command.Parameters.AddWithValue("@cap", capacity + 1);
-            command.ExecuteNonQuery();
-
-            con.Close();
+            
+            return totalCharges;
         }
 
 

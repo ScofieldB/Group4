@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Hospital {
-    class Login {
+    public class Login {
 
         /*
          * Confirms user password matches that on database and if so
