@@ -20,10 +20,6 @@ namespace Hospital {
         private string UserID; //String value of the UserID/StaffID
         private string Role; //String value of the role User logged in under.
 
-        public HospitalSystem() {
-            InitializeComponent();
-        }
-
 
         /*
          * Costructor that sets up Hopsital form used by doctors and medical technicians.
@@ -48,6 +44,12 @@ namespace Hospital {
                 Surgerybtn.Visible = false;
                 Imagingbtn.Visible = false;
                 Finishbtn.Visible = true;
+
+            } else if (role == "Nurse") {
+                ViewImgbtn.Visible = false;
+                Surgerybtn.Visible = false;
+                Imagingbtn.Visible = false;
+                Finishbtn.Visible = false;
             }
         }
 
@@ -89,8 +91,13 @@ namespace Hospital {
                     ViewImgbtn.Visible = false;
                 }
 
-            } else {
+            } else if (Role == "MedTech") {
                 Finishbtn.Visible = true;
+            } else {
+                Surgerybtn.Visible = false;
+                Finishbtn.Visible = false;
+                Imagingbtn.Visible = false;
+                ViewImgbtn.Visible = false;
             }
         }
 
@@ -162,7 +169,7 @@ namespace Hospital {
                 if (typeBooked != null) {
                     bool success = fac.bookSurgery(pat, typeBooked);
                     if (success == true) {
-                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.ToString(), "Surgery booked",
+                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.ToString(), typeBooked.ToString() + " Surgery booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         updatePatient();
                     } else {
@@ -196,12 +203,12 @@ namespace Hospital {
                 if (typeBooked != null) {
                     bool success = fac.bookImaging(pat, typeBooked);
                     if (success == true) {
-                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for Xray.", "Xray booked",
+                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.Type, typeBooked.ToString() + " booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         updatePatient();
 
                     } else {
-                        MessageBox.Show("Patient Xray was not booked.", "Xray not booked",
+                        MessageBox.Show("Patient " + typeBooked.ToString() + " was not booked.", typeBooked.ToString() + " not booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 } else { //Should never occur.
@@ -248,8 +255,9 @@ namespace Hospital {
             updateTable(pat.getPatient());
         }
 
-        private void updateTable(int PID)                   //view history
-        {
+
+        //view history
+        private void updateTable(int PID) {
             SqlConnection con = DBCon.DBConnect();
             SqlCommand command = new SqlCommand("SELECT StaffID, History, Date FROM History WHERE PatientID = @pid ORDER BY Date DESC", con);
             command.Parameters.AddWithValue("@pid", PID);
