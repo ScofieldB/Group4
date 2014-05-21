@@ -36,7 +36,7 @@
             // Loginbtn
             // 
             this.Loginbtn.Location = new System.Drawing.Point(32, 147);
-            this.Loginbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Loginbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Loginbtn.Name = "Loginbtn";
             this.Loginbtn.Size = new System.Drawing.Size(110, 37);
             this.Loginbtn.TabIndex = 2;
@@ -47,7 +47,7 @@
             // Exitbtn
             // 
             this.Exitbtn.Location = new System.Drawing.Point(194, 147);
-            this.Exitbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Exitbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Exitbtn.Name = "Exitbtn";
             this.Exitbtn.Size = new System.Drawing.Size(110, 37);
             this.Exitbtn.TabIndex = 3;
@@ -79,7 +79,7 @@
             // 
             this.Usernametxt.AcceptsTab = true;
             this.Usernametxt.Location = new System.Drawing.Point(132, 50);
-            this.Usernametxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Usernametxt.Margin = new System.Windows.Forms.Padding(2);
             this.Usernametxt.Name = "Usernametxt";
             this.Usernametxt.Size = new System.Drawing.Size(173, 20);
             this.Usernametxt.TabIndex = 0;
@@ -88,7 +88,7 @@
             // 
             this.Passwordtxt.AcceptsTab = true;
             this.Passwordtxt.Location = new System.Drawing.Point(132, 98);
-            this.Passwordtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Passwordtxt.Margin = new System.Windows.Forms.Padding(2);
             this.Passwordtxt.Name = "Passwordtxt";
             this.Passwordtxt.PasswordChar = '*';
             this.Passwordtxt.Size = new System.Drawing.Size(173, 20);
@@ -99,7 +99,7 @@
             this.AcceptButton = this.Loginbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Azure;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
             this.ClientSize = new System.Drawing.Size(346, 224);
             this.Controls.Add(this.Passwordtxt);
             this.Controls.Add(this.Usernametxt);
@@ -107,7 +107,7 @@
             this.Controls.Add(this.Usernamelbl);
             this.Controls.Add(this.Exitbtn);
             this.Controls.Add(this.Loginbtn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Loginfrm";
             this.Text = "Login";
             this.ResumeLayout(false);

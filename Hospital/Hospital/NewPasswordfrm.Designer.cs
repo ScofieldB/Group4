@@ -36,51 +36,57 @@
             // 
             this.Titlelbl.AutoSize = true;
             this.Titlelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Titlelbl.Location = new System.Drawing.Point(121, 28);
+            this.Titlelbl.Location = new System.Drawing.Point(91, 23);
+            this.Titlelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Titlelbl.Name = "Titlelbl";
-            this.Titlelbl.Size = new System.Drawing.Size(460, 39);
+            this.Titlelbl.Size = new System.Drawing.Size(366, 31);
             this.Titlelbl.TabIndex = 0;
             this.Titlelbl.Text = "Please input a new password";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(142, 118);
+            this.label1.Location = new System.Drawing.Point(106, 96);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 17);
+            this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "New Password";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 164);
+            this.label2.Location = new System.Drawing.Point(78, 133);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 17);
+            this.label2.Size = new System.Drawing.Size(105, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Verify new Password";
             // 
             // NewPwtxt
             // 
-            this.NewPwtxt.Location = new System.Drawing.Point(248, 115);
+            this.NewPwtxt.Location = new System.Drawing.Point(186, 93);
+            this.NewPwtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewPwtxt.Name = "NewPwtxt";
             this.NewPwtxt.PasswordChar = '*';
-            this.NewPwtxt.Size = new System.Drawing.Size(228, 22);
+            this.NewPwtxt.Size = new System.Drawing.Size(172, 20);
             this.NewPwtxt.TabIndex = 3;
             // 
             // VerifyPwtxt
             // 
-            this.VerifyPwtxt.Location = new System.Drawing.Point(248, 161);
+            this.VerifyPwtxt.Location = new System.Drawing.Point(186, 131);
+            this.VerifyPwtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.VerifyPwtxt.Name = "VerifyPwtxt";
             this.VerifyPwtxt.PasswordChar = '*';
-            this.VerifyPwtxt.Size = new System.Drawing.Size(228, 22);
+            this.VerifyPwtxt.Size = new System.Drawing.Size(172, 20);
             this.VerifyPwtxt.TabIndex = 4;
             // 
             // NewUserbtn
             // 
-            this.NewUserbtn.Location = new System.Drawing.Point(248, 220);
+            this.NewUserbtn.Location = new System.Drawing.Point(186, 179);
+            this.NewUserbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.NewUserbtn.Name = "NewUserbtn";
-            this.NewUserbtn.Size = new System.Drawing.Size(75, 23);
+            this.NewUserbtn.Size = new System.Drawing.Size(56, 19);
             this.NewUserbtn.TabIndex = 5;
             this.NewUserbtn.Text = "Update";
             this.NewUserbtn.UseVisualStyleBackColor = true;
@@ -88,19 +94,21 @@
             // 
             // Cancelbtn
             // 
-            this.Cancelbtn.Location = new System.Drawing.Point(399, 220);
+            this.Cancelbtn.Location = new System.Drawing.Point(299, 179);
+            this.Cancelbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Cancelbtn.Name = "Cancelbtn";
-            this.Cancelbtn.Size = new System.Drawing.Size(75, 23);
+            this.Cancelbtn.Size = new System.Drawing.Size(56, 19);
             this.Cancelbtn.TabIndex = 6;
             this.Cancelbtn.Text = "Cancel";
             this.Cancelbtn.UseVisualStyleBackColor = true;
             this.Cancelbtn.Click += new System.EventHandler(this.Cancelbtn_Click);
             // 
-            // NewPassword
+            // NewPasswordfrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 290);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
+            this.ClientSize = new System.Drawing.Size(528, 236);
             this.Controls.Add(this.Cancelbtn);
             this.Controls.Add(this.NewUserbtn);
             this.Controls.Add(this.VerifyPwtxt);
@@ -108,7 +116,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Titlelbl);
-            this.Name = "NewPassword";
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "NewPasswordfrm";
             this.Text = "NewPassword";
             this.ResumeLayout(false);
             this.PerformLayout();

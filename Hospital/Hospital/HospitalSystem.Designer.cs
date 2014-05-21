@@ -41,10 +41,10 @@
             // 
             // Logoutbtn
             // 
-            this.Logoutbtn.Location = new System.Drawing.Point(825, 27);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Logoutbtn.Location = new System.Drawing.Point(619, 22);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Logoutbtn.Name = "Logoutbtn";
-            this.Logoutbtn.Size = new System.Drawing.Size(75, 30);
+            this.Logoutbtn.Size = new System.Drawing.Size(56, 24);
             this.Logoutbtn.TabIndex = 1;
             this.Logoutbtn.Text = "Logout";
             this.Logoutbtn.UseVisualStyleBackColor = true;
@@ -52,10 +52,9 @@
             // 
             // Searchbtn
             // 
-            this.Searchbtn.Location = new System.Drawing.Point(303, 24);
-            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.Searchbtn.Location = new System.Drawing.Point(227, 20);
             this.Searchbtn.Name = "Searchbtn";
-            this.Searchbtn.Size = new System.Drawing.Size(100, 30);
+            this.Searchbtn.Size = new System.Drawing.Size(75, 24);
             this.Searchbtn.TabIndex = 35;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
@@ -64,35 +63,35 @@
             // Sealbl
             // 
             this.Sealbl.AutoSize = true;
-            this.Sealbl.Location = new System.Drawing.Point(9, 30);
-            this.Sealbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Sealbl.Location = new System.Drawing.Point(7, 24);
             this.Sealbl.Name = "Sealbl";
-            this.Sealbl.Size = new System.Drawing.Size(118, 17);
+            this.Sealbl.Size = new System.Drawing.Size(89, 13);
             this.Sealbl.TabIndex = 34;
             this.Sealbl.Text = "Search Surname:";
             // 
             // Seatxt
             // 
-            this.Seatxt.Location = new System.Drawing.Point(135, 25);
-            this.Seatxt.Margin = new System.Windows.Forms.Padding(4);
+            this.Seatxt.Location = new System.Drawing.Point(101, 20);
             this.Seatxt.Name = "Seatxt";
-            this.Seatxt.Size = new System.Drawing.Size(160, 22);
+            this.Seatxt.Size = new System.Drawing.Size(121, 20);
             this.Seatxt.TabIndex = 33;
             // 
             // PatInfolbl
             // 
             this.PatInfolbl.AutoSize = true;
-            this.PatInfolbl.Location = new System.Drawing.Point(653, 23);
+            this.PatInfolbl.Location = new System.Drawing.Point(490, 19);
+            this.PatInfolbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.PatInfolbl.Name = "PatInfolbl";
-            this.PatInfolbl.Size = new System.Drawing.Size(0, 17);
+            this.PatInfolbl.Size = new System.Drawing.Size(0, 13);
             this.PatInfolbl.TabIndex = 36;
             // 
             // currentRoomtxt
             // 
             this.currentRoomtxt.AutoSize = true;
-            this.currentRoomtxt.Location = new System.Drawing.Point(491, 23);
+            this.currentRoomtxt.Location = new System.Drawing.Point(368, 19);
+            this.currentRoomtxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.currentRoomtxt.Name = "currentRoomtxt";
-            this.currentRoomtxt.Size = new System.Drawing.Size(0, 17);
+            this.currentRoomtxt.Size = new System.Drawing.Size(0, 13);
             this.currentRoomtxt.TabIndex = 37;
             // 
             // historyDataGridView
@@ -101,19 +100,17 @@
             this.historyDataGridView.AllowUserToDeleteRows = false;
             this.historyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.historyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.historyDataGridView.Location = new System.Drawing.Point(47, 94);
-            this.historyDataGridView.Margin = new System.Windows.Forms.Padding(4);
+            this.historyDataGridView.Location = new System.Drawing.Point(35, 76);
             this.historyDataGridView.Name = "historyDataGridView";
             this.historyDataGridView.ReadOnly = true;
-            this.historyDataGridView.Size = new System.Drawing.Size(853, 185);
+            this.historyDataGridView.Size = new System.Drawing.Size(640, 150);
             this.historyDataGridView.TabIndex = 38;
             // 
             // addHistorybtn
             // 
-            this.addHistorybtn.Location = new System.Drawing.Point(47, 343);
-            this.addHistorybtn.Margin = new System.Windows.Forms.Padding(4);
+            this.addHistorybtn.Location = new System.Drawing.Point(35, 279);
             this.addHistorybtn.Name = "addHistorybtn";
-            this.addHistorybtn.Size = new System.Drawing.Size(100, 28);
+            this.addHistorybtn.Size = new System.Drawing.Size(75, 23);
             this.addHistorybtn.TabIndex = 39;
             this.addHistorybtn.Text = "Add History";
             this.addHistorybtn.UseVisualStyleBackColor = true;
@@ -121,17 +118,17 @@
             // 
             // addHistorytbx
             // 
-            this.addHistorytbx.Location = new System.Drawing.Point(47, 313);
-            this.addHistorytbx.Margin = new System.Windows.Forms.Padding(4);
+            this.addHistorytbx.Location = new System.Drawing.Point(35, 254);
             this.addHistorytbx.Name = "addHistorytbx";
-            this.addHistorytbx.Size = new System.Drawing.Size(554, 22);
+            this.addHistorytbx.Size = new System.Drawing.Size(416, 20);
             this.addHistorytbx.TabIndex = 40;
             // 
             // ViewImgbtn
             // 
-            this.ViewImgbtn.Location = new System.Drawing.Point(750, 373);
+            this.ViewImgbtn.Location = new System.Drawing.Point(562, 303);
+            this.ViewImgbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ViewImgbtn.Name = "ViewImgbtn";
-            this.ViewImgbtn.Size = new System.Drawing.Size(150, 30);
+            this.ViewImgbtn.Size = new System.Drawing.Size(112, 24);
             this.ViewImgbtn.TabIndex = 41;
             this.ViewImgbtn.Text = "View Image";
             this.ViewImgbtn.UseVisualStyleBackColor = true;
@@ -140,9 +137,10 @@
             // 
             // Surgerybtn
             // 
-            this.Surgerybtn.Location = new System.Drawing.Point(750, 409);
+            this.Surgerybtn.Location = new System.Drawing.Point(562, 332);
+            this.Surgerybtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Surgerybtn.Name = "Surgerybtn";
-            this.Surgerybtn.Size = new System.Drawing.Size(150, 30);
+            this.Surgerybtn.Size = new System.Drawing.Size(112, 24);
             this.Surgerybtn.TabIndex = 42;
             this.Surgerybtn.Text = "Book Surgery";
             this.Surgerybtn.UseVisualStyleBackColor = true;
@@ -151,9 +149,10 @@
             // 
             // Imagingbtn
             // 
-            this.Imagingbtn.Location = new System.Drawing.Point(750, 446);
+            this.Imagingbtn.Location = new System.Drawing.Point(562, 362);
+            this.Imagingbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Imagingbtn.Name = "Imagingbtn";
-            this.Imagingbtn.Size = new System.Drawing.Size(150, 30);
+            this.Imagingbtn.Size = new System.Drawing.Size(112, 24);
             this.Imagingbtn.TabIndex = 43;
             this.Imagingbtn.Text = "Book Imaging";
             this.Imagingbtn.UseVisualStyleBackColor = true;
@@ -162,9 +161,10 @@
             // 
             // Finishbtn
             // 
-            this.Finishbtn.Location = new System.Drawing.Point(750, 373);
+            this.Finishbtn.Location = new System.Drawing.Point(562, 303);
+            this.Finishbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Finishbtn.Name = "Finishbtn";
-            this.Finishbtn.Size = new System.Drawing.Size(150, 30);
+            this.Finishbtn.Size = new System.Drawing.Size(112, 24);
             this.Finishbtn.TabIndex = 44;
             this.Finishbtn.Text = "Finish";
             this.Finishbtn.UseVisualStyleBackColor = true;
@@ -172,9 +172,10 @@
             // 
             // HospitalSystem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 526);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
+            this.ClientSize = new System.Drawing.Size(719, 427);
             this.Controls.Add(this.Finishbtn);
             this.Controls.Add(this.Imagingbtn);
             this.Controls.Add(this.Surgerybtn);
@@ -188,7 +189,7 @@
             this.Controls.Add(this.Sealbl);
             this.Controls.Add(this.Seatxt);
             this.Controls.Add(this.Logoutbtn);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "HospitalSystem";
             this.Text = "1";
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).EndInit();

@@ -32,35 +32,39 @@
             // SearchSurnamelbl
             // 
             this.SearchSurnamelbl.AutoSize = true;
-            this.SearchSurnamelbl.Location = new System.Drawing.Point(37, 54);
+            this.SearchSurnamelbl.Location = new System.Drawing.Point(28, 44);
+            this.SearchSurnamelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SearchSurnamelbl.Name = "SearchSurnamelbl";
-            this.SearchSurnamelbl.Size = new System.Drawing.Size(175, 17);
+            this.SearchSurnamelbl.Size = new System.Drawing.Size(131, 13);
             this.SearchSurnamelbl.TabIndex = 0;
             this.SearchSurnamelbl.Text = "Surname being searched: ";
             // 
             // Chooselbl
             // 
             this.Chooselbl.AutoSize = true;
-            this.Chooselbl.Location = new System.Drawing.Point(40, 125);
+            this.Chooselbl.Location = new System.Drawing.Point(30, 102);
+            this.Chooselbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Chooselbl.Name = "Chooselbl";
-            this.Chooselbl.Size = new System.Drawing.Size(263, 17);
+            this.Chooselbl.Size = new System.Drawing.Size(198, 13);
             this.Chooselbl.TabIndex = 1;
             this.Chooselbl.Text = "Please choose from one of the following:";
             // 
             // chooseCmb
             // 
             this.chooseCmb.FormattingEnabled = true;
-            this.chooseCmb.Location = new System.Drawing.Point(43, 145);
+            this.chooseCmb.Location = new System.Drawing.Point(32, 118);
+            this.chooseCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chooseCmb.Name = "chooseCmb";
-            this.chooseCmb.Size = new System.Drawing.Size(513, 24);
+            this.chooseCmb.Size = new System.Drawing.Size(386, 21);
             this.chooseCmb.TabIndex = 2;
             this.chooseCmb.SelectedIndexChanged += new System.EventHandler(this.chooseCmb_SelectedIndexChanged);
             // 
             // Confirmbtn
             // 
-            this.Confirmbtn.Location = new System.Drawing.Point(232, 206);
+            this.Confirmbtn.Location = new System.Drawing.Point(174, 167);
+            this.Confirmbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Confirmbtn.Name = "Confirmbtn";
-            this.Confirmbtn.Size = new System.Drawing.Size(115, 34);
+            this.Confirmbtn.Size = new System.Drawing.Size(86, 28);
             this.Confirmbtn.TabIndex = 3;
             this.Confirmbtn.Text = "Confirm";
             this.Confirmbtn.UseVisualStyleBackColor = true;
@@ -68,13 +72,15 @@
             // 
             // ChoosePatient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(602, 290);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
+            this.ClientSize = new System.Drawing.Size(452, 236);
             this.Controls.Add(this.Confirmbtn);
             this.Controls.Add(this.chooseCmb);
             this.Controls.Add(this.Chooselbl);
             this.Controls.Add(this.SearchSurnamelbl);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ChoosePatient";
             this.Text = "ChoosePatient";
             this.ResumeLayout(false);
