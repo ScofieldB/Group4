@@ -83,6 +83,9 @@ namespace Hospital {
             if (pat.getRoom() == "0") {
                 Admitbtn.Visible = true;
                 Dischargebtn.Visible = false;
+            } else if(!pat.getRoom().StartsWith("E")){
+                Admitbtn.Visible = false;
+                Dischargebtn.Visible = false;
             } else {
                 Admitbtn.Visible = false;
                 Dischargebtn.Visible = true;
