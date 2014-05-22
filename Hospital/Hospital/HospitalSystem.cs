@@ -151,7 +151,7 @@ namespace Hospital {
             pat = Patient.SearchPID(pat.getPatient());
 
             currentRoomtxt.Text = "Current Room: " + pat.getRoom();
-            addHistory("Patiet is booked for " + typeBooked.ToString());
+            addHistory("Patient is booked for " + typeBooked.ToString());
             Surgerybtn.Visible = false;
             Imagingbtn.Visible = false;
             ViewImgbtn.Visible = true;
@@ -177,8 +177,8 @@ namespace Hospital {
                         MessageBox.Show("Patient surgery was not booked.", "Surgery not booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                } else { //Should never occur.
-                    MessageBox.Show("Somethign went wrong. Please try again", "Please try again",
+                } else {
+                    MessageBox.Show("Please try again", "Please try again",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             } else {
@@ -212,8 +212,8 @@ namespace Hospital {
                         MessageBox.Show("Patient " + typeBooked.ToString() + " was not booked.", typeBooked.ToString() + " not booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                } else { //Should never occur.
-                    MessageBox.Show("Somethign went wrong. Please try again", "Please try again",
+                } else {
+                    MessageBox.Show("Please try again", "Please try again",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             } else {

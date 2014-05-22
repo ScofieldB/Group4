@@ -487,7 +487,7 @@ namespace Hospital {
 
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(@"C:\Users\Ima\Documents\GitHub\Group4\Hospital\Hospital\CrystalReport1.rpt");//source file location for the premade report, may need to be manually changed
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\CrystalReport1.rpt");//source file location for the premade report, may need to be manually changed
 
                 //Variable delecaration and assignment
                 ParameterFieldDefinitions crParameterFieldDefinitions;
@@ -506,7 +506,7 @@ namespace Hospital {
                 crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
 
                 //Exports generated report to PDF format
-                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\Ima\Documents\GitHub\Group4\Hospital\test.pdf"); //output location, may need to be manually changed
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\test.pdf"); //output location, may need to be manually changed
                 MessageBox.Show("Export to PDF Successful.");
             } else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
