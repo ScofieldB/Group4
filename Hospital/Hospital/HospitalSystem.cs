@@ -34,9 +34,9 @@ namespace Hospital {
             UserID = user;
             Role = role;
             if (role == "Doctor") {
-                ViewImgbtn.Visible = false;
-                Surgerybtn.Visible = false;
-                Imagingbtn.Visible = false;
+                ViewImgbtn.Visible = true;
+                Surgerybtn.Visible = true;
+                Imagingbtn.Visible = true;
                 Finishbtn.Visible = false;
 
             } else if (role == "MedTech") {
