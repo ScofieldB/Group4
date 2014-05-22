@@ -93,6 +93,7 @@ namespace Hospital {
 
             } else if (Role == "MedTech") {
                 Finishbtn.Visible = true;
+                ViewImgbtn.Visible = true;
             } else {
                 Surgerybtn.Visible = false;
                 Finishbtn.Visible = false;
