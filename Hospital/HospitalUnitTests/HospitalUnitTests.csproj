@@ -56,6 +56,7 @@
     <Compile Include="FacilitiesTests.cs" />
     <Compile Include="HashPasswordTest.cs" />
     <Compile Include="LoginTest.cs" />
+    <Compile Include="PatientTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hospital\Hospital.csproj">

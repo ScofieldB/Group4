@@ -47,7 +47,6 @@ namespace HospitalUnitTests {
         }
 
 
-
         /*
          * Tests that when a user is deleted from system a SELECT statement returns correct result.
          */

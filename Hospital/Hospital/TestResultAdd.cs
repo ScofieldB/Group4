@@ -11,12 +11,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
 
-namespace Hospital
-{
-    public partial class TestResultAdd : Form
-    {
-        public TestResultAdd()
-        {
+namespace Hospital {
+    public partial class TestResultAdd : Form {
+        public TestResultAdd() {
             InitializeComponent();
         }
 
@@ -27,29 +24,24 @@ namespace Hospital
         private void LoadNewFile() {
             OpenFileDialog ofd = new OpenFileDialog();
             System.Windows.Forms.DialogResult dr = ofd.ShowDialog();
-            if (dr == DialogResult.OK)
-            {
+            if (dr == DialogResult.OK) {
                 userSelectedFilePath = ofd.FileName;
             }
 
         }
 
-        public string userSelectedFilePath
-        {
-            get
-            {
+        public string userSelectedFilePath {
+            get {
                 return FilePathtb.Text;
             }
-            set
-            {
+            set {
                 FilePathtb.Text = value;
             }
         }
 
         private void Uploadbtn_Click(object sender, EventArgs e) {
             DateTime CurrentDT = DateTime.Now;
-            try
-            {
+            try {
                 //Set up connection to be opened.
                 SqlConnection con = DBCon.DBConnect();
                 SqlCommand cmd = new SqlCommand("INSERT INTO [INB201].[dbo].[Tests] (PatientID, TestOrdered, TestResults, OrderedByStaffID, UploadedByStaffID, DateOrdered, DateUploaded) VALUES (100000, 'xray-test-loaded', @TestResults, 1006, 1006, 13/05/2014, 14/05/2014)", con);
@@ -63,7 +55,7 @@ namespace Hospital
 
                 //Create parameter for insert command and add to SqlCommand object.
                 SqlParameter prm = new SqlParameter("@TestResults", SqlDbType.VarBinary, bytTestResultsImage.Length, ParameterDirection.Input, false,
-                          0, 0, null, DataRowVersion.Current,  bytTestResultsImage);
+                          0, 0, null, DataRowVersion.Current, bytTestResultsImage);
                 cmd.Parameters.Add(prm);
 
                 //Open connection, execute query, close connection.
@@ -71,9 +63,7 @@ namespace Hospital
                 cmd.ExecuteNonQuery();
                 con.Close();
                 ActiveForm.Close();
-            }
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
+            } catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
 

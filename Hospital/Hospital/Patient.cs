@@ -143,34 +143,42 @@ namespace Hospital {
         public static int DischargePatient(PatientGetSet pat) {
             Facilities fac = new Facilities();
             int totalCharges = fac.DischargePatient(pat.getPatient());
-    
+
             return totalCharges;
         }
 
-        public static void updateAdmitCharge(int patientID, int patientCoverT) {
-            int charge = 0;
+        public static int updateAdmitCharge(int patientID, int patientCoverT) {
+            int charge = -1;
             SqlConnection con = DBCon.DBConnect();
 
-            con.Open();
+            PatientGetSet pat = Patient.SearchPID(patientID);
 
-            SqlCommand command = new SqlCommand("SELECT CoverSurcharge FROM Cover WHERE CoverType = @coverT", con);
-            command.Parameters.AddWithValue("@coverT", patientCoverT);
-            SqlDataReader reader = command.ExecuteReader();
+            if (pat.getPatient() != -1) {
 
-            while (reader.Read()) {
-                charge = reader.GetInt32(0);
+                con.Open();
+
+                SqlCommand command = new SqlCommand("SELECT CoverSurcharge FROM Cover WHERE CoverType = @coverT", con);
+                command.Parameters.AddWithValue("@coverT", patientCoverT);
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read()) {
+                    charge = reader.GetInt32(0);
+                }
+
+                reader.Close();
+
+                command.Parameters.Clear();
+
+                if (charge > -1) {
+                    command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
+                    command.Parameters.AddWithValue("@cost", charge);
+                    command.Parameters.AddWithValue("patID", patientID);
+                    command.ExecuteNonQuery();
+                }
+                con.Close();
             }
 
-            reader.Close();
-
-            command.Parameters.Clear();
-
-            command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
-            command.Parameters.AddWithValue("@cost", charge);
-            command.Parameters.AddWithValue("patID", patientID);
-            command.ExecuteNonQuery();
-
-            con.Close();
+            return charge;
 
         }
     }

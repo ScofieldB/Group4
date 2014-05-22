@@ -19,7 +19,7 @@ namespace HospitalUnitTests {
         [TestMethod]
         public void TestAdmitPatientWrongId() {
             bool result = facilities.admitPatient(25);
-            Assert.IsFalse(result, "False if patient either does not exist in system or is all ready admitted");;
+            Assert.IsFalse(result, "False if patient either does not exist in system or is all ready admitted"); ;
         }
 
 
@@ -109,7 +109,7 @@ namespace HospitalUnitTests {
             bool result;
 
             pat.setPatient(100015);
-            facilities.admitPatient(pat.getPatient()); 
+            facilities.admitPatient(pat.getPatient());
             pat.setRoom("S100");
             typeBooked.Cost = 700;
             typeBooked.Type = "Keyhole Surgery";
@@ -187,7 +187,7 @@ namespace HospitalUnitTests {
 
             pat.setPatient(100013);
             facilities.admitPatient(pat.getPatient());
-            
+
             pat.setRoom("S100");
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
@@ -205,8 +205,8 @@ namespace HospitalUnitTests {
             bool result;
 
             pat.setPatient(100013);
-            facilities.admitPatient(pat.getPatient()); 
-            
+            facilities.admitPatient(pat.getPatient());
+
             pat.setRoom("I100");
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
@@ -234,8 +234,58 @@ namespace HospitalUnitTests {
             facilities.DischargePatient(pat.getPatient());
         }
 
-        
+        [TestMethod]
+        public void TestReturnPatientToDoctor() {
+            bool success = false;
+            string room = "";
+            Hospital.PatientGetSet pat = Hospital.Patient.SearchPID(100007);
+            Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
 
 
+            facilities.admitPatient(pat.getPatient());
+            typeBooked.Cost = 200;
+            typeBooked.Type = "Xray";
+            facilities.bookSurgery(pat, typeBooked);
+
+            SqlConnection con = Hospital.DBCon.DBConnect();
+            con.Open();
+            SqlCommand command = new SqlCommand(null, con);
+            command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
+            command.Parameters.AddWithValue("@id", pat.getPatient());
+
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read()) {
+                room = reader.GetString(0);
+            }
+            reader.Close();
+
+            if (room.StartsWith("S")) {
+                success = false;
+            }
+
+            facilities.returnPatientToDoctor(pat);
+
+            command.Parameters.Clear();
+            command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
+            command.Parameters.AddWithValue("@id", pat.getPatient());
+
+            reader = command.ExecuteReader();
+            while (reader.Read()) {
+                room = reader.GetString(0);
+            }
+
+            reader.Close();
+            con.Close();
+
+            //If room room is Emergency
+            if (room.StartsWith("E")) {
+                success = true;
+            }
+
+            facilities.DischargePatient(pat.getPatient());
+
+            Assert.IsTrue(success);
+
+        }
     }
 }

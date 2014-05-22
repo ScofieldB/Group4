@@ -13,24 +13,19 @@ using System.Windows.Forms;
 using System.IO;
 
 
-namespace Hospital
-{
-    public partial class TestResultViewer : Form
-    {
+namespace Hospital {
+    public partial class TestResultViewer : Form {
         private Size Multiplier = new Size(2, 2);
 
         string Imagename;
 
-        public TestResultViewer()
-        {
+        public TestResultViewer() {
             InitializeComponent();
             LoadComboBox();
         }
 
-        private void LoadComboBox()
-        {
-            try
-            {
+        private void LoadComboBox() {
+            try {
                 SqlConnection con = DBCon.DBConnect();
                 string query = "SELECT TestOrdered FROM [INB201].[dbo].[Tests]";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
@@ -40,15 +35,12 @@ namespace Hospital
                 ImageSelectorCB.DisplayMember = "TestOrdered";
                 ImageSelectorCB.ValueMember = "TestOrdered";
                 ImageSelectorCB.DataSource = ds.Tables["Test"];
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 MessageBox.Show(ex.Message);
-            }       
+            }
         }
 
-        public void ZoomIn()
-        {
+        public void ZoomIn() {
 
             Image MyImage = pictureBox1.Image;
 
@@ -63,8 +55,7 @@ namespace Hospital
 
         }
 
-        public void ZoomOut()
-        {
+        public void ZoomOut() {
 
             Image MyImage = pictureBox1.Image;
 
@@ -78,25 +69,21 @@ namespace Hospital
             pictureBox1.Image = MyBitMap;
         }
 
-        private void ZoomInButton_Click(object sender, EventArgs e)
-        {
+        private void ZoomInButton_Click(object sender, EventArgs e) {
             ZoomIn();
         }
 
-        private void ZoomOutButton_Click(object sender, EventArgs e)
-        {
+        private void ZoomOutButton_Click(object sender, EventArgs e) {
             ZoomOut();
         }
 
-        private void RotateLeftButton_Click(object sender, EventArgs e)
-        {
+        private void RotateLeftButton_Click(object sender, EventArgs e) {
             Image im = pictureBox1.Image;
             im.RotateFlip(RotateFlipType.Rotate90FlipNone);
             pictureBox1.Image = im;
         }
 
-        private void RotateRightButton_Click(object sender, EventArgs e)
-        {
+        private void RotateRightButton_Click(object sender, EventArgs e) {
             Image im = pictureBox1.Image;
             im.RotateFlip(RotateFlipType.Rotate270FlipNone);
             pictureBox1.Image = im;
@@ -108,16 +95,13 @@ namespace Hospital
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
 
-            if (ImageSelectorCB.SelectedItem != null)
-            {
-                Imagename =  ImageSelectorCB.SelectedValue.ToString();
+            if (ImageSelectorCB.SelectedItem != null) {
+                Imagename = ImageSelectorCB.SelectedValue.ToString();
             }
         }
 
-        private void addImageBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        private void addImageBtn_Click(object sender, EventArgs e) {
+            try {
                 SqlConnection con = DBCon.DBConnect();
                 con.Open();
 
@@ -128,8 +112,7 @@ namespace Hospital
                 da.Fill(ds, "[INB201].[dbo].[Tests]");
                 int RowCount = ds.Tables["[INB201].[dbo].[Tests]"].Rows.Count;
 
-                if (RowCount > 0)
-                {   //BLOB is read into Byte array, then used to construct MemoryStream,
+                if (RowCount > 0) {   //BLOB is read into Byte array, then used to construct MemoryStream,
                     //then passed to PictureBox.
                     Byte[] byteTestResultsImage = new Byte[0];
                     byteTestResultsImage = (Byte[])(ds.Tables["[INB201].[dbo].[Tests]"].Rows[RowCount - 1]["TestResults"]);
@@ -137,15 +120,12 @@ namespace Hospital
                     pictureBox1.Image = Image.FromStream(ImageMemoryStream);
                 }
                 con.Close();
-            }
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
+            } catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void addTestResultLinkBTN_Click(object sender, EventArgs e)
-        {
+        private void addTestResultLinkBTN_Click(object sender, EventArgs e) {
             TestResultAdd Tests = new TestResultAdd();
             Tests.Show();
-        } 
+        }
     }
 }

@@ -98,9 +98,9 @@ namespace Hospital {
 
                 if (success == true) {
                     updateFacilities(pat, newRoomCapacity, newRoom);
-                    checkCover(pat, typeBooked);      
+                    checkCover(pat, typeBooked);
                 }
-                
+
             }
             return success;
         }
@@ -132,7 +132,7 @@ namespace Hospital {
                 con.Close();
                 if (success == true) {
                     updateFacilities(pat, newRoomCapacity, newRoom);
-                    checkCover(pat, typeBooked);      
+                    checkCover(pat, typeBooked);
                 }
 
             }
@@ -226,12 +226,12 @@ namespace Hospital {
             int totalCharges = 0;
 
 
-            PatientGetSet pat = Patient.SearchPID(patId); ;
+            PatientGetSet pat = Patient.SearchPID(patId);
 
             if (pat.getRoom().StartsWith("E")) {
 
                 con.Open();
-    
+
                 SqlCommand command = new SqlCommand(null, con);
 
                 command.Parameters.Clear();
@@ -275,7 +275,7 @@ namespace Hospital {
 
                 con.Close();
             }
-            
+
             return totalCharges;
         }
 
@@ -286,7 +286,7 @@ namespace Hospital {
             con.Open();
             //If user has no Private cover then charge the patient
             if (pat.getCoverT() == 0) {
-                
+
                 command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
                 command.Parameters.AddWithValue("@cost", typeBooked.Cost);
                 command.Parameters.AddWithValue("patID", pat.getPatient());
