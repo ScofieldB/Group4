@@ -83,10 +83,15 @@
             // 
             // NewUserbtn
             // 
-            this.NewUserbtn.Location = new System.Drawing.Point(186, 179);
+            this.NewUserbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.NewUserbtn.FlatAppearance.BorderSize = 0;
+            this.NewUserbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NewUserbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewUserbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.NewUserbtn.Location = new System.Drawing.Point(131, 179);
             this.NewUserbtn.Margin = new System.Windows.Forms.Padding(2);
             this.NewUserbtn.Name = "NewUserbtn";
-            this.NewUserbtn.Size = new System.Drawing.Size(56, 19);
+            this.NewUserbtn.Size = new System.Drawing.Size(99, 23);
             this.NewUserbtn.TabIndex = 5;
             this.NewUserbtn.Text = "Update";
             this.NewUserbtn.UseVisualStyleBackColor = true;
@@ -94,10 +99,15 @@
             // 
             // Cancelbtn
             // 
-            this.Cancelbtn.Location = new System.Drawing.Point(299, 179);
+            this.Cancelbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Cancelbtn.FlatAppearance.BorderSize = 0;
+            this.Cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancelbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Cancelbtn.Location = new System.Drawing.Point(279, 179);
             this.Cancelbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Cancelbtn.Name = "Cancelbtn";
-            this.Cancelbtn.Size = new System.Drawing.Size(56, 19);
+            this.Cancelbtn.Size = new System.Drawing.Size(99, 23);
             this.Cancelbtn.TabIndex = 6;
             this.Cancelbtn.Text = "Cancel";
             this.Cancelbtn.UseVisualStyleBackColor = true;
@@ -108,6 +118,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
+            this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(528, 236);
             this.Controls.Add(this.Cancelbtn);
             this.Controls.Add(this.NewUserbtn);
@@ -116,6 +128,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Titlelbl);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "NewPasswordfrm";

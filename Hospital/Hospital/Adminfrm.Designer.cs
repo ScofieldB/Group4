@@ -36,10 +36,15 @@
             // 
             // Newbtn
             // 
+            this.Newbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Newbtn.FlatAppearance.BorderSize = 0;
+            this.Newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Newbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Newbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Newbtn.Location = new System.Drawing.Point(150, 150);
             this.Newbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Newbtn.Name = "Newbtn";
-            this.Newbtn.Size = new System.Drawing.Size(76, 19);
+            this.Newbtn.Size = new System.Drawing.Size(99, 23);
             this.Newbtn.TabIndex = 0;
             this.Newbtn.Text = "New User";
             this.Newbtn.UseVisualStyleBackColor = true;
@@ -47,10 +52,15 @@
             // 
             // Deletebtn
             // 
+            this.Deletebtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Deletebtn.FlatAppearance.BorderSize = 0;
+            this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Deletebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Deletebtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Deletebtn.Location = new System.Drawing.Point(312, 150);
             this.Deletebtn.Margin = new System.Windows.Forms.Padding(2);
             this.Deletebtn.Name = "Deletebtn";
-            this.Deletebtn.Size = new System.Drawing.Size(70, 19);
+            this.Deletebtn.Size = new System.Drawing.Size(99, 23);
             this.Deletebtn.TabIndex = 1;
             this.Deletebtn.Text = "Delete User";
             this.Deletebtn.UseVisualStyleBackColor = true;
@@ -58,10 +68,15 @@
             // 
             // Logoutbtn
             // 
-            this.Logoutbtn.Location = new System.Drawing.Point(460, 10);
+            this.Logoutbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Logoutbtn.FlatAppearance.BorderSize = 0;
+            this.Logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Logoutbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Logoutbtn.Location = new System.Drawing.Point(417, 11);
             this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Logoutbtn.Name = "Logoutbtn";
-            this.Logoutbtn.Size = new System.Drawing.Size(56, 19);
+            this.Logoutbtn.Size = new System.Drawing.Size(99, 23);
             this.Logoutbtn.TabIndex = 2;
             this.Logoutbtn.Text = "Logout";
             this.Logoutbtn.UseVisualStyleBackColor = true;
@@ -123,9 +138,14 @@
             // 
             // reportbtn
             // 
-            this.reportbtn.Location = new System.Drawing.Point(449, 209);
+            this.reportbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.reportbtn.FlatAppearance.BorderSize = 0;
+            this.reportbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reportbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.reportbtn.Location = new System.Drawing.Point(417, 205);
             this.reportbtn.Name = "reportbtn";
-            this.reportbtn.Size = new System.Drawing.Size(75, 19);
+            this.reportbtn.Size = new System.Drawing.Size(99, 23);
             this.reportbtn.TabIndex = 15;
             this.reportbtn.Text = "Reports";
             this.reportbtn.UseVisualStyleBackColor = true;
@@ -136,6 +156,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
+            this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(536, 240);
             this.Controls.Add(this.reportbtn);
             this.Controls.Add(this.Rolecmb);
@@ -146,6 +168,7 @@
             this.Controls.Add(this.Logoutbtn);
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.Newbtn);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Adminfrm";

@@ -35,7 +35,13 @@
             // 
             // Loginbtn
             // 
-            this.Loginbtn.Location = new System.Drawing.Point(32, 147);
+            this.Loginbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Loginbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Loginbtn.FlatAppearance.BorderSize = 0;
+            this.Loginbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Loginbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Loginbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Loginbtn.Location = new System.Drawing.Point(41, 147);
             this.Loginbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Loginbtn.Name = "Loginbtn";
             this.Loginbtn.Size = new System.Drawing.Size(110, 37);
@@ -46,6 +52,12 @@
             // 
             // Exitbtn
             // 
+            this.Exitbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Exitbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Exitbtn.FlatAppearance.BorderSize = 0;
+            this.Exitbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Exitbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exitbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Exitbtn.Location = new System.Drawing.Point(194, 147);
             this.Exitbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Exitbtn.Name = "Exitbtn";
@@ -100,6 +112,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
+            this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(346, 224);
             this.Controls.Add(this.Passwordtxt);
             this.Controls.Add(this.Usernametxt);
@@ -107,6 +121,7 @@
             this.Controls.Add(this.Usernamelbl);
             this.Controls.Add(this.Exitbtn);
             this.Controls.Add(this.Loginbtn);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Loginfrm";
