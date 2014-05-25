@@ -516,7 +516,7 @@ namespace Hospital {
 
         //regex validation on leave of textbox test
         private void Surtxt_Validating(object sender, CancelEventArgs e) {
-            string reg = @"^['- a-zA-Z]{1,20}$";
+            string reg = @"^['\\- a-zA-Z]{1,20}$";
             if (!Regex.IsMatch(this.Surtxt.Text.Trim(), reg)) {
                 MessageBox.Show("Wrong inputs");
             }        
