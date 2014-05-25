@@ -62,6 +62,7 @@
             // Confirmbtn
             // 
             this.Confirmbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Confirmbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Confirmbtn.FlatAppearance.BorderSize = 0;
             this.Confirmbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Confirmbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);

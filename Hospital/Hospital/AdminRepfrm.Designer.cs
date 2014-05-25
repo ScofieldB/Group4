@@ -41,6 +41,7 @@
             // TestRepbtn
             // 
             this.TestRepbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.TestRepbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TestRepbtn.FlatAppearance.BorderSize = 0;
             this.TestRepbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TestRepbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
@@ -56,6 +57,7 @@
             // LogBtn
             // 
             this.LogBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.LogBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.LogBtn.FlatAppearance.BorderSize = 0;
             this.LogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
@@ -71,6 +73,7 @@
             // BackBtn
             // 
             this.BackBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.BackBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackBtn.FlatAppearance.BorderSize = 0;
             this.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);

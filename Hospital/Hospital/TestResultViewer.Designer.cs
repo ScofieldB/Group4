@@ -53,6 +53,7 @@
             // ZoomInButton
             // 
             this.ZoomInButton.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.ZoomInButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ZoomInButton.FlatAppearance.BorderSize = 0;
             this.ZoomInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ZoomInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -68,6 +69,7 @@
             // ZoomOutButton
             // 
             this.ZoomOutButton.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.ZoomOutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ZoomOutButton.FlatAppearance.BorderSize = 0;
             this.ZoomOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ZoomOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -83,6 +85,7 @@
             // RotateLeftButton
             // 
             this.RotateLeftButton.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.RotateLeftButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.RotateLeftButton.FlatAppearance.BorderSize = 0;
             this.RotateLeftButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RotateLeftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,6 +101,7 @@
             // RotateRightButton
             // 
             this.RotateRightButton.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.RotateRightButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.RotateRightButton.FlatAppearance.BorderSize = 0;
             this.RotateRightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RotateRightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -113,6 +117,7 @@
             // BackButton
             // 
             this.BackButton.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.BackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackButton.FlatAppearance.BorderSize = 0;
             this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -137,6 +142,7 @@
             // addImageBtn
             // 
             this.addImageBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.addImageBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addImageBtn.FlatAppearance.BorderSize = 0;
             this.addImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addImageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -152,6 +158,7 @@
             // addTestResultLinkBTN
             // 
             this.addTestResultLinkBTN.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.addTestResultLinkBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addTestResultLinkBTN.FlatAppearance.BorderSize = 0;
             this.addTestResultLinkBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addTestResultLinkBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

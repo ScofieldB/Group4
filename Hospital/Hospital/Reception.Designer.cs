@@ -82,6 +82,7 @@
             // Logoutbtn
             // 
             this.Logoutbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Logoutbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Logoutbtn.FlatAppearance.BorderSize = 0;
             this.Logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,6 +99,7 @@
             // Searchbtn
             // 
             this.Searchbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Searchbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Searchbtn.FlatAppearance.BorderSize = 0;
             this.Searchbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,6 +202,7 @@
             // Clrbtn
             // 
             this.Clrbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Clrbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Clrbtn.FlatAppearance.BorderSize = 0;
             this.Clrbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Clrbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -215,6 +218,7 @@
             // Newbtn
             // 
             this.Newbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Newbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Newbtn.FlatAppearance.BorderSize = 0;
             this.Newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Newbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -366,6 +370,7 @@
             // Dischargebtn
             // 
             this.Dischargebtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Dischargebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Dischargebtn.FlatAppearance.BorderSize = 0;
             this.Dischargebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Dischargebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -469,6 +474,7 @@
             // hardCopybtn
             // 
             this.hardCopybtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.hardCopybtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.hardCopybtn.FlatAppearance.BorderSize = 0;
             this.hardCopybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hardCopybtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

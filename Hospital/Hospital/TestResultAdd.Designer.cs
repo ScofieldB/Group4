@@ -38,6 +38,7 @@
             // Loadbtn
             // 
             this.Loadbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Loadbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Loadbtn.FlatAppearance.BorderSize = 0;
             this.Loadbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Loadbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -60,6 +61,7 @@
             // Uploadbtn
             // 
             this.Uploadbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Uploadbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Uploadbtn.FlatAppearance.BorderSize = 0;
             this.Uploadbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Uploadbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -75,6 +77,7 @@
             // Cancelbtn
             // 
             this.Cancelbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Cancelbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Cancelbtn.FlatAppearance.BorderSize = 0;
             this.Cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

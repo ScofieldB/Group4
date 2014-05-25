@@ -37,6 +37,7 @@
             // Newbtn
             // 
             this.Newbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Newbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Newbtn.FlatAppearance.BorderSize = 0;
             this.Newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Newbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -53,6 +54,7 @@
             // Deletebtn
             // 
             this.Deletebtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Deletebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Deletebtn.FlatAppearance.BorderSize = 0;
             this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Deletebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -69,6 +71,7 @@
             // Logoutbtn
             // 
             this.Logoutbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Logoutbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Logoutbtn.FlatAppearance.BorderSize = 0;
             this.Logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -139,6 +142,7 @@
             // reportbtn
             // 
             this.reportbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.reportbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.reportbtn.FlatAppearance.BorderSize = 0;
             this.reportbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reportbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

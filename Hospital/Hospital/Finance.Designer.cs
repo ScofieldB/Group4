@@ -51,6 +51,7 @@
             // Confirmbtn
             // 
             this.Confirmbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Confirmbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Confirmbtn.FlatAppearance.BorderSize = 0;
             this.Confirmbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Confirmbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -67,6 +68,7 @@
             // Cancelbtn
             // 
             this.Cancelbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Cancelbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Cancelbtn.FlatAppearance.BorderSize = 0;
             this.Cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
