@@ -107,7 +107,7 @@ namespace Hospital {
          * text boxes on screen.
          */
         private void Searchbtn_Click(object sender, EventArgs e) {
-            Regex regex = new Regex("^['- a-zA-Z]{1,20}$");//allows lower and upper case english, hypen and space
+            Regex regex = new Regex("^['\\- a-zA-Z]{1,20}$");//allows lower and upper case english, hypen and space
             if (regex.IsMatch(Seatxt.Text)) {
                 PatientGetSet[] patients;
                 string Surname = Seatxt.Text;
