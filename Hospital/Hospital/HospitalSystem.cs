@@ -33,24 +33,11 @@ namespace Hospital {
             InitializeComponent();
             UserID = user;
             Role = role;
-            if (role == "Doctor") {
-                ViewImgbtn.Visible = true;
-                Surgerybtn.Visible = true;
-                Imagingbtn.Visible = true;
-                Finishbtn.Visible = false;
-
-            } else if (role == "MedTech") {
-                ViewImgbtn.Visible = true;
-                Surgerybtn.Visible = false;
-                Imagingbtn.Visible = false;
-                Finishbtn.Visible = true;
-
-            } else if (role == "Nurse") {
                 ViewImgbtn.Visible = false;
                 Surgerybtn.Visible = false;
                 Imagingbtn.Visible = false;
                 Finishbtn.Visible = false;
-            }
+
         }
 
 
@@ -272,5 +259,6 @@ namespace Hospital {
             historyDataGridView.DataSource = ds;
             historyDataGridView.DataMember = "History";
         }
+
     }
 }
