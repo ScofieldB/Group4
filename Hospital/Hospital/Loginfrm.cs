@@ -29,42 +29,50 @@ namespace Hospital {
          */
         private void Loginbtn_Click(object sender, EventArgs e) {
             Login login = new Login();
-            User user = login.getDetails(Usernametxt.Text, Passwordtxt.Text);
+            User user = null;
+            try {
+                user = login.getDetails(Usernametxt.Text, Passwordtxt.Text);
+            } catch {
+                MessageBox.Show("Username is Incorrect. Please try again.", "Login Failed",
+                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
-            //Checks to see if Username exists. If it doesnt then username will be blank
-            if ((Usernametxt.Text == "") || (user.getUser() == "")) {
-                MessageBox.Show("Username or Password is Incorrect. Please try again.", "Login Failed",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } else {
-
-                //Check if user has user generated generated password
-                if (user.getConfirmed() == true) {
-
-                    //Opens appropriate form depending on which role user is
-                    if (user.getRole() == "Admin") {
-                        Adminfrm adminform = new Adminfrm(user.getUser());
-                        adminform.setHome(ActiveForm);
-                        ActiveForm.Hide();
-                        adminform.Show();
-                    } else if (user.getRole() == "Receptionist") {
-                        Reception reception = new Reception(user.getUser());
-                        reception.setHome(ActiveForm);
-                        ActiveForm.Hide();
-                        reception.Show();
-                    } else {
-                        HospitalSystem mainprogram = new HospitalSystem(user.getUser(), user.getRole());
-                        mainprogram.setHome(ActiveForm);
-                        ActiveForm.Hide();
-                        mainprogram.Show();
-                    }
-
-                    /*
-                     * If password is not user generated but was System Admin generated then ensure 
-                     * user must update password.
-                     */
+            if (user != null) {
+                //Checks to see if Username exists. If it doesnt then username will be blank
+                if ((Usernametxt.Text == "") || (user.getUser() == "")) {
+                    MessageBox.Show("Username or Password is Incorrect. Please try again.", "Login Failed",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
-                    NewPasswordfrm newpw = new NewPasswordfrm(user.getUser());
-                    newpw.Show();
+
+                    //Check if user has user generated generated password
+                    if (user.getConfirmed() == true) {
+
+                        //Opens appropriate form depending on which role user is
+                        if (user.getRole() == "Admin") {
+                            Adminfrm adminform = new Adminfrm(user.getUser());
+                            adminform.setHome(ActiveForm);
+                            ActiveForm.Hide();
+                            adminform.Show();
+                        } else if (user.getRole() == "Receptionist") {
+                            Reception reception = new Reception(user.getUser());
+                            reception.setHome(ActiveForm);
+                            ActiveForm.Hide();
+                            reception.Show();
+                        } else {
+                            HospitalSystem mainprogram = new HospitalSystem(user.getUser(), user.getRole());
+                            mainprogram.setHome(ActiveForm);
+                            ActiveForm.Hide();
+                            mainprogram.Show();
+                        }
+
+                        /*
+                         * If password is not user generated but was System Admin generated then ensure 
+                         * user must update password.
+                         */
+                    } else {
+                        NewPasswordfrm newpw = new NewPasswordfrm(user.getUser());
+                        newpw.Show();
+                    }
                 }
             }
             //Clear users input

@@ -116,7 +116,8 @@ namespace Hospital {
 
                 if (patients.Length == 0) {
                     clearFields();
-                    MessageBox.Show("Patient could not be found in system. Please add new patient.", "Patient not found.",
+                    MessageBox.Show("Patient could not be found in system. Please confirm spelling " +
+                        "or add a new patient.", "Patient not found.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Admitbtn.Visible = false;
                 } else if (patients.Length == 1) {
@@ -126,7 +127,7 @@ namespace Hospital {
                     choosePat.Show();
                 }
             } else {
-                MessageBox.Show("Please input a Surname to search. Englsih aplhabet only with upper and lower case, along with hypen or space with length of 1 to 20.", "Surname must be input",
+                MessageBox.Show("Please input a Surname to search. English aplhabet only with upper and lower case, along with hypen or space with length of 1 to 20.", "Surname must be input",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Admitbtn.Visible = false;
             }
@@ -520,5 +521,14 @@ namespace Hospital {
                 MessageBox.Show("Wrong inputs");
             }        
         }
+
+
+        private void CovNum_Validating(object sender, CancelEventArgs e) {
+            string reg = @"{1,20}$";
+            if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg)) {
+                MessageBox.Show("Wrong inputs");
+            }  
+        }
+
     }
 }
