@@ -124,7 +124,6 @@ namespace Hospital {
                     setPatient(patients[0]);
                 } else {
                     ChoosePatient choosePat = new ChoosePatient(UserID, Role, homeScreen, this, Surname, patients);
-                    ActiveForm.Close();
                     choosePat.Show();
                 }
 
@@ -232,15 +231,18 @@ namespace Hospital {
         }
 
         private void addHistory(string history) {
-            SqlConnection con = DBCon.DBConnect();
-            con.Open();
-            SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
-            command.Parameters.AddWithValue("@pid", pat.getPatient());
-            command.Parameters.AddWithValue("@userid", UserID);
-            command.Parameters.AddWithValue("@typedhistory", history);
-            command.ExecuteNonQuery();
-            con.Close();
-            updateTable(pat.getPatient());
+            try {
+                SqlConnection con = DBCon.DBConnect();
+                con.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
+                command.Parameters.AddWithValue("@pid", pat.getPatient());
+                command.Parameters.AddWithValue("@userid", UserID);
+                command.Parameters.AddWithValue("@typedhistory", history);
+                command.ExecuteNonQuery();
+                con.Close();
+                updateTable(pat.getPatient());
+            } catch { 
+            }
         }
 
 

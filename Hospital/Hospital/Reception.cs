@@ -123,7 +123,6 @@ namespace Hospital {
                     setPatient(patients[0]);
                 } else {
                     ChoosePatient choosePat = new ChoosePatient(UserID, Role, home, this, Surname, patients);
-                    ActiveForm.Close();
                     choosePat.Show();
                 }
             } else {

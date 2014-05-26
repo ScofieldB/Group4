@@ -14,7 +14,8 @@ namespace Hospital {
         private static PatientGetSet chosen = new PatientGetSet();
         private static PatientGetSet[] patients;
         private Form homeScreen;
-        private Form previousForm;
+        private Reception previousRecep;
+        private HospitalSystem previousHosp;
         private string SurnameSearched;
         private static int chosenIndex;
         private string UserID;
@@ -24,7 +25,11 @@ namespace Hospital {
             homeScreen = home;
             Role = role;
             UserID = User;
-            previousForm = previous;
+            if (role == "Reception") {
+                previousRecep = (Reception)previous;
+            } else {
+                previousHosp = (HospitalSystem)previous;
+            }
             patients = pats;
             SurnameSearched = Surname;
             InitializeComponent();
@@ -44,18 +49,14 @@ namespace Hospital {
         }
 
         private void Confirmbtn_Click(object sender, EventArgs e) {
-            if (previousForm.Name == "Reception") {
-                Reception reception = new Reception(UserID);
-                reception.setPatient(chosen);
-                reception.setHome(homeScreen);
+            if (Role == "Reception") {
+                previousRecep.setPatient(chosen);
+                previousRecep.setHome(homeScreen);
                 ActiveForm.Close();
-                reception.Show();
             } else {
-                HospitalSystem system = new HospitalSystem(UserID, Role);
-                system.setPatient(chosen);
-                system.setHome(homeScreen);
+                previousHosp.setPatient(chosen);
+                previousHosp.setHome(homeScreen);
                 ActiveForm.Close();
-                system.Show();
             }
 
         }
