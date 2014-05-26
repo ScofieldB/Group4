@@ -67,11 +67,11 @@
             // Usernamelbl
             // 
             this.Usernamelbl.AutoSize = true;
-            this.Usernamelbl.Location = new System.Drawing.Point(213, 110);
+            this.Usernamelbl.Location = new System.Drawing.Point(231, 113);
             this.Usernamelbl.Name = "Usernamelbl";
-            this.Usernamelbl.Size = new System.Drawing.Size(77, 17);
+            this.Usernamelbl.Size = new System.Drawing.Size(58, 17);
             this.Usernamelbl.TabIndex = 17;
-            this.Usernamelbl.Text = "Username:";
+            this.Usernamelbl.Text = "Staff ID:";
             // 
             // Deletebtn
             // 
