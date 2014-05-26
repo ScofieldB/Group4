@@ -42,7 +42,7 @@ namespace Hospital {
 
                     //Opens appropriate form depending on which role user is
                     if (user.getRole() == "Admin") {
-                        Adminfrm adminform = new Adminfrm();
+                        Adminfrm adminform = new Adminfrm(user.getUser());
                         adminform.setHome(ActiveForm);
                         ActiveForm.Hide();
                         adminform.Show();

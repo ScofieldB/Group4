@@ -23,50 +23,11 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.Newbtn = new System.Windows.Forms.Button();
-            this.Deletebtn = new System.Windows.Forms.Button();
             this.Logoutbtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.Usernametxt = new System.Windows.Forms.TextBox();
-            this.Usernamelbl = new System.Windows.Forms.Label();
-            this.Rolelbl = new System.Windows.Forms.Label();
-            this.Rolecmb = new System.Windows.Forms.ComboBox();
             this.reportbtn = new System.Windows.Forms.Button();
+            this.usermgmtbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // Newbtn
-            // 
-            this.Newbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
-            this.Newbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Newbtn.FlatAppearance.BorderSize = 0;
-            this.Newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Newbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Newbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Newbtn.Location = new System.Drawing.Point(150, 150);
-            this.Newbtn.Margin = new System.Windows.Forms.Padding(2);
-            this.Newbtn.Name = "Newbtn";
-            this.Newbtn.Size = new System.Drawing.Size(99, 23);
-            this.Newbtn.TabIndex = 0;
-            this.Newbtn.Text = "New User";
-            this.Newbtn.UseVisualStyleBackColor = true;
-            this.Newbtn.Click += new System.EventHandler(this.Newbtn_Click);
-            // 
-            // Deletebtn
-            // 
-            this.Deletebtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
-            this.Deletebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Deletebtn.FlatAppearance.BorderSize = 0;
-            this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Deletebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Deletebtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Deletebtn.Location = new System.Drawing.Point(312, 150);
-            this.Deletebtn.Margin = new System.Windows.Forms.Padding(2);
-            this.Deletebtn.Name = "Deletebtn";
-            this.Deletebtn.Size = new System.Drawing.Size(99, 23);
-            this.Deletebtn.TabIndex = 1;
-            this.Deletebtn.Text = "Delete User";
-            this.Deletebtn.UseVisualStyleBackColor = true;
-            this.Deletebtn.Click += new System.EventHandler(this.Deletebtn_Click);
             // 
             // Logoutbtn
             // 
@@ -76,10 +37,10 @@
             this.Logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logoutbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Logoutbtn.Location = new System.Drawing.Point(417, 11);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.Logoutbtn.Location = new System.Drawing.Point(556, 14);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Logoutbtn.Name = "Logoutbtn";
-            this.Logoutbtn.Size = new System.Drawing.Size(99, 23);
+            this.Logoutbtn.Size = new System.Drawing.Size(132, 28);
             this.Logoutbtn.TabIndex = 2;
             this.Logoutbtn.Text = "Logout";
             this.Logoutbtn.UseVisualStyleBackColor = true;
@@ -89,55 +50,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(194, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(259, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(151, 26);
+            this.label1.Size = new System.Drawing.Size(195, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "Admin Control";
-            // 
-            // Usernametxt
-            // 
-            this.Usernametxt.Location = new System.Drawing.Point(220, 74);
-            this.Usernametxt.Margin = new System.Windows.Forms.Padding(2);
-            this.Usernametxt.Name = "Usernametxt";
-            this.Usernametxt.Size = new System.Drawing.Size(173, 20);
-            this.Usernametxt.TabIndex = 8;
-            // 
-            // Usernamelbl
-            // 
-            this.Usernamelbl.AutoSize = true;
-            this.Usernamelbl.Location = new System.Drawing.Point(158, 74);
-            this.Usernamelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Usernamelbl.Name = "Usernamelbl";
-            this.Usernamelbl.Size = new System.Drawing.Size(58, 13);
-            this.Usernamelbl.TabIndex = 6;
-            this.Usernamelbl.Text = "Username:";
-            // 
-            // Rolelbl
-            // 
-            this.Rolelbl.AutoSize = true;
-            this.Rolelbl.Location = new System.Drawing.Point(185, 100);
-            this.Rolelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Rolelbl.Name = "Rolelbl";
-            this.Rolelbl.Size = new System.Drawing.Size(32, 13);
-            this.Rolelbl.TabIndex = 13;
-            this.Rolelbl.Text = "Role:";
-            // 
-            // Rolecmb
-            // 
-            this.Rolecmb.FormattingEnabled = true;
-            this.Rolecmb.Items.AddRange(new object[] {
-            "Doctor",
-            "Nurse",
-            "MedTech",
-            "Reception",
-            "Admin"});
-            this.Rolecmb.Location = new System.Drawing.Point(221, 97);
-            this.Rolecmb.Margin = new System.Windows.Forms.Padding(2);
-            this.Rolecmb.Name = "Rolecmb";
-            this.Rolecmb.Size = new System.Drawing.Size(173, 21);
-            this.Rolecmb.TabIndex = 14;
             // 
             // reportbtn
             // 
@@ -146,35 +63,45 @@
             this.reportbtn.FlatAppearance.BorderSize = 0;
             this.reportbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reportbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.reportbtn.Location = new System.Drawing.Point(417, 205);
+            this.reportbtn.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.reportbtn.Location = new System.Drawing.Point(64, 149);
+            this.reportbtn.Margin = new System.Windows.Forms.Padding(4);
             this.reportbtn.Name = "reportbtn";
-            this.reportbtn.Size = new System.Drawing.Size(99, 23);
+            this.reportbtn.Size = new System.Drawing.Size(132, 28);
             this.reportbtn.TabIndex = 15;
             this.reportbtn.Text = "Reports";
             this.reportbtn.UseVisualStyleBackColor = true;
             this.reportbtn.Click += new System.EventHandler(this.reportbtn_Click);
             // 
+            // usermgmtbtn
+            // 
+            this.usermgmtbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.usermgmtbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.usermgmtbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usermgmtbtn.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.usermgmtbtn.Location = new System.Drawing.Point(64, 114);
+            this.usermgmtbtn.Name = "usermgmtbtn";
+            this.usermgmtbtn.Size = new System.Drawing.Size(132, 28);
+            this.usermgmtbtn.TabIndex = 16;
+            this.usermgmtbtn.Text = "User Mgmt";
+            this.usermgmtbtn.UseVisualStyleBackColor = true;
+            this.usermgmtbtn.Click += new System.EventHandler(this.usermgmtbtn_Click);
+            // 
             // Adminfrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(536, 240);
+            this.ClientSize = new System.Drawing.Size(715, 295);
+            this.Controls.Add(this.usermgmtbtn);
             this.Controls.Add(this.reportbtn);
-            this.Controls.Add(this.Rolecmb);
-            this.Controls.Add(this.Rolelbl);
-            this.Controls.Add(this.Usernametxt);
-            this.Controls.Add(this.Usernamelbl);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Logoutbtn);
-            this.Controls.Add(this.Deletebtn);
-            this.Controls.Add(this.Newbtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Adminfrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
@@ -185,14 +112,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Newbtn;
-        private System.Windows.Forms.Button Deletebtn;
         private System.Windows.Forms.Button Logoutbtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Usernametxt;
-        private System.Windows.Forms.Label Usernamelbl;
-        private System.Windows.Forms.Label Rolelbl;
-        private System.Windows.Forms.ComboBox Rolecmb;
         private System.Windows.Forms.Button reportbtn;
+        private System.Windows.Forms.Button usermgmtbtn;
     }
 }
