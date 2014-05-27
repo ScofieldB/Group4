@@ -6,6 +6,7 @@ namespace HospitalUnitTests {
     [TestClass]
     public class FacilitiesTests {
         Hospital.Facilities facilities = new Hospital.Facilities();
+        private string UserID = "1006";
 
 
         //Ensure Patient 100025 is currently not addmitted before running this test.
@@ -171,7 +172,7 @@ namespace HospitalUnitTests {
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
 
-            result = facilities.bookImaging(pat, typeBooked);
+            result = facilities.bookImaging(pat, typeBooked, UserID);
 
             Assert.IsTrue(result);
             pat = Hospital.Patient.SearchPID(pat.getPatient());
@@ -192,7 +193,7 @@ namespace HospitalUnitTests {
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
 
-            result = facilities.bookImaging(pat, typeBooked);
+            result = facilities.bookImaging(pat, typeBooked, UserID);
 
             Assert.IsFalse(result);
             facilities.DischargePatient(pat.getPatient());
@@ -211,7 +212,7 @@ namespace HospitalUnitTests {
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
 
-            result = facilities.bookImaging(pat, typeBooked);
+            result = facilities.bookImaging(pat, typeBooked, UserID);
 
             Assert.IsFalse(result);
             facilities.DischargePatient(pat.getPatient());
@@ -228,7 +229,7 @@ namespace HospitalUnitTests {
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
 
-            result = facilities.bookImaging(pat, typeBooked);
+            result = facilities.bookImaging(pat, typeBooked, UserID);
 
             Assert.IsFalse(result);
             facilities.DischargePatient(pat.getPatient());

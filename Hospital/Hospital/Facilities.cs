@@ -147,7 +147,7 @@ namespace Hospital {
         public void addImagingRequest(PatientGetSet pat, FinanceCmbItem typeBooked, string UserID)
         {
             DateTime CurrentDT = DateTime.Now;
-            SqlCommand cmd = new SqlCommand("INSERT INTO Tests (PatientID, TestOrdered, OrderedByStaffID, DateOrdered) SELECT (@patient, @test , @user, @date)", con);
+            SqlCommand cmd = new SqlCommand("INSERT INTO Tests (PatientID, TestOrdered, OrderedByStaffID, DateOrdered) VALUES (@patient, @test , @user, @date)", con);
             int patient = pat.getPatient();
             cmd.Parameters.AddWithValue("@patient", patient);
             cmd.Parameters.AddWithValue("@test", typeBooked.Type);
