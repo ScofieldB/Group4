@@ -21,17 +21,19 @@ namespace Hospital {
         private User user = new User();
 
         private string Imagename;
+        private string role;
 
         public TestResultViewer()
         {
             InitializeComponent();
             LoadComboBox(pat);
-            userTest();
+            userTest(user);
         }
 
-        public void userTest()
+        public void userTest(User user)
         {
-            if (user.getRole() == "MedTech")
+            role = user.getRole();
+            if (role == "MedTech")
             {
                 addTestResultLinkBTN.Visible = true;
             }
@@ -53,8 +55,9 @@ namespace Hospital {
                 ImageSelectorCB.DisplayMember = "TestOrdered";
                 ImageSelectorCB.ValueMember = "TestOrdered";
                 ImageSelectorCB.DataSource = ds.Tables["Test"];
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message);
+            } 
+            catch (Exception ex) { 
+                MessageBox.Show(ex.Message); 
             }
         }
 
@@ -140,7 +143,12 @@ namespace Hospital {
                     pictureBox1.Image = Image.FromStream(ImageMemoryStream);
                 }
                 con.Close();
-            } catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
+            catch
+            {
+                MessageBox.Show("Please select a image to display.", "Image Selection Required",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void addTestResultLinkBTN_Click(object sender, EventArgs e) {
