@@ -23,8 +23,7 @@ namespace Hospital {
         private string Imagename;
         private string role;
 
-        public TestResultViewer(string Role)
-        {
+        public TestResultViewer(string Role) {
             role = Role;
             InitializeComponent();
             LoadComboBox(pat);
@@ -35,9 +34,8 @@ namespace Hospital {
             }
         }
 
-        
-        private void LoadComboBox(PatientGetSet pat)
-        {
+
+        private void LoadComboBox(PatientGetSet pat) {
             try {
                 SqlConnection con = DBCon.DBConnect();
                 string query = "SELECT TestOrdered FROM Tests WHERE PatientID ='" + pat.getPatient() + "' AND TestOrdered IS NOT NULL";
@@ -48,9 +46,9 @@ namespace Hospital {
                 ImageSelectorCB.DisplayMember = "TestOrdered";
                 ImageSelectorCB.ValueMember = "TestOrdered";
                 ImageSelectorCB.DataSource = ds.Tables["Test"];
-            } 
-            catch (Exception ex) { 
-                MessageBox.Show(ex.Message); 
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -127,7 +125,7 @@ namespace Hospital {
                 da.Fill(ds, "Tests");
                 int RowCount = ds.Tables["Tests"].Rows.Count;
 
-                if (RowCount > 0) {   
+                if (RowCount > 0) {
                     //BLOB is read into Byte array, then used to construct MemoryStream,
                     //then passed to PictureBox.
                     Byte[] byteTestResultsImage = new Byte[0];
@@ -136,9 +134,7 @@ namespace Hospital {
                     pictureBox1.Image = Image.FromStream(ImageMemoryStream);
                 }
                 con.Close();
-            }
-            catch
-            {
+            } catch {
                 MessageBox.Show("Please select a image to display.", "Image Selection Required",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
