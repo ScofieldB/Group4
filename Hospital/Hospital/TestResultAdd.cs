@@ -13,8 +13,25 @@ using System.Drawing.Imaging;
 
 namespace Hospital {
     public partial class TestResultAdd : Form {
+
+        private Facilities fac = new Facilities();
+        private PatientGetSet pat = new PatientGetSet();
+        private User user = new User();
+
         public TestResultAdd() {
             InitializeComponent();
+            userTest();
+        }
+
+        public void userTest()
+        {
+            if (user.getRole() == "MedTech")
+            {
+                Uploadbtn.Visible = true;
+            }
+            else{
+                Uploadbtn.Visible = false;
+            }
         }
 
         private void Loadbtn_Click(object sender, EventArgs e) {
@@ -44,8 +61,11 @@ namespace Hospital {
             try {
                 //Set up connection to be opened.
                 SqlConnection con = DBCon.DBConnect();
-                SqlCommand cmd = new SqlCommand("INSERT INTO [INB201].[dbo].[Tests] (PatientID, TestOrdered, TestResults, OrderedByStaffID, UploadedByStaffID, DateOrdered, DateUploaded) VALUES (100000, 'xray-test-loaded', @TestResults, 1006, 1006, 13/05/2014, 14/05/2014)", con);
-                String ImageFilePath = @"C:\Users\chris\Desktop\xray-test.jpg";
+                SqlCommand cmd = new SqlCommand("UPDATE Tests SET TestResults = @TestResults AND UploadedByStaffID = @user AND DateUploaded = @date WHERE TestOrdered IS NULL AND PatientID = @pat", con);
+                cmd.Parameters.AddWithValue("@user", user.getUser());
+                cmd.Parameters.AddWithValue("@Date", CurrentDT);
+                cmd.Parameters.AddWithValue("@pat", pat.getPatient());
+                String ImageFilePath = userSelectedFilePath;
 
                 //Read jpg into file stream, and from there into Byte array.
                 FileStream ImageFileStream = new FileStream(ImageFilePath, FileMode.Open, FileAccess.Read);
@@ -63,6 +83,7 @@ namespace Hospital {
                 cmd.ExecuteNonQuery();
                 con.Close();
                 ActiveForm.Close();
+                fac.returnPatientToDoctor(pat);
             } catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }

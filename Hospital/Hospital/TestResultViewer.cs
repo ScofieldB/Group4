@@ -17,17 +17,22 @@ namespace Hospital {
     public partial class TestResultViewer : Form {
         private Size Multiplier = new Size(2, 2);
 
-        string Imagename;
+        private PatientGetSet pat = new PatientGetSet();
 
-        public TestResultViewer() {
+        private string Imagename;
+
+        public TestResultViewer()
+        {
             InitializeComponent();
-            LoadComboBox();
+            LoadComboBox(pat);
         }
 
-        private void LoadComboBox() {
+
+        private void LoadComboBox(PatientGetSet pat)
+        {
             try {
                 SqlConnection con = DBCon.DBConnect();
-                string query = "SELECT TestOrdered FROM [INB201].[dbo].[Tests]";
+                string query = "SELECT TestOrdered FROM Tests WHERE PatientID ='" + pat.getPatient() + "' AND TestOrdered IS NOT NULL";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 con.Open();
                 DataSet ds = new DataSet();
@@ -106,16 +111,18 @@ namespace Hospital {
                 con.Open();
 
                 //Retrieve BLOB from database into DataSet.
-                SqlCommand cmd = new SqlCommand("SELECT TestResults FROM [INB201].[dbo].[Tests] WHERE TestOrdered = '" + Imagename + "'", con);
+                SqlCommand cmd = new SqlCommand("SELECT TestResults FROM Tests WHERE TestOrdered = @Imagename", con);
+                cmd.Parameters.AddWithValue("@Imagename", Imagename);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
-                da.Fill(ds, "[INB201].[dbo].[Tests]");
-                int RowCount = ds.Tables["[INB201].[dbo].[Tests]"].Rows.Count;
+                da.Fill(ds, "Tests");
+                int RowCount = ds.Tables["Tests"].Rows.Count;
 
-                if (RowCount > 0) {   //BLOB is read into Byte array, then used to construct MemoryStream,
+                if (RowCount > 0) {   
+                    //BLOB is read into Byte array, then used to construct MemoryStream,
                     //then passed to PictureBox.
                     Byte[] byteTestResultsImage = new Byte[0];
-                    byteTestResultsImage = (Byte[])(ds.Tables["[INB201].[dbo].[Tests]"].Rows[RowCount - 1]["TestResults"]);
+                    byteTestResultsImage = (Byte[])(ds.Tables["Tests"].Rows[RowCount - 1]["TestResults"]);
                     MemoryStream ImageMemoryStream = new MemoryStream(byteTestResultsImage);
                     pictureBox1.Image = Image.FromStream(ImageMemoryStream);
                 }

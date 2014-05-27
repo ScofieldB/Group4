@@ -188,7 +188,7 @@ namespace Hospital {
                 Finance finance = new Finance("Imaging", this);
                 finance.ShowDialog();
                 if (typeBooked != null) {
-                    bool success = fac.bookImaging(pat, typeBooked);
+                    bool success = fac.bookImaging(pat, typeBooked, UserID);
                     if (success == true) {
                         MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.Type, typeBooked.ToString() + " booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);

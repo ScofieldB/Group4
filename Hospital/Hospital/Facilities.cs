@@ -110,7 +110,7 @@ namespace Hospital {
          * Update database that patient is now moved to Imaging room and update
          * room bed allocations.
          */
-        public bool bookImaging(PatientGetSet pat, FinanceCmbItem typeBooked) {
+        public bool bookImaging(PatientGetSet pat, FinanceCmbItem typeBooked, string UserID) {
             bool success = false;
             int cost = typeBooked.Cost;
 
@@ -132,11 +132,29 @@ namespace Hospital {
                 con.Close();
                 if (success == true) {
                     updateFacilities(pat, newRoomCapacity, newRoom);
+                    addImagingRequest(pat, typeBooked, UserID);
                     checkCover(pat, typeBooked);
                 }
 
             }
             return success;
+        }
+
+        /*
+         * Inserts values into the NOT NULL columns of the Tests table
+         * thus allowing the MedTec to add files.
+         */
+        public void addImagingRequest(PatientGetSet pat, FinanceCmbItem typeBooked, string UserID)
+        {
+            DateTime CurrentDT = DateTime.Now;
+            SqlCommand cmd = new SqlCommand("INSERT INTO Tests (PatientID, TestOrdered, OrderedByStaffID, DateOrdered) SELECT (@patient, @test , @user, @date)", con);
+            cmd.Parameters.AddWithValue("@patient", pat.getPatient());
+            cmd.Parameters.AddWithValue("@test", typeBooked.Type);
+            cmd.Parameters.AddWithValue("@user", UserID);
+            cmd.Parameters.AddWithValue("@date", CurrentDT);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
 
 
