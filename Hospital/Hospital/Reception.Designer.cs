@@ -141,6 +141,7 @@
             this.CovNtxt.Name = "CovNtxt";
             this.CovNtxt.Size = new System.Drawing.Size(100, 20);
             this.CovNtxt.TabIndex = 58;
+            this.CovNtxt.Validating += new System.ComponentModel.CancelEventHandler(this.CovNum_Validating);
             // 
             // Addtxt
             // 
@@ -155,6 +156,7 @@
             this.NOKtxt.Name = "NOKtxt";
             this.NOKtxt.Size = new System.Drawing.Size(159, 20);
             this.NOKtxt.TabIndex = 51;
+            this.NOKtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Surtxt_Validating);
             // 
             // Firtxt
             // 
