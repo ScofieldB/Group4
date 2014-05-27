@@ -524,9 +524,9 @@ namespace Hospital {
 
 
         private void CovNum_Validating(object sender, CancelEventArgs e) {
-            string reg = @"{1,20}$";
-            if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg)) {
-                MessageBox.Show("Wrong inputs");
+            string reg = @"^[0-9]+$";
+            if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg) || (int.Parse(CovNtxt.Text) > 1000000)) {
+                MessageBox.Show("Please enter a cover number between 1-1000000");
             }  
         }
 
