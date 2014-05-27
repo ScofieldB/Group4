@@ -31,6 +31,7 @@
             // 
             // SearchSurnamelbl
             // 
+            this.SearchSurnamelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.SearchSurnamelbl.AutoSize = true;
             this.SearchSurnamelbl.Location = new System.Drawing.Point(28, 44);
             this.SearchSurnamelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -41,6 +42,7 @@
             // 
             // Chooselbl
             // 
+            this.Chooselbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Chooselbl.AutoSize = true;
             this.Chooselbl.Location = new System.Drawing.Point(30, 102);
             this.Chooselbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -51,6 +53,7 @@
             // 
             // chooseCmb
             // 
+            this.chooseCmb.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.chooseCmb.FormattingEnabled = true;
             this.chooseCmb.Location = new System.Drawing.Point(32, 118);
             this.chooseCmb.Margin = new System.Windows.Forms.Padding(2);
@@ -61,6 +64,7 @@
             // 
             // Confirmbtn
             // 
+            this.Confirmbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Confirmbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Confirmbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Confirmbtn.FlatAppearance.BorderSize = 0;

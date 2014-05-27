@@ -34,6 +34,7 @@
             // 
             // Titlelbl
             // 
+            this.Titlelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Titlelbl.AutoSize = true;
             this.Titlelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titlelbl.Location = new System.Drawing.Point(91, 23);
@@ -45,6 +46,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(106, 96);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -55,6 +57,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(78, 133);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -65,6 +68,7 @@
             // 
             // NewPwtxt
             // 
+            this.NewPwtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NewPwtxt.Location = new System.Drawing.Point(186, 93);
             this.NewPwtxt.Margin = new System.Windows.Forms.Padding(2);
             this.NewPwtxt.Name = "NewPwtxt";
@@ -74,6 +78,7 @@
             // 
             // VerifyPwtxt
             // 
+            this.VerifyPwtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.VerifyPwtxt.Location = new System.Drawing.Point(186, 131);
             this.VerifyPwtxt.Margin = new System.Windows.Forms.Padding(2);
             this.VerifyPwtxt.Name = "VerifyPwtxt";
@@ -83,6 +88,7 @@
             // 
             // NewUserbtn
             // 
+            this.NewUserbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NewUserbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.NewUserbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.NewUserbtn.FlatAppearance.BorderSize = 0;
@@ -100,6 +106,7 @@
             // 
             // Cancelbtn
             // 
+            this.Cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Cancelbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Cancelbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Cancelbtn.FlatAppearance.BorderSize = 0;

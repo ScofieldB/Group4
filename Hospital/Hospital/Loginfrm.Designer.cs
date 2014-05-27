@@ -35,6 +35,7 @@
             // 
             // Loginbtn
             // 
+            this.Loginbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Loginbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Loginbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Loginbtn.FlatAppearance.BorderSize = 0;
@@ -52,6 +53,7 @@
             // 
             // Exitbtn
             // 
+            this.Exitbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Exitbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Exitbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Exitbtn.FlatAppearance.BorderSize = 0;
@@ -69,6 +71,7 @@
             // 
             // Usernamelbl
             // 
+            this.Usernamelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Usernamelbl.AutoSize = true;
             this.Usernamelbl.Location = new System.Drawing.Point(69, 50);
             this.Usernamelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -79,6 +82,7 @@
             // 
             // Passwordlbl
             // 
+            this.Passwordlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Passwordlbl.AutoSize = true;
             this.Passwordlbl.Location = new System.Drawing.Point(69, 102);
             this.Passwordlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -90,6 +94,7 @@
             // Usernametxt
             // 
             this.Usernametxt.AcceptsTab = true;
+            this.Usernametxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Usernametxt.Location = new System.Drawing.Point(132, 50);
             this.Usernametxt.Margin = new System.Windows.Forms.Padding(2);
             this.Usernametxt.Name = "Usernametxt";
@@ -99,6 +104,7 @@
             // Passwordtxt
             // 
             this.Passwordtxt.AcceptsTab = true;
+            this.Passwordtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Passwordtxt.Location = new System.Drawing.Point(132, 98);
             this.Passwordtxt.Margin = new System.Windows.Forms.Padding(2);
             this.Passwordtxt.Name = "Passwordtxt";

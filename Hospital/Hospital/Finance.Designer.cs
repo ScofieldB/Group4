@@ -31,6 +31,7 @@
             // 
             // Chooselbl
             // 
+            this.Chooselbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Chooselbl.AutoSize = true;
             this.Chooselbl.Location = new System.Drawing.Point(49, 56);
             this.Chooselbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -41,6 +42,7 @@
             // 
             // Choicescmb
             // 
+            this.Choicescmb.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Choicescmb.FormattingEnabled = true;
             this.Choicescmb.Location = new System.Drawing.Point(51, 83);
             this.Choicescmb.Margin = new System.Windows.Forms.Padding(2);
@@ -50,6 +52,7 @@
             // 
             // Confirmbtn
             // 
+            this.Confirmbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Confirmbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Confirmbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Confirmbtn.FlatAppearance.BorderSize = 0;
@@ -67,6 +70,7 @@
             // 
             // Cancelbtn
             // 
+            this.Cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Cancelbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Cancelbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Cancelbtn.FlatAppearance.BorderSize = 0;

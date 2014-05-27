@@ -31,6 +31,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 61);
             this.label1.Name = "label1";
@@ -40,6 +41,7 @@
             // 
             // TestRepbtn
             // 
+            this.TestRepbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TestRepbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.TestRepbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TestRepbtn.FlatAppearance.BorderSize = 0;
@@ -56,6 +58,7 @@
             // 
             // LogBtn
             // 
+            this.LogBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LogBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.LogBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.LogBtn.FlatAppearance.BorderSize = 0;
@@ -72,6 +75,7 @@
             // 
             // BackBtn
             // 
+            this.BackBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BackBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.BackBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BackBtn.FlatAppearance.BorderSize = 0;

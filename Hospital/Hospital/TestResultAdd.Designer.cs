@@ -37,6 +37,7 @@
             // 
             // Loadbtn
             // 
+            this.Loadbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Loadbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Loadbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Loadbtn.FlatAppearance.BorderSize = 0;
@@ -53,6 +54,7 @@
             // 
             // FilePathtb
             // 
+            this.FilePathtb.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.FilePathtb.Location = new System.Drawing.Point(48, 91);
             this.FilePathtb.Name = "FilePathtb";
             this.FilePathtb.Size = new System.Drawing.Size(190, 20);
@@ -60,6 +62,7 @@
             // 
             // Uploadbtn
             // 
+            this.Uploadbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Uploadbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Uploadbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Uploadbtn.FlatAppearance.BorderSize = 0;
@@ -76,6 +79,7 @@
             // 
             // Cancelbtn
             // 
+            this.Cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Cancelbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Cancelbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Cancelbtn.FlatAppearance.BorderSize = 0;
@@ -92,6 +96,7 @@
             // 
             // addimagelbl
             // 
+            this.addimagelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addimagelbl.AutoSize = true;
             this.addimagelbl.Location = new System.Drawing.Point(45, 32);
             this.addimagelbl.Name = "addimagelbl";

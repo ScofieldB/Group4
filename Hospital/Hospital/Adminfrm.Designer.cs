@@ -31,16 +31,17 @@
             // 
             // Logoutbtn
             // 
+            this.Logoutbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logoutbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Logoutbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Logoutbtn.FlatAppearance.BorderSize = 0;
             this.Logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logoutbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Logoutbtn.Location = new System.Drawing.Point(556, 14);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Logoutbtn.Location = new System.Drawing.Point(417, 11);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Logoutbtn.Name = "Logoutbtn";
-            this.Logoutbtn.Size = new System.Drawing.Size(132, 28);
+            this.Logoutbtn.Size = new System.Drawing.Size(99, 23);
             this.Logoutbtn.TabIndex = 2;
             this.Logoutbtn.Text = "Logout";
             this.Logoutbtn.UseVisualStyleBackColor = true;
@@ -48,26 +49,28 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(259, 31);
+            this.label1.Location = new System.Drawing.Point(194, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 32);
+            this.label1.Size = new System.Drawing.Size(151, 26);
             this.label1.TabIndex = 3;
             this.label1.Text = "Admin Control";
             // 
             // reportbtn
             // 
+            this.reportbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.reportbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.reportbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.reportbtn.FlatAppearance.BorderSize = 0;
             this.reportbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.reportbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportbtn.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.reportbtn.Location = new System.Drawing.Point(64, 149);
-            this.reportbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.reportbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.reportbtn.Location = new System.Drawing.Point(48, 121);
             this.reportbtn.Name = "reportbtn";
-            this.reportbtn.Size = new System.Drawing.Size(132, 28);
+            this.reportbtn.Size = new System.Drawing.Size(99, 23);
             this.reportbtn.TabIndex = 15;
             this.reportbtn.Text = "Reports";
             this.reportbtn.UseVisualStyleBackColor = true;
@@ -75,13 +78,17 @@
             // 
             // usermgmtbtn
             // 
+            this.usermgmtbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.usermgmtbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.usermgmtbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.usermgmtbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usermgmtbtn.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.usermgmtbtn.Location = new System.Drawing.Point(64, 114);
+            this.usermgmtbtn.FlatAppearance.BorderSize = 0;
+            this.usermgmtbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.usermgmtbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.usermgmtbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.usermgmtbtn.Location = new System.Drawing.Point(48, 93);
+            this.usermgmtbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.usermgmtbtn.Name = "usermgmtbtn";
-            this.usermgmtbtn.Size = new System.Drawing.Size(132, 28);
+            this.usermgmtbtn.Size = new System.Drawing.Size(99, 23);
             this.usermgmtbtn.TabIndex = 16;
             this.usermgmtbtn.Text = "User Mgmt";
             this.usermgmtbtn.UseVisualStyleBackColor = true;
@@ -89,19 +96,19 @@
             // 
             // Adminfrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(715, 295);
+            this.ClientSize = new System.Drawing.Size(536, 240);
             this.Controls.Add(this.usermgmtbtn);
             this.Controls.Add(this.reportbtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Logoutbtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Adminfrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";

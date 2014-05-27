@@ -71,6 +71,7 @@
             // 
             // Welcomelbl
             // 
+            this.Welcomelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Welcomelbl.AutoSize = true;
             this.Welcomelbl.Location = new System.Drawing.Point(13, 14);
             this.Welcomelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -81,6 +82,7 @@
             // 
             // Logoutbtn
             // 
+            this.Logoutbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Logoutbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Logoutbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Logoutbtn.FlatAppearance.BorderSize = 0;
@@ -88,7 +90,7 @@
             this.Logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logoutbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Logoutbtn.Location = new System.Drawing.Point(626, 14);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Logoutbtn.Name = "Logoutbtn";
             this.Logoutbtn.Size = new System.Drawing.Size(99, 23);
             this.Logoutbtn.TabIndex = 1;
@@ -98,6 +100,7 @@
             // 
             // Searchbtn
             // 
+            this.Searchbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Searchbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Searchbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Searchbtn.FlatAppearance.BorderSize = 0;
@@ -114,6 +117,7 @@
             // 
             // Sealbl
             // 
+            this.Sealbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Sealbl.AutoSize = true;
             this.Sealbl.Location = new System.Drawing.Point(110, 46);
             this.Sealbl.Name = "Sealbl";
@@ -123,6 +127,7 @@
             // 
             // Seatxt
             // 
+            this.Seatxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Seatxt.Location = new System.Drawing.Point(200, 44);
             this.Seatxt.Name = "Seatxt";
             this.Seatxt.Size = new System.Drawing.Size(121, 20);
@@ -130,6 +135,7 @@
             // 
             // Altxt
             // 
+            this.Altxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Altxt.Location = new System.Drawing.Point(423, 310);
             this.Altxt.Name = "Altxt";
             this.Altxt.Size = new System.Drawing.Size(286, 20);
@@ -137,6 +143,7 @@
             // 
             // CovNtxt
             // 
+            this.CovNtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CovNtxt.Location = new System.Drawing.Point(423, 271);
             this.CovNtxt.Name = "CovNtxt";
             this.CovNtxt.Size = new System.Drawing.Size(100, 20);
@@ -145,6 +152,7 @@
             // 
             // Addtxt
             // 
+            this.Addtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Addtxt.Location = new System.Drawing.Point(423, 114);
             this.Addtxt.Name = "Addtxt";
             this.Addtxt.Size = new System.Drawing.Size(286, 20);
@@ -152,6 +160,7 @@
             // 
             // NOKtxt
             // 
+            this.NOKtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NOKtxt.Location = new System.Drawing.Point(248, 271);
             this.NOKtxt.Name = "NOKtxt";
             this.NOKtxt.Size = new System.Drawing.Size(159, 20);
@@ -159,6 +168,7 @@
             // 
             // Firtxt
             // 
+            this.Firtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Firtxt.Location = new System.Drawing.Point(248, 154);
             this.Firtxt.Name = "Firtxt";
             this.Firtxt.Size = new System.Drawing.Size(159, 20);
@@ -166,6 +176,7 @@
             // 
             // Surtxt
             // 
+            this.Surtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Surtxt.Location = new System.Drawing.Point(248, 114);
             this.Surtxt.Name = "Surtxt";
             this.Surtxt.Size = new System.Drawing.Size(159, 20);
@@ -173,6 +184,7 @@
             // 
             // PIDtxt
             // 
+            this.PIDtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PIDtxt.Location = new System.Drawing.Point(111, 114);
             this.PIDtxt.Name = "PIDtxt";
             this.PIDtxt.ReadOnly = true;
@@ -181,6 +193,7 @@
             // 
             // Roomlbl
             // 
+            this.Roomlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Roomlbl.AutoSize = true;
             this.Roomlbl.Location = new System.Drawing.Point(109, 180);
             this.Roomlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -191,6 +204,7 @@
             // 
             // Admitbtn
             // 
+            this.Admitbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Admitbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Admitbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Admitbtn.FlatAppearance.BorderSize = 0;
@@ -198,7 +212,7 @@
             this.Admitbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Admitbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Admitbtn.Location = new System.Drawing.Point(10, 175);
-            this.Admitbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Admitbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Admitbtn.Name = "Admitbtn";
             this.Admitbtn.Size = new System.Drawing.Size(99, 23);
             this.Admitbtn.TabIndex = 72;
@@ -208,6 +222,7 @@
             // 
             // Clrbtn
             // 
+            this.Clrbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Clrbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Clrbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Clrbtn.FlatAppearance.BorderSize = 0;
@@ -224,6 +239,7 @@
             // 
             // Newbtn
             // 
+            this.Newbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Newbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Newbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Newbtn.FlatAppearance.BorderSize = 0;
@@ -240,6 +256,7 @@
             // 
             // Savbtn
             // 
+            this.Savbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Savbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Savbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Savbtn.FlatAppearance.BorderSize = 0;
@@ -256,6 +273,7 @@
             // 
             // Allbl
             // 
+            this.Allbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Allbl.AutoSize = true;
             this.Allbl.Location = new System.Drawing.Point(420, 294);
             this.Allbl.Name = "Allbl";
@@ -265,6 +283,7 @@
             // 
             // CovNlbl
             // 
+            this.CovNlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CovNlbl.AutoSize = true;
             this.CovNlbl.Location = new System.Drawing.Point(420, 255);
             this.CovNlbl.Name = "CovNlbl";
@@ -274,6 +293,7 @@
             // 
             // CovTlbl
             // 
+            this.CovTlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CovTlbl.AutoSize = true;
             this.CovTlbl.Location = new System.Drawing.Point(420, 216);
             this.CovTlbl.Name = "CovTlbl";
@@ -283,6 +303,7 @@
             // 
             // Moblbl
             // 
+            this.Moblbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Moblbl.AutoSize = true;
             this.Moblbl.Location = new System.Drawing.Point(420, 176);
             this.Moblbl.Name = "Moblbl";
@@ -292,6 +313,7 @@
             // 
             // Homlbl
             // 
+            this.Homlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Homlbl.AutoSize = true;
             this.Homlbl.Location = new System.Drawing.Point(420, 136);
             this.Homlbl.Name = "Homlbl";
@@ -301,6 +323,7 @@
             // 
             // Addlbl
             // 
+            this.Addlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Addlbl.AutoSize = true;
             this.Addlbl.Location = new System.Drawing.Point(420, 98);
             this.Addlbl.Name = "Addlbl";
@@ -310,6 +333,7 @@
             // 
             // Stalbl
             // 
+            this.Stalbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Stalbl.AutoSize = true;
             this.Stalbl.Location = new System.Drawing.Point(109, 136);
             this.Stalbl.Name = "Stalbl";
@@ -319,6 +343,7 @@
             // 
             // NOKNlbl
             // 
+            this.NOKNlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NOKNlbl.AutoSize = true;
             this.NOKNlbl.Location = new System.Drawing.Point(244, 294);
             this.NOKNlbl.Name = "NOKNlbl";
@@ -328,6 +353,7 @@
             // 
             // Kinlbl
             // 
+            this.Kinlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Kinlbl.AutoSize = true;
             this.Kinlbl.Location = new System.Drawing.Point(244, 255);
             this.Kinlbl.Name = "Kinlbl";
@@ -337,6 +363,7 @@
             // 
             // Genlbl
             // 
+            this.Genlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Genlbl.AutoSize = true;
             this.Genlbl.Location = new System.Drawing.Point(244, 216);
             this.Genlbl.Name = "Genlbl";
@@ -346,6 +373,7 @@
             // 
             // DOBlbl
             // 
+            this.DOBlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DOBlbl.AutoSize = true;
             this.DOBlbl.Location = new System.Drawing.Point(244, 177);
             this.DOBlbl.Name = "DOBlbl";
@@ -355,6 +383,7 @@
             // 
             // Firlbl
             // 
+            this.Firlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Firlbl.AutoSize = true;
             this.Firlbl.Location = new System.Drawing.Point(244, 136);
             this.Firlbl.Name = "Firlbl";
@@ -364,6 +393,7 @@
             // 
             // Surlbl
             // 
+            this.Surlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Surlbl.AutoSize = true;
             this.Surlbl.Location = new System.Drawing.Point(244, 98);
             this.Surlbl.Name = "Surlbl";
@@ -373,6 +403,7 @@
             // 
             // PIDlbl
             // 
+            this.PIDlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PIDlbl.AutoSize = true;
             this.PIDlbl.Location = new System.Drawing.Point(109, 98);
             this.PIDlbl.Name = "PIDlbl";
@@ -382,6 +413,7 @@
             // 
             // Dischargebtn
             // 
+            this.Dischargebtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Dischargebtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Dischargebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Dischargebtn.FlatAppearance.BorderSize = 0;
@@ -389,7 +421,7 @@
             this.Dischargebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dischargebtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Dischargebtn.Location = new System.Drawing.Point(10, 175);
-            this.Dischargebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Dischargebtn.Margin = new System.Windows.Forms.Padding(2);
             this.Dischargebtn.Name = "Dischargebtn";
             this.Dischargebtn.Size = new System.Drawing.Size(99, 23);
             this.Dischargebtn.TabIndex = 76;
@@ -400,18 +432,20 @@
             // 
             // GenderCmb
             // 
+            this.GenderCmb.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.GenderCmb.FormattingEnabled = true;
             this.GenderCmb.Items.AddRange(new object[] {
             "Male",
             "Female"});
             this.GenderCmb.Location = new System.Drawing.Point(247, 230);
-            this.GenderCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GenderCmb.Margin = new System.Windows.Forms.Padding(2);
             this.GenderCmb.Name = "GenderCmb";
             this.GenderCmb.Size = new System.Drawing.Size(135, 21);
             this.GenderCmb.TabIndex = 77;
             // 
             // SurErrLbl
             // 
+            this.SurErrLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.SurErrLbl.AutoSize = true;
             this.SurErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SurErrLbl.ForeColor = System.Drawing.Color.Red;
@@ -425,6 +459,7 @@
             // 
             // FnErrLbl
             // 
+            this.FnErrLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.FnErrLbl.AutoSize = true;
             this.FnErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FnErrLbl.ForeColor = System.Drawing.Color.Red;
@@ -438,6 +473,7 @@
             // 
             // DOBErrLbl
             // 
+            this.DOBErrLbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DOBErrLbl.AutoSize = true;
             this.DOBErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DOBErrLbl.ForeColor = System.Drawing.Color.Red;
@@ -451,6 +487,7 @@
             // 
             // covTypeCmb
             // 
+            this.covTypeCmb.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.covTypeCmb.FormattingEnabled = true;
             this.covTypeCmb.Items.AddRange(new object[] {
             "No Cover",
@@ -458,19 +495,20 @@
             "Medium",
             "Premium"});
             this.covTypeCmb.Location = new System.Drawing.Point(423, 233);
-            this.covTypeCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.covTypeCmb.Margin = new System.Windows.Forms.Padding(2);
             this.covTypeCmb.Name = "covTypeCmb";
             this.covTypeCmb.Size = new System.Drawing.Size(100, 21);
             this.covTypeCmb.TabIndex = 81;
             // 
             // statusCmb
             // 
+            this.statusCmb.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.statusCmb.FormattingEnabled = true;
             this.statusCmb.Items.AddRange(new object[] {
             "In-Patient",
             "Out-Patient"});
             this.statusCmb.Location = new System.Drawing.Point(111, 154);
-            this.statusCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusCmb.Margin = new System.Windows.Forms.Padding(2);
             this.statusCmb.Name = "statusCmb";
             this.statusCmb.Size = new System.Drawing.Size(101, 21);
             this.statusCmb.TabIndex = 82;
@@ -486,6 +524,7 @@
             // 
             // hardCopybtn
             // 
+            this.hardCopybtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.hardCopybtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.hardCopybtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.hardCopybtn.FlatAppearance.BorderSize = 0;
@@ -503,6 +542,7 @@
             // 
             // Homtxt
             // 
+            this.Homtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Homtxt.Location = new System.Drawing.Point(423, 154);
             this.Homtxt.Mask = "(00)0000-0000";
             this.Homtxt.Name = "Homtxt";
@@ -512,6 +552,7 @@
             // 
             // Mobtxt
             // 
+            this.Mobtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Mobtxt.Location = new System.Drawing.Point(423, 188);
             this.Mobtxt.Mask = "(00)0000-0000";
             this.Mobtxt.Name = "Mobtxt";
@@ -521,6 +562,7 @@
             // 
             // DOBtxt
             // 
+            this.DOBtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DOBtxt.Location = new System.Drawing.Point(247, 196);
             this.DOBtxt.Mask = "00/00/0000";
             this.DOBtxt.Name = "DOBtxt";
@@ -530,6 +572,7 @@
             // 
             // NOKNtxt
             // 
+            this.NOKNtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NOKNtxt.Location = new System.Drawing.Point(248, 311);
             this.NOKNtxt.Mask = "(00)0000-0000";
             this.NOKNtxt.Name = "NOKNtxt";
@@ -592,7 +635,7 @@
             this.Controls.Add(this.Searchbtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Reception";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reception";
