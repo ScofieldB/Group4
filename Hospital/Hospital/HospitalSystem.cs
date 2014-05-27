@@ -98,7 +98,7 @@ namespace Hospital {
         // Allows the user to view images of the selected patient
         private void ViewImgbtn_Click(object sender, EventArgs e) {
             if (pat.getPatient() != -1) {
-                TestResultViewer Tests = new TestResultViewer();
+                TestResultViewer Tests = new TestResultViewer(Role);
                 Tests.Show();
             } else {
                 MessageBox.Show("Please search for a patient.", "Patient Search required",

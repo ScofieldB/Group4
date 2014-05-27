@@ -23,26 +23,19 @@ namespace Hospital {
         private string Imagename;
         private string role;
 
-        public TestResultViewer()
+        public TestResultViewer(string Role)
         {
+            role = Role;
             InitializeComponent();
             LoadComboBox(pat);
-            userTest(user);
-        }
-
-        public void userTest(User user)
-        {
-            role = user.getRole();
-            if (role == "MedTech")
-            {
+            if (role == "MedTech") {
                 addTestResultLinkBTN.Visible = true;
-            }
-            else
-            {
+            } else {
                 addTestResultLinkBTN.Visible = false;
             }
         }
 
+        
         private void LoadComboBox(PatientGetSet pat)
         {
             try {
