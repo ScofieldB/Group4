@@ -527,6 +527,7 @@ namespace Hospital {
             string reg = @"^[0-9]+$";
             if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg) || (int.Parse(CovNtxt.Text) > 1000000)) {
                 MessageBox.Show("Please enter a cover number between 1-1000000");
+                CovNtxt.Text = "0";
             }  
         }
 
