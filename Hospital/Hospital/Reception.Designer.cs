@@ -156,7 +156,6 @@
             this.NOKtxt.Name = "NOKtxt";
             this.NOKtxt.Size = new System.Drawing.Size(159, 20);
             this.NOKtxt.TabIndex = 51;
-            this.NOKtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Surtxt_Validating);
             // 
             // Firtxt
             // 
