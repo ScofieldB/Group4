@@ -20,18 +20,6 @@ namespace Hospital {
 
         public TestResultAdd() {
             InitializeComponent();
-            userTest();
-        }
-
-        public void userTest()
-        {
-            if (user.getRole() == "MedTech")
-            {
-                Uploadbtn.Visible = true;
-            }
-            else{
-                Uploadbtn.Visible = false;
-            }
         }
 
         private void Loadbtn_Click(object sender, EventArgs e) {

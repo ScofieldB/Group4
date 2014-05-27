@@ -148,7 +148,8 @@ namespace Hospital {
         {
             DateTime CurrentDT = DateTime.Now;
             SqlCommand cmd = new SqlCommand("INSERT INTO Tests (PatientID, TestOrdered, OrderedByStaffID, DateOrdered) SELECT (@patient, @test , @user, @date)", con);
-            cmd.Parameters.AddWithValue("@patient", pat.getPatient());
+            int patient = pat.getPatient();
+            cmd.Parameters.AddWithValue("@patient", patient);
             cmd.Parameters.AddWithValue("@test", typeBooked.Type);
             cmd.Parameters.AddWithValue("@user", UserID);
             cmd.Parameters.AddWithValue("@date", CurrentDT);

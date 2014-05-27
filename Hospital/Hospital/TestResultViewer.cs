@@ -18,6 +18,7 @@ namespace Hospital {
         private Size Multiplier = new Size(2, 2);
 
         private PatientGetSet pat = new PatientGetSet();
+        private User user = new User();
 
         private string Imagename;
 
@@ -25,8 +26,20 @@ namespace Hospital {
         {
             InitializeComponent();
             LoadComboBox(pat);
+            userTest();
         }
 
+        public void userTest()
+        {
+            if (user.getRole() == "MedTech")
+            {
+                addTestResultLinkBTN.Visible = true;
+            }
+            else
+            {
+                addTestResultLinkBTN.Visible = false;
+            }
+        }
 
         private void LoadComboBox(PatientGetSet pat)
         {
