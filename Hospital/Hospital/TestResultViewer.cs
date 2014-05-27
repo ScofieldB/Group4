@@ -17,16 +17,18 @@ namespace Hospital {
     public partial class TestResultViewer : Form {
         private Size Multiplier = new Size(2, 2);
 
-        private PatientGetSet pat = new PatientGetSet();
-        private User user = new User();
-
         private string Imagename;
         private string role;
+        private string usersID;
+        private int patientnum;
 
-        public TestResultViewer(string Role) {
+        public TestResultViewer(string UserID, string Role, int patient)
+        {
+            patientnum = patient;
             role = Role;
+            usersID = UserID;
             InitializeComponent();
-            LoadComboBox(pat);
+            LoadComboBox();
             if (role == "MedTech") {
                 addTestResultLinkBTN.Visible = true;
             } else {
@@ -35,10 +37,10 @@ namespace Hospital {
         }
 
 
-        private void LoadComboBox(PatientGetSet pat) {
+        private void LoadComboBox() {
             try {
                 SqlConnection con = DBCon.DBConnect();
-                string query = "SELECT TestOrdered FROM Tests WHERE PatientID ='" + pat.getPatient() + "' AND TestOrdered IS NOT NULL";
+                string query = "SELECT TestOrdered FROM Tests WHERE PatientID ='" + patientnum + "' AND TestResults IS NOT NULL";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 con.Open();
                 DataSet ds = new DataSet();
@@ -141,7 +143,7 @@ namespace Hospital {
         }
 
         private void addTestResultLinkBTN_Click(object sender, EventArgs e) {
-            TestResultAdd Tests = new TestResultAdd();
+            TestResultAdd Tests = new TestResultAdd(usersID, patientnum);
             Tests.Show();
         }
     }

@@ -14,11 +14,13 @@ using System.Drawing.Imaging;
 namespace Hospital {
     public partial class TestResultAdd : Form {
 
-        private Facilities fac = new Facilities();
-        private PatientGetSet pat = new PatientGetSet();
-        private User user = new User();
+        private string UserID;
+        private int patient;
 
-        public TestResultAdd() {
+        public TestResultAdd(string usersID, int patientnum)
+        {
+            patient = patientnum;
+            UserID = usersID;
             InitializeComponent();
         }
 
@@ -32,7 +34,6 @@ namespace Hospital {
             if (dr == DialogResult.OK) {
                 userSelectedFilePath = ofd.FileName;
             }
-
         }
 
         public string userSelectedFilePath {
@@ -49,11 +50,19 @@ namespace Hospital {
             try {
                 //Set up connection to be opened.
                 SqlConnection con = DBCon.DBConnect();
-                SqlCommand cmd = new SqlCommand("UPDATE Tests SET TestResults = @TestResults AND UploadedByStaffID = @user AND DateUploaded = @date WHERE TestOrdered IS NULL AND PatientID = @pat", con);
-                cmd.Parameters.AddWithValue("@user", user.getUser());
+                SqlCommand cmd = new SqlCommand("UPDATE Tests SET TestResults = @TestResults, UploadedByStaffID = @user, DateUploaded = @date WHERE TestResults IS NULL AND PatientID = @pat", con);
+
+                cmd.Parameters.AddWithValue("@user", UserID);
                 cmd.Parameters.AddWithValue("@Date", CurrentDT);
-                cmd.Parameters.AddWithValue("@pat", pat.getPatient());
-                String ImageFilePath = userSelectedFilePath;
+                cmd.Parameters.AddWithValue("@pat", patient);
+                MessageBox.Show(UserID);
+                MessageBox.Show(CurrentDT.ToString());
+                MessageBox.Show(patient.ToString());
+
+                string ImageFilePath = userSelectedFilePath;
+               // string rawImageFilePath = userSelectedFilePath;
+              //  string ImageFilePath = rawImageFilePath.Replace(@"\", @"/");
+                Cancelbtn.Text = ImageFilePath;
 
                 //Read jpg into file stream, and from there into Byte array.
                 FileStream ImageFileStream = new FileStream(ImageFilePath, FileMode.Open, FileAccess.Read);
@@ -71,7 +80,6 @@ namespace Hospital {
                 cmd.ExecuteNonQuery();
                 con.Close();
                 ActiveForm.Close();
-                fac.returnPatientToDoctor(pat);
             } catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
