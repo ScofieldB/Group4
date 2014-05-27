@@ -204,7 +204,7 @@ namespace Hospital {
             }
 
             if (covTypeCmb.SelectedIndex > 0) {
-                command.Parameters.Add("@covert", System.Data.SqlDbType.Int).Value = Int32.Parse(covTypeCmb.SelectedText);
+                command.Parameters.Add("@covert", System.Data.SqlDbType.Int).Value = covTypeCmb.SelectedIndex;
             } else {
                 command.Parameters.Add("@covert", System.Data.SqlDbType.Int).Value = 0;
             }

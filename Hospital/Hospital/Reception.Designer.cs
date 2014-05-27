@@ -243,10 +243,13 @@
             // 
             // Savbtn
             // 
+            this.Savbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Savbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Savbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Savbtn.Location = new System.Drawing.Point(13, 140);
             this.Savbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Savbtn.Name = "Savbtn";
-            this.Savbtn.Size = new System.Drawing.Size(109, 30);
+            this.Savbtn.Size = new System.Drawing.Size(132, 28);
             this.Savbtn.TabIndex = 66;
             this.Savbtn.Text = "Save Changes";
             this.Savbtn.UseVisualStyleBackColor = true;
@@ -555,6 +558,7 @@
             this.AcceptButton = this.Searchbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(977, 514);
