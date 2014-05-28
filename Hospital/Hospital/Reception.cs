@@ -443,12 +443,14 @@ namespace Hospital {
 
         private void Dischargebtn_Click(object sender, EventArgs e) {
             int charges = Patient.DischargePatient(pat);
+            
+            if (charges > 0) {
+                createInvoice();
+            }
+
             MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged with a final bill of $"
                             + charges, "Patient Discharged", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-            //--------------------------
-            //Export charges to PDF Bill here
-            //--------------------------
 
             pat = Patient.SearchPID(pat.getPatient());
             CurrentRoomlbl.Text = pat.getRoom();
@@ -477,6 +479,42 @@ namespace Hospital {
             command.ExecuteNonQuery();
             con.Close();
         }
+
+
+        private void createInvoice() {
+
+            if (pat.getPatient() != -1) {
+                //Intantiates new Report Document, loads document based off rpt template.
+                ReportDocument cryRpt = new ReportDocument();
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\Invoice.rpt");//source file location for the premade report, may need to be manually changed
+
+                //Variable delecaration and assignment
+                ParameterFieldDefinitions crParameterFieldDefinitions;
+                ParameterFieldDefinition crParameterFieldDefinition;
+                ParameterValues crParameterValues = new ParameterValues();
+                ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+
+                //Assigns textbox value to relatable reviving methods in crystal report and assigns values
+                crParameterDiscreteValue.Value = pat.getPatient();
+                crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
+                crParameterFieldDefinition = crParameterFieldDefinitions["PatientID"];
+                crParameterValues = crParameterFieldDefinition.CurrentValues;
+
+                crParameterValues.Clear();
+                crParameterValues.Add(crParameterDiscreteValue);
+                crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+
+                //Exports generated report to PDF format
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf"); //output location, may need to be manually changed
+                MessageBox.Show("Export to PDF Successful.");
+            } else {
+                MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
 
         /* Function Button click calls relevant crystal report methods for out putting a hard copy
          * of the searched patients personal details and history, based on predefined report structure.

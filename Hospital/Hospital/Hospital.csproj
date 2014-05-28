@@ -101,6 +101,12 @@
     <Compile Include="HospitalSystem.Designer.cs">
       <DependentUpon>HospitalSystem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Invoice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Invoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reception.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HospitalSystem.resx">
       <DependentUpon>HospitalSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Invoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Invoice.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reception.resx">
       <DependentUpon>Reception.cs</DependentUpon>
