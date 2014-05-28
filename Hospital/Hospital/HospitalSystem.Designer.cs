@@ -67,10 +67,10 @@
             this.Searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Searchbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Searchbtn.Location = new System.Drawing.Point(309, 27);
-            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Searchbtn.Name = "Searchbtn";
             this.Searchbtn.Size = new System.Drawing.Size(132, 28);
-            this.Searchbtn.TabIndex = 35;
+            this.Searchbtn.TabIndex = 2;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
             this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
@@ -88,12 +88,14 @@
             // 
             // Seatxt
             // 
+            this.Seatxt.AcceptsReturn = true;
             this.Seatxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Seatxt.Location = new System.Drawing.Point(141, 27);
-            this.Seatxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Seatxt.Margin = new System.Windows.Forms.Padding(4);
             this.Seatxt.Name = "Seatxt";
             this.Seatxt.Size = new System.Drawing.Size(160, 22);
-            this.Seatxt.TabIndex = 33;
+            this.Seatxt.TabIndex = 1;
+            this.Seatxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Seatxt_KeyDown);
             // 
             // PatInfolbl
             // 
@@ -124,7 +126,7 @@
             this.historyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.historyDataGridView.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.historyDataGridView.Location = new System.Drawing.Point(16, 94);
-            this.historyDataGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.historyDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.historyDataGridView.Name = "historyDataGridView";
             this.historyDataGridView.ReadOnly = true;
             this.historyDataGridView.Size = new System.Drawing.Size(1333, 639);
@@ -140,7 +142,7 @@
             this.addHistorybtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addHistorybtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.addHistorybtn.Location = new System.Drawing.Point(20, 825);
-            this.addHistorybtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addHistorybtn.Margin = new System.Windows.Forms.Padding(4);
             this.addHistorybtn.Name = "addHistorybtn";
             this.addHistorybtn.Size = new System.Drawing.Size(132, 28);
             this.addHistorybtn.TabIndex = 39;
@@ -152,10 +154,11 @@
             // 
             this.addHistorytbx.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addHistorytbx.Location = new System.Drawing.Point(20, 794);
-            this.addHistorytbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addHistorytbx.Margin = new System.Windows.Forms.Padding(4);
             this.addHistorytbx.Name = "addHistorytbx";
             this.addHistorytbx.Size = new System.Drawing.Size(553, 22);
             this.addHistorytbx.TabIndex = 40;
+            this.addHistorytbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addHistorytbx_KeyDown);
             // 
             // ViewImgbtn
             // 

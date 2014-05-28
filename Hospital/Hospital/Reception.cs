@@ -531,5 +531,11 @@ namespace Hospital {
             }  
         }
 
+        private void Seatxt_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                Searchbtn_Click(sender, e);
+            }
+        }
+
     }
 }
