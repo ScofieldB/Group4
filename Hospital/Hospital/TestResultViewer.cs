@@ -57,31 +57,46 @@ namespace Hospital {
 
         public void ZoomIn() {
 
-            Image MyImage = pictureBox1.Image;
+            try{
+                Image MyImage = pictureBox1.Image;
 
-            Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width * Multiplier.Width),
-                Convert.ToInt32(MyImage.Height * Multiplier.Height));
+                Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width * Multiplier.Width),
+                    Convert.ToInt32(MyImage.Height * Multiplier.Height));
 
-            Graphics Graphic = Graphics.FromImage(MyBitMap);
+                Graphics Graphic = Graphics.FromImage(MyBitMap);
 
-            Graphic.InterpolationMode = InterpolationMode.High;
+                Graphic.InterpolationMode = InterpolationMode.High;
 
-            pictureBox1.Image = MyBitMap;
+                pictureBox1.Image = MyBitMap;
+            }
+            catch
+            {
+                MessageBox.Show("Cannot zoom further.", "Zoom Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         public void ZoomOut() {
 
-            Image MyImage = pictureBox1.Image;
+            try{
 
-            Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width / Multiplier.Width),
-                Convert.ToInt32(MyImage.Height / Multiplier.Height));
+                Image MyImage = pictureBox1.Image;
 
-            Graphics Graphic = Graphics.FromImage(MyBitMap);
+                Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width / Multiplier.Width),
+                    Convert.ToInt32(MyImage.Height / Multiplier.Height));
 
-            Graphic.InterpolationMode = InterpolationMode.High;
+                Graphics Graphic = Graphics.FromImage(MyBitMap);
 
-            pictureBox1.Image = MyBitMap;
+                Graphic.InterpolationMode = InterpolationMode.High;
+
+                pictureBox1.Image = MyBitMap;
+            }
+            catch
+            {
+                MessageBox.Show("Cannot zoom further.", "Zoom Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ZoomInButton_Click(object sender, EventArgs e) {
