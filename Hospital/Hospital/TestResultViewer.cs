@@ -28,6 +28,7 @@ namespace Hospital {
             role = Role;
             usersID = UserID;
             InitializeComponent();
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             LoadComboBox();
             if (role == "MedTech") {
                 addTestResultLinkBTN.Visible = true;
@@ -134,6 +135,7 @@ namespace Hospital {
                     byteTestResultsImage = (Byte[])(ds.Tables["Tests"].Rows[RowCount - 1]["TestResults"]);
                     MemoryStream ImageMemoryStream = new MemoryStream(byteTestResultsImage);
                     pictureBox1.Image = Image.FromStream(ImageMemoryStream);
+                    this.pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                 }
                 con.Close();
             } catch {
@@ -145,24 +147,6 @@ namespace Hospital {
         private void addTestResultLinkBTN_Click(object sender, EventArgs e) {
             TestResultAdd Tests = new TestResultAdd(usersID, patientnum);
             Tests.Show();
-        }
-
-        private void pictureBox1_MouseMove(object sender, EventArgs e)
-        {
-            MouseEventArgs mouse = e as MouseEventArgs;
-
-            if (mouse.Button == MouseButtons.Left)
-            {
-                Point mousePosNow = mouse.Location;
-
-                int deltaX = mousePosNow.X;
-                int deltaY = mousePosNow.Y;
-
-                int newX = pictureBox1.Location.X + deltaX;
-                int newY = pictureBox1.Location.Y + deltaY;
-
-                pictureBox1.Location = new Point(newX, newY);
-            }
         }
     }
 }
