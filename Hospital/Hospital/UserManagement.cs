@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,18 +38,17 @@ namespace Hospital {
             try {
                 Surname = admin.addUser(Usernametxt.Text, Rolecmb.SelectedItem.ToString());
 
-
                 if (Surname == "") {
-                    MessageBox.Show("Username " + Usernametxt.Text + " is not a valid userame"
+                    MessageBox.Show("StaffID " + Usernametxt.Text + " is not a valid userame"
                                     + Surname, "User Not Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
-                    MessageBox.Show("Username " + Usernametxt.Text + " has now been added to system with password: "
+                    MessageBox.Show("StaffID " + Usernametxt.Text + " has now been added to system with password: "
                                     + Surname, "User Added",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             } catch (Exception) {
-                MessageBox.Show("Please input a valid username and select a role", "User Not Added",
+                MessageBox.Show("Please input a valid StaffID and select a role", "User Not Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -63,15 +63,38 @@ namespace Hospital {
                     "another Admin if you wish to proceed", "User Not Added",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
-                try {
-                    admin.deleteUser(Usernametxt.Text);
 
-                    MessageBox.Show("UserID " + Usernametxt.Text + " has now been deleted from system", "User deleted",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Usernametxt.Text = "";
-                } catch {
-                    MessageBox.Show("Please input a valid username to be deleted", "User Not Deleted",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SqlConnection con = DBCon.DBConnect();
+
+                con.Open();
+
+                SqlCommand command = new SqlCommand("SELECT Count(*) FROM Staff WHERE StaffID = @id", con);
+                command.Parameters.AddWithValue("@id", Usernametxt.Text);
+                SqlDataReader reader = command.ExecuteReader();
+
+                int CountOfUser = 0;
+                while (reader.Read()) {
+                    CountOfUser = Convert.ToInt32(reader.GetInt32(0));
+                }
+                reader.Close();
+
+                con.Close();
+
+                if (CountOfUser > 0) {
+
+                    try {
+                        admin.deleteUser(Usernametxt.Text);
+
+                        MessageBox.Show("StaffID " + Usernametxt.Text + " has now been deleted from system", "User deleted",
+                            MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        Usernametxt.Text = "";
+                    } catch {
+                        MessageBox.Show("Please input a valid username to be deleted", "User Not Deleted",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } else {
+                    MessageBox.Show("StaffID " + Usernametxt.Text + " is not a valid StaffID in system", "Please Try Again",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
