@@ -231,7 +231,7 @@
             this.Finishbtn.Name = "Finishbtn";
             this.Finishbtn.Size = new System.Drawing.Size(132, 28);
             this.Finishbtn.TabIndex = 44;
-            this.Finishbtn.Text = "Finish";
+            this.Finishbtn.Text = "Transfer";
             this.Finishbtn.UseVisualStyleBackColor = true;
             this.Finishbtn.Click += new System.EventHandler(this.Finishbtn_Click);
             // 
@@ -259,7 +259,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "HospitalSystem";
-            this.Text = "1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.historyDataGridView)).EndInit();
             this.ResumeLayout(false);

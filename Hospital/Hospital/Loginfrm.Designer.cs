@@ -31,6 +31,7 @@
             this.Passwordlbl = new System.Windows.Forms.Label();
             this.Usernametxt = new System.Windows.Forms.TextBox();
             this.Passwordtxt = new System.Windows.Forms.TextBox();
+            this.nameLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Loginbtn
@@ -42,7 +43,7 @@
             this.Loginbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Loginbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Loginbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Loginbtn.Location = new System.Drawing.Point(41, 147);
+            this.Loginbtn.Location = new System.Drawing.Point(41, 154);
             this.Loginbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Loginbtn.Name = "Loginbtn";
             this.Loginbtn.Size = new System.Drawing.Size(110, 37);
@@ -60,7 +61,7 @@
             this.Exitbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Exitbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Exitbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Exitbtn.Location = new System.Drawing.Point(194, 147);
+            this.Exitbtn.Location = new System.Drawing.Point(194, 154);
             this.Exitbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Exitbtn.Name = "Exitbtn";
             this.Exitbtn.Size = new System.Drawing.Size(110, 37);
@@ -73,7 +74,7 @@
             // 
             this.Usernamelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Usernamelbl.AutoSize = true;
-            this.Usernamelbl.Location = new System.Drawing.Point(69, 50);
+            this.Usernamelbl.Location = new System.Drawing.Point(69, 57);
             this.Usernamelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Usernamelbl.Name = "Usernamelbl";
             this.Usernamelbl.Size = new System.Drawing.Size(58, 13);
@@ -84,7 +85,7 @@
             // 
             this.Passwordlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Passwordlbl.AutoSize = true;
-            this.Passwordlbl.Location = new System.Drawing.Point(69, 102);
+            this.Passwordlbl.Location = new System.Drawing.Point(69, 109);
             this.Passwordlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Passwordlbl.Name = "Passwordlbl";
             this.Passwordlbl.Size = new System.Drawing.Size(56, 13);
@@ -95,7 +96,7 @@
             // 
             this.Usernametxt.AcceptsTab = true;
             this.Usernametxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Usernametxt.Location = new System.Drawing.Point(132, 50);
+            this.Usernametxt.Location = new System.Drawing.Point(132, 57);
             this.Usernametxt.Margin = new System.Windows.Forms.Padding(2);
             this.Usernametxt.Name = "Usernametxt";
             this.Usernametxt.Size = new System.Drawing.Size(173, 20);
@@ -105,12 +106,22 @@
             // 
             this.Passwordtxt.AcceptsTab = true;
             this.Passwordtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Passwordtxt.Location = new System.Drawing.Point(132, 98);
+            this.Passwordtxt.Location = new System.Drawing.Point(132, 105);
             this.Passwordtxt.Margin = new System.Windows.Forms.Padding(2);
             this.Passwordtxt.Name = "Passwordtxt";
             this.Passwordtxt.PasswordChar = '*';
             this.Passwordtxt.Size = new System.Drawing.Size(173, 20);
             this.Passwordtxt.TabIndex = 1;
+            // 
+            // nameLbl
+            // 
+            this.nameLbl.AutoSize = true;
+            this.nameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLbl.Location = new System.Drawing.Point(32, 9);
+            this.nameLbl.Name = "nameLbl";
+            this.nameLbl.Size = new System.Drawing.Size(285, 24);
+            this.nameLbl.TabIndex = 4;
+            this.nameLbl.Text = "Townsville Childrens Hospital";
             // 
             // Loginfrm
             // 
@@ -121,6 +132,7 @@
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(346, 224);
+            this.Controls.Add(this.nameLbl);
             this.Controls.Add(this.Passwordtxt);
             this.Controls.Add(this.Usernametxt);
             this.Controls.Add(this.Passwordlbl);
@@ -146,6 +158,7 @@
         private System.Windows.Forms.Label Passwordlbl;
         private System.Windows.Forms.TextBox Usernametxt;
         private System.Windows.Forms.TextBox Passwordtxt;
+        private System.Windows.Forms.Label nameLbl;
     }
 }
 

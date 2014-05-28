@@ -28,6 +28,7 @@ namespace Hospital {
             role = Role;
             usersID = UserID;
             InitializeComponent();
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             LoadComboBox();
             if (role == "MedTech") {
                 addTestResultLinkBTN.Visible = true;
@@ -56,31 +57,46 @@ namespace Hospital {
 
         public void ZoomIn() {
 
-            Image MyImage = pictureBox1.Image;
+            try{
+                Image MyImage = pictureBox1.Image;
 
-            Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width * Multiplier.Width),
-                Convert.ToInt32(MyImage.Height * Multiplier.Height));
+                Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width * Multiplier.Width),
+                    Convert.ToInt32(MyImage.Height * Multiplier.Height));
 
-            Graphics Graphic = Graphics.FromImage(MyBitMap);
+                Graphics Graphic = Graphics.FromImage(MyBitMap);
 
-            Graphic.InterpolationMode = InterpolationMode.High;
+                Graphic.InterpolationMode = InterpolationMode.High;
 
-            pictureBox1.Image = MyBitMap;
+                pictureBox1.Image = MyBitMap;
+            }
+            catch
+            {
+                MessageBox.Show("Cannot zoom further.", "Zoom Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         public void ZoomOut() {
 
-            Image MyImage = pictureBox1.Image;
+            try{
 
-            Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width / Multiplier.Width),
-                Convert.ToInt32(MyImage.Height / Multiplier.Height));
+                Image MyImage = pictureBox1.Image;
 
-            Graphics Graphic = Graphics.FromImage(MyBitMap);
+                Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width / Multiplier.Width),
+                    Convert.ToInt32(MyImage.Height / Multiplier.Height));
 
-            Graphic.InterpolationMode = InterpolationMode.High;
+                Graphics Graphic = Graphics.FromImage(MyBitMap);
 
-            pictureBox1.Image = MyBitMap;
+                Graphic.InterpolationMode = InterpolationMode.High;
+
+                pictureBox1.Image = MyBitMap;
+            }
+            catch
+            {
+                MessageBox.Show("Cannot zoom further.", "Zoom Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ZoomInButton_Click(object sender, EventArgs e) {
@@ -134,6 +150,7 @@ namespace Hospital {
                     byteTestResultsImage = (Byte[])(ds.Tables["Tests"].Rows[RowCount - 1]["TestResults"]);
                     MemoryStream ImageMemoryStream = new MemoryStream(byteTestResultsImage);
                     pictureBox1.Image = Image.FromStream(ImageMemoryStream);
+                    this.pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                 }
                 con.Close();
             } catch {
@@ -145,24 +162,6 @@ namespace Hospital {
         private void addTestResultLinkBTN_Click(object sender, EventArgs e) {
             TestResultAdd Tests = new TestResultAdd(usersID, patientnum);
             Tests.Show();
-        }
-
-        private void pictureBox1_MouseMove(object sender, EventArgs e)
-        {
-            MouseEventArgs mouse = e as MouseEventArgs;
-
-            if (mouse.Button == MouseButtons.Left)
-            {
-                Point mousePosNow = mouse.Location;
-
-                int deltaX = mousePosNow.X;
-                int deltaY = mousePosNow.Y;
-
-                int newX = pictureBox1.Location.X + deltaX;
-                int newY = pictureBox1.Location.Y + deltaY;
-
-                pictureBox1.Location = new Point(newX, newY);
-            }
         }
     }
 }
