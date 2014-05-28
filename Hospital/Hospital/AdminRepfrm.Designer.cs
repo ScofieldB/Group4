@@ -27,6 +27,7 @@
             this.LogBtn = new System.Windows.Forms.Button();
             this.BackBtn = new System.Windows.Forms.Button();
             this.Desc = new System.Windows.Forms.Label();
+            this.Outstandingbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestRepbtn
@@ -38,9 +39,10 @@
             this.TestRepbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TestRepbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.TestRepbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TestRepbtn.Location = new System.Drawing.Point(15, 63);
+            this.TestRepbtn.Location = new System.Drawing.Point(20, 78);
+            this.TestRepbtn.Margin = new System.Windows.Forms.Padding(4);
             this.TestRepbtn.Name = "TestRepbtn";
-            this.TestRepbtn.Size = new System.Drawing.Size(99, 23);
+            this.TestRepbtn.Size = new System.Drawing.Size(132, 28);
             this.TestRepbtn.TabIndex = 1;
             this.TestRepbtn.Text = "Test Rep";
             this.TestRepbtn.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             this.LogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.LogBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.LogBtn.Location = new System.Drawing.Point(209, 12);
+            this.LogBtn.Location = new System.Drawing.Point(279, 15);
+            this.LogBtn.Margin = new System.Windows.Forms.Padding(4);
             this.LogBtn.Name = "LogBtn";
-            this.LogBtn.Size = new System.Drawing.Size(99, 23);
+            this.LogBtn.Size = new System.Drawing.Size(132, 28);
             this.LogBtn.TabIndex = 2;
             this.LogBtn.Text = "Logout";
             this.LogBtn.UseVisualStyleBackColor = false;
@@ -72,9 +75,10 @@
             this.BackBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.BackBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BackBtn.Location = new System.Drawing.Point(209, 226);
+            this.BackBtn.Location = new System.Drawing.Point(279, 278);
+            this.BackBtn.Margin = new System.Windows.Forms.Padding(4);
             this.BackBtn.Name = "BackBtn";
-            this.BackBtn.Size = new System.Drawing.Size(99, 23);
+            this.BackBtn.Size = new System.Drawing.Size(132, 28);
             this.BackBtn.TabIndex = 3;
             this.BackBtn.Text = "Back";
             this.BackBtn.UseVisualStyleBackColor = true;
@@ -83,26 +87,43 @@
             // Desc
             // 
             this.Desc.AutoSize = true;
-            this.Desc.Location = new System.Drawing.Point(12, 38);
+            this.Desc.Location = new System.Drawing.Point(16, 47);
+            this.Desc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Desc.Name = "Desc";
-            this.Desc.Size = new System.Drawing.Size(218, 13);
+            this.Desc.Size = new System.Drawing.Size(296, 17);
             this.Desc.TabIndex = 4;
             this.Desc.Text = "Selection of reports for use by Administrators.";
             // 
+            // Outstandingbtn
+            // 
+            this.Outstandingbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Outstandingbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Outstandingbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.Outstandingbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Outstandingbtn.Location = new System.Drawing.Point(20, 124);
+            this.Outstandingbtn.Name = "Outstandingbtn";
+            this.Outstandingbtn.Size = new System.Drawing.Size(132, 51);
+            this.Outstandingbtn.TabIndex = 5;
+            this.Outstandingbtn.Text = "Outstanding Charges";
+            this.Outstandingbtn.UseVisualStyleBackColor = true;
+            this.Outstandingbtn.Click += new System.EventHandler(this.Outstandingbtn_Click);
+            // 
             // AdminRepfrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(320, 261);
+            this.ClientSize = new System.Drawing.Size(427, 321);
+            this.Controls.Add(this.Outstandingbtn);
             this.Controls.Add(this.Desc);
             this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.LogBtn);
             this.Controls.Add(this.TestRepbtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AdminRepfrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminRepfrm";
@@ -117,5 +138,6 @@
         private System.Windows.Forms.Button LogBtn;
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Label Desc;
+        private System.Windows.Forms.Button Outstandingbtn;
     }
 }

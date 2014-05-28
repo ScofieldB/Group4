@@ -43,5 +43,16 @@ namespace Hospital {
             back.Show();
             Close();
         }
+
+        private void Outstandingbtn_Click(object sender, EventArgs e) {
+            //Intantiates new Report Document, loads document based off rpt template.
+            ReportDocument cryRpt = new ReportDocument();
+            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\OutstandingChargesRep.rpt");//source file location for the premade report, may need to be manually changed
+
+            //Exports generated report to PDF format
+            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf"); //output location, may need to be manually changed
+            MessageBox.Show("Export to PDF Successful.");
+        }
+
     }
 }

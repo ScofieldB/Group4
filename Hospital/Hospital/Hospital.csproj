@@ -73,16 +73,16 @@
     <Compile Include="ChoosePatient.Designer.cs">
       <DependentUpon>ChoosePatient.cs</DependentUpon>
     </Compile>
-    <Compile Include="CrystalReport1.cs">
+    <Compile Include="ExportPatientRep.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <DependentUpon>ExportPatientRep.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CrystalReport2.cs">
+    <Compile Include="OutstandingChargesRep.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <DependentUpon>OutstandingChargesRep.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DBCon.cs" />
@@ -162,13 +162,13 @@
     <EmbeddedResource Include="ChoosePatient.resx">
       <DependentUpon>ChoosePatient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport1.rpt">
+    <EmbeddedResource Include="ExportPatientRep.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+      <LastGenOutput>ExportPatientRep.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport2.rpt">
+    <EmbeddedResource Include="OutstandingChargesRep.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
+      <LastGenOutput>OutstandingChargesRep.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Finance.resx">
       <DependentUpon>Finance.cs</DependentUpon>
