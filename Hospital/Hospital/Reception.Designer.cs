@@ -181,6 +181,7 @@
             this.Surtxt.Name = "Surtxt";
             this.Surtxt.Size = new System.Drawing.Size(159, 20);
             this.Surtxt.TabIndex = 46;
+            this.Surtxt.Validating += new System.ComponentModel.CancelEventHandler(this.SurTxt_Validating);
             // 
             // PIDtxt
             // 

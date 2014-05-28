@@ -514,15 +514,16 @@ namespace Hospital {
             }
         }
 
-       /* //regex validation on leave of textbox test
-        private void Surtxt_Validating(object sender, CancelEventArgs e) {
-            string reg = @"^['\\- a-zA-Z]{1,20}$";
+       //regex validation on leave of textbox test
+        private void SurTxt_Validating(object sender, CancelEventArgs e) {
+            string reg = @"^[a-zA-Z' -]{1,20}$";
             if (!Regex.IsMatch(this.Surtxt.Text.Trim(), reg)) {
-                MessageBox.Show("Wrong inputs");
+                MessageBox.Show("Please input only English characters, spaces, hyphen or apostrophe.");
+                Surtxt.Text = "";
             }        
-        }*/
+        }
 
-
+        //why does this magically work for him but not me
         private void CovNum_Validating(object sender, CancelEventArgs e) {
             string reg = @"^[0-9]+$";
             if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg) || (int.Parse(CovNtxt.Text) > 1000000)) {
