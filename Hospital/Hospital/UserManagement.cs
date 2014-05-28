@@ -14,6 +14,7 @@ namespace Hospital {
         Form home;
         Form back;
         private string userId;
+        private Admin admin = new Admin();
 
         public UserManagement(string user) {
             userId = user;
@@ -32,7 +33,7 @@ namespace Hospital {
          * If user does not exist then display error message notification.
          */
         private void Newbtn_Click(object sender, EventArgs e) {
-            Admin admin = new Admin();
+
             string Surname = "";
 
             try {
@@ -57,28 +58,13 @@ namespace Hospital {
 
         // Delete the User input in Username text field from the database user table.
         private void Deletebtn_Click(object sender, EventArgs e) {
-            Admin admin = new Admin();
             if (Usernametxt.Text == userId) {
                 MessageBox.Show("User can not remove themselves from system. Please contact " +
                     "another Admin if you wish to proceed", "User Not Added",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
 
-                SqlConnection con = DBCon.DBConnect();
-
-                con.Open();
-
-                SqlCommand command = new SqlCommand("SELECT Count(*) FROM Staff WHERE StaffID = @id", con);
-                command.Parameters.AddWithValue("@id", Usernametxt.Text);
-                SqlDataReader reader = command.ExecuteReader();
-
-                int CountOfUser = 0;
-                while (reader.Read()) {
-                    CountOfUser = Convert.ToInt32(reader.GetInt32(0));
-                }
-                reader.Close();
-
-                con.Close();
+                int CountOfUser = countUsers(userId);
 
                 if (CountOfUser > 0) {
 
@@ -104,6 +90,60 @@ namespace Hospital {
             Close();
         }
 
+        private void Updatebtn_Click(object sender, EventArgs e) {
+            if (Usernametxt.Text == userId) {
+                MessageBox.Show("User can not update themselves in system. Please contact " +
+                    "another Admin if you wish to proceed", "User Not Updated",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else {
+                int CountOfUser = countUsers(userId);
 
+                if (CountOfUser > 0) {
+
+                    if (Rolecmb.SelectedIndex >= 0) {
+                        try {
+                            admin.updateUser(Usernametxt.Text, Rolecmb.SelectedItem.ToString());
+
+                            MessageBox.Show("StaffID " + Usernametxt.Text + " has now been updated in system " +
+                                "to " + Rolecmb.SelectedItem.ToString(), "User deleted",
+                                MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            Usernametxt.Text = "";
+                            Rolecmb.Text = "";
+                        } catch {
+                            MessageBox.Show("Please input a valid username to be updated", "User Not Updated",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    } else {
+                        MessageBox.Show("Please choose a valid Role", "User Not Updated",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                } else {
+                    MessageBox.Show("StaffID " + Usernametxt.Text + " is not a valid StaffID in system", "Please Try Again",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+
+        private int countUsers(string userID) {
+            SqlConnection con = DBCon.DBConnect();
+
+            con.Open();
+
+            SqlCommand command = new SqlCommand("SELECT Count(*) FROM Staff WHERE StaffID = @id", con);
+            command.Parameters.AddWithValue("@id", Usernametxt.Text);
+            SqlDataReader reader = command.ExecuteReader();
+
+            int CountOfUser = 0;
+            while (reader.Read()) {
+                CountOfUser = Convert.ToInt32(reader.GetInt32(0));
+            }
+            reader.Close();
+
+            con.Close();
+
+            return CountOfUser;
+        }
     }
 }
