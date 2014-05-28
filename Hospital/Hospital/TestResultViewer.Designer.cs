@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ZoomInButton = new System.Windows.Forms.Button();
             this.ZoomOutButton = new System.Windows.Forms.Button();
             this.RotateLeftButton = new System.Windows.Forms.Button();
@@ -37,19 +36,9 @@
             this.ImageSelectorCB = new System.Windows.Forms.ComboBox();
             this.addImageBtn = new System.Windows.Forms.Button();
             this.addTestResultLinkBTN = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.ImageLocation = "C:\\Users\\chris\\Documents\\xray jpeg test.jpg";
-            this.pictureBox1.Location = new System.Drawing.Point(9, 9);
-            this.pictureBox1.MaximumSize = new System.Drawing.Size(600, 400);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(600, 400);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // ZoomInButton
             // 
@@ -60,7 +49,7 @@
             this.ZoomInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ZoomInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ZoomInButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ZoomInButton.Location = new System.Drawing.Point(622, 168);
+            this.ZoomInButton.Location = new System.Drawing.Point(911, 241);
             this.ZoomInButton.Name = "ZoomInButton";
             this.ZoomInButton.Size = new System.Drawing.Size(99, 23);
             this.ZoomInButton.TabIndex = 1;
@@ -77,7 +66,7 @@
             this.ZoomOutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ZoomOutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ZoomOutButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ZoomOutButton.Location = new System.Drawing.Point(622, 197);
+            this.ZoomOutButton.Location = new System.Drawing.Point(911, 270);
             this.ZoomOutButton.Name = "ZoomOutButton";
             this.ZoomOutButton.Size = new System.Drawing.Size(99, 23);
             this.ZoomOutButton.TabIndex = 2;
@@ -94,7 +83,7 @@
             this.RotateLeftButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RotateLeftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RotateLeftButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.RotateLeftButton.Location = new System.Drawing.Point(622, 264);
+            this.RotateLeftButton.Location = new System.Drawing.Point(911, 360);
             this.RotateLeftButton.Name = "RotateLeftButton";
             this.RotateLeftButton.Size = new System.Drawing.Size(99, 23);
             this.RotateLeftButton.TabIndex = 3;
@@ -111,7 +100,7 @@
             this.RotateRightButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RotateRightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RotateRightButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.RotateRightButton.Location = new System.Drawing.Point(622, 293);
+            this.RotateRightButton.Location = new System.Drawing.Point(911, 389);
             this.RotateRightButton.Name = "RotateRightButton";
             this.RotateRightButton.Size = new System.Drawing.Size(99, 23);
             this.RotateRightButton.TabIndex = 4;
@@ -128,7 +117,7 @@
             this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BackButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BackButton.Location = new System.Drawing.Point(622, 359);
+            this.BackButton.Location = new System.Drawing.Point(911, 537);
             this.BackButton.Name = "BackButton";
             this.BackButton.Size = new System.Drawing.Size(99, 23);
             this.BackButton.TabIndex = 5;
@@ -140,7 +129,7 @@
             // 
             this.ImageSelectorCB.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ImageSelectorCB.FormattingEnabled = true;
-            this.ImageSelectorCB.Location = new System.Drawing.Point(620, 34);
+            this.ImageSelectorCB.Location = new System.Drawing.Point(911, 24);
             this.ImageSelectorCB.Name = "ImageSelectorCB";
             this.ImageSelectorCB.Size = new System.Drawing.Size(101, 21);
             this.ImageSelectorCB.TabIndex = 6;
@@ -155,7 +144,7 @@
             this.addImageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addImageBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addImageBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addImageBtn.Location = new System.Drawing.Point(622, 61);
+            this.addImageBtn.Location = new System.Drawing.Point(913, 51);
             this.addImageBtn.Name = "addImageBtn";
             this.addImageBtn.Size = new System.Drawing.Size(99, 23);
             this.addImageBtn.TabIndex = 7;
@@ -172,7 +161,7 @@
             this.addTestResultLinkBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addTestResultLinkBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addTestResultLinkBTN.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addTestResultLinkBTN.Location = new System.Drawing.Point(622, 115);
+            this.addTestResultLinkBTN.Location = new System.Drawing.Point(911, 135);
             this.addTestResultLinkBTN.Name = "addTestResultLinkBTN";
             this.addTestResultLinkBTN.Size = new System.Drawing.Size(99, 23);
             this.addTestResultLinkBTN.TabIndex = 8;
@@ -180,12 +169,26 @@
             this.addTestResultLinkBTN.UseVisualStyleBackColor = true;
             this.addTestResultLinkBTN.Click += new System.EventHandler(this.addTestResultLinkBTN_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.ImageLocation = "C:\\Users\\chris\\Documents\\xray jpeg test.jpg";
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.MaximumSize = new System.Drawing.Size(850, 750);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(850, 500);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            // 
             // TestResultViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
-            this.ClientSize = new System.Drawing.Size(733, 418);
+            this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.addTestResultLinkBTN);
             this.Controls.Add(this.addImageBtn);
             this.Controls.Add(this.ImageSelectorCB);
@@ -194,7 +197,6 @@
             this.Controls.Add(this.RotateLeftButton);
             this.Controls.Add(this.ZoomOutButton);
             this.Controls.Add(this.ZoomInButton);
-            this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TestResultViewer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -207,7 +209,6 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button ZoomInButton;
         private System.Windows.Forms.Button ZoomOutButton;
         private System.Windows.Forms.Button RotateLeftButton;
@@ -216,6 +217,7 @@
         private System.Windows.Forms.ComboBox ImageSelectorCB;
         private System.Windows.Forms.Button addImageBtn;
         private System.Windows.Forms.Button addTestResultLinkBTN;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
     }
 }

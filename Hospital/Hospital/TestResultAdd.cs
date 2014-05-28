@@ -38,10 +38,11 @@ namespace Hospital {
 
         public string userSelectedFilePath {
             get {
-                return FilePathtb.Text;
+                return filePathLbl.Text;
             }
             set {
-                FilePathtb.Text = value;
+                filePathLbl.Text = value;
+                filePathLbl.Visible = true;
             }
         }
 
@@ -55,9 +56,6 @@ namespace Hospital {
                 cmd.Parameters.AddWithValue("@user", UserID);
                 cmd.Parameters.AddWithValue("@Date", CurrentDT);
                 cmd.Parameters.AddWithValue("@pat", patient);
-                MessageBox.Show(UserID);
-                MessageBox.Show(CurrentDT.ToString());
-                MessageBox.Show(patient.ToString());
 
                 string ImageFilePath = userSelectedFilePath;
                // string rawImageFilePath = userSelectedFilePath;
@@ -87,6 +85,5 @@ namespace Hospital {
         private void Cancelbtn_Click(object sender, EventArgs e) {
             ActiveForm.Close();
         }
-
     }
 }

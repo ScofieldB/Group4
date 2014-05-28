@@ -79,8 +79,21 @@ namespace Hospital {
                 }
 
             } else if (Role == "MedTech") {
-                Finishbtn.Visible = true;
-                ViewImgbtn.Visible = true;
+                if (pat.getRoom().Contains('I'))
+                {
+                    Finishbtn.Visible = true;
+                    ViewImgbtn.Visible = true;
+                }
+                else if (pat.getRoom().Contains('S'))
+                {
+                    Finishbtn.Visible = true;
+                    ViewImgbtn.Visible = true;
+                }
+                else {
+                    Finishbtn.Visible = false;
+                    ViewImgbtn.Visible = false;
+                }
+
             } else {
                 Surgerybtn.Visible = false;
                 Finishbtn.Visible = false;
@@ -221,6 +234,7 @@ namespace Hospital {
                 currentRoomtxt.Text = "Current Room: " + pat.getRoom();
                 MessageBox.Show("Procedure completed", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Finishbtn.Visible = false;
+                ViewImgbtn.Visible = false;
             } else {
                 MessageBox.Show("Please search for a patient.", "Patient Search required",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
