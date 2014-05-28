@@ -59,6 +59,34 @@ namespace Hospital {
         }
 
 
+        public void updateUser(string userID, string role) {
+
+            con.Open();
+
+            SqlCommand command = new SqlCommand("SELECT Count(*) FROM Staff WHERE StaffID = @id", con);
+            command.Parameters.AddWithValue("@id", userID);
+            SqlDataReader reader = command.ExecuteReader();
+
+            int CountOfUser = 0;
+            while (reader.Read()) {
+                CountOfUser = Convert.ToInt32(reader.GetInt32(0));
+            }
+            reader.Close();
+
+            if (CountOfUser == 1) {
+
+                command.Parameters.Clear();
+                command.CommandText = "UPDATE Users SET Role = @role WHERE StaffID = @id";
+                command.Parameters.AddWithValue("@id", userID);
+                command.Parameters.AddWithValue("@role", role);
+                command.ExecuteNonQuery();
+            }
+
+            con.Close();
+
+        }
+
+
         /*
          * Remove specified userID from system.
          */

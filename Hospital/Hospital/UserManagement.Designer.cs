@@ -30,6 +30,7 @@
             this.Deletebtn = new System.Windows.Forms.Button();
             this.Newbtn = new System.Windows.Forms.Button();
             this.LogBtn = new System.Windows.Forms.Button();
+            this.Updatebtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Rolecmb
@@ -40,42 +41,40 @@
             "Doctor",
             "Nurse",
             "MedTech",
-            "Reception",
+            "Receptionist",
             "Admin"});
-            this.Rolecmb.Location = new System.Drawing.Point(223, 112);
-            this.Rolecmb.Margin = new System.Windows.Forms.Padding(2);
+            this.Rolecmb.Location = new System.Drawing.Point(297, 138);
+            this.Rolecmb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Rolecmb.Name = "Rolecmb";
-            this.Rolecmb.Size = new System.Drawing.Size(173, 21);
+            this.Rolecmb.Size = new System.Drawing.Size(229, 24);
             this.Rolecmb.TabIndex = 20;
             // 
             // Rolelbl
             // 
             this.Rolelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Rolelbl.AutoSize = true;
-            this.Rolelbl.Location = new System.Drawing.Point(187, 115);
-            this.Rolelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Rolelbl.Location = new System.Drawing.Point(249, 142);
             this.Rolelbl.Name = "Rolelbl";
-            this.Rolelbl.Size = new System.Drawing.Size(32, 13);
+            this.Rolelbl.Size = new System.Drawing.Size(41, 17);
             this.Rolelbl.TabIndex = 19;
             this.Rolelbl.Text = "Role:";
             // 
             // Usernametxt
             // 
             this.Usernametxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Usernametxt.Location = new System.Drawing.Point(221, 89);
-            this.Usernametxt.Margin = new System.Windows.Forms.Padding(2);
+            this.Usernametxt.Location = new System.Drawing.Point(295, 110);
+            this.Usernametxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Usernametxt.Name = "Usernametxt";
-            this.Usernametxt.Size = new System.Drawing.Size(173, 20);
+            this.Usernametxt.Size = new System.Drawing.Size(229, 22);
             this.Usernametxt.TabIndex = 18;
             // 
             // Usernamelbl
             // 
             this.Usernamelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Usernamelbl.AutoSize = true;
-            this.Usernamelbl.Location = new System.Drawing.Point(173, 92);
-            this.Usernamelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Usernamelbl.Location = new System.Drawing.Point(231, 113);
             this.Usernamelbl.Name = "Usernamelbl";
-            this.Usernamelbl.Size = new System.Drawing.Size(46, 13);
+            this.Usernamelbl.Size = new System.Drawing.Size(58, 17);
             this.Usernamelbl.TabIndex = 17;
             this.Usernamelbl.Text = "Staff ID:";
             // 
@@ -88,10 +87,10 @@
             this.Deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Deletebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Deletebtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Deletebtn.Location = new System.Drawing.Point(314, 166);
-            this.Deletebtn.Margin = new System.Windows.Forms.Padding(2);
+            this.Deletebtn.Location = new System.Drawing.Point(473, 204);
+            this.Deletebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Deletebtn.Name = "Deletebtn";
-            this.Deletebtn.Size = new System.Drawing.Size(99, 23);
+            this.Deletebtn.Size = new System.Drawing.Size(132, 28);
             this.Deletebtn.TabIndex = 16;
             this.Deletebtn.Text = "Delete User";
             this.Deletebtn.UseVisualStyleBackColor = true;
@@ -106,10 +105,10 @@
             this.Newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Newbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Newbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Newbtn.Location = new System.Drawing.Point(152, 166);
-            this.Newbtn.Margin = new System.Windows.Forms.Padding(2);
+            this.Newbtn.Location = new System.Drawing.Point(157, 204);
+            this.Newbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Newbtn.Name = "Newbtn";
-            this.Newbtn.Size = new System.Drawing.Size(99, 23);
+            this.Newbtn.Size = new System.Drawing.Size(132, 28);
             this.Newbtn.TabIndex = 15;
             this.Newbtn.Text = "New User";
             this.Newbtn.UseVisualStyleBackColor = true;
@@ -124,22 +123,40 @@
             this.LogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.LogBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.LogBtn.Location = new System.Drawing.Point(402, 18);
+            this.LogBtn.Location = new System.Drawing.Point(536, 22);
+            this.LogBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.LogBtn.Name = "LogBtn";
-            this.LogBtn.Size = new System.Drawing.Size(99, 23);
+            this.LogBtn.Size = new System.Drawing.Size(132, 28);
             this.LogBtn.TabIndex = 21;
             this.LogBtn.Text = "Logout";
             this.LogBtn.UseVisualStyleBackColor = false;
             this.LogBtn.Click += new System.EventHandler(this.LogBtn_Click);
             // 
+            // Updatebtn
+            // 
+            this.Updatebtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Updatebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Updatebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Updatebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.Updatebtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Updatebtn.Location = new System.Drawing.Point(312, 204);
+            this.Updatebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Updatebtn.Name = "Updatebtn";
+            this.Updatebtn.Size = new System.Drawing.Size(132, 28);
+            this.Updatebtn.TabIndex = 22;
+            this.Updatebtn.Text = "Update User";
+            this.Updatebtn.UseVisualStyleBackColor = true;
+            this.Updatebtn.Click += new System.EventHandler(this.Updatebtn_Click);
+            // 
             // UserManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(526, 278);
+            this.ClientSize = new System.Drawing.Size(701, 342);
+            this.Controls.Add(this.Updatebtn);
             this.Controls.Add(this.LogBtn);
             this.Controls.Add(this.Rolecmb);
             this.Controls.Add(this.Rolelbl);
@@ -149,7 +166,7 @@
             this.Controls.Add(this.Newbtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "UserManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagement";
@@ -167,5 +184,6 @@
         private System.Windows.Forms.Button Deletebtn;
         private System.Windows.Forms.Button Newbtn;
         private System.Windows.Forms.Button LogBtn;
+        private System.Windows.Forms.Button Updatebtn;
     }
 }
