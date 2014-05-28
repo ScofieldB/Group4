@@ -48,10 +48,10 @@
             this.Logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logoutbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Logoutbtn.Location = new System.Drawing.Point(609, 20);
-            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Logoutbtn.Location = new System.Drawing.Point(1217, 32);
+            this.Logoutbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Logoutbtn.Name = "Logoutbtn";
-            this.Logoutbtn.Size = new System.Drawing.Size(99, 23);
+            this.Logoutbtn.Size = new System.Drawing.Size(132, 28);
             this.Logoutbtn.TabIndex = 1;
             this.Logoutbtn.Text = "Logout";
             this.Logoutbtn.UseVisualStyleBackColor = true;
@@ -66,10 +66,11 @@
             this.Searchbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Searchbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Searchbtn.Location = new System.Drawing.Point(257, 22);
+            this.Searchbtn.Location = new System.Drawing.Point(309, 27);
+            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Searchbtn.Name = "Searchbtn";
-            this.Searchbtn.Size = new System.Drawing.Size(99, 23);
-            this.Searchbtn.TabIndex = 35;
+            this.Searchbtn.Size = new System.Drawing.Size(132, 28);
+            this.Searchbtn.TabIndex = 2;
             this.Searchbtn.Text = "Search";
             this.Searchbtn.UseVisualStyleBackColor = true;
             this.Searchbtn.Click += new System.EventHandler(this.Searchbtn_Click);
@@ -78,36 +79,40 @@
             // 
             this.Sealbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Sealbl.AutoSize = true;
-            this.Sealbl.Location = new System.Drawing.Point(37, 26);
+            this.Sealbl.Location = new System.Drawing.Point(16, 32);
+            this.Sealbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Sealbl.Name = "Sealbl";
-            this.Sealbl.Size = new System.Drawing.Size(89, 13);
+            this.Sealbl.Size = new System.Drawing.Size(118, 17);
             this.Sealbl.TabIndex = 34;
             this.Sealbl.Text = "Search Surname:";
             // 
             // Seatxt
             // 
+            this.Seatxt.AcceptsReturn = true;
             this.Seatxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Seatxt.Location = new System.Drawing.Point(131, 22);
+            this.Seatxt.Location = new System.Drawing.Point(141, 27);
+            this.Seatxt.Margin = new System.Windows.Forms.Padding(4);
             this.Seatxt.Name = "Seatxt";
-            this.Seatxt.Size = new System.Drawing.Size(121, 20);
-            this.Seatxt.TabIndex = 33;
+            this.Seatxt.Size = new System.Drawing.Size(160, 22);
+            this.Seatxt.TabIndex = 1;
+            this.Seatxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Seatxt_KeyDown);
             // 
             // PatInfolbl
             // 
+            this.PatInfolbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PatInfolbl.AutoSize = true;
-            this.PatInfolbl.Location = new System.Drawing.Point(490, 19);
-            this.PatInfolbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.PatInfolbl.Location = new System.Drawing.Point(935, 38);
             this.PatInfolbl.Name = "PatInfolbl";
-            this.PatInfolbl.Size = new System.Drawing.Size(0, 13);
+            this.PatInfolbl.Size = new System.Drawing.Size(0, 17);
             this.PatInfolbl.TabIndex = 36;
             // 
             // currentRoomtxt
             // 
+            this.currentRoomtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.currentRoomtxt.AutoSize = true;
-            this.currentRoomtxt.Location = new System.Drawing.Point(368, 19);
-            this.currentRoomtxt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.currentRoomtxt.Location = new System.Drawing.Point(589, 34);
             this.currentRoomtxt.Name = "currentRoomtxt";
-            this.currentRoomtxt.Size = new System.Drawing.Size(0, 13);
+            this.currentRoomtxt.Size = new System.Drawing.Size(0, 17);
             this.currentRoomtxt.TabIndex = 37;
             // 
             // historyDataGridView
@@ -115,12 +120,16 @@
             this.historyDataGridView.AllowUserToAddRows = false;
             this.historyDataGridView.AllowUserToDeleteRows = false;
             this.historyDataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.historyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.historyDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.historyDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.historyDataGridView.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.historyDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.historyDataGridView.Location = new System.Drawing.Point(35, 76);
+            this.historyDataGridView.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.historyDataGridView.Location = new System.Drawing.Point(16, 94);
+            this.historyDataGridView.Margin = new System.Windows.Forms.Padding(4);
             this.historyDataGridView.Name = "historyDataGridView";
             this.historyDataGridView.ReadOnly = true;
-            this.historyDataGridView.Size = new System.Drawing.Size(640, 150);
+            this.historyDataGridView.Size = new System.Drawing.Size(1333, 639);
             this.historyDataGridView.TabIndex = 38;
             // 
             // addHistorybtn
@@ -132,9 +141,10 @@
             this.addHistorybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addHistorybtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addHistorybtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addHistorybtn.Location = new System.Drawing.Point(35, 279);
+            this.addHistorybtn.Location = new System.Drawing.Point(20, 825);
+            this.addHistorybtn.Margin = new System.Windows.Forms.Padding(4);
             this.addHistorybtn.Name = "addHistorybtn";
-            this.addHistorybtn.Size = new System.Drawing.Size(99, 23);
+            this.addHistorybtn.Size = new System.Drawing.Size(132, 28);
             this.addHistorybtn.TabIndex = 39;
             this.addHistorybtn.Text = "Add History";
             this.addHistorybtn.UseVisualStyleBackColor = true;
@@ -143,10 +153,12 @@
             // addHistorytbx
             // 
             this.addHistorytbx.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.addHistorytbx.Location = new System.Drawing.Point(35, 254);
+            this.addHistorytbx.Location = new System.Drawing.Point(20, 794);
+            this.addHistorytbx.Margin = new System.Windows.Forms.Padding(4);
             this.addHistorytbx.Name = "addHistorytbx";
-            this.addHistorytbx.Size = new System.Drawing.Size(416, 20);
+            this.addHistorytbx.Size = new System.Drawing.Size(553, 22);
             this.addHistorytbx.TabIndex = 40;
+            this.addHistorytbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addHistorytbx_KeyDown);
             // 
             // ViewImgbtn
             // 
@@ -157,10 +169,10 @@
             this.ViewImgbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ViewImgbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewImgbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ViewImgbtn.Location = new System.Drawing.Point(562, 303);
-            this.ViewImgbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ViewImgbtn.Location = new System.Drawing.Point(1219, 826);
+            this.ViewImgbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ViewImgbtn.Name = "ViewImgbtn";
-            this.ViewImgbtn.Size = new System.Drawing.Size(99, 23);
+            this.ViewImgbtn.Size = new System.Drawing.Size(132, 28);
             this.ViewImgbtn.TabIndex = 41;
             this.ViewImgbtn.Text = "Images";
             this.ViewImgbtn.UseVisualStyleBackColor = true;
@@ -176,10 +188,10 @@
             this.Surgerybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Surgerybtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Surgerybtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Surgerybtn.Location = new System.Drawing.Point(562, 332);
-            this.Surgerybtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Surgerybtn.Location = new System.Drawing.Point(1219, 862);
+            this.Surgerybtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Surgerybtn.Name = "Surgerybtn";
-            this.Surgerybtn.Size = new System.Drawing.Size(99, 23);
+            this.Surgerybtn.Size = new System.Drawing.Size(132, 28);
             this.Surgerybtn.TabIndex = 42;
             this.Surgerybtn.Text = "Book Surgery";
             this.Surgerybtn.UseVisualStyleBackColor = true;
@@ -195,10 +207,10 @@
             this.Imagingbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Imagingbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Imagingbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Imagingbtn.Location = new System.Drawing.Point(562, 362);
-            this.Imagingbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Imagingbtn.Location = new System.Drawing.Point(1219, 898);
+            this.Imagingbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Imagingbtn.Name = "Imagingbtn";
-            this.Imagingbtn.Size = new System.Drawing.Size(99, 23);
+            this.Imagingbtn.Size = new System.Drawing.Size(132, 28);
             this.Imagingbtn.TabIndex = 43;
             this.Imagingbtn.Text = "Book Imaging";
             this.Imagingbtn.UseVisualStyleBackColor = true;
@@ -214,10 +226,10 @@
             this.Finishbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Finishbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Finishbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Finishbtn.Location = new System.Drawing.Point(562, 275);
-            this.Finishbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Finishbtn.Location = new System.Drawing.Point(1219, 791);
+            this.Finishbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Finishbtn.Name = "Finishbtn";
-            this.Finishbtn.Size = new System.Drawing.Size(99, 23);
+            this.Finishbtn.Size = new System.Drawing.Size(132, 28);
             this.Finishbtn.TabIndex = 44;
             this.Finishbtn.Text = "Finish";
             this.Finishbtn.UseVisualStyleBackColor = true;
@@ -225,11 +237,11 @@
             // 
             // HospitalSystem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(719, 427);
+            this.ClientSize = new System.Drawing.Size(1365, 945);
             this.Controls.Add(this.Finishbtn);
             this.Controls.Add(this.Imagingbtn);
             this.Controls.Add(this.Surgerybtn);
@@ -245,7 +257,7 @@
             this.Controls.Add(this.Logoutbtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "HospitalSystem";
             this.Text = "1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

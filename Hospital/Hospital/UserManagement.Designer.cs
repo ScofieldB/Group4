@@ -43,7 +43,7 @@
             "Reception",
             "Admin"});
             this.Rolecmb.Location = new System.Drawing.Point(223, 112);
-            this.Rolecmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Rolecmb.Margin = new System.Windows.Forms.Padding(2);
             this.Rolecmb.Name = "Rolecmb";
             this.Rolecmb.Size = new System.Drawing.Size(173, 21);
             this.Rolecmb.TabIndex = 20;
@@ -63,7 +63,7 @@
             // 
             this.Usernametxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Usernametxt.Location = new System.Drawing.Point(221, 89);
-            this.Usernametxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Usernametxt.Margin = new System.Windows.Forms.Padding(2);
             this.Usernametxt.Name = "Usernametxt";
             this.Usernametxt.Size = new System.Drawing.Size(173, 20);
             this.Usernametxt.TabIndex = 18;
@@ -89,7 +89,7 @@
             this.Deletebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Deletebtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Deletebtn.Location = new System.Drawing.Point(314, 166);
-            this.Deletebtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Deletebtn.Margin = new System.Windows.Forms.Padding(2);
             this.Deletebtn.Name = "Deletebtn";
             this.Deletebtn.Size = new System.Drawing.Size(99, 23);
             this.Deletebtn.TabIndex = 16;
@@ -107,7 +107,7 @@
             this.Newbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Newbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Newbtn.Location = new System.Drawing.Point(152, 166);
-            this.Newbtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Newbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Newbtn.Name = "Newbtn";
             this.Newbtn.Size = new System.Drawing.Size(99, 23);
             this.Newbtn.TabIndex = 15;
@@ -148,7 +148,8 @@
             this.Controls.Add(this.Deletebtn);
             this.Controls.Add(this.Newbtn);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserManagement";

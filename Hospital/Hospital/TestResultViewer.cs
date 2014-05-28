@@ -146,5 +146,23 @@ namespace Hospital {
             TestResultAdd Tests = new TestResultAdd(usersID, patientnum);
             Tests.Show();
         }
+
+        private void pictureBox1_MouseMove(object sender, EventArgs e)
+        {
+            MouseEventArgs mouse = e as MouseEventArgs;
+
+            if (mouse.Button == MouseButtons.Left)
+            {
+                Point mousePosNow = mouse.Location;
+
+                int deltaX = mousePosNow.X;
+                int deltaY = mousePosNow.Y;
+
+                int newX = pictureBox1.Location.X + deltaX;
+                int newY = pictureBox1.Location.Y + deltaY;
+
+                pictureBox1.Location = new Point(newX, newY);
+            }
+        }
     }
 }

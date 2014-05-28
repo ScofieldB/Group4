@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.Loadbtn = new System.Windows.Forms.Button();
-            this.FilePathtb = new System.Windows.Forms.TextBox();
             this.Uploadbtn = new System.Windows.Forms.Button();
             this.Cancelbtn = new System.Windows.Forms.Button();
             this.addimagelbl = new System.Windows.Forms.Label();
+            this.filePathLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Loadbtn
@@ -51,14 +51,6 @@
             this.Loadbtn.Text = "Load";
             this.Loadbtn.UseVisualStyleBackColor = true;
             this.Loadbtn.Click += new System.EventHandler(this.Loadbtn_Click);
-            // 
-            // FilePathtb
-            // 
-            this.FilePathtb.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.FilePathtb.Location = new System.Drawing.Point(48, 91);
-            this.FilePathtb.Name = "FilePathtb";
-            this.FilePathtb.Size = new System.Drawing.Size(190, 20);
-            this.FilePathtb.TabIndex = 1;
             // 
             // Uploadbtn
             // 
@@ -104,6 +96,16 @@
             this.addimagelbl.TabIndex = 4;
             this.addimagelbl.Text = "Add Image";
             // 
+            // filePathLbl
+            // 
+            this.filePathLbl.AutoSize = true;
+            this.filePathLbl.Location = new System.Drawing.Point(48, 108);
+            this.filePathLbl.Name = "filePathLbl";
+            this.filePathLbl.Size = new System.Drawing.Size(35, 13);
+            this.filePathLbl.TabIndex = 5;
+            this.filePathLbl.Text = "label1";
+            this.filePathLbl.Visible = false;
+            // 
             // TestResultAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,10 +114,10 @@
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.filePathLbl);
             this.Controls.Add(this.addimagelbl);
             this.Controls.Add(this.Cancelbtn);
             this.Controls.Add(this.Uploadbtn);
-            this.Controls.Add(this.FilePathtb);
             this.Controls.Add(this.Loadbtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -130,9 +132,9 @@
         #endregion
 
         private System.Windows.Forms.Button Loadbtn;
-        private System.Windows.Forms.TextBox FilePathtb;
         private System.Windows.Forms.Button Uploadbtn;
         private System.Windows.Forms.Button Cancelbtn;
         private System.Windows.Forms.Label addimagelbl;
+        private System.Windows.Forms.Label filePathLbl;
     }
 }
