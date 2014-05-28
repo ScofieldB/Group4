@@ -181,6 +181,7 @@
             this.Surtxt.Name = "Surtxt";
             this.Surtxt.Size = new System.Drawing.Size(159, 20);
             this.Surtxt.TabIndex = 46;
+            this.Surtxt.Validating += new System.ComponentModel.CancelEventHandler(this.SurTxt_Validating);
             // 
             // PIDtxt
             // 
@@ -515,7 +516,6 @@
             // 
             // CurrentRoomlbl
             // 
-            this.CurrentRoomlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CurrentRoomlbl.AutoSize = true;
             this.CurrentRoomlbl.Location = new System.Drawing.Point(118, 196);
             this.CurrentRoomlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);

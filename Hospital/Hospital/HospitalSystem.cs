@@ -279,5 +279,19 @@ namespace Hospital {
             historyDataGridView.DataMember = "History";
         }
 
+        private void Seatxt_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                Searchbtn_Click(sender, e);
+            }
+        }
+
+        private void addHistorytbx_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                addHistorybtn_Click(sender, e);
+            }
+        }
+
+
+
     }
 }
