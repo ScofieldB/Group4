@@ -73,7 +73,7 @@
             // 
             this.Welcomelbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Welcomelbl.AutoSize = true;
-            this.Welcomelbl.Location = new System.Drawing.Point(13, 14);
+            this.Welcomelbl.Location = new System.Drawing.Point(11, 14);
             this.Welcomelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Welcomelbl.Name = "Welcomelbl";
             this.Welcomelbl.Size = new System.Drawing.Size(56, 13);
@@ -89,7 +89,7 @@
             this.Logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Logoutbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Logoutbtn.Location = new System.Drawing.Point(626, 14);
+            this.Logoutbtn.Location = new System.Drawing.Point(914, 11);
             this.Logoutbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Logoutbtn.Name = "Logoutbtn";
             this.Logoutbtn.Size = new System.Drawing.Size(99, 23);
@@ -107,7 +107,7 @@
             this.Searchbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Searchbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Searchbtn.Location = new System.Drawing.Point(326, 41);
+            this.Searchbtn.Location = new System.Drawing.Point(395, 42);
             this.Searchbtn.Name = "Searchbtn";
             this.Searchbtn.Size = new System.Drawing.Size(99, 23);
             this.Searchbtn.TabIndex = 32;
@@ -119,7 +119,7 @@
             // 
             this.Sealbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Sealbl.AutoSize = true;
-            this.Sealbl.Location = new System.Drawing.Point(110, 46);
+            this.Sealbl.Location = new System.Drawing.Point(179, 47);
             this.Sealbl.Name = "Sealbl";
             this.Sealbl.Size = new System.Drawing.Size(89, 13);
             this.Sealbl.TabIndex = 31;
@@ -128,7 +128,7 @@
             // Seatxt
             // 
             this.Seatxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Seatxt.Location = new System.Drawing.Point(200, 44);
+            this.Seatxt.Location = new System.Drawing.Point(269, 45);
             this.Seatxt.Name = "Seatxt";
             this.Seatxt.Size = new System.Drawing.Size(121, 20);
             this.Seatxt.TabIndex = 30;
@@ -136,7 +136,7 @@
             // Altxt
             // 
             this.Altxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Altxt.Location = new System.Drawing.Point(423, 310);
+            this.Altxt.Location = new System.Drawing.Point(691, 232);
             this.Altxt.Name = "Altxt";
             this.Altxt.Size = new System.Drawing.Size(286, 20);
             this.Altxt.TabIndex = 65;
@@ -144,7 +144,7 @@
             // CovNtxt
             // 
             this.CovNtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CovNtxt.Location = new System.Drawing.Point(423, 271);
+            this.CovNtxt.Location = new System.Drawing.Point(691, 391);
             this.CovNtxt.Name = "CovNtxt";
             this.CovNtxt.Size = new System.Drawing.Size(100, 20);
             this.CovNtxt.TabIndex = 58;
@@ -153,7 +153,7 @@
             // Addtxt
             // 
             this.Addtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Addtxt.Location = new System.Drawing.Point(423, 114);
+            this.Addtxt.Location = new System.Drawing.Point(691, 114);
             this.Addtxt.Name = "Addtxt";
             this.Addtxt.Size = new System.Drawing.Size(286, 20);
             this.Addtxt.TabIndex = 55;
@@ -161,7 +161,7 @@
             // NOKtxt
             // 
             this.NOKtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.NOKtxt.Location = new System.Drawing.Point(248, 271);
+            this.NOKtxt.Location = new System.Drawing.Point(394, 352);
             this.NOKtxt.Name = "NOKtxt";
             this.NOKtxt.Size = new System.Drawing.Size(159, 20);
             this.NOKtxt.TabIndex = 51;
@@ -169,7 +169,7 @@
             // Firtxt
             // 
             this.Firtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Firtxt.Location = new System.Drawing.Point(248, 154);
+            this.Firtxt.Location = new System.Drawing.Point(394, 154);
             this.Firtxt.Name = "Firtxt";
             this.Firtxt.Size = new System.Drawing.Size(159, 20);
             this.Firtxt.TabIndex = 47;
@@ -177,7 +177,7 @@
             // Surtxt
             // 
             this.Surtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Surtxt.Location = new System.Drawing.Point(248, 114);
+            this.Surtxt.Location = new System.Drawing.Point(394, 114);
             this.Surtxt.Name = "Surtxt";
             this.Surtxt.Size = new System.Drawing.Size(159, 20);
             this.Surtxt.TabIndex = 46;
@@ -186,7 +186,7 @@
             // PIDtxt
             // 
             this.PIDtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.PIDtxt.Location = new System.Drawing.Point(111, 114);
+            this.PIDtxt.Location = new System.Drawing.Point(187, 129);
             this.PIDtxt.Name = "PIDtxt";
             this.PIDtxt.ReadOnly = true;
             this.PIDtxt.Size = new System.Drawing.Size(101, 20);
@@ -196,7 +196,7 @@
             // 
             this.Roomlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Roomlbl.AutoSize = true;
-            this.Roomlbl.Location = new System.Drawing.Point(109, 180);
+            this.Roomlbl.Location = new System.Drawing.Point(185, 230);
             this.Roomlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Roomlbl.Name = "Roomlbl";
             this.Roomlbl.Size = new System.Drawing.Size(35, 13);
@@ -212,7 +212,7 @@
             this.Admitbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Admitbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Admitbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Admitbtn.Location = new System.Drawing.Point(10, 175);
+            this.Admitbtn.Location = new System.Drawing.Point(14, 173);
             this.Admitbtn.Margin = new System.Windows.Forms.Padding(2);
             this.Admitbtn.Name = "Admitbtn";
             this.Admitbtn.Size = new System.Drawing.Size(99, 23);
@@ -230,7 +230,7 @@
             this.Clrbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Clrbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Clrbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Clrbtn.Location = new System.Drawing.Point(10, 145);
+            this.Clrbtn.Location = new System.Drawing.Point(14, 143);
             this.Clrbtn.Name = "Clrbtn";
             this.Clrbtn.Size = new System.Drawing.Size(99, 23);
             this.Clrbtn.TabIndex = 71;
@@ -247,7 +247,7 @@
             this.Newbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Newbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Newbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Newbtn.Location = new System.Drawing.Point(10, 114);
+            this.Newbtn.Location = new System.Drawing.Point(14, 112);
             this.Newbtn.Name = "Newbtn";
             this.Newbtn.Size = new System.Drawing.Size(99, 23);
             this.Newbtn.TabIndex = 67;
@@ -264,7 +264,7 @@
             this.Savbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Savbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Savbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Savbtn.Location = new System.Drawing.Point(10, 114);
+            this.Savbtn.Location = new System.Drawing.Point(14, 112);
             this.Savbtn.Name = "Savbtn";
             this.Savbtn.Size = new System.Drawing.Size(99, 23);
             this.Savbtn.TabIndex = 66;
@@ -276,7 +276,7 @@
             // 
             this.Allbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Allbl.AutoSize = true;
-            this.Allbl.Location = new System.Drawing.Point(420, 294);
+            this.Allbl.Location = new System.Drawing.Point(688, 216);
             this.Allbl.Name = "Allbl";
             this.Allbl.Size = new System.Drawing.Size(46, 13);
             this.Allbl.TabIndex = 64;
@@ -286,7 +286,7 @@
             // 
             this.CovNlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CovNlbl.AutoSize = true;
-            this.CovNlbl.Location = new System.Drawing.Point(420, 255);
+            this.CovNlbl.Location = new System.Drawing.Point(688, 375);
             this.CovNlbl.Name = "CovNlbl";
             this.CovNlbl.Size = new System.Drawing.Size(75, 13);
             this.CovNlbl.TabIndex = 63;
@@ -296,7 +296,7 @@
             // 
             this.CovTlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CovTlbl.AutoSize = true;
-            this.CovTlbl.Location = new System.Drawing.Point(420, 216);
+            this.CovTlbl.Location = new System.Drawing.Point(688, 336);
             this.CovTlbl.Name = "CovTlbl";
             this.CovTlbl.Size = new System.Drawing.Size(62, 13);
             this.CovTlbl.TabIndex = 62;
@@ -306,7 +306,7 @@
             // 
             this.Moblbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Moblbl.AutoSize = true;
-            this.Moblbl.Location = new System.Drawing.Point(420, 176);
+            this.Moblbl.Location = new System.Drawing.Point(688, 176);
             this.Moblbl.Name = "Moblbl";
             this.Moblbl.Size = new System.Drawing.Size(78, 13);
             this.Moblbl.TabIndex = 61;
@@ -316,7 +316,7 @@
             // 
             this.Homlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Homlbl.AutoSize = true;
-            this.Homlbl.Location = new System.Drawing.Point(420, 136);
+            this.Homlbl.Location = new System.Drawing.Point(688, 136);
             this.Homlbl.Name = "Homlbl";
             this.Homlbl.Size = new System.Drawing.Size(75, 13);
             this.Homlbl.TabIndex = 60;
@@ -326,7 +326,7 @@
             // 
             this.Addlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Addlbl.AutoSize = true;
-            this.Addlbl.Location = new System.Drawing.Point(420, 98);
+            this.Addlbl.Location = new System.Drawing.Point(688, 98);
             this.Addlbl.Name = "Addlbl";
             this.Addlbl.Size = new System.Drawing.Size(82, 13);
             this.Addlbl.TabIndex = 59;
@@ -336,7 +336,7 @@
             // 
             this.Stalbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Stalbl.AutoSize = true;
-            this.Stalbl.Location = new System.Drawing.Point(109, 136);
+            this.Stalbl.Location = new System.Drawing.Point(185, 170);
             this.Stalbl.Name = "Stalbl";
             this.Stalbl.Size = new System.Drawing.Size(37, 13);
             this.Stalbl.TabIndex = 54;
@@ -346,7 +346,7 @@
             // 
             this.NOKNlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NOKNlbl.AutoSize = true;
-            this.NOKNlbl.Location = new System.Drawing.Point(244, 294);
+            this.NOKNlbl.Location = new System.Drawing.Point(390, 375);
             this.NOKNlbl.Name = "NOKNlbl";
             this.NOKNlbl.Size = new System.Drawing.Size(99, 13);
             this.NOKNlbl.TabIndex = 53;
@@ -356,7 +356,7 @@
             // 
             this.Kinlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Kinlbl.AutoSize = true;
-            this.Kinlbl.Location = new System.Drawing.Point(244, 255);
+            this.Kinlbl.Location = new System.Drawing.Point(390, 336);
             this.Kinlbl.Name = "Kinlbl";
             this.Kinlbl.Size = new System.Drawing.Size(59, 13);
             this.Kinlbl.TabIndex = 50;
@@ -366,7 +366,7 @@
             // 
             this.Genlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Genlbl.AutoSize = true;
-            this.Genlbl.Location = new System.Drawing.Point(244, 216);
+            this.Genlbl.Location = new System.Drawing.Point(390, 216);
             this.Genlbl.Name = "Genlbl";
             this.Genlbl.Size = new System.Drawing.Size(42, 13);
             this.Genlbl.TabIndex = 49;
@@ -376,7 +376,7 @@
             // 
             this.DOBlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DOBlbl.AutoSize = true;
-            this.DOBlbl.Location = new System.Drawing.Point(244, 177);
+            this.DOBlbl.Location = new System.Drawing.Point(390, 177);
             this.DOBlbl.Name = "DOBlbl";
             this.DOBlbl.Size = new System.Drawing.Size(138, 13);
             this.DOBlbl.TabIndex = 45;
@@ -386,7 +386,7 @@
             // 
             this.Firlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Firlbl.AutoSize = true;
-            this.Firlbl.Location = new System.Drawing.Point(244, 136);
+            this.Firlbl.Location = new System.Drawing.Point(390, 136);
             this.Firlbl.Name = "Firlbl";
             this.Firlbl.Size = new System.Drawing.Size(52, 13);
             this.Firlbl.TabIndex = 44;
@@ -396,7 +396,7 @@
             // 
             this.Surlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Surlbl.AutoSize = true;
-            this.Surlbl.Location = new System.Drawing.Point(244, 98);
+            this.Surlbl.Location = new System.Drawing.Point(390, 98);
             this.Surlbl.Name = "Surlbl";
             this.Surlbl.Size = new System.Drawing.Size(49, 13);
             this.Surlbl.TabIndex = 43;
@@ -406,7 +406,7 @@
             // 
             this.PIDlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PIDlbl.AutoSize = true;
-            this.PIDlbl.Location = new System.Drawing.Point(109, 98);
+            this.PIDlbl.Location = new System.Drawing.Point(185, 113);
             this.PIDlbl.Name = "PIDlbl";
             this.PIDlbl.Size = new System.Drawing.Size(54, 13);
             this.PIDlbl.TabIndex = 42;
@@ -421,7 +421,7 @@
             this.Dischargebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Dischargebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dischargebtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Dischargebtn.Location = new System.Drawing.Point(10, 175);
+            this.Dischargebtn.Location = new System.Drawing.Point(14, 173);
             this.Dischargebtn.Margin = new System.Windows.Forms.Padding(2);
             this.Dischargebtn.Name = "Dischargebtn";
             this.Dischargebtn.Size = new System.Drawing.Size(99, 23);
@@ -438,7 +438,7 @@
             this.GenderCmb.Items.AddRange(new object[] {
             "Male",
             "Female"});
-            this.GenderCmb.Location = new System.Drawing.Point(247, 230);
+            this.GenderCmb.Location = new System.Drawing.Point(393, 230);
             this.GenderCmb.Margin = new System.Windows.Forms.Padding(2);
             this.GenderCmb.Name = "GenderCmb";
             this.GenderCmb.Size = new System.Drawing.Size(135, 21);
@@ -450,7 +450,7 @@
             this.SurErrLbl.AutoSize = true;
             this.SurErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SurErrLbl.ForeColor = System.Drawing.Color.Red;
-            this.SurErrLbl.Location = new System.Drawing.Point(230, 98);
+            this.SurErrLbl.Location = new System.Drawing.Point(376, 98);
             this.SurErrLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SurErrLbl.Name = "SurErrLbl";
             this.SurErrLbl.Size = new System.Drawing.Size(14, 17);
@@ -464,7 +464,7 @@
             this.FnErrLbl.AutoSize = true;
             this.FnErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FnErrLbl.ForeColor = System.Drawing.Color.Red;
-            this.FnErrLbl.Location = new System.Drawing.Point(230, 136);
+            this.FnErrLbl.Location = new System.Drawing.Point(376, 136);
             this.FnErrLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FnErrLbl.Name = "FnErrLbl";
             this.FnErrLbl.Size = new System.Drawing.Size(14, 17);
@@ -478,7 +478,7 @@
             this.DOBErrLbl.AutoSize = true;
             this.DOBErrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DOBErrLbl.ForeColor = System.Drawing.Color.Red;
-            this.DOBErrLbl.Location = new System.Drawing.Point(230, 179);
+            this.DOBErrLbl.Location = new System.Drawing.Point(376, 179);
             this.DOBErrLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DOBErrLbl.Name = "DOBErrLbl";
             this.DOBErrLbl.Size = new System.Drawing.Size(14, 17);
@@ -495,7 +495,7 @@
             "Small",
             "Medium",
             "Premium"});
-            this.covTypeCmb.Location = new System.Drawing.Point(423, 233);
+            this.covTypeCmb.Location = new System.Drawing.Point(691, 353);
             this.covTypeCmb.Margin = new System.Windows.Forms.Padding(2);
             this.covTypeCmb.Name = "covTypeCmb";
             this.covTypeCmb.Size = new System.Drawing.Size(100, 21);
@@ -508,7 +508,7 @@
             this.statusCmb.Items.AddRange(new object[] {
             "In-Patient",
             "Out-Patient"});
-            this.statusCmb.Location = new System.Drawing.Point(111, 154);
+            this.statusCmb.Location = new System.Drawing.Point(187, 188);
             this.statusCmb.Margin = new System.Windows.Forms.Padding(2);
             this.statusCmb.Name = "statusCmb";
             this.statusCmb.Size = new System.Drawing.Size(101, 21);
@@ -516,8 +516,9 @@
             // 
             // CurrentRoomlbl
             // 
+            this.CurrentRoomlbl.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CurrentRoomlbl.AutoSize = true;
-            this.CurrentRoomlbl.Location = new System.Drawing.Point(118, 196);
+            this.CurrentRoomlbl.Location = new System.Drawing.Point(191, 249);
             this.CurrentRoomlbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CurrentRoomlbl.Name = "CurrentRoomlbl";
             this.CurrentRoomlbl.Size = new System.Drawing.Size(0, 13);
@@ -532,7 +533,7 @@
             this.hardCopybtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hardCopybtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hardCopybtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.hardCopybtn.Location = new System.Drawing.Point(10, 205);
+            this.hardCopybtn.Location = new System.Drawing.Point(14, 203);
             this.hardCopybtn.Name = "hardCopybtn";
             this.hardCopybtn.Size = new System.Drawing.Size(99, 23);
             this.hardCopybtn.TabIndex = 84;
@@ -544,7 +545,7 @@
             // Homtxt
             // 
             this.Homtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Homtxt.Location = new System.Drawing.Point(423, 154);
+            this.Homtxt.Location = new System.Drawing.Point(691, 154);
             this.Homtxt.Mask = "(00)0000-0000";
             this.Homtxt.Name = "Homtxt";
             this.Homtxt.Size = new System.Drawing.Size(79, 20);
@@ -554,7 +555,7 @@
             // Mobtxt
             // 
             this.Mobtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Mobtxt.Location = new System.Drawing.Point(423, 188);
+            this.Mobtxt.Location = new System.Drawing.Point(691, 188);
             this.Mobtxt.Mask = "(00)0000-0000";
             this.Mobtxt.Name = "Mobtxt";
             this.Mobtxt.Size = new System.Drawing.Size(79, 20);
@@ -564,7 +565,7 @@
             // DOBtxt
             // 
             this.DOBtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.DOBtxt.Location = new System.Drawing.Point(247, 196);
+            this.DOBtxt.Location = new System.Drawing.Point(393, 196);
             this.DOBtxt.Mask = "00/00/0000";
             this.DOBtxt.Name = "DOBtxt";
             this.DOBtxt.Size = new System.Drawing.Size(96, 20);
@@ -574,7 +575,7 @@
             // NOKNtxt
             // 
             this.NOKNtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.NOKNtxt.Location = new System.Drawing.Point(248, 311);
+            this.NOKNtxt.Location = new System.Drawing.Point(394, 392);
             this.NOKNtxt.Mask = "(00)0000-0000";
             this.NOKNtxt.Name = "NOKNtxt";
             this.NOKNtxt.Size = new System.Drawing.Size(73, 20);
@@ -589,7 +590,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(255)))), ((int)(((byte)(251)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(733, 418);
+            this.ClientSize = new System.Drawing.Size(1024, 643);
             this.Controls.Add(this.NOKNtxt);
             this.Controls.Add(this.DOBtxt);
             this.Controls.Add(this.Mobtxt);
