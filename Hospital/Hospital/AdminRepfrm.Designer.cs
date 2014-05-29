@@ -29,6 +29,7 @@
             this.Desc = new System.Windows.Forms.Label();
             this.Outstandingbtn = new System.Windows.Forms.Button();
             this.Roomsbtn = new System.Windows.Forms.Button();
+            this.CountStaffBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestRepbtn
@@ -125,6 +126,21 @@
             this.Roomsbtn.UseVisualStyleBackColor = true;
             this.Roomsbtn.Click += new System.EventHandler(this.Roomsbtn_Click);
             // 
+            // CountStaffBtn
+            // 
+            this.CountStaffBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.CountStaffBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CountStaffBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CountStaffBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.CountStaffBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CountStaffBtn.Location = new System.Drawing.Point(203, 77);
+            this.CountStaffBtn.Name = "CountStaffBtn";
+            this.CountStaffBtn.Size = new System.Drawing.Size(132, 51);
+            this.CountStaffBtn.TabIndex = 7;
+            this.CountStaffBtn.Text = "Count of Roles";
+            this.CountStaffBtn.UseVisualStyleBackColor = true;
+            this.CountStaffBtn.Click += new System.EventHandler(this.CountStaffBtn_Click);
+            // 
             // AdminRepfrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -133,6 +149,7 @@
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(427, 321);
+            this.Controls.Add(this.CountStaffBtn);
             this.Controls.Add(this.Roomsbtn);
             this.Controls.Add(this.Outstandingbtn);
             this.Controls.Add(this.Desc);
@@ -158,5 +175,6 @@
         private System.Windows.Forms.Label Desc;
         private System.Windows.Forms.Button Outstandingbtn;
         private System.Windows.Forms.Button Roomsbtn;
+        private System.Windows.Forms.Button CountStaffBtn;
     }
 }
