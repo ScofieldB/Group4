@@ -165,6 +165,7 @@
             this.NOKtxt.Name = "NOKtxt";
             this.NOKtxt.Size = new System.Drawing.Size(159, 20);
             this.NOKtxt.TabIndex = 51;
+            this.NOKtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // Firtxt
             // 
@@ -173,6 +174,7 @@
             this.Firtxt.Name = "Firtxt";
             this.Firtxt.Size = new System.Drawing.Size(159, 20);
             this.Firtxt.TabIndex = 47;
+            this.Firtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // Surtxt
             // 
@@ -181,7 +183,7 @@
             this.Surtxt.Name = "Surtxt";
             this.Surtxt.Size = new System.Drawing.Size(159, 20);
             this.Surtxt.TabIndex = 46;
-            this.Surtxt.Validating += new System.ComponentModel.CancelEventHandler(this.SurTxt_Validating);
+            this.Surtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // PIDtxt
             // 

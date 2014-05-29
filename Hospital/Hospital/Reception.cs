@@ -26,7 +26,6 @@ namespace Hospital {
             InitializeComponent();
         }
 
-
         /*
          * Sets up form and updates UserID variable with user parameter passed.
          */
@@ -44,7 +43,6 @@ namespace Hospital {
             Savbtn.Visible = false;
             hardCopybtn.Visible = false;
         }
-
 
         /*
          * setHome is used for navigational purposes to and from the
@@ -79,7 +77,6 @@ namespace Hospital {
             statusCmb.SelectedIndex = 0;
             CurrentRoomlbl.Text = pat.getRoom().ToString();
 
-
             if (pat.getRoom() == "Discharged") {
                 Admitbtn.Visible = true;
                 Dischargebtn.Visible = false;
@@ -107,21 +104,26 @@ namespace Hospital {
          * text boxes on screen.
          */
         private void Searchbtn_Click(object sender, EventArgs e) {
-            Regex regex = new Regex("^['\\- a-zA-Z]{1,20}$");//allows lower and upper case english, hypen and space
+            //allows lower and upper case english, hypen and space, makes sure user is entering valid name types
+            Regex regex = new Regex("^['\\- a-zA-Z]{1,20}$");
             if (regex.IsMatch(Seatxt.Text)) {
+                //sets up array of PatientGetSet
                 PatientGetSet[] patients;
                 string Surname = Seatxt.Text;
 
                 patients = Patient.searchPatientSurname(Surname);
 
+                //If array length is 0, no patients found, generate error message, clear fields and hide admit
                 if (patients.Length == 0) {
                     clearFields();
                     MessageBox.Show("Patient could not be found in system. Please confirm spelling " +
                         "or add a new patient.", "Patient not found.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Admitbtn.Visible = false;
+                //If array length is 1
                 } else if (patients.Length == 1) {
                     setPatient(patients[0]);
+                //Else open ChoosePatient window
                 } else {
                     ChoosePatient choosePat = new ChoosePatient(UserID, Role, home, this, Surname, patients);
                     choosePat.Show();
@@ -133,15 +135,16 @@ namespace Hospital {
             }
         }
 
-        /*
-        *Takes entered details, populates them with new PK, returns new PK
-         */
+        //Creates new patient record based off of details entered in receptionist form.
+        //Matches values in fields to valid datatypes acceptable by database field 
+        //Sets defaults in fields where fields cannot accept NULL
         private void Newbtn_Click(object sender, EventArgs e) {
             bool success = true;
             SqlConnection con = DBCon.DBConnect();
 
             con.Open();
 
+            //insert into query using patientID as scope identity to be returned
             string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
             "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
             "Room, TotalCharges) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
@@ -149,12 +152,13 @@ namespace Hospital {
 
             SqlCommand command = new SqlCommand(insertquery, con);
 
-            //Matching datatype with what is listed in the database, will attempt to find a point of 
-            //checking inputs prior to this point, when I move it to a class of it's own
+            //Checks that each text field is not empty
             if (Firtxt.Text != "") {
+                //Relates command name to database's field type and soucred text field
                 command.Parameters.Add("@first", System.Data.SqlDbType.NVarChar, 20).Value = Firtxt.Text;
                 SurErrLbl.Visible = false;
             } else {
+                //Makes error label visible
                 SurErrLbl.Visible = true;
             }
 
@@ -234,22 +238,24 @@ namespace Hospital {
                 command.Parameters.AddWithValue("@nokp", "Unknown");
             }
 
+            //adds patient to default discharged state
             command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4).Value = "0";
 
-
+            //Sets directionality of @PATID to be returned after primary/record generation
             command.Parameters.Add("@PATID", SqlDbType.Int).Direction = ParameterDirection.Output;
 
-
+            //executes command
             try {
 
                 command.ExecuteScalar();
 
+                //Returned value stringed and entered into textbox
                 int PID = Convert.ToInt32(command.Parameters["@PATID"].Value);
                 PIDtxt.Text = PID.ToString();
 
                 con.Close();
 
-            } catch (Exception) { //this will need to be expanded or changed at somepoint to check each input field
+            } catch (Exception) {
                 success = false;
                 MessageBox.Show("Patient details must be valid for each input field.", "Incorrect Patiet Information Layout",
                      MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -264,6 +270,7 @@ namespace Hospital {
             }
         }
 
+        //Clears textboxes and set drop downs to default states, resets button and label visiblity
         private void clearFields() {
             pat = null;
             Seatxt.Text = "";
@@ -326,11 +333,7 @@ namespace Hospital {
             }
         }
 
-        /*
-        * Updates currently present information in text fields corrosponding to ID field.
-         * 
-         * Regex needed in this
-         */
+        //Updates currently present information in text fields corrosponding to ID field.
         private void Savbtn_Click(object sender, EventArgs e) {
             if (pat != null) {
                 int PID = pat.getPatient();
@@ -451,7 +454,6 @@ namespace Hospital {
             MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged with a final bill of $"
                             + charges, "Patient Discharged", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-
             pat = Patient.SearchPID(pat.getPatient());
             CurrentRoomlbl.Text = pat.getRoom();
             Dischargebtn.Visible = false;
@@ -508,13 +510,10 @@ namespace Hospital {
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf"); //output location, may need to be manually changed
                 MessageBox.Show("Export to PDF Successful.");
             } else {
-                MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
+                MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient Invoice not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
-
 
         /* Function Button click calls relevant crystal report methods for out putting a hard copy
          * of the searched patients personal details and history, based on predefined report structure.
@@ -552,18 +551,18 @@ namespace Hospital {
             }
         }
 
-       //regex validation on leave of textbox test
-        private void SurTxt_Validating(object sender, CancelEventArgs e) {
-            string reg = @"^[a-zA-Z' -]{1,20}$";
+       //Name validation when changing element
+        private void Name_Validating(object sender, CancelEventArgs e) {
+            string reg = @"^[a-zA-Z' -]{1,20}$";//regex allows only english characters, spaces, hyphen or apostrophe
             if (!Regex.IsMatch(this.Surtxt.Text.Trim(), reg)) {
                 MessageBox.Show("Please input only English characters, spaces, hyphen or apostrophe.");
                 Surtxt.Text = "";
             }        
         }
 
-        //why does this magically work for him but not me
+        //Number validation when changing element
         private void CovNum_Validating(object sender, CancelEventArgs e) {
-            string reg = @"^[0-9]+$";
+            string reg = @"^[0-9]+$";//regex allows only numbers
             if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg) || (int.Parse(CovNtxt.Text) > 1000000)) {
                 MessageBox.Show("Please enter a cover number between 1-1000000");
                 CovNtxt.Text = "0";
@@ -575,6 +574,5 @@ namespace Hospital {
                 Searchbtn_Click(sender, e);
             }
         }
-
     }
 }
