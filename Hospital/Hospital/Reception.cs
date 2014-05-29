@@ -80,7 +80,7 @@ namespace Hospital {
             CurrentRoomlbl.Text = pat.getRoom().ToString();
 
 
-            if (pat.getRoom() == "0") {
+            if (pat.getRoom() == "Discharged") {
                 Admitbtn.Visible = true;
                 Dischargebtn.Visible = false;
             } else if (!pat.getRoom().StartsWith("E")) {

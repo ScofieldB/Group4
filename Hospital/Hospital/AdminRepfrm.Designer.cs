@@ -28,6 +28,7 @@
             this.BackBtn = new System.Windows.Forms.Button();
             this.Desc = new System.Windows.Forms.Label();
             this.Outstandingbtn = new System.Windows.Forms.Button();
+            this.Roomsbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestRepbtn
@@ -39,10 +40,10 @@
             this.TestRepbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.TestRepbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.TestRepbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TestRepbtn.Location = new System.Drawing.Point(20, 78);
+            this.TestRepbtn.Location = new System.Drawing.Point(20, 77);
             this.TestRepbtn.Margin = new System.Windows.Forms.Padding(4);
             this.TestRepbtn.Name = "TestRepbtn";
-            this.TestRepbtn.Size = new System.Drawing.Size(132, 28);
+            this.TestRepbtn.Size = new System.Drawing.Size(132, 51);
             this.TestRepbtn.TabIndex = 1;
             this.TestRepbtn.Text = "Test Rep";
             this.TestRepbtn.UseVisualStyleBackColor = true;
@@ -87,26 +88,42 @@
             // Desc
             // 
             this.Desc.AutoSize = true;
-            this.Desc.Location = new System.Drawing.Point(16, 47);
+            this.Desc.Location = new System.Drawing.Point(29, 45);
             this.Desc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Desc.Name = "Desc";
-            this.Desc.Size = new System.Drawing.Size(296, 17);
+            this.Desc.Size = new System.Drawing.Size(123, 17);
             this.Desc.TabIndex = 4;
-            this.Desc.Text = "Selection of reports for use by Administrators.";
+            this.Desc.Text = "Available Reports:";
             // 
             // Outstandingbtn
             // 
             this.Outstandingbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Outstandingbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Outstandingbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Outstandingbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.Outstandingbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Outstandingbtn.Location = new System.Drawing.Point(20, 124);
+            this.Outstandingbtn.Location = new System.Drawing.Point(20, 135);
             this.Outstandingbtn.Name = "Outstandingbtn";
             this.Outstandingbtn.Size = new System.Drawing.Size(132, 51);
             this.Outstandingbtn.TabIndex = 5;
             this.Outstandingbtn.Text = "Outstanding Charges";
             this.Outstandingbtn.UseVisualStyleBackColor = true;
             this.Outstandingbtn.Click += new System.EventHandler(this.Outstandingbtn_Click);
+            // 
+            // Roomsbtn
+            // 
+            this.Roomsbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Roomsbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Roomsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Roomsbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.Roomsbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Roomsbtn.Location = new System.Drawing.Point(20, 192);
+            this.Roomsbtn.Name = "Roomsbtn";
+            this.Roomsbtn.Size = new System.Drawing.Size(132, 51);
+            this.Roomsbtn.TabIndex = 6;
+            this.Roomsbtn.Text = "Current Rooms";
+            this.Roomsbtn.UseVisualStyleBackColor = true;
+            this.Roomsbtn.Click += new System.EventHandler(this.Roomsbtn_Click);
             // 
             // AdminRepfrm
             // 
@@ -116,6 +133,7 @@
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(427, 321);
+            this.Controls.Add(this.Roomsbtn);
             this.Controls.Add(this.Outstandingbtn);
             this.Controls.Add(this.Desc);
             this.Controls.Add(this.BackBtn);
@@ -139,5 +157,6 @@
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Label Desc;
         private System.Windows.Forms.Button Outstandingbtn;
+        private System.Windows.Forms.Button Roomsbtn;
     }
 }

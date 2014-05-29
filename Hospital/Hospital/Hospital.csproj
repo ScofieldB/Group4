@@ -73,6 +73,12 @@
     <Compile Include="ChoosePatient.Designer.cs">
       <DependentUpon>ChoosePatient.cs</DependentUpon>
     </Compile>
+    <Compile Include="CurrentPatientsRep.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrentPatientsRep.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ExportPatientRep.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +167,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChoosePatient.resx">
       <DependentUpon>ChoosePatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrentPatientsRep.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CurrentPatientsRep.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportPatientRep.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
