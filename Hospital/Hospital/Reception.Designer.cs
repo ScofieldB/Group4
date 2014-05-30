@@ -573,6 +573,7 @@
             this.DOBtxt.Size = new System.Drawing.Size(96, 20);
             this.DOBtxt.TabIndex = 87;
             this.DOBtxt.ValidatingType = typeof(System.DateTime);
+            this.DOBtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Date_Validating);
             // 
             // NOKNtxt
             // 

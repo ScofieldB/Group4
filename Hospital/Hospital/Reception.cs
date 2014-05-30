@@ -569,6 +569,25 @@ namespace Hospital {
             }  
         }
 
+        //Validation for date entry, cannot be future or over 120 years.
+        private void Date_Validating(object sender, CancelEventArgs e) {
+
+           //compare date in textbox to current date
+
+           DateTime patDate = Convert.ToDateTime(DOBtxt.Text);
+           DateTime current = DateTime.Today;
+           DateTime past = new DateTime(1894, 1, 1);
+
+            if (patDate > current) {
+                MessageBox.Show("Please Enter Date of Birth not in the future.");
+                DOBtxt.Text = "";
+            } else if (patDate < past) {
+                MessageBox.Show("Please Enter Date of Birth not older than 120 years.");
+                DOBtxt.Text = "";
+            }
+        }
+
+
         private void Seatxt_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 Searchbtn_Click(sender, e);
