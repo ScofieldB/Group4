@@ -47,7 +47,7 @@
             this.TestRepbtn.Name = "TestRepbtn";
             this.TestRepbtn.Size = new System.Drawing.Size(132, 51);
             this.TestRepbtn.TabIndex = 1;
-            this.TestRepbtn.Text = "Test Rep";
+            this.TestRepbtn.Text = "Facilities Used";
             this.TestRepbtn.UseVisualStyleBackColor = true;
             this.TestRepbtn.Click += new System.EventHandler(this.TestRepbtn_Click);
             // 
@@ -119,7 +119,7 @@
             this.Roomsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Roomsbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.Roomsbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Roomsbtn.Location = new System.Drawing.Point(20, 192);
+            this.Roomsbtn.Location = new System.Drawing.Point(112, 192);
             this.Roomsbtn.Name = "Roomsbtn";
             this.Roomsbtn.Size = new System.Drawing.Size(132, 51);
             this.Roomsbtn.TabIndex = 6;
