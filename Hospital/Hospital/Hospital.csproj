@@ -61,10 +61,10 @@
     <Compile Include="AdminRepfrm.Designer.cs">
       <DependentUpon>AdminRepfrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminReport.cs">
+    <Compile Include="FacilitiesUsedRep.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>AdminReport.rpt</DependentUpon>
+      <DependentUpon>FacilitiesUsedRep.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ChoosePatient.cs">
@@ -173,9 +173,9 @@
     <EmbeddedResource Include="AdminRepfrm.resx">
       <DependentUpon>AdminRepfrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminReport.rpt">
+    <EmbeddedResource Include="FacilitiesUsedRep.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>AdminReport.cs</LastGenOutput>
+      <LastGenOutput>FacilitiesUsedRep.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ChoosePatient.resx">
       <DependentUpon>ChoosePatient.cs</DependentUpon>
