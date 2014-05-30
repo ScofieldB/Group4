@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Diagnostics;
+using System.Data.SqlClient;
 
 namespace Hospital {
     public partial class AdminRepfrm : Form {
@@ -78,6 +79,44 @@ namespace Hospital {
             cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf"); //output location, may need to be manually changed
 
             System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf");
+        }
+
+        private void PatToDocBtn_Click(object sender, EventArgs e) {
+            SqlConnection con = DBCon.DBConnect();
+            int patients = 0;
+            int doctors = 0;
+            int nurses = 0;
+
+            con.Open();
+
+            SqlCommand command = new SqlCommand("SELECT (SELECT COUNT(*) FROM Users WHERE Role = 'Doctor') AS Doctors, " +
+                                                        "(SELECT COUNT(*) FROM Users WHERE Role = 'Nurse') AS Nurses, " +
+                                                        "(SELECT COUNT(*) FROM Patient WHERE Room != 'Discharged') as Patients;", con);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read()) {
+                doctors = reader.GetInt32(0);
+                nurses = reader.GetInt32(1);
+                patients = reader.GetInt32(2);
+            }
+            reader.Close();
+            con.Close();
+
+            ReportDocument cryRpt = new ReportDocument();
+
+            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\StaffVsPatientsRep.rpt");
+
+            cryRpt.SetParameterValue("DoctorCount", doctors);
+            cryRpt.SetParameterValue("NurseCount", nurses);
+            cryRpt.SetParameterValue("PatientCount", patients);
+            //source file location for the premade report, may need to be manually changed
+
+
+            //Exports generated report to PDF format
+            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf"); //output location, may need to be manually changed
+
+            System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf");
+
         }
 
     }

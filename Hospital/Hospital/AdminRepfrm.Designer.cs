@@ -30,6 +30,7 @@
             this.Outstandingbtn = new System.Windows.Forms.Button();
             this.Roomsbtn = new System.Windows.Forms.Button();
             this.CountStaffBtn = new System.Windows.Forms.Button();
+            this.PatToDocBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestRepbtn
@@ -137,9 +138,24 @@
             this.CountStaffBtn.Name = "CountStaffBtn";
             this.CountStaffBtn.Size = new System.Drawing.Size(132, 51);
             this.CountStaffBtn.TabIndex = 7;
-            this.CountStaffBtn.Text = "Count of Roles";
+            this.CountStaffBtn.Text = "Current Staff Roles";
             this.CountStaffBtn.UseVisualStyleBackColor = true;
             this.CountStaffBtn.Click += new System.EventHandler(this.CountStaffBtn_Click);
+            // 
+            // PatToDocBtn
+            // 
+            this.PatToDocBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.PatToDocBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.PatToDocBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PatToDocBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.PatToDocBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.PatToDocBtn.Location = new System.Drawing.Point(203, 149);
+            this.PatToDocBtn.Name = "PatToDocBtn";
+            this.PatToDocBtn.Size = new System.Drawing.Size(132, 51);
+            this.PatToDocBtn.TabIndex = 8;
+            this.PatToDocBtn.Text = "Patient to Staff Ratio";
+            this.PatToDocBtn.UseVisualStyleBackColor = true;
+            this.PatToDocBtn.Click += new System.EventHandler(this.PatToDocBtn_Click);
             // 
             // AdminRepfrm
             // 
@@ -149,6 +165,7 @@
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(427, 321);
+            this.Controls.Add(this.PatToDocBtn);
             this.Controls.Add(this.CountStaffBtn);
             this.Controls.Add(this.Roomsbtn);
             this.Controls.Add(this.Outstandingbtn);
@@ -176,5 +193,6 @@
         private System.Windows.Forms.Button Outstandingbtn;
         private System.Windows.Forms.Button Roomsbtn;
         private System.Windows.Forms.Button CountStaffBtn;
+        private System.Windows.Forms.Button PatToDocBtn;
     }
 }

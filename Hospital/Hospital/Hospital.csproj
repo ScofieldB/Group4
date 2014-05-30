@@ -142,6 +142,12 @@
       <DependentUpon>StaffRep.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="StaffVsPatientsRep.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StaffVsPatientsRep.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TestResultAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,10 @@
     <EmbeddedResource Include="StaffRep.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>StaffRep.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffVsPatientsRep.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>StaffVsPatientsRep.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="TestResultAdd.resx">
       <DependentUpon>TestResultAdd.cs</DependentUpon>
