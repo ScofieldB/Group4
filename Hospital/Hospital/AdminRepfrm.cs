@@ -25,10 +25,10 @@ namespace Hospital {
         //On click, generate new instance of AdminReport and exports it.
         private void TestRepbtn_Click(object sender, EventArgs e) {
             ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\AdminReport.rpt");//source file location for the premade report, may need to be manually changed
-            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\AdminTest.pdf"); //output location, may need to be manually changed
+            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\FacilitiesUsedRep.rpt");//source file location for the premade report, may need to be manually changed
+            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf"); //output location, may need to be manually changed
 
-            System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\AdminTest.pdf");
+            System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf");
         }
 
         // Used to set variable used to go back to login screen
@@ -74,6 +74,7 @@ namespace Hospital {
             //Intantiates new Report Document, loads document based off rpt template.
             ReportDocument cryRpt = new ReportDocument();
             cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\StaffRep.rpt");//source file location for the premade report, may need to be manually changed
+
 
             //Exports generated report to PDF format
             cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf"); //output location, may need to be manually changed

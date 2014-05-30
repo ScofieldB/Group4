@@ -149,7 +149,7 @@
             this.PatToDocBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PatToDocBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.PatToDocBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.PatToDocBtn.Location = new System.Drawing.Point(203, 149);
+            this.PatToDocBtn.Location = new System.Drawing.Point(203, 135);
             this.PatToDocBtn.Name = "PatToDocBtn";
             this.PatToDocBtn.Size = new System.Drawing.Size(132, 51);
             this.PatToDocBtn.TabIndex = 8;
