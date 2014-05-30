@@ -140,6 +140,7 @@
             this.Altxt.Name = "Altxt";
             this.Altxt.Size = new System.Drawing.Size(286, 20);
             this.Altxt.TabIndex = 65;
+            this.Altxt.Validating += new System.ComponentModel.CancelEventHandler(this.Add_Validating);
             // 
             // CovNtxt
             // 

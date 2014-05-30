@@ -601,7 +601,6 @@ namespace Hospital {
             string reg = @"^[0-9a-zA-Z' ,./-]{1,500}$";//regex allows only select few special characters
             if (!Regex.IsMatch(this.Addtxt.Text.Trim(), reg)) {
                 MessageBox.Show("Please enter a valid address.");
-                Addtxt.Text = "0";
             }
         }
 
