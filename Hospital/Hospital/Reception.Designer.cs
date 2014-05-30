@@ -157,6 +157,7 @@
             this.Addtxt.Name = "Addtxt";
             this.Addtxt.Size = new System.Drawing.Size(286, 20);
             this.Addtxt.TabIndex = 55;
+            this.Addtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Add_Validating);
             // 
             // NOKtxt
             // 

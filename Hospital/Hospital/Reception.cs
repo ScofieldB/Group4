@@ -556,7 +556,6 @@ namespace Hospital {
             string reg = @"^[a-zA-Z' -]{1,20}$";//regex allows only english characters, spaces, hyphen or apostrophe
             if (!Regex.IsMatch(this.Surtxt.Text.Trim(), reg)) {
                 MessageBox.Show("Please input only English characters, spaces, hyphen or apostrophe.");
-                Surtxt.Text = "";
             }        
         }
 
@@ -572,26 +571,38 @@ namespace Hospital {
         //Validation for date entry, cannot be future or over 120 years.
         private void Date_Validating(object sender, CancelEventArgs e) {
 
-           //Crude
+           //Try catch for DOB validation
            try {
 
                DateTime patDate = Convert.ToDateTime(DOBtxt.Text);
                DateTime current = DateTime.Today;
                DateTime past = new DateTime(1894, 1, 1);
 
+               //not future
                if (patDate > current) {
                    MessageBox.Show("Please Enter Date of Birth not in the future.");
                    DOBtxt.Text = "";
                }
+               //not greater than 120 years
                else if (patDate < past) {
                    MessageBox.Show("Please Enter Date of Birth not older than 120 years.");
                    DOBtxt.Text = "";
                }
            }
+           //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
            catch (Exception){
                MessageBox.Show("Please do not leave spaces in date of birth.");
                DOBtxt.Text = "";
            }
+        }
+
+        //Address validation when changing element
+        private void Add_Validating(object sender, CancelEventArgs e) {
+            string reg = @"^[0-9a-zA-Z' ,./-]{1,500}$";//regex allows only select few special characters
+            if (!Regex.IsMatch(this.Addtxt.Text.Trim(), reg)) {
+                MessageBox.Show("Please enter a valid address.");
+                Addtxt.Text = "0";
+            }
         }
 
 
