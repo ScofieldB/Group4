@@ -71,7 +71,7 @@ namespace Hospital {
             Addtxt.Text = pat.getAddress();
             Homtxt.Text = pat.getPhone().ToString();
             Mobtxt.Text = pat.getMobile().ToString();
-            chargeslbl.Text = pat.getCharges().ToString();
+            chargeslbl.Text = "$" + pat.getCharges().ToString();
             covTypeCmb.SelectedIndex = pat.getCoverT();
             CovNtxt.Text = pat.getCoverN().ToString();
             Altxt.Text = pat.getAllergies();
@@ -311,7 +311,7 @@ namespace Hospital {
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     pat = Patient.SearchPID(pat.getPatient());
                     CurrentRoomlbl.Text = pat.getRoom();
-                    chargeslbl.Text = pat.getCharges().ToString();
+                    chargeslbl.Text = "$" + pat.getCharges().ToString();
                     Admitbtn.Visible = false;
                     Dischargebtn.Visible = true;
                     updateHistory("Admitted");
@@ -498,7 +498,7 @@ namespace Hospital {
 
                 //Exports generated report to PDF format
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf"); //output location, may need to be manually changed
-                MessageBox.Show("Export to PDF Successful.");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf");
             } else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient Invoice not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -534,7 +534,8 @@ namespace Hospital {
 
                 //Exports generated report to PDF format
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\PatientExport.pdf"); //output location, may need to be manually changed
-                MessageBox.Show("Export to PDF Successful.");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\PatientExport.pdf");
+
             } else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
