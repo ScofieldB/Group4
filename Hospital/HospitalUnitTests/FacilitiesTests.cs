@@ -45,7 +45,7 @@ namespace HospitalUnitTests {
             reader.Close();
             con.Close();
 
-            Assert.AreEqual("0", room, true);
+            Assert.AreEqual("Discharged", room, true);
         }
 
         [TestMethod]
@@ -76,7 +76,7 @@ namespace HospitalUnitTests {
             reader.Close();
             con.Close();
 
-            Assert.AreEqual("0", room, true);
+            Assert.AreEqual("Discharged", room, true);
         }
 
 

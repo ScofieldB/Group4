@@ -99,7 +99,7 @@ namespace HospitalUnitTests {
 
             Assert.AreEqual("E100", room, true);
 
-            int charges = Hospital.Patient.DischargePatient(pat);
+            /*int charges = Hospital.Patient.DischargePatient(pat);
 
             command.Parameters.Clear();
             command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
@@ -112,7 +112,7 @@ namespace HospitalUnitTests {
             reader.Close();
             con.Close();
 
-            Assert.AreEqual("0", room, true);
+            Assert.AreEqual("Discharged", room, true);*/
 
         }
 
@@ -122,8 +122,8 @@ namespace HospitalUnitTests {
         public void TestUpdateAdmitChargeValid() {
             int charges = 0;
 
-            Hospital.PatientGetSet pat = Hospital.Patient.SearchPID(100026);
-            charges = Hospital.Patient.updateAdmitCharge(100026, 2);
+            Hospital.PatientGetSet pat = Hospital.Patient.SearchPID(100025);
+            charges = Hospital.Patient.updateAdmitCharge(100025, 2);
 
             Assert.AreEqual(200, charges);
 

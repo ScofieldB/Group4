@@ -46,7 +46,7 @@ namespace Hospital {
                 }
                 reader.Close();
 
-                if (patRoom.StartsWith("0")) {
+                if (patRoom.StartsWith("Discharged")) {
                     admitted = true;
                     command.Parameters.Clear();
                     command.CommandText = "UPDATE Patient SET Room = @room WHERE PatientID = @id";
@@ -254,7 +254,7 @@ namespace Hospital {
                 SqlCommand command = new SqlCommand(null, con);
 
                 command.Parameters.Clear();
-                command.CommandText = "UPDATE Patient SET Room = '0' WHERE PatientID = @id";
+                command.CommandText = "UPDATE Patient SET Room = 'Discharged' WHERE PatientID = @id";
                 command.Parameters.AddWithValue("@id", pat.getPatient());
                 command.ExecuteNonQuery();
 
