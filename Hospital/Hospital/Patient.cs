@@ -60,7 +60,6 @@ namespace Hospital {
                 if (!reader.IsDBNull(10)) {
                     pat.setCoverN(reader.GetInt32(10));
                 }
-                pat.setStatus(reader.GetBoolean(11));
 
                 if (!reader.IsDBNull(12)) {
                     pat.setNextKin(reader.GetString(12));

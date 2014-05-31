@@ -71,10 +71,10 @@ namespace Hospital {
             Addtxt.Text = pat.getAddress();
             Homtxt.Text = pat.getPhone().ToString();
             Mobtxt.Text = pat.getMobile().ToString();
+            chargeslbl.Text = pat.getCharges().ToString();
             covTypeCmb.SelectedIndex = pat.getCoverT();
             CovNtxt.Text = pat.getCoverN().ToString();
             Altxt.Text = pat.getAllergies();
-            statusCmb.SelectedIndex = 0;
             CurrentRoomlbl.Text = pat.getRoom().ToString();
 
             if (pat.getRoom() == "Discharged") {
@@ -147,7 +147,7 @@ namespace Hospital {
             //insert into query using patientID as scope identity to be returned
             string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
             "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
-            "Room, TotalCharges) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
+            "Room, TotalCharges) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, 0, @nok," +
             " @nokp, @room, 0); SET @PATID = SCOPE_IDENTITY();");
 
             SqlCommand command = new SqlCommand(insertquery, con);
@@ -220,12 +220,6 @@ namespace Hospital {
                 command.Parameters.Add("@covern", System.Data.SqlDbType.Int).Value = 0;
             }
 
-            if (statusCmb.SelectedIndex == 0) {
-                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = 1;
-            } else {
-                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = 2;
-            }
-
             if (NOKtxt.Text != "") {
                 command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500).Value = NOKtxt.Text;
             } else {
@@ -287,7 +281,7 @@ namespace Hospital {
             covTypeCmb.SelectedIndex = 0;
             CovNtxt.Text = "";
             Altxt.Text = "";
-            statusCmb.SelectedIndex = 0;
+            chargeslbl.Text = "";
             CurrentRoomlbl.Text = "";
             Savbtn.Visible = false;
             Newbtn.Visible = true;
@@ -317,6 +311,7 @@ namespace Hospital {
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     pat = Patient.SearchPID(pat.getPatient());
                     CurrentRoomlbl.Text = pat.getRoom();
+                    chargeslbl.Text = pat.getCharges().ToString();
                     Admitbtn.Visible = false;
                     Dischargebtn.Visible = true;
                     updateHistory("Admitted");
@@ -393,12 +388,7 @@ namespace Hospital {
 
                 string allergies = Altxt.Text;
 
-                bool status;
-                if (statusCmb.SelectedIndex == 0) {
-                    status = true; ;
-                } else {
-                    status = false;
-                }
+                bool status = true;
 
                 string room;
                 if (CurrentRoomlbl.Text != "") {
