@@ -89,6 +89,7 @@
             // 
             // Desc
             // 
+            this.Desc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Desc.AutoSize = true;
             this.Desc.Location = new System.Drawing.Point(29, 45);
             this.Desc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -99,6 +100,7 @@
             // 
             // Outstandingbtn
             // 
+            this.Outstandingbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Outstandingbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Outstandingbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Outstandingbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -114,6 +116,7 @@
             // 
             // Roomsbtn
             // 
+            this.Roomsbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Roomsbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.Roomsbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Roomsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -129,6 +132,7 @@
             // 
             // CountStaffBtn
             // 
+            this.CountStaffBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CountStaffBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.CountStaffBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CountStaffBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -144,6 +148,7 @@
             // 
             // PatToDocBtn
             // 
+            this.PatToDocBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PatToDocBtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
             this.PatToDocBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PatToDocBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

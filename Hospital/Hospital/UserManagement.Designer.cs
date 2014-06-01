@@ -32,6 +32,7 @@
             this.LogBtn = new System.Windows.Forms.Button();
             this.Updatebtn = new System.Windows.Forms.Button();
             this.Querybtn = new System.Windows.Forms.Button();
+            this.Backbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Rolecmb
@@ -166,6 +167,22 @@
             this.Querybtn.UseVisualStyleBackColor = true;
             this.Querybtn.Click += new System.EventHandler(this.Querybtn_Click);
             // 
+            // Backbtn
+            // 
+            this.Backbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Backbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.Backbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Backbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Backbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.Backbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Backbtn.Location = new System.Drawing.Point(536, 286);
+            this.Backbtn.Name = "Backbtn";
+            this.Backbtn.Size = new System.Drawing.Size(132, 28);
+            this.Backbtn.TabIndex = 24;
+            this.Backbtn.Text = "Back";
+            this.Backbtn.UseVisualStyleBackColor = true;
+            this.Backbtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
             // UserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -174,6 +191,7 @@
             this.BackgroundImage = global::Hospital.Properties.Resources.pagebackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(701, 342);
+            this.Controls.Add(this.Backbtn);
             this.Controls.Add(this.Querybtn);
             this.Controls.Add(this.Updatebtn);
             this.Controls.Add(this.LogBtn);
@@ -205,5 +223,6 @@
         private System.Windows.Forms.Button LogBtn;
         private System.Windows.Forms.Button Updatebtn;
         private System.Windows.Forms.Button Querybtn;
+        private System.Windows.Forms.Button Backbtn;
     }
 }

@@ -27,6 +27,11 @@ namespace Hospital {
             this.back = back;
         }
 
+        private void BackBtn_Click(object sender, EventArgs e) {
+            back.Show();
+            Close();
+        }
+
 
         private void Querybtn_Click(object sender, EventArgs e) {
             if (Usernametxt.Text != "") {
