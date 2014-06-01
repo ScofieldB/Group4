@@ -281,7 +281,7 @@ namespace Hospital {
             covTypeCmb.SelectedIndex = 0;
             CovNtxt.Text = "";
             Altxt.Text = "";
-            chargeslbl.Text = "";
+            chargeslbl.Text = "$0";
             CurrentRoomlbl.Text = "";
             Savbtn.Visible = false;
             Newbtn.Visible = true;
@@ -303,11 +303,11 @@ namespace Hospital {
         private void Admitbtn_Click(object sender, EventArgs e) {
             Facilities fac = new Facilities();
 
-            if (PIDtxt.Text != "" && PIDtxt.Text != "0" && CurrentRoomlbl.Text == "0") {
+            if (PIDtxt.Text != "" && PIDtxt.Text != "0" && CurrentRoomlbl.Text == "Discharged") {
                 bool success = fac.admitPatient(pat.getPatient());
                 if (success == true) {
                     Patient.updateAdmitCharge(pat.getPatient(), pat.getCoverT());
-                    MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now admitted. -> " + pat.getCharges(), "Patient Admitted",
+                    MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now admitted.", "Patient Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     pat = Patient.SearchPID(pat.getPatient());
                     CurrentRoomlbl.Text = pat.getRoom();
@@ -435,10 +435,11 @@ namespace Hospital {
         }
 
         private void Dischargebtn_Click(object sender, EventArgs e) {
+            pat = Patient.SearchPID(pat.getPatient());
             int charges = Patient.DischargePatient(pat);
             
             if (charges > 0) {
-                createInvoice();
+                createInvoice(charges);
             }
 
             MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged with a final bill of $"
@@ -448,6 +449,7 @@ namespace Hospital {
             CurrentRoomlbl.Text = pat.getRoom();
             Dischargebtn.Visible = false;
             Admitbtn.Visible = true;
+            chargeslbl.Text = "$0";
             updateHistory("Discharged");
         }
 
@@ -473,28 +475,16 @@ namespace Hospital {
         }
 
 
-        private void createInvoice() {
+        private void createInvoice(int charges) {
 
             if (pat.getPatient() != -1) {
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
+
                 cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\Invoice.rpt");//source file location for the premade report, may need to be manually changed
 
-                //Variable delecaration and assignment
-                ParameterFieldDefinitions crParameterFieldDefinitions;
-                ParameterFieldDefinition crParameterFieldDefinition;
-                ParameterValues crParameterValues = new ParameterValues();
-                ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
-
-                //Assigns textbox value to relatable reviving methods in crystal report and assigns values
-                crParameterDiscreteValue.Value = pat.getPatient();
-                crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
-                crParameterFieldDefinition = crParameterFieldDefinitions["PatientID"];
-                crParameterValues = crParameterFieldDefinition.CurrentValues;
-
-                crParameterValues.Clear();
-                crParameterValues.Add(crParameterDiscreteValue);
-                crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+                cryRpt.SetParameterValue("PatientID", pat.getPatient());
+                cryRpt.SetParameterValue("charges", charges);
 
                 //Exports generated report to PDF format
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf"); //output location, may need to be manually changed
