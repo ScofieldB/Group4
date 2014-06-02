@@ -38,11 +38,16 @@ namespace Hospital {
          * the facilities currently being used by patients.
          */
         private void Facilitiesbtn_Click(object sender, EventArgs e) {
-            ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\FacilitiesUsedRep.rpt");//source file location for the premade report, may need to be manually changed
-            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf"); //output location, may need to be manually changed
+            try {
+                ReportDocument cryRpt = new ReportDocument();
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\FacilitiesUsedRep.rpt");//source file location for the premade report, may need to be manually changed
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf"); //output location, may need to be manually changed
 
-            System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf");
+            } catch {
+                MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /*
@@ -76,14 +81,19 @@ namespace Hospital {
          * the current sum of all patients oustanding charges.
          */
         private void Outstandingbtn_Click(object sender, EventArgs e) {
-            //Intantiates new Report Document, loads document based off rpt template.
-            ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\OutstandingChargesRep.rpt");//source file location for the premade report, may need to be manually changed
+            try {
+                //Intantiates new Report Document, loads document based off rpt template.
+                ReportDocument cryRpt = new ReportDocument();
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\OutstandingChargesRep.rpt");//source file location for the premade report, may need to be manually changed
 
-            //Exports generated report to PDF format
-            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf"); //output location, may need to be manually changed
+                //Exports generated report to PDF format
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf"); //output location, may need to be manually changed
 
-            System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf");
+            } catch {
+                MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /*
@@ -91,14 +101,19 @@ namespace Hospital {
          * to show how many patients currently are admitted.
          */
         private void Roomsbtn_Click(object sender, EventArgs e) {
-            //Intantiates new Report Document, loads document based off rpt template.
-            ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\CurrentPatientsRep.rpt");//source file location for the premade report, may need to be manually changed
-            
-            //Exports generated report to PDF format
-            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentPatients.pdf"); //output location, may need to be manually changed
+            try {
+                //Intantiates new Report Document, loads document based off rpt template.
+                ReportDocument cryRpt = new ReportDocument();
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\CurrentPatientsRep.rpt");//source file location for the premade report, may need to be manually changed
 
-            System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentPatients.pdf");
+                //Exports generated report to PDF format
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentPatients.pdf"); //output location, may need to be manually changed
+
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentPatients.pdf");
+            } catch {
+                MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /*
@@ -106,14 +121,19 @@ namespace Hospital {
          * how many staff are currently within the system.
          */
         private void CountStaffBtn_Click(object sender, EventArgs e) {
-            //Intantiates new Report Document, loads document based off rpt template.
-            ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\StaffRep.rpt");//source file location for the premade report, may need to be manually changed
+            try {
+                //Intantiates new Report Document, loads document based off rpt template.
+                ReportDocument cryRpt = new ReportDocument();
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\StaffRep.rpt");//source file location for the premade report, may need to be manually changed
 
-            //Exports generated report to PDF format
-            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf"); //output location, may need to be manually changed
+                //Exports generated report to PDF format
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf"); //output location, may need to be manually changed
 
-            System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf");
+            } catch {
+                MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /*
@@ -127,7 +147,7 @@ namespace Hospital {
             int nurses = 0;
 
             con.Open();
-            
+
             SqlCommand command = new SqlCommand("SELECT (SELECT COUNT(*) FROM Users WHERE Role = 'Doctor') AS Doctors, " +
                                                         "(SELECT COUNT(*) FROM Users WHERE Role = 'Nurse') AS Nurses, " +
                                                         "(SELECT COUNT(*) FROM Patient WHERE Room != 'Discharged') as Patients;", con);
@@ -141,19 +161,23 @@ namespace Hospital {
             reader.Close();
             con.Close();
 
-            ReportDocument cryRpt = new ReportDocument();
+            try {
+                ReportDocument cryRpt = new ReportDocument();
 
-            cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\StaffVsPatientsRep.rpt"); //source file location for the premade report, may need to be manually changed
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\StaffVsPatientsRep.rpt"); //source file location for the premade report, may need to be manually changed
 
-            cryRpt.SetParameterValue("DoctorCount", doctors);
-            cryRpt.SetParameterValue("NurseCount", nurses);
-            cryRpt.SetParameterValue("PatientCount", patients);
+                cryRpt.SetParameterValue("DoctorCount", doctors);
+                cryRpt.SetParameterValue("NurseCount", nurses);
+                cryRpt.SetParameterValue("PatientCount", patients);
 
-            //Exports generated report to PDF format
-            cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf"); //output location, may need to be manually changed
+                //Exports generated report to PDF format
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf"); //output location, may need to be manually changed
 
-            System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf");
-
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf");
+            } catch {
+                MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

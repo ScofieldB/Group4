@@ -125,10 +125,10 @@ namespace Hospital {
                         "or add a new patient.", "Patient not found.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Admitbtn.Visible = false;
-                //If array length is 1
+                    //If array length is 1
                 } else if (patients.Length == 1) {
                     setPatient(patients[0]);
-                //Else open ChoosePatient window
+                    //Else open ChoosePatient window
                 } else {
                     ChoosePatient choosePat = new ChoosePatient(UserID, Role, home, this, Surname, patients);
                     choosePat.Show();
@@ -441,13 +441,19 @@ namespace Hospital {
             }
         }
 
-        
+
         private void Dischargebtn_Click(object sender, EventArgs e) {
             pat = Patient.SearchPID(pat.getPatientId());
             int charges = Patient.DischargePatient(pat);
-            
+
+
             if (charges > 0) {
-                createInvoice(charges);
+                try {
+                    createInvoice(charges);
+                } catch {
+                    MessageBox.Show("Something went wrong. Please make sure any previous invoices are close.", "Patient Invoice not generated.",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             MessageBox.Show("Patient: " + pat.getSName() + ", " + pat.getFName() + " is now discharged with a final bill of $"
@@ -541,12 +547,12 @@ namespace Hospital {
             }
         }
 
-       //Name validation when changing element
+        //Name validation when changing element
         private void Name_Validating(object sender, CancelEventArgs e) {
             string reg = @"^[a-zA-Z' -]{1,20}$";//regex allows only english characters, spaces, hyphen or apostrophe
             if (!Regex.IsMatch(this.Surtxt.Text.Trim(), reg)) {
                 MessageBox.Show("Please input only English characters, spaces, hyphen or apostrophe.");
-            }        
+            }
         }
 
         //Number validation when changing element
@@ -555,35 +561,35 @@ namespace Hospital {
             if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg) || (int.Parse(CovNtxt.Text) > 1000000)) {
                 MessageBox.Show("Please enter a cover number between 1-1000000");
                 CovNtxt.Text = "0";
-            }  
+            }
         }
 
         //Validation for date entry, cannot be future or over 120 years.
         private void Date_Validating(object sender, CancelEventArgs e) {
 
-           //Try catch for DOB validation
-           try {
+            //Try catch for DOB validation
+            try {
 
-               DateTime patDate = Convert.ToDateTime(DOBtxt.Text);
-               DateTime current = DateTime.Today;
-               DateTime past = new DateTime(1894, 1, 1);
+                DateTime patDate = Convert.ToDateTime(DOBtxt.Text);
+                DateTime current = DateTime.Today;
+                DateTime past = new DateTime(1894, 1, 1);
 
-               //not future
-               if (patDate > current) {
-                   MessageBox.Show("Please Enter Date of Birth not in the future.");
-                   DOBtxt.Text = "";
-               }
-               //not greater than 120 years
-               else if (patDate < past) {
-                   MessageBox.Show("Please Enter Date of Birth not older than 120 years.");
-                   DOBtxt.Text = "";
-               }
-           }
-           //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
-           catch (Exception){
-               MessageBox.Show("Please do not leave spaces in date of birth.");
-               DOBtxt.Text = "";
-           }
+                //not future
+                if (patDate > current) {
+                    MessageBox.Show("Please Enter Date of Birth not in the future.");
+                    DOBtxt.Text = "";
+                }
+                    //not greater than 120 years
+                else if (patDate < past) {
+                    MessageBox.Show("Please Enter Date of Birth not older than 120 years.");
+                    DOBtxt.Text = "";
+                }
+            }
+                //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
+            catch (Exception) {
+                MessageBox.Show("Please do not leave spaces in date of birth.");
+                DOBtxt.Text = "";
+            }
         }
 
         //Address validation when changing element
