@@ -335,6 +335,7 @@ namespace Hospital {
         private void checkCover(PatientGetSet pat, FinanceCmbItem typeBooked) {
             SqlCommand command = new SqlCommand("", con);
             con.Open();
+
             //If user has no Private cover then charge the patient
             if (pat.getCoverT() == 0) {
 

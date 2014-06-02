@@ -16,8 +16,7 @@ namespace Hospital {
         public User getDetails(string username, string password) {
             User user = new User();
 
-            HashPassword hash = new HashPassword();
-            password = hash.getHash(password);
+            password = getHash(password);
             string checkpw = "";
             SqlConnection con = DBCon.DBConnect();
 
@@ -49,8 +48,7 @@ namespace Hospital {
          * update database with hashed pw.
          */
         public void newPassword(string userID, string newPw) {
-            HashPassword hash = new HashPassword();
-            string md5Hash = hash.getHash(newPw);
+            string md5Hash = getHash(newPw);
 
 
             SqlConnection con = DBCon.DBConnect();
@@ -66,5 +64,18 @@ namespace Hospital {
             con.Close();
         }
 
+
+        /* 
+         * getHash is used to encrypt the string paramater into a md5 hashed string and return the 
+         * new encrypted string.
+         * \param string password - password wished to be hashed
+         * \return string - hashed version of the password
+         */
+        public string getHash(string password) {
+            System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+            data = x.ComputeHash(data);
+            return System.Text.Encoding.ASCII.GetString(data);
+        }
     }
 }

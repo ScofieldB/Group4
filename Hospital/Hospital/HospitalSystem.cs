@@ -9,6 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+/*
+ * Form is used as the main window that doctors, med techs and nurses log into which has
+ * all features available to these roles.
+ */
 namespace Hospital {
     public partial class HospitalSystem : Form {
         private Form homeScreen;
