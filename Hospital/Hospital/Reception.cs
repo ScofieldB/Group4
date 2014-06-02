@@ -12,6 +12,10 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Text.RegularExpressions;
 
+/*
+ * Form is used as the main window Reception users log into and all features
+ * for a reception branch from this form.
+ */
 namespace Hospital {
     public partial class Reception : Form {
 
@@ -22,12 +26,10 @@ namespace Hospital {
         //Global variables
         string UserID; //String value of the UserID/StaffID
 
-        public Reception() {
-            InitializeComponent();
-        }
 
         /*
          * Sets up form and updates UserID variable with user parameter passed.
+         * \param string user - UserID of user logged in
          */
         public Reception(string user) {
             InitializeComponent();
@@ -52,7 +54,11 @@ namespace Hospital {
             home = logout;
         }
 
-
+        /*
+         * Sets private patient variable and display appropriate
+         * information on screen based upon patient details.
+         * \param PatientInfo patient - patient to be shown on form
+         */
         public void setPatient(PatientInfo patient) {
 
             pat = patient;
@@ -327,7 +333,9 @@ namespace Hospital {
             }
         }
 
-        //Updates currently present information in text fields corrosponding to ID field.
+        /*
+         * Updates currently present information in text fields corrosponding to ID field.         * 
+         */
         private void Savbtn_Click(object sender, EventArgs e) {
             if (pat != null) {
                 int PID = pat.getPatientId();
@@ -433,6 +441,7 @@ namespace Hospital {
             }
         }
 
+        
         private void Dischargebtn_Click(object sender, EventArgs e) {
             pat = Patient.SearchPID(pat.getPatientId());
             int charges = Patient.DischargePatient(pat);
