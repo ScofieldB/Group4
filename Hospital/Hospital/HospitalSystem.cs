@@ -29,10 +29,8 @@ namespace Hospital {
         /*
          * Costructor that sets up Hopsital form used by doctors and medical technicians.
          * Will set up different button display based upon which role is passed as parameter.
-         * 
-         * Paramaters:
-         *      string user - sets global variable UserID
-         *      string role - sets global variable Role
+         * \param string user - sets global variable UserID
+         * \param string role - sets global variable Role
          */
         public HospitalSystem(string user, string role) {
             InitializeComponent();
@@ -48,13 +46,19 @@ namespace Hospital {
 
 
         /*
-         * setHome is used for navigational purposes to and from the
-         * Login screen.
+         * Used to set variable used to go back to login screen
+         * \param Form logout - set variable home in order for navigation to login screen
          */
         public void setHome(Form logout) {
             homeScreen = logout;
         }
 
+
+        /*
+         * Sets private patient variable and display appropriate
+         * features on screen based upon patient.
+         * \param PatientGetSet patient - patient to be shown on form
+         */
         public void setPatient(PatientGetSet patient) {
             pat = patient;
 
@@ -71,6 +75,7 @@ namespace Hospital {
                 PatInfolbl.Text += pat.getDOB();
             }
 
+            // Display appropriate button based upon role of user
             if (Role == "Doctor") {
                 Finishbtn.Visible = false;
                 if (pat.getRoom() == "E100") {
@@ -107,13 +112,20 @@ namespace Hospital {
             }
         }
 
-        // Logout user by returning to login screen
+
+        /*
+         * Logout and return to login screen
+         */
         private void Logoutbtn_Click(object sender, EventArgs e) {
             homeScreen.Show();
             Close();
         }
 
-        // Allows the user to view images of the selected patient
+
+        /*
+         * On Click event for button to open TestResultViewer form so
+         * user can view images of the selected patient
+         */
         private void ViewImgbtn_Click(object sender, EventArgs e) {
             if (pat.getPatient() != -1) {
                 int patient = pat.getPatient();
@@ -125,9 +137,10 @@ namespace Hospital {
             }
         }
 
+
         /*
-         * When a search via Surname is undertaken then a patients first name, 
-         * surname, date of birth and current room location are displayed.
+         * On Click event for button to search via Surname. When seartch
+         * is undertaken then display appropriate information on form
          */
         private void Searchbtn_Click(object sender, EventArgs e) {
             if (Seatxt.Text != "") {
@@ -152,6 +165,9 @@ namespace Hospital {
             }
         }
 
+        /*
+         * Update patient information on form.
+         */
         private void updatePatient() {
             pat = Patient.SearchPID(pat.getPatient());
 
@@ -164,8 +180,8 @@ namespace Hospital {
 
 
         /*
-         * Books patient for a Surgery and display message of completion
-         * or error.   
+         * On Click event for button to boook a surgery and 
+         * display message of completion or error.   
          */
         private void Surgerybtn_Click(object sender, EventArgs e) {
 
@@ -198,8 +214,8 @@ namespace Hospital {
 
 
         /*
-         * Books patient for a Imaging and display message of completion
-         * or error.
+         * On Click event for button to boook Imaging and 
+         * display message of completion or error.   
          */
         private void Imagingbtn_Click(object sender, EventArgs e) {
 
@@ -228,9 +244,10 @@ namespace Hospital {
         }
 
 
+
         /*
-         * When surgery or xray is complete return patient back to
-         * emergency room.
+         * On Click event for button to return patient back to
+         * emergency room. Button used when MedTech is finished with patient.
          */
         private void Finishbtn_Click(object sender, EventArgs e) {
             if (pat.getPatient() != -1) {
@@ -246,12 +263,23 @@ namespace Hospital {
             }
         }
 
+
+        /*
+         * On Click event for button to add content of the 
+         * addHistorytbx on form to the users history table.
+         */
         private void addHistorybtn_Click(object sender, EventArgs e) { //add history input via user
             if (pat.getPatient() != -1) {
                 addHistory(addHistorytbx.Text);
             }
         }
 
+
+        /*
+         * Add the history passed in paramater to the current patient's
+         * history table.
+         * \param string history - history being added to the patient's history table
+         */
         private void addHistory(string history) {
             try {
                 SqlConnection con = DBCon.DBConnect();
@@ -268,7 +296,9 @@ namespace Hospital {
         }
 
 
-        //view history
+        /*
+         * Updates the history displayed in the DataGridView on form   
+         */
         private void updateTable(int PID) {
             SqlConnection con = DBCon.DBConnect();
             SqlCommand command = new SqlCommand("SELECT StaffID, History, Date FROM History WHERE PatientID = @pid ORDER BY Date DESC", con);
@@ -284,19 +314,27 @@ namespace Hospital {
             historyDataGridView.DataMember = "History";
         }
 
+
+        /*
+         * Pressing the enter key in the surname search textbox
+         * does the same function as if the search button was clicked.
+         */
         private void Seatxt_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 Searchbtn_Click(sender, e);
             }
         }
 
+
+        /*
+         * Pressing the enter key in the add history textbox
+         * does the same function as if the add history button was clicked.
+         */
         private void addHistorytbx_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 addHistorybtn_Click(sender, e);
             }
         }
-
-
 
     }
 }

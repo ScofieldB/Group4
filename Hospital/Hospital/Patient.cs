@@ -15,7 +15,13 @@ namespace Hospital {
     public class Patient {
 
 
-        public static PatientGetSet SearchPID(int PID) { //not sure about void here
+        /*
+         * Searches database for Patent via patientID
+         * \param int PID - patientID to be searched
+         * \return PatientGetSet - either a valid patient object 
+         *                          or a blank patient object
+         */
+        public static PatientGetSet SearchPID(int PID) {
 
             PatientGetSet pat = new PatientGetSet();
 
@@ -80,6 +86,7 @@ namespace Hospital {
 
             return pat;
         }
+
 
         public static PatientGetSet[] searchPatientSurname(string surname) {
             PatientGetSet[] Patients;

@@ -100,7 +100,6 @@
       <DependentUpon>Finance.cs</DependentUpon>
     </Compile>
     <Compile Include="FinanceCmbItem.cs" />
-    <Compile Include="HashPassword.cs" />
     <Compile Include="HospitalSystem.cs">
       <SubType>Form</SubType>
     </Compile>
