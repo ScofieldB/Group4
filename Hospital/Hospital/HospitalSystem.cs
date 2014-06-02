@@ -172,7 +172,7 @@ namespace Hospital {
             pat = Patient.SearchPID(pat.getPatientId());
 
             currentRoomtxt.Text = "Current Room: " + pat.getRoom();
-            addHistory("Patient is booked for " + typeBooked.ToString());
+            addHistory("Patient is booked in room " + pat.getRoom() + " for " + typeBooked.ToString());
             Surgerybtn.Visible = false;
             Imagingbtn.Visible = false;
             ViewImgbtn.Visible = true;

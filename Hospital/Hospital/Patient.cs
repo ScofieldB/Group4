@@ -146,6 +146,8 @@ namespace Hospital {
                 }
             }
 
+            con.Close();
+
             return Patients;
         }
 
@@ -172,6 +174,7 @@ namespace Hospital {
          */
         public static int updateAdmitCharge(int patientID, int patientCoverT) {
             int charge = -1;
+            string chargeType = "";
             SqlConnection con = DBCon.DBConnect();
 
             PatientInfo pat = Patient.SearchPID(patientID);
@@ -180,29 +183,53 @@ namespace Hospital {
 
                 con.Open();
 
-                SqlCommand command = new SqlCommand("SELECT CoverSurcharge FROM Cover WHERE CoverType = @coverT", con);
+                SqlCommand command = new SqlCommand("SELECT [Procedure], CoverSurcharge FROM Cover WHERE CoverType = @coverT", con);
                 command.Parameters.AddWithValue("@coverT", patientCoverT);
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read()) {
-                    charge = reader.GetInt32(0);
+                    chargeType = reader.GetString(0);
+                    charge = reader.GetInt32(1);
                 }
 
                 reader.Close();
+                con.Close();
 
                 command.Parameters.Clear();
 
+
                 if (charge > -1) {
+                    con.Open();
                     command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
                     command.Parameters.AddWithValue("@cost", charge);
                     command.Parameters.AddWithValue("patID", patientID);
                     command.ExecuteNonQuery();
+
+                    con.Close();
+
+                    Facilities fac = new Facilities();
+                    fac.updateChargeHistory(pat, "Admission", charge);
                 }
-                con.Close();
+
             }
 
             return charge;
+        }
 
+
+        public static void clearChargeHistory(int patientID) {
+            SqlConnection con = DBCon.DBConnect();
+            SqlCommand command = new SqlCommand("", con);
+            con.Open();
+
+            try {
+                command.CommandText = "DELETE FROM ChargeHistory WHERE PatientID = @patID";
+                command.Parameters.AddWithValue("@patID", patientID);
+                command.ExecuteNonQuery();
+            } catch {
+
+            };
+            con.Close();
         }
     }
 }

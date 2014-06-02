@@ -164,8 +164,7 @@ namespace Hospital {
          * \param FinanceCmbItem typeBooked - contains details for type of Imaging being booked
          * \param string UserID - UserID of current user logged in.
          */
-        public void addImagingRequest(PatientInfo pat, FinanceCmbItem typeBooked, string UserID)
-        {
+        public void addImagingRequest(PatientInfo pat, FinanceCmbItem typeBooked, string UserID) {
             DateTime CurrentDT = DateTime.Now;
             SqlCommand cmd = new SqlCommand("INSERT INTO Tests (PatientID, TestOrdered, OrderedByStaffID, DateOrdered) VALUES (@patient, @test , @user, @date)", con);
             int patient = pat.getPatientId();
@@ -315,7 +314,7 @@ namespace Hospital {
                 //Clear the charges from the Patient file.
                 command.Parameters.Clear();
                 command.CommandText = "UPDATE Patient SET TotalCharges = 0 WHERE PatientID = @patID";
-                command.Parameters.AddWithValue("patID", pat.getPatientId());
+                command.Parameters.AddWithValue("@patID", pat.getPatientId());
                 command.ExecuteNonQuery();
 
                 con.Close();
@@ -334,23 +333,45 @@ namespace Hospital {
          */
         private void checkCover(PatientInfo pat, FinanceCmbItem typeBooked) {
             SqlCommand command = new SqlCommand("", con);
-            con.Open();
 
+            
             //If user has no Private cover then charge the patient
             if (pat.getCoverType() == 0) {
-
+                con.Open();
                 command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
                 command.Parameters.AddWithValue("@cost", typeBooked.Cost);
-                command.Parameters.AddWithValue("patID", pat.getPatientId());
+                command.Parameters.AddWithValue("@patID", pat.getPatientId());
                 command.ExecuteNonQuery();
+                con.Close();
+                updateChargeHistory(pat, typeBooked.Type, typeBooked.Cost);                
             }
-
+            con.Open();
             command.Parameters.Clear();
             command.CommandText = "UPDATE Finance SET Counter = Counter + 1 WHERE Type = @type";
             command.Parameters.AddWithValue("@type", typeBooked.Type);
             command.ExecuteNonQuery();
 
             con.Close();
+        }
+
+
+        public bool updateChargeHistory(PatientInfo pat, string chargeType, int chargeAmount) {
+            bool success = false;
+            SqlCommand command = new SqlCommand("", con);
+            con.Open();
+
+            try {
+                command.CommandText = "INSERT INTO ChargeHistory (PatientID, TypeCharged, Amount, DateCharged) VALUES (@patID, @type, @charge, GetDate())";
+                command.Parameters.AddWithValue("@patID", pat.getPatientId());
+                command.Parameters.AddWithValue("@type", chargeType);
+                command.Parameters.AddWithValue("@charge", chargeAmount);
+                command.ExecuteNonQuery();
+                success = true;
+            } catch {
+
+            };
+            con.Close();
+            return success;
         }
     }
 

@@ -459,6 +459,7 @@ namespace Hospital {
             Admitbtn.Visible = true;
             chargeslbl.Text = "$0";
             updateHistory("Discharged");
+            Patient.clearChargeHistory(pat.getPatientId());
         }
 
         private void updateHistory(string historyType) {

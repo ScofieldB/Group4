@@ -107,7 +107,7 @@
             this.Searchbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Searchbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Searchbtn.Location = new System.Drawing.Point(527, 52);
-            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Searchbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Searchbtn.Name = "Searchbtn";
             this.Searchbtn.Size = new System.Drawing.Size(132, 28);
             this.Searchbtn.TabIndex = 32;
@@ -130,76 +130,77 @@
             // 
             this.Seatxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Seatxt.Location = new System.Drawing.Point(359, 55);
-            this.Seatxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Seatxt.Margin = new System.Windows.Forms.Padding(4);
             this.Seatxt.Name = "Seatxt";
             this.Seatxt.Size = new System.Drawing.Size(160, 22);
-            this.Seatxt.TabIndex = 30;
+            this.Seatxt.TabIndex = 1;
+            this.Seatxt.Tag = "";
             // 
             // Altxt
             // 
             this.Altxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Altxt.Location = new System.Drawing.Point(921, 286);
-            this.Altxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Altxt.Margin = new System.Windows.Forms.Padding(4);
             this.Altxt.Name = "Altxt";
             this.Altxt.Size = new System.Drawing.Size(380, 22);
-            this.Altxt.TabIndex = 65;
+            this.Altxt.TabIndex = 9;
             this.Altxt.Validating += new System.ComponentModel.CancelEventHandler(this.Add_Validating);
             // 
             // CovNtxt
             // 
             this.CovNtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CovNtxt.Location = new System.Drawing.Point(921, 481);
-            this.CovNtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CovNtxt.Margin = new System.Windows.Forms.Padding(4);
             this.CovNtxt.Name = "CovNtxt";
             this.CovNtxt.Size = new System.Drawing.Size(132, 22);
-            this.CovNtxt.TabIndex = 58;
+            this.CovNtxt.TabIndex = 13;
             this.CovNtxt.Validating += new System.ComponentModel.CancelEventHandler(this.CovNum_Validating);
             // 
             // Addtxt
             // 
             this.Addtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Addtxt.Location = new System.Drawing.Point(921, 140);
-            this.Addtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Addtxt.Margin = new System.Windows.Forms.Padding(4);
             this.Addtxt.Name = "Addtxt";
             this.Addtxt.Size = new System.Drawing.Size(380, 22);
-            this.Addtxt.TabIndex = 55;
+            this.Addtxt.TabIndex = 6;
             this.Addtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Add_Validating);
             // 
             // NOKtxt
             // 
             this.NOKtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NOKtxt.Location = new System.Drawing.Point(525, 433);
-            this.NOKtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NOKtxt.Margin = new System.Windows.Forms.Padding(4);
             this.NOKtxt.Name = "NOKtxt";
             this.NOKtxt.Size = new System.Drawing.Size(211, 22);
-            this.NOKtxt.TabIndex = 51;
+            this.NOKtxt.TabIndex = 10;
             this.NOKtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // Firtxt
             // 
             this.Firtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Firtxt.Location = new System.Drawing.Point(525, 190);
-            this.Firtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Firtxt.Margin = new System.Windows.Forms.Padding(4);
             this.Firtxt.Name = "Firtxt";
             this.Firtxt.Size = new System.Drawing.Size(211, 22);
-            this.Firtxt.TabIndex = 47;
+            this.Firtxt.TabIndex = 3;
             this.Firtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // Surtxt
             // 
             this.Surtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Surtxt.Location = new System.Drawing.Point(525, 140);
-            this.Surtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Surtxt.Margin = new System.Windows.Forms.Padding(4);
             this.Surtxt.Name = "Surtxt";
             this.Surtxt.Size = new System.Drawing.Size(211, 22);
-            this.Surtxt.TabIndex = 46;
+            this.Surtxt.TabIndex = 2;
             this.Surtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // PIDtxt
             // 
             this.PIDtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PIDtxt.Location = new System.Drawing.Point(249, 159);
-            this.PIDtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PIDtxt.Margin = new System.Windows.Forms.Padding(4);
             this.PIDtxt.Name = "PIDtxt";
             this.PIDtxt.ReadOnly = true;
             this.PIDtxt.Size = new System.Drawing.Size(133, 22);
@@ -243,7 +244,7 @@
             this.Clrbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Clrbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Clrbtn.Location = new System.Drawing.Point(19, 176);
-            this.Clrbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Clrbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Clrbtn.Name = "Clrbtn";
             this.Clrbtn.Size = new System.Drawing.Size(132, 28);
             this.Clrbtn.TabIndex = 71;
@@ -261,7 +262,7 @@
             this.Newbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Newbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Newbtn.Location = new System.Drawing.Point(19, 138);
-            this.Newbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Newbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Newbtn.Name = "Newbtn";
             this.Newbtn.Size = new System.Drawing.Size(132, 28);
             this.Newbtn.TabIndex = 67;
@@ -279,7 +280,7 @@
             this.Savbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Savbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Savbtn.Location = new System.Drawing.Point(19, 138);
-            this.Savbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Savbtn.Margin = new System.Windows.Forms.Padding(4);
             this.Savbtn.Name = "Savbtn";
             this.Savbtn.Size = new System.Drawing.Size(132, 28);
             this.Savbtn.TabIndex = 66;
@@ -460,7 +461,7 @@
             this.GenderCmb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GenderCmb.Name = "GenderCmb";
             this.GenderCmb.Size = new System.Drawing.Size(179, 24);
-            this.GenderCmb.TabIndex = 77;
+            this.GenderCmb.TabIndex = 5;
             // 
             // SurErrLbl
             // 
@@ -514,7 +515,7 @@
             this.covTypeCmb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.covTypeCmb.Name = "covTypeCmb";
             this.covTypeCmb.Size = new System.Drawing.Size(132, 24);
-            this.covTypeCmb.TabIndex = 81;
+            this.covTypeCmb.TabIndex = 12;
             // 
             // CurrentRoomlbl
             // 
@@ -535,7 +536,7 @@
             this.hardCopybtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hardCopybtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.hardCopybtn.Location = new System.Drawing.Point(19, 250);
-            this.hardCopybtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.hardCopybtn.Margin = new System.Windows.Forms.Padding(4);
             this.hardCopybtn.Name = "hardCopybtn";
             this.hardCopybtn.Size = new System.Drawing.Size(132, 28);
             this.hardCopybtn.TabIndex = 84;
@@ -548,33 +549,33 @@
             // 
             this.Homtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Homtxt.Location = new System.Drawing.Point(921, 190);
-            this.Homtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Homtxt.Margin = new System.Windows.Forms.Padding(4);
             this.Homtxt.Mask = "(00)0000-0000";
             this.Homtxt.Name = "Homtxt";
             this.Homtxt.Size = new System.Drawing.Size(104, 22);
-            this.Homtxt.TabIndex = 85;
+            this.Homtxt.TabIndex = 7;
             this.Homtxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // Mobtxt
             // 
             this.Mobtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Mobtxt.Location = new System.Drawing.Point(921, 231);
-            this.Mobtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Mobtxt.Margin = new System.Windows.Forms.Padding(4);
             this.Mobtxt.Mask = "(00)0000-0000";
             this.Mobtxt.Name = "Mobtxt";
             this.Mobtxt.Size = new System.Drawing.Size(104, 22);
-            this.Mobtxt.TabIndex = 86;
+            this.Mobtxt.TabIndex = 8;
             this.Mobtxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // DOBtxt
             // 
             this.DOBtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DOBtxt.Location = new System.Drawing.Point(524, 241);
-            this.DOBtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DOBtxt.Margin = new System.Windows.Forms.Padding(4);
             this.DOBtxt.Mask = "00/00/0000";
             this.DOBtxt.Name = "DOBtxt";
             this.DOBtxt.Size = new System.Drawing.Size(127, 22);
-            this.DOBtxt.TabIndex = 87;
+            this.DOBtxt.TabIndex = 4;
             this.DOBtxt.ValidatingType = typeof(System.DateTime);
             this.DOBtxt.Validating += new System.ComponentModel.CancelEventHandler(this.Date_Validating);
             // 
@@ -582,11 +583,11 @@
             // 
             this.NOKNtxt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.NOKNtxt.Location = new System.Drawing.Point(525, 482);
-            this.NOKNtxt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.NOKNtxt.Margin = new System.Windows.Forms.Padding(4);
             this.NOKNtxt.Mask = "(00)0000-0000";
             this.NOKNtxt.Name = "NOKNtxt";
             this.NOKNtxt.Size = new System.Drawing.Size(96, 22);
-            this.NOKNtxt.TabIndex = 88;
+            this.NOKNtxt.TabIndex = 11;
             this.NOKNtxt.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // outstandinglbl
