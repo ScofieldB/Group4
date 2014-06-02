@@ -68,7 +68,7 @@
             this.reportbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.reportbtn.Location = new System.Drawing.Point(64, 149);
-            this.reportbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.reportbtn.Margin = new System.Windows.Forms.Padding(4);
             this.reportbtn.Name = "reportbtn";
             this.reportbtn.Size = new System.Drawing.Size(132, 28);
             this.reportbtn.TabIndex = 15;
