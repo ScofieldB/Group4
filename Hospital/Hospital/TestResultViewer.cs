@@ -21,6 +21,7 @@ namespace Hospital {
         private string role;
         private string usersID;
         private int patientnum;
+        private int zoomValue = 0;
 
         public TestResultViewer(string UserID, string Role, int patient)
         {
@@ -57,7 +58,7 @@ namespace Hospital {
 
         public void ZoomIn() {
 
-            try{
+            if (zoomValue < 2) {
                 Image MyImage = pictureBox1.Image;
 
                 Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width * Multiplier.Width),
@@ -68,8 +69,10 @@ namespace Hospital {
                 Graphic.InterpolationMode = InterpolationMode.High;
 
                 pictureBox1.Image = MyBitMap;
+
+                zoomValue = zoomValue + 1;
             }
-            catch
+            else
             {
                 MessageBox.Show("Cannot zoom further.", "Zoom Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -79,7 +82,7 @@ namespace Hospital {
 
         public void ZoomOut() {
 
-            try{
+            if (zoomValue > -3){
 
                 Image MyImage = pictureBox1.Image;
 
@@ -91,8 +94,10 @@ namespace Hospital {
                 Graphic.InterpolationMode = InterpolationMode.High;
 
                 pictureBox1.Image = MyBitMap;
+
+                zoomValue = zoomValue -1;
             }
-            catch
+            else
             {
                 MessageBox.Show("Cannot zoom further.", "Zoom Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -132,6 +137,7 @@ namespace Hospital {
 
         private void addImageBtn_Click(object sender, EventArgs e) {
             try {
+                zoomValue = 0;
                 SqlConnection con = DBCon.DBConnect();
                 con.Open();
 
