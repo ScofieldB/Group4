@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.TestRepbtn = new System.Windows.Forms.Button();
+            this.FacilitiesRepbtn = new System.Windows.Forms.Button();
             this.LogBtn = new System.Windows.Forms.Button();
             this.BackBtn = new System.Windows.Forms.Button();
             this.Desc = new System.Windows.Forms.Label();
@@ -33,23 +33,23 @@
             this.PatToDocBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // TestRepbtn
+            // FacilitiesRepbtn
             // 
-            this.TestRepbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.TestRepbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
-            this.TestRepbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.TestRepbtn.FlatAppearance.BorderSize = 0;
-            this.TestRepbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.TestRepbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.TestRepbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TestRepbtn.Location = new System.Drawing.Point(20, 77);
-            this.TestRepbtn.Margin = new System.Windows.Forms.Padding(4);
-            this.TestRepbtn.Name = "TestRepbtn";
-            this.TestRepbtn.Size = new System.Drawing.Size(132, 51);
-            this.TestRepbtn.TabIndex = 1;
-            this.TestRepbtn.Text = "Facilities Used";
-            this.TestRepbtn.UseVisualStyleBackColor = true;
-            this.TestRepbtn.Click += new System.EventHandler(this.TestRepbtn_Click);
+            this.FacilitiesRepbtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.FacilitiesRepbtn.BackgroundImage = global::Hospital.Properties.Resources.buttonbackground;
+            this.FacilitiesRepbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FacilitiesRepbtn.FlatAppearance.BorderSize = 0;
+            this.FacilitiesRepbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FacilitiesRepbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            this.FacilitiesRepbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FacilitiesRepbtn.Location = new System.Drawing.Point(20, 77);
+            this.FacilitiesRepbtn.Margin = new System.Windows.Forms.Padding(4);
+            this.FacilitiesRepbtn.Name = "FacilitiesRepbtn";
+            this.FacilitiesRepbtn.Size = new System.Drawing.Size(132, 51);
+            this.FacilitiesRepbtn.TabIndex = 1;
+            this.FacilitiesRepbtn.Text = "Facilities Used";
+            this.FacilitiesRepbtn.UseVisualStyleBackColor = true;
+            this.FacilitiesRepbtn.Click += new System.EventHandler(this.Facilitiesbtn_Click);
             // 
             // LogBtn
             // 
@@ -177,7 +177,7 @@
             this.Controls.Add(this.Desc);
             this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.LogBtn);
-            this.Controls.Add(this.TestRepbtn);
+            this.Controls.Add(this.FacilitiesRepbtn);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -191,7 +191,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button TestRepbtn;
+        private System.Windows.Forms.Button FacilitiesRepbtn;
         private System.Windows.Forms.Button LogBtn;
         private System.Windows.Forms.Button BackBtn;
         private System.Windows.Forms.Label Desc;
