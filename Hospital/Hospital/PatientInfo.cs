@@ -4,21 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+ * Object that contains all relevent personal information about a Patient.
+ */
 namespace Hospital {
-    public class PatientGetSet {
+    public class PatientInfo {
 
-        private int patient = -1, covertype, covernumber, charges;
+        private int patientId = -1, covertype, covernumber, charges;
 
         private string firstname, surname, address, allergies, nextofkin, gender, room, phone, mobile, kinphone;
 
         private DateTime dob;
 
-        public int getPatient() {
-            return patient;
+        public int getPatientId() {
+            return patientId;
         }
 
-        public void setPatient(int PID) {
-            patient = PID;
+        public void setPatientId(int PID) {
+            patientId = PID;
         }
 
         public string getPhone() {
@@ -37,29 +40,29 @@ namespace Hospital {
             mobile = MB;
         }
 
-        public int getCoverT() {
+        public int getCoverType() {
             return covertype;
         }
 
 
-        public void setCoverT(int CT) {
+        public void setCoverType(int CT) {
             covertype = CT;
         }
 
-        public int getCoverN() {
+        public int getCoverNum() {
             return covernumber;
         }
 
-        public void setCoverN(int CN) {
+        public void setCoverNum(int CN) {
             covernumber = CN;
         }
 
-        public string getKP() {
+        public string getNextKinPhone() {
             return kinphone;
         }
 
-        public void setKP(string KP) {
-            kinphone = KP;
+        public void setNextKinPhone(string KinPh) {
+            kinphone = KinPh;
         }
 
         public int getCharges() {
@@ -70,20 +73,20 @@ namespace Hospital {
             charges = newCharge;
         }
 
-        public string getFN() {
+        public string getFName() {
             return firstname;
         }
 
-        public void setFN(string FN) {
-            firstname = FN;
+        public void setFName(string FName) {
+            firstname = FName;
         }
 
-        public string getSN() {
+        public string getSName() {
             return surname;
         }
 
-        public void setSN(string SN) {
-            surname = SN;
+        public void setSName(string SName) {
+            surname = SName;
         }
 
         public string getAddress() {

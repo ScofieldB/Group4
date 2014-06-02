@@ -82,11 +82,11 @@ namespace Hospital {
         /*
          * Update database that patient is now moved to Surgery room and update
          * room bed allocations.
-         * \param PatientGetSet pat - patient that is being booked for surgery
+         * \param PatientInfo pat - patient that is being booked for surgery
          * \param FinanceCmbItem typeBooked - contains details for type of surgery being booked
          * \return bool - value if booking of surgery was successful. 
          */
-        public bool bookSurgery(PatientGetSet pat, FinanceCmbItem typeBooked) {
+        public bool bookSurgery(PatientInfo pat, FinanceCmbItem typeBooked) {
             bool success = false;
 
             string newRoom = "";
@@ -122,12 +122,12 @@ namespace Hospital {
         /*
          * Update database that patient is now moved to Imaging room and update
          * room bed allocations.
-         * \param PatientGetSet pat - patient that is being booked for Imaging
+         * \param PatientInfo pat - patient that is being booked for Imaging
          * \param FinanceCmbItem typeBooked - contains details for type of Imaging being booked
          * \param string UserID - UserID of current user logged in.
          * \return bool - value if booking of imaging was successful. 
          */
-        public bool bookImaging(PatientGetSet pat, FinanceCmbItem typeBooked, string UserID) {
+        public bool bookImaging(PatientInfo pat, FinanceCmbItem typeBooked, string UserID) {
             bool success = false;
             int cost = typeBooked.Cost;
 
@@ -160,15 +160,15 @@ namespace Hospital {
         /*
          * Inserts values into the NOT NULL columns of the Tests table
          * thus allowing the MedTec to add files.
-         * \param PatientGetSet pat - patient that is being booked for Imaging
+         * \param PatientInfo pat - patient that is being booked for Imaging
          * \param FinanceCmbItem typeBooked - contains details for type of Imaging being booked
          * \param string UserID - UserID of current user logged in.
          */
-        public void addImagingRequest(PatientGetSet pat, FinanceCmbItem typeBooked, string UserID)
+        public void addImagingRequest(PatientInfo pat, FinanceCmbItem typeBooked, string UserID)
         {
             DateTime CurrentDT = DateTime.Now;
             SqlCommand cmd = new SqlCommand("INSERT INTO Tests (PatientID, TestOrdered, OrderedByStaffID, DateOrdered) VALUES (@patient, @test , @user, @date)", con);
-            int patient = pat.getPatient();
+            int patient = pat.getPatientId();
             cmd.Parameters.AddWithValue("@patient", patient);
             cmd.Parameters.AddWithValue("@test", typeBooked.Type);
             cmd.Parameters.AddWithValue("@user", UserID);
@@ -182,9 +182,9 @@ namespace Hospital {
         /*
          * Update database when sending patient back to doctor and update
          * room bed allocations.
-         * \param PatientGetSet pat - contains details of patient to send back to doctor
+         * \param PatientInfo pat - contains details of patient to send back to doctor
          */
-        public void returnPatientToDoctor(PatientGetSet pat) {
+        public void returnPatientToDoctor(PatientInfo pat) {
             bool success = false;
             string newRoom = "";
             int newRoomCapacity = 0;
@@ -214,11 +214,11 @@ namespace Hospital {
 
         /*
          * Update patient to new room and change room bed allocations within database.
-         * \param PatientGetSet pat - patient that is changing rooms
+         * \param PatientInfo pat - patient that is changing rooms
          * \param int newRoomCapacity - current capacity of the new room patient moving too
          * \param string newRoom - the new room patient is being moved too
          */
-        private void updateFacilities(PatientGetSet pat, int newRoomCapacity, string newRoom) {
+        private void updateFacilities(PatientInfo pat, int newRoomCapacity, string newRoom) {
             int currentRoomCapacity = 0;
             SqlCommand command = new SqlCommand("", con);
 
@@ -254,7 +254,7 @@ namespace Hospital {
             command.Parameters.Clear();
             command.CommandText = "UPDATE Patient SET Room = @room WHERE PatientID = @id";
             command.Parameters.AddWithValue("@room", newRoom);
-            command.Parameters.AddWithValue("@id", pat.getPatient());
+            command.Parameters.AddWithValue("@id", pat.getPatientId());
             command.ExecuteNonQuery();
 
             con.Close();
@@ -271,7 +271,7 @@ namespace Hospital {
             int totalCharges = 0;
 
 
-            PatientGetSet pat = Patient.SearchPID(patId);
+            PatientInfo pat = Patient.SearchPID(patId);
 
             if (pat.getRoom().StartsWith("E")) {
 
@@ -281,7 +281,7 @@ namespace Hospital {
 
                 command.Parameters.Clear();
                 command.CommandText = "UPDATE Patient SET Room = 'Discharged' WHERE PatientID = @id";
-                command.Parameters.AddWithValue("@id", pat.getPatient());
+                command.Parameters.AddWithValue("@id", pat.getPatientId());
                 command.ExecuteNonQuery();
 
                 command.Parameters.Clear();
@@ -302,7 +302,7 @@ namespace Hospital {
 
                 command.Parameters.Clear();
                 command.CommandText = "SELECT TotalCharges FROM Patient WHERE PatientID = @patID";
-                command.Parameters.AddWithValue("@patID", pat.getPatient());
+                command.Parameters.AddWithValue("@patID", pat.getPatientId());
                 reader = command.ExecuteReader();
 
                 while (reader.Read()) {
@@ -315,7 +315,7 @@ namespace Hospital {
                 //Clear the charges from the Patient file.
                 command.Parameters.Clear();
                 command.CommandText = "UPDATE Patient SET TotalCharges = 0 WHERE PatientID = @patID";
-                command.Parameters.AddWithValue("patID", pat.getPatient());
+                command.Parameters.AddWithValue("patID", pat.getPatientId());
                 command.ExecuteNonQuery();
 
                 con.Close();
@@ -329,19 +329,19 @@ namespace Hospital {
          * Checks the patients health cover details and update the outstanding
          * charges of patient as appropriate. Also updates the count of
          * surgery/Imaging undertaken.
-         * \param PatientGetSet pat - patient that is being booked
+         * \param PatientInfo pat - patient that is being booked
          * \param FinanceCmbItem typeBooked - contains details for type of item being booked
          */
-        private void checkCover(PatientGetSet pat, FinanceCmbItem typeBooked) {
+        private void checkCover(PatientInfo pat, FinanceCmbItem typeBooked) {
             SqlCommand command = new SqlCommand("", con);
             con.Open();
 
             //If user has no Private cover then charge the patient
-            if (pat.getCoverT() == 0) {
+            if (pat.getCoverType() == 0) {
 
                 command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
                 command.Parameters.AddWithValue("@cost", typeBooked.Cost);
-                command.Parameters.AddWithValue("patID", pat.getPatient());
+                command.Parameters.AddWithValue("patID", pat.getPatientId());
                 command.ExecuteNonQuery();
             }
 

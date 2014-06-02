@@ -9,11 +9,11 @@ namespace HospitalUnitTests {
         [TestMethod]
         public void TestGetHashValid() {
             string result = "";
-            Hospital.HashPassword hash = new Hospital.HashPassword();
-            result = hash.getHash("123abc");
+            Hospital.Login login = new Hospital.Login();
+            result = login.getHash("123abc");
             Assert.AreEqual("?D?Wi?sa?????m(", result, true);
 
-            result = hash.getHash("test123");
+            result = login.getHash("test123");
             Assert.AreEqual("??G??????vh????", result, true);
         }
 
@@ -21,8 +21,8 @@ namespace HospitalUnitTests {
         [TestMethod]
         public void TestGetHashInvalid() {
             string result = "";
-            Hospital.HashPassword hash = new Hospital.HashPassword();
-            result = hash.getHash("abc123");
+            Hospital.Login login = new Hospital.Login();
+            result = login.getHash("abc123");
             Assert.AreNotEqual("?D?Wi?sa?????m(", result, true);
         }
     }

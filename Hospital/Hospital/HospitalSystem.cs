@@ -17,7 +17,7 @@ using System.Windows.Forms;
 namespace Hospital {
     public partial class HospitalSystem : Form {
         private Form homeScreen;
-        private PatientGetSet pat = new PatientGetSet();
+        private PatientInfo pat = new PatientInfo();
         private Facilities fac = new Facilities();
         private FinanceCmbItem typeBooked;
 
@@ -57,18 +57,18 @@ namespace Hospital {
         /*
          * Sets private patient variable and display appropriate
          * features on screen based upon patient.
-         * \param PatientGetSet patient - patient to be shown on form
+         * \param PatientInfo patient - patient to be shown on form
          */
-        public void setPatient(PatientGetSet patient) {
+        public void setPatient(PatientInfo patient) {
             pat = patient;
 
             //Blank is used as if empty record then database doesnt return a date as null but
             //returns a date 1/01/0001
             DateTime blank = new DateTime(0001, 1, 01);
-            updateTable(pat.getPatient());
+            updateTable(pat.getPatientId());
 
             PatInfolbl.Text = "Patient Info: \r\n";
-            PatInfolbl.Text += pat.getFN() + " " + pat.getSN() + "\r\n";
+            PatInfolbl.Text += pat.getFName() + " " + pat.getSName() + "\r\n";
             currentRoomtxt.Text = "Current Room: " + pat.getRoom();
 
             if (pat.getDOB() != blank) {
@@ -127,8 +127,8 @@ namespace Hospital {
          * user can view images of the selected patient
          */
         private void ViewImgbtn_Click(object sender, EventArgs e) {
-            if (pat.getPatient() != -1) {
-                int patient = pat.getPatient();
+            if (pat.getPatientId() != -1) {
+                int patient = pat.getPatientId();
                 TestResultViewer Tests = new TestResultViewer(UserID, Role, patient);
                 Tests.Show();
             } else {
@@ -144,7 +144,7 @@ namespace Hospital {
          */
         private void Searchbtn_Click(object sender, EventArgs e) {
             if (Seatxt.Text != "") {
-                PatientGetSet[] patients;
+                PatientInfo[] patients;
                 string Surname = Seatxt.Text;
 
                 patients = Patient.searchPatientSurname(Surname);
@@ -169,7 +169,7 @@ namespace Hospital {
          * Update patient information on form.
          */
         private void updatePatient() {
-            pat = Patient.SearchPID(pat.getPatient());
+            pat = Patient.SearchPID(pat.getPatientId());
 
             currentRoomtxt.Text = "Current Room: " + pat.getRoom();
             addHistory("Patient is booked for " + typeBooked.ToString());
@@ -185,13 +185,13 @@ namespace Hospital {
          */
         private void Surgerybtn_Click(object sender, EventArgs e) {
 
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 Finance finance = new Finance("Surgery", this);
                 finance.ShowDialog();
                 if (typeBooked != null) {
                     bool success = fac.bookSurgery(pat, typeBooked);
                     if (success == true) {
-                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.ToString(), typeBooked.ToString() + " Surgery booked",
+                        MessageBox.Show("Patient: " + pat.getPatientId() + " is now booked for " + typeBooked.ToString(), typeBooked.ToString() + " Surgery booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         updatePatient();
                     } else {
@@ -219,13 +219,13 @@ namespace Hospital {
          */
         private void Imagingbtn_Click(object sender, EventArgs e) {
 
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 Finance finance = new Finance("Imaging", this);
                 finance.ShowDialog();
                 if (typeBooked != null) {
                     bool success = fac.bookImaging(pat, typeBooked, UserID);
                     if (success == true) {
-                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.Type, typeBooked.ToString() + " booked",
+                        MessageBox.Show("Patient: " + pat.getPatientId() + " is now booked for " + typeBooked.Type, typeBooked.ToString() + " booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         updatePatient();
 
@@ -250,9 +250,9 @@ namespace Hospital {
          * emergency room. Button used when MedTech is finished with patient.
          */
         private void Finishbtn_Click(object sender, EventArgs e) {
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 fac.returnPatientToDoctor(pat);
-                pat = Patient.SearchPID(pat.getPatient());
+                pat = Patient.SearchPID(pat.getPatientId());
                 currentRoomtxt.Text = "Current Room: " + pat.getRoom();
                 MessageBox.Show("Procedure completed", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Finishbtn.Visible = false;
@@ -269,7 +269,7 @@ namespace Hospital {
          * addHistorytbx on form to the users history table.
          */
         private void addHistorybtn_Click(object sender, EventArgs e) { //add history input via user
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 addHistory(addHistorytbx.Text);
             }
         }
@@ -285,12 +285,12 @@ namespace Hospital {
                 SqlConnection con = DBCon.DBConnect();
                 con.Open();
                 SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
-                command.Parameters.AddWithValue("@pid", pat.getPatient());
+                command.Parameters.AddWithValue("@pid", pat.getPatientId());
                 command.Parameters.AddWithValue("@userid", UserID);
                 command.Parameters.AddWithValue("@typedhistory", history);
                 command.ExecuteNonQuery();
                 con.Close();
-                updateTable(pat.getPatient());
+                updateTable(pat.getPatientId());
             } catch { 
             }
         }

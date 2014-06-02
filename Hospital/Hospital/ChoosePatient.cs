@@ -15,8 +15,8 @@ using System.Windows.Forms;
 namespace Hospital {
     public partial class ChoosePatient : Form {
 
-        private static PatientGetSet chosen = new PatientGetSet();
-        private static PatientGetSet[] patients;
+        private static PatientInfo chosen = new PatientInfo();
+        private static PatientInfo[] patients;
         private Form homeScreen;
         private Reception previousRecep;
         private HospitalSystem previousHosp;
@@ -33,9 +33,9 @@ namespace Hospital {
          * \param Form home - sets variable in order to return to login screen
          * \param Form previous - enables backwards navigation
          * \param string Surname - Surname being searched
-         * \param PatientGetSet[] pats - List of patients to choose from
+         * \param PatientInfo[] pats - List of patients to choose from
          */
-        public ChoosePatient(string User, string role, Form home, Form previous, string Surname, PatientGetSet[] pats) {
+        public ChoosePatient(string User, string role, Form home, Form previous, string Surname, PatientInfo[] pats) {
             homeScreen = home;
             Role = role;
             UserID = User;
@@ -52,7 +52,7 @@ namespace Hospital {
 
             // Fill Choosecmb Combo box with patient details
             for (int i = 0; i < patients.Length; i++) {
-                chooseCmb.Items.Add("Firstname: " + patients[i].getFN() + "  --  DOB: " + patients[i].getDOB().ToString() +
+                chooseCmb.Items.Add("Firstname: " + patients[i].getFName() + "  --  DOB: " + patients[i].getDOB().ToString() +
                     "  --  Address: " + patients[i].getAddress());
             }
             chooseCmb.SelectedIndex = 0;
