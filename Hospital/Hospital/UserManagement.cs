@@ -27,6 +27,46 @@ namespace Hospital {
             this.back = back;
         }
 
+        private void BackBtn_Click(object sender, EventArgs e) {
+            back.Show();
+            Close();
+        }
+
+
+        private void Querybtn_Click(object sender, EventArgs e) {
+            if (Usernametxt.Text != "") {
+                string role = admin.queryUser(Usernametxt.Text);
+
+                switch (role) {
+
+
+                    case "Doctor":
+                        Rolecmb.SelectedIndex = 0;
+                        break;
+                    case "Nurse":
+                        Rolecmb.SelectedIndex = 1;
+                        break;
+                    case "MedTech":
+                        Rolecmb.SelectedIndex = 2;
+                        break;
+                    case "Receptionist":
+                        Rolecmb.SelectedIndex = 3;
+                        break;
+                    case "Admin":
+                        Rolecmb.SelectedIndex = 4;
+                        break;
+                    default:
+                        Rolecmb.Text = "Not Found";
+                        break;
+                }
+            } else {
+                MessageBox.Show("StaffID: " + Usernametxt.Text + " does not exist in system.", "Invalid user",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+
+
         /*
          * Check if username input into username text field allready exists as a staff member.
          * If exists create user in users table and give a default password displayed to screen.
@@ -145,5 +185,6 @@ namespace Hospital {
 
             return CountOfUser;
         }
+
     }
 }

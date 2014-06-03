@@ -12,22 +12,24 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.Text.RegularExpressions;
 
+/*
+ * Form is used as the main window Reception users log into and all features
+ * for a reception branch from this form.
+ */
 namespace Hospital {
     public partial class Reception : Form {
 
         private Form home;
-        private PatientGetSet pat = new PatientGetSet();
+        private PatientInfo pat = new PatientInfo();
         private string Role = "Reception";
 
         //Global variables
         string UserID; //String value of the UserID/StaffID
 
-        public Reception() {
-            InitializeComponent();
-        }
 
         /*
          * Sets up form and updates UserID variable with user parameter passed.
+         * \param string user - UserID of user logged in
          */
         public Reception(string user) {
             InitializeComponent();
@@ -52,14 +54,17 @@ namespace Hospital {
             home = logout;
         }
 
-
-        public void setPatient(PatientGetSet patient) {
+        /*
+         * Sets private patient variable and display appropriate
+         * information on screen based upon patient details.
+         * \param PatientInfo patient - patient to be shown on form
+         */
+        public void setPatient(PatientInfo patient) {
 
             pat = patient;
-
-            PIDtxt.Text = pat.getPatient().ToString();
-            Surtxt.Text = pat.getSN();
-            Firtxt.Text = pat.getFN();
+            PIDtxt.Text = pat.getPatientId().ToString();
+            Surtxt.Text = pat.getSName();
+            Firtxt.Text = pat.getFName();
             DOBtxt.Text = pat.getDOB().ToString("dd/MM/yyyy");
             if (pat.getGender() == "M") {
                 GenderCmb.SelectedIndex = 0;
@@ -67,14 +72,14 @@ namespace Hospital {
                 GenderCmb.SelectedIndex = 1;
             }
             NOKtxt.Text = pat.getNextKin();
-            NOKNtxt.Text = pat.getKP().ToString();
+            NOKNtxt.Text = pat.getNextKinPhone().ToString();
             Addtxt.Text = pat.getAddress();
             Homtxt.Text = pat.getPhone().ToString();
             Mobtxt.Text = pat.getMobile().ToString();
-            covTypeCmb.SelectedIndex = pat.getCoverT();
-            CovNtxt.Text = pat.getCoverN().ToString();
+            chargeslbl.Text = "$" + pat.getCharges().ToString();
+            covTypeCmb.SelectedIndex = pat.getCoverType();
+            CovNtxt.Text = pat.getCoverNum().ToString();
             Altxt.Text = pat.getAllergies();
-            statusCmb.SelectedIndex = 0;
             CurrentRoomlbl.Text = pat.getRoom().ToString();
 
             if (pat.getRoom() == "Discharged") {
@@ -107,8 +112,8 @@ namespace Hospital {
             //allows lower and upper case english, hypen and space, makes sure user is entering valid name types
             Regex regex = new Regex("^['\\- a-zA-Z]{1,20}$");
             if (regex.IsMatch(Seatxt.Text)) {
-                //sets up array of PatientGetSet
-                PatientGetSet[] patients;
+                //sets up array of PatientInfo
+                PatientInfo[] patients;
                 string Surname = Seatxt.Text;
 
                 patients = Patient.searchPatientSurname(Surname);
@@ -120,10 +125,10 @@ namespace Hospital {
                         "or add a new patient.", "Patient not found.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Admitbtn.Visible = false;
-                //If array length is 1
+                    //If array length is 1
                 } else if (patients.Length == 1) {
                     setPatient(patients[0]);
-                //Else open ChoosePatient window
+                    //Else open ChoosePatient window
                 } else {
                     ChoosePatient choosePat = new ChoosePatient(UserID, Role, home, this, Surname, patients);
                     choosePat.Show();
@@ -147,7 +152,7 @@ namespace Hospital {
             //insert into query using patientID as scope identity to be returned
             string insertquery = ("INSERT INTO Patient (FirstName, Surname, Gender, DOB," +
             "Address, Phone, Mobile, Allergies, CoverType, CoverNumber, Status, NextOfKin, NextOfKinPhone," +
-            "Room, TotalCharges) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, @stat, @nok," +
+            "Room, TotalCharges) VALUES (@first, @sur, @gen, @dob, @add, @ph, @mob, @all, @covert, @covern, 0, @nok," +
             " @nokp, @room, 0); SET @PATID = SCOPE_IDENTITY();");
 
             SqlCommand command = new SqlCommand(insertquery, con);
@@ -220,12 +225,6 @@ namespace Hospital {
                 command.Parameters.Add("@covern", System.Data.SqlDbType.Int).Value = 0;
             }
 
-            if (statusCmb.SelectedIndex == 0) {
-                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = 1;
-            } else {
-                command.Parameters.Add("@stat", System.Data.SqlDbType.Bit).Value = 2;
-            }
-
             if (NOKtxt.Text != "") {
                 command.Parameters.Add("@nok", System.Data.SqlDbType.NVarChar, 500).Value = NOKtxt.Text;
             } else {
@@ -287,7 +286,7 @@ namespace Hospital {
             covTypeCmb.SelectedIndex = 0;
             CovNtxt.Text = "";
             Altxt.Text = "";
-            statusCmb.SelectedIndex = 0;
+            chargeslbl.Text = "$0";
             CurrentRoomlbl.Text = "";
             Savbtn.Visible = false;
             Newbtn.Visible = true;
@@ -309,14 +308,15 @@ namespace Hospital {
         private void Admitbtn_Click(object sender, EventArgs e) {
             Facilities fac = new Facilities();
 
-            if (PIDtxt.Text != "" && PIDtxt.Text != "0" && CurrentRoomlbl.Text == "0") {
-                bool success = fac.admitPatient(pat.getPatient());
+            if (PIDtxt.Text != "" && PIDtxt.Text != "0" && CurrentRoomlbl.Text == "Discharged") {
+                bool success = fac.admitPatient(pat.getPatientId());
                 if (success == true) {
-                    Patient.updateAdmitCharge(pat.getPatient(), pat.getCoverT());
-                    MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now admitted. -> " + pat.getCharges(), "Patient Admitted",
+                    Patient.updateAdmitCharge(pat.getPatientId(), pat.getCoverType());
+                    MessageBox.Show("Patient: " + pat.getSName() + ", " + pat.getFName() + " is now admitted.", "Patient Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    pat = Patient.SearchPID(pat.getPatient());
+                    pat = Patient.SearchPID(pat.getPatientId());
                     CurrentRoomlbl.Text = pat.getRoom();
+                    chargeslbl.Text = "$" + pat.getCharges().ToString();
                     Admitbtn.Visible = false;
                     Dischargebtn.Visible = true;
                     updateHistory("Admitted");
@@ -333,21 +333,23 @@ namespace Hospital {
             }
         }
 
-        //Updates currently present information in text fields corrosponding to ID field.
+        /*
+         * Updates currently present information in text fields corrosponding to ID field.         * 
+         */
         private void Savbtn_Click(object sender, EventArgs e) {
             if (pat != null) {
-                int PID = pat.getPatient();
+                int PID = pat.getPatientId();
 
                 string surname;
                 if (Surtxt.Text == "") {
-                    surname = pat.getSN();
+                    surname = pat.getSName();
                 } else {
                     surname = Surtxt.Text;
                 }
 
                 string firstname;
                 if (Firtxt.Text == "") {
-                    firstname = pat.getFN();
+                    firstname = pat.getFName();
                 } else {
                     firstname = Firtxt.Text;
                 }
@@ -393,12 +395,7 @@ namespace Hospital {
 
                 string allergies = Altxt.Text;
 
-                bool status;
-                if (statusCmb.SelectedIndex == 0) {
-                    status = true; ;
-                } else {
-                    status = false;
-                }
+                bool status = true;
 
                 string room;
                 if (CurrentRoomlbl.Text != "") {
@@ -434,7 +431,7 @@ namespace Hospital {
                 command.ExecuteNonQuery();
 
                 //Update labels on screen
-                setPatient(Patient.SearchPID(pat.getPatient()));
+                setPatient(Patient.SearchPID(pat.getPatientId()));
                 updateHistory("Update");
                 MessageBox.Show("Update Succesfully");
                 con.Close();
@@ -444,21 +441,31 @@ namespace Hospital {
             }
         }
 
+
         private void Dischargebtn_Click(object sender, EventArgs e) {
+            pat = Patient.SearchPID(pat.getPatientId());
             int charges = Patient.DischargePatient(pat);
-            
+
+
             if (charges > 0) {
-                createInvoice();
+                try {
+                    createInvoice(charges);
+                } catch {
+                    MessageBox.Show("Something went wrong. Please make sure any previous invoices are close.", "Patient Invoice not generated.",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
-            MessageBox.Show("Patient: " + pat.getSN() + ", " + pat.getFN() + " is now discharged with a final bill of $"
+            MessageBox.Show("Patient: " + pat.getSName() + ", " + pat.getFName() + " is now discharged with a final bill of $"
                             + charges, "Patient Discharged", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-            pat = Patient.SearchPID(pat.getPatient());
+            pat = Patient.SearchPID(pat.getPatientId());
             CurrentRoomlbl.Text = pat.getRoom();
             Dischargebtn.Visible = false;
             Admitbtn.Visible = true;
+            chargeslbl.Text = "$0";
             updateHistory("Discharged");
+            Patient.clearChargeHistory(pat.getPatientId());
         }
 
         private void updateHistory(string historyType) {
@@ -475,7 +482,7 @@ namespace Hospital {
             SqlConnection con = DBCon.DBConnect();
             con.Open();
             SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
-            command.Parameters.AddWithValue("@pid", pat.getPatient());
+            command.Parameters.AddWithValue("@pid", pat.getPatientId());
             command.Parameters.AddWithValue("@userid", UserID);
             command.Parameters.AddWithValue("@typedhistory", TypedHistory);
             command.ExecuteNonQuery();
@@ -483,32 +490,20 @@ namespace Hospital {
         }
 
 
-        private void createInvoice() {
+        private void createInvoice(int charges) {
 
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
+
                 cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\Invoice.rpt");//source file location for the premade report, may need to be manually changed
 
-                //Variable delecaration and assignment
-                ParameterFieldDefinitions crParameterFieldDefinitions;
-                ParameterFieldDefinition crParameterFieldDefinition;
-                ParameterValues crParameterValues = new ParameterValues();
-                ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
-
-                //Assigns textbox value to relatable reviving methods in crystal report and assigns values
-                crParameterDiscreteValue.Value = pat.getPatient();
-                crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
-                crParameterFieldDefinition = crParameterFieldDefinitions["PatientID"];
-                crParameterValues = crParameterFieldDefinition.CurrentValues;
-
-                crParameterValues.Clear();
-                crParameterValues.Add(crParameterDiscreteValue);
-                crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+                cryRpt.SetParameterValue("PatientID", pat.getPatientId());
+                cryRpt.SetParameterValue("charges", charges);
 
                 //Exports generated report to PDF format
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf"); //output location, may need to be manually changed
-                MessageBox.Show("Export to PDF Successful.");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf");
             } else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient Invoice not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -544,19 +539,20 @@ namespace Hospital {
 
                 //Exports generated report to PDF format
                 cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\PatientExport.pdf"); //output location, may need to be manually changed
-                MessageBox.Show("Export to PDF Successful.");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\PatientExport.pdf");
+
             } else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-       //Name validation when changing element
+        //Name validation when changing element
         private void Name_Validating(object sender, CancelEventArgs e) {
             string reg = @"^[a-zA-Z' -]{1,20}$";//regex allows only english characters, spaces, hyphen or apostrophe
             if (!Regex.IsMatch(this.Surtxt.Text.Trim(), reg)) {
                 MessageBox.Show("Please input only English characters, spaces, hyphen or apostrophe.");
-            }        
+            }
         }
 
         //Number validation when changing element
@@ -565,35 +561,35 @@ namespace Hospital {
             if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg) || (int.Parse(CovNtxt.Text) > 1000000)) {
                 MessageBox.Show("Please enter a cover number between 1-1000000");
                 CovNtxt.Text = "0";
-            }  
+            }
         }
 
         //Validation for date entry, cannot be future or over 120 years.
         private void Date_Validating(object sender, CancelEventArgs e) {
 
-           //Try catch for DOB validation
-           try {
+            //Try catch for DOB validation
+            try {
 
-               DateTime patDate = Convert.ToDateTime(DOBtxt.Text);
-               DateTime current = DateTime.Today;
-               DateTime past = new DateTime(1894, 1, 1);
+                DateTime patDate = Convert.ToDateTime(DOBtxt.Text);
+                DateTime current = DateTime.Today;
+                DateTime past = new DateTime(1894, 1, 1);
 
-               //not future
-               if (patDate > current) {
-                   MessageBox.Show("Please Enter Date of Birth not in the future.");
-                   DOBtxt.Text = "";
-               }
-               //not greater than 120 years
-               else if (patDate < past) {
-                   MessageBox.Show("Please Enter Date of Birth not older than 120 years.");
-                   DOBtxt.Text = "";
-               }
-           }
-           //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
-           catch (Exception){
-               MessageBox.Show("Please do not leave spaces in date of birth.");
-               DOBtxt.Text = "";
-           }
+                //not future
+                if (patDate > current) {
+                    MessageBox.Show("Please Enter Date of Birth not in the future.");
+                    DOBtxt.Text = "";
+                }
+                    //not greater than 120 years
+                else if (patDate < past) {
+                    MessageBox.Show("Please Enter Date of Birth not older than 120 years.");
+                    DOBtxt.Text = "";
+                }
+            }
+                //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
+            catch (Exception) {
+                MessageBox.Show("Please do not leave spaces in date of birth.");
+                DOBtxt.Text = "";
+            }
         }
 
         //Address validation when changing element

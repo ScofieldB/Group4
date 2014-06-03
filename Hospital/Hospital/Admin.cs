@@ -59,6 +59,24 @@ namespace Hospital {
         }
 
 
+        public string queryUser(string userID) {
+            string role = "";
+            con.Open();
+
+            SqlCommand command = new SqlCommand("SELECT Role FROM Users WHERE StaffID = @id", con);
+            command.Parameters.AddWithValue("@id", userID);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read()) {
+                role = reader.GetString(0);
+            }
+            reader.Close();
+            con.Close();
+
+            return role;
+        }
+
+
         public void updateUser(string userID, string role) {
 
             con.Open();

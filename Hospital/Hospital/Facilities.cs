@@ -6,6 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * Class responsible for all business logic in relation to the 
+ * management of facilites.
+ */
 namespace Hospital {
     public class Facilities {
 
@@ -15,6 +19,8 @@ namespace Hospital {
         /*
          * Update database with patient allocated to Emergency and update
          * the room bed allocations.
+         * \param int patID - PatientID to be admitted in system
+         * \return bool - value if admitting patient was successful. 
          */
         public bool admitPatient(int patID) {
             bool admitted = false;
@@ -25,6 +31,7 @@ namespace Hospital {
 
             con.Open();
 
+            //Check if available bed within emergency room
             SqlCommand command = new SqlCommand("Select Room, Capacity from Facilities WHERE RoomType = 'Emergency' AND Capacity > 0;", con);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -36,6 +43,7 @@ namespace Hospital {
 
             reader.Close();
 
+            //If available bed within emergency ward continue to admit
             if (canAdmit == true) {
                 command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
                 command.Parameters.AddWithValue("@id", patID);
@@ -46,7 +54,8 @@ namespace Hospital {
                 }
                 reader.Close();
 
-                if (patRoom.StartsWith("0")) {
+                //Ensure patient is currently not admitted within hospital all ready
+                if (patRoom.StartsWith("Discharged")) {
                     admitted = true;
                     command.Parameters.Clear();
                     command.CommandText = "UPDATE Patient SET Room = @room WHERE PatientID = @id";
@@ -73,13 +82,17 @@ namespace Hospital {
         /*
          * Update database that patient is now moved to Surgery room and update
          * room bed allocations.
+         * \param PatientInfo pat - patient that is being booked for surgery
+         * \param FinanceCmbItem typeBooked - contains details for type of surgery being booked
+         * \return bool - value if booking of surgery was successful. 
          */
-        public bool bookSurgery(PatientGetSet pat, FinanceCmbItem typeBooked) {
+        public bool bookSurgery(PatientInfo pat, FinanceCmbItem typeBooked) {
             bool success = false;
 
             string newRoom = "";
             int newRoomCapacity = 0;
 
+            // Ensure patient currently is in emergency room
             if (pat.getRoom().StartsWith("E")) {
                 con.Open();
 
@@ -109,8 +122,12 @@ namespace Hospital {
         /*
          * Update database that patient is now moved to Imaging room and update
          * room bed allocations.
+         * \param PatientInfo pat - patient that is being booked for Imaging
+         * \param FinanceCmbItem typeBooked - contains details for type of Imaging being booked
+         * \param string UserID - UserID of current user logged in.
+         * \return bool - value if booking of imaging was successful. 
          */
-        public bool bookImaging(PatientGetSet pat, FinanceCmbItem typeBooked, string UserID) {
+        public bool bookImaging(PatientInfo pat, FinanceCmbItem typeBooked, string UserID) {
             bool success = false;
             int cost = typeBooked.Cost;
 
@@ -143,12 +160,14 @@ namespace Hospital {
         /*
          * Inserts values into the NOT NULL columns of the Tests table
          * thus allowing the MedTec to add files.
+         * \param PatientInfo pat - patient that is being booked for Imaging
+         * \param FinanceCmbItem typeBooked - contains details for type of Imaging being booked
+         * \param string UserID - UserID of current user logged in.
          */
-        public void addImagingRequest(PatientGetSet pat, FinanceCmbItem typeBooked, string UserID)
-        {
+        public void addImagingRequest(PatientInfo pat, FinanceCmbItem typeBooked, string UserID) {
             DateTime CurrentDT = DateTime.Now;
             SqlCommand cmd = new SqlCommand("INSERT INTO Tests (PatientID, TestOrdered, OrderedByStaffID, DateOrdered) VALUES (@patient, @test , @user, @date)", con);
-            int patient = pat.getPatient();
+            int patient = pat.getPatientId();
             cmd.Parameters.AddWithValue("@patient", patient);
             cmd.Parameters.AddWithValue("@test", typeBooked.Type);
             cmd.Parameters.AddWithValue("@user", UserID);
@@ -162,8 +181,9 @@ namespace Hospital {
         /*
          * Update database when sending patient back to doctor and update
          * room bed allocations.
+         * \param PatientInfo pat - contains details of patient to send back to doctor
          */
-        public void returnPatientToDoctor(PatientGetSet pat) {
+        public void returnPatientToDoctor(PatientInfo pat) {
             bool success = false;
             string newRoom = "";
             int newRoomCapacity = 0;
@@ -193,8 +213,11 @@ namespace Hospital {
 
         /*
          * Update patient to new room and change room bed allocations within database.
+         * \param PatientInfo pat - patient that is changing rooms
+         * \param int newRoomCapacity - current capacity of the new room patient moving too
+         * \param string newRoom - the new room patient is being moved too
          */
-        private void updateFacilities(PatientGetSet pat, int newRoomCapacity, string newRoom) {
+        private void updateFacilities(PatientInfo pat, int newRoomCapacity, string newRoom) {
             int currentRoomCapacity = 0;
             SqlCommand command = new SqlCommand("", con);
 
@@ -230,7 +253,7 @@ namespace Hospital {
             command.Parameters.Clear();
             command.CommandText = "UPDATE Patient SET Room = @room WHERE PatientID = @id";
             command.Parameters.AddWithValue("@room", newRoom);
-            command.Parameters.AddWithValue("@id", pat.getPatient());
+            command.Parameters.AddWithValue("@id", pat.getPatientId());
             command.ExecuteNonQuery();
 
             con.Close();
@@ -239,13 +262,15 @@ namespace Hospital {
 
         /*
          * Discharges patient from the Emergency room.
+         * \param int patID - patientID of the patient being discharged
+         * \return int - current outstanding charges of patient
          */
         public int DischargePatient(int patId) {
             int capacity = 0;
             int totalCharges = 0;
 
 
-            PatientGetSet pat = Patient.SearchPID(patId);
+            PatientInfo pat = Patient.SearchPID(patId);
 
             if (pat.getRoom().StartsWith("E")) {
 
@@ -254,8 +279,8 @@ namespace Hospital {
                 SqlCommand command = new SqlCommand(null, con);
 
                 command.Parameters.Clear();
-                command.CommandText = "UPDATE Patient SET Room = '0' WHERE PatientID = @id";
-                command.Parameters.AddWithValue("@id", pat.getPatient());
+                command.CommandText = "UPDATE Patient SET Room = 'Discharged' WHERE PatientID = @id";
+                command.Parameters.AddWithValue("@id", pat.getPatientId());
                 command.ExecuteNonQuery();
 
                 command.Parameters.Clear();
@@ -276,7 +301,7 @@ namespace Hospital {
 
                 command.Parameters.Clear();
                 command.CommandText = "SELECT TotalCharges FROM Patient WHERE PatientID = @patID";
-                command.Parameters.AddWithValue("@patID", pat.getPatient());
+                command.Parameters.AddWithValue("@patID", pat.getPatientId());
                 reader = command.ExecuteReader();
 
                 while (reader.Read()) {
@@ -289,7 +314,7 @@ namespace Hospital {
                 //Clear the charges from the Patient file.
                 command.Parameters.Clear();
                 command.CommandText = "UPDATE Patient SET TotalCharges = 0 WHERE PatientID = @patID";
-                command.Parameters.AddWithValue("patID", pat.getPatient());
+                command.Parameters.AddWithValue("@patID", pat.getPatientId());
                 command.ExecuteNonQuery();
 
                 con.Close();
@@ -299,25 +324,54 @@ namespace Hospital {
         }
 
 
-
-        private void checkCover(PatientGetSet pat, FinanceCmbItem typeBooked) {
+        /*
+         * Checks the patients health cover details and update the outstanding
+         * charges of patient as appropriate. Also updates the count of
+         * surgery/Imaging undertaken.
+         * \param PatientInfo pat - patient that is being booked
+         * \param FinanceCmbItem typeBooked - contains details for type of item being booked
+         */
+        private void checkCover(PatientInfo pat, FinanceCmbItem typeBooked) {
             SqlCommand command = new SqlCommand("", con);
-            con.Open();
-            //If user has no Private cover then charge the patient
-            if (pat.getCoverT() == 0) {
 
+            
+            //If user has no Private cover then charge the patient
+            if (pat.getCoverType() == 0) {
+                con.Open();
                 command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
                 command.Parameters.AddWithValue("@cost", typeBooked.Cost);
-                command.Parameters.AddWithValue("patID", pat.getPatient());
+                command.Parameters.AddWithValue("@patID", pat.getPatientId());
                 command.ExecuteNonQuery();
+                con.Close();
+                updateChargeHistory(pat, typeBooked.Type, typeBooked.Cost);                
             }
-
+            con.Open();
             command.Parameters.Clear();
             command.CommandText = "UPDATE Finance SET Counter = Counter + 1 WHERE Type = @type";
             command.Parameters.AddWithValue("@type", typeBooked.Type);
             command.ExecuteNonQuery();
 
             con.Close();
+        }
+
+
+        public bool updateChargeHistory(PatientInfo pat, string chargeType, int chargeAmount) {
+            bool success = false;
+            SqlCommand command = new SqlCommand("", con);
+            con.Open();
+
+            try {
+                command.CommandText = "INSERT INTO ChargeHistory (PatientID, TypeCharged, Amount, DateCharged) VALUES (@patID, @type, @charge, GetDate())";
+                command.Parameters.AddWithValue("@patID", pat.getPatientId());
+                command.Parameters.AddWithValue("@type", chargeType);
+                command.Parameters.AddWithValue("@charge", chargeAmount);
+                command.ExecuteNonQuery();
+                success = true;
+            } catch {
+
+            };
+            con.Close();
+            return success;
         }
     }
 

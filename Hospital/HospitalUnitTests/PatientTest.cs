@@ -13,10 +13,10 @@ namespace HospitalUnitTests {
          */
         [TestMethod]
         public void TestSearchPIDValid() {
-            Hospital.PatientGetSet pat = Hospital.Patient.SearchPID(100009);
-
-            Assert.AreEqual(100009, pat.getPatient());
-            Assert.AreEqual("Emily", pat.getFN(), true);
+            Hospital.PatientInfo pat = Hospital.Patient.SearchPID(100009);
+            
+            Assert.AreEqual(100009, pat.getPatientId());
+            Assert.AreEqual("Emily", pat.getFName(), true);
 
         }
 
@@ -26,19 +26,19 @@ namespace HospitalUnitTests {
          */
         [TestMethod]
         public void TestSearchPIDInvalid() {
-            Hospital.PatientGetSet pat = Hospital.Patient.SearchPID(9);
+            Hospital.PatientInfo pat = Hospital.Patient.SearchPID(9);
 
-            Assert.AreEqual(-1, pat.getPatient());
-            Assert.IsNull(pat.getFN());
+            Assert.AreEqual(-1, pat.getPatientId());
+            Assert.IsNull(pat.getFName());
         }
 
 
         [TestMethod]
         public void TestsearchPatientSurnameOne() {
-            Hospital.PatientGetSet[] pat = Hospital.Patient.searchPatientSurname("Segal");
+            Hospital.PatientInfo[] pat = Hospital.Patient.searchPatientSurname("Segal");
 
             //Assert that first entry in array has a PatientID appropriate to first Segal in database 
-            Assert.AreEqual(100018, pat[0].getPatient());
+            Assert.AreEqual(100018, pat[0].getPatientId());
 
             //Check only one entry
             Assert.AreEqual(1, pat.Length);
@@ -46,7 +46,7 @@ namespace HospitalUnitTests {
 
         [TestMethod]
         public void TestsearchPatientInvalidSurname() {
-            Hospital.PatientGetSet[] pat = Hospital.Patient.searchPatientSurname("abc");
+            Hospital.PatientInfo[] pat = Hospital.Patient.searchPatientSurname("abc");
 
             //Check no entries are returned as no Surname of abc is in database
             Assert.AreEqual(0, pat.Length);
@@ -54,10 +54,10 @@ namespace HospitalUnitTests {
 
         [TestMethod]
         public void TestsearchPatientSurnameMultiple() {
-            Hospital.PatientGetSet[] pat = Hospital.Patient.searchPatientSurname("Oddo");
+            Hospital.PatientInfo[] pat = Hospital.Patient.searchPatientSurname("Oddo");
 
             //Assert that first entry in array has a PatientID appropriate to first Oddo in database 
-            Assert.AreEqual(100022, pat[0].getPatient());
+            Assert.AreEqual(100022, pat[0].getPatientId());
 
             //Check that three patients are return as there are three patients with Surname Oddo currently in database
             Assert.AreEqual(3, pat.Length);
@@ -75,21 +75,21 @@ namespace HospitalUnitTests {
          */
         [TestMethod]
         public void TestDischargePatient() {
-            Hospital.PatientGetSet pat = new Hospital.PatientGetSet();
+            Hospital.PatientInfo pat = new Hospital.PatientInfo();
             Hospital.Facilities facilities = new Hospital.Facilities();
             string room = "";
-            pat.setPatient(100025);
+            pat.setPatientId(100025);
 
             Hospital.Patient.DischargePatient(pat);
 
-            bool result = facilities.admitPatient(pat.getPatient());
+            bool result = facilities.admitPatient(pat.getPatientId());
 
             SqlConnection con = Hospital.DBCon.DBConnect();
 
             con.Open();
             SqlCommand command = new SqlCommand(null, con);
             command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
-            command.Parameters.AddWithValue("@id", (pat.getPatient()));
+            command.Parameters.AddWithValue("@id", (pat.getPatientId()));
 
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -103,7 +103,7 @@ namespace HospitalUnitTests {
 
             command.Parameters.Clear();
             command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
-            command.Parameters.AddWithValue("@id", (pat.getPatient()));
+            command.Parameters.AddWithValue("@id", (pat.getPatientId()));
 
             reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -112,7 +112,7 @@ namespace HospitalUnitTests {
             reader.Close();
             con.Close();
 
-            Assert.AreEqual("0", room, true);
+            Assert.AreEqual("Discharged", room, true);
 
         }
 
@@ -122,8 +122,8 @@ namespace HospitalUnitTests {
         public void TestUpdateAdmitChargeValid() {
             int charges = 0;
 
-            Hospital.PatientGetSet pat = Hospital.Patient.SearchPID(100026);
-            charges = Hospital.Patient.updateAdmitCharge(100026, 2);
+            Hospital.PatientInfo pat = Hospital.Patient.SearchPID(100025);
+            charges = Hospital.Patient.updateAdmitCharge(100025, 2);
 
             Assert.AreEqual(200, charges);
 
@@ -135,7 +135,7 @@ namespace HospitalUnitTests {
             command.Parameters.Clear();
             command.CommandText = "UPDATE Patient SET TotalCharges = @charges WHERE PatientID = @id";
             command.Parameters.AddWithValue("@charges", pat.getCharges());
-            command.Parameters.AddWithValue("@id", pat.getPatient());
+            command.Parameters.AddWithValue("@id", pat.getPatientId());
             command.ExecuteNonQuery();
 
 

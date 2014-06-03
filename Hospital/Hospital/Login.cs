@@ -5,19 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/*
+ * Class responsible for all business logic in relation to the 
+ * management of the login system.
+ */
 namespace Hospital {
     public class Login {
 
         /*
          * Confirms user password matches that on database and if so
          * return the users role and whether user has user generated password.
-         * If password does not match one stored on database return empty userID
+         * \param string username - username entered by user to be confirmed
+         * \param string password - password entered by user to be confirmed
+         * \return User - If password does not match one stored on database return empty userID
+         *                data contained within User returned otherwise return valid User.
          */
         public User getDetails(string username, string password) {
             User user = new User();
 
-            HashPassword hash = new HashPassword();
-            password = hash.getHash(password);
+            password = getHash(password);
             string checkpw = "";
             SqlConnection con = DBCon.DBConnect();
 
@@ -47,11 +54,11 @@ namespace Hospital {
         /*
          * When user updates their password first hash the password and then
          * update database with hashed pw.
+         * \param string userID - UserID to update password for.
+         * \param string newPw - new Password user wishes to update system with.
          */
         public void newPassword(string userID, string newPw) {
-            HashPassword hash = new HashPassword();
-            string md5Hash = hash.getHash(newPw);
-
+            string md5Hash = getHash(newPw);
 
             SqlConnection con = DBCon.DBConnect();
             con.Open();
@@ -66,5 +73,18 @@ namespace Hospital {
             con.Close();
         }
 
+
+        /* 
+         * getHash is used to encrypt the string paramater into a md5 hashed string and return the 
+         * new encrypted string.
+         * \param string password - password wished to be hashed
+         * \return string - hashed version of the password
+         */
+        public string getHash(string password) {
+            System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+            data = x.ComputeHash(data);
+            return System.Text.Encoding.ASCII.GetString(data);
+        }
     }
 }

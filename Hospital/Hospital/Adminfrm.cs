@@ -9,33 +9,45 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
+/*
+ * Form is used as the main window System Admin users log into and all features
+ * for System Admin branch from this form.
+ */
 namespace Hospital {
     public partial class Adminfrm : Form {
         private Form home;
 
         private string userID;
 
+        /*
+         * Constructor to initialize form
+         * \param string user - the staffID of user logged in. 
+         */
         public Adminfrm(string user) {
             userID = user;
             InitializeComponent();
         }
 
 
-        // Used to set variable used to go back to login screen
+        /*
+         * Used to set variable used to go back to login screen
+        * \param Form logout - set variable home in order for navigation to login screen
+         */
         public void setHome(Form logout) {
             home = logout;
         }
 
-        //Logout and return to login screen
+        /*
+         * Logout and return to login screen
+         */
         private void Logoutbtn_Click(object sender, EventArgs e) {
             home.Show();
             Close();
         }
 
         /*
-         * Opens new window with selection of reports for Admin
-         * Very crude currently, might need to change to a tabular design like receptionist
-         * No logout or back functions implemented yet
+         * On Click event for button to open AdminRepfrm form
          */
         private void reportbtn_Click(object sender, EventArgs e) {
             AdminRepfrm adminrepform = new AdminRepfrm();
@@ -44,6 +56,10 @@ namespace Hospital {
             adminrepform.Show();
         }
 
+
+        /*
+         * On Click event for button to open the UserManagement form.
+         */
         private void usermgmtbtn_Click(object sender, EventArgs e) {
             UserManagement usermgmt = new UserManagement(userID);
             usermgmt.setHome(home, ActiveForm);

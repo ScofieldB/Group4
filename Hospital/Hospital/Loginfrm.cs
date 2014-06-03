@@ -9,14 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
+
+/*
+ * Form is used as the main entry point into the system and contains features
+ * for user to login to system.
+ */
 namespace Hospital {
     public partial class Loginfrm : Form {
 
+        /*
+         * Constructor to initialize form.
+         */
         public Loginfrm() {
             InitializeComponent();
         }
 
-        // Exit the program
+
+
+        /*
+         * Exit the program
+         */
         private void Exitbtn_Click(object sender, EventArgs e) {
             Close();
         }
@@ -65,10 +77,8 @@ namespace Hospital {
                             mainprogram.Show();
                         }
 
-                        /*
-                         * If password is not user generated but was System Admin generated then ensure 
-                         * user must update password.
-                         */
+                    // If password is not user generated but was System Admin generated then ensure 
+                    // user must update password.
                     } else {
                         NewPasswordfrm newpw = new NewPasswordfrm(user.getUser());
                         newpw.Show();

@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * Form is used for when User needs to update their password when
+ * current password in system is system generated.
+ */
 namespace Hospital {
     public partial class NewPasswordfrm : Form {
         private string userID = "";

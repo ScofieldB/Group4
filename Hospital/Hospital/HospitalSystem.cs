@@ -9,10 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+/*
+ * Form is used as the main window that doctors, med techs and nurses log into which has
+ * all features available to these roles.
+ */
 namespace Hospital {
     public partial class HospitalSystem : Form {
         private Form homeScreen;
-        private PatientGetSet pat = new PatientGetSet();
+        private PatientInfo pat = new PatientInfo();
         private Facilities fac = new Facilities();
         private FinanceCmbItem typeBooked;
 
@@ -24,10 +29,8 @@ namespace Hospital {
         /*
          * Costructor that sets up Hopsital form used by doctors and medical technicians.
          * Will set up different button display based upon which role is passed as parameter.
-         * 
-         * Paramaters:
-         *      string user - sets global variable UserID
-         *      string role - sets global variable Role
+         * \param string user - sets global variable UserID
+         * \param string role - sets global variable Role
          */
         public HospitalSystem(string user, string role) {
             InitializeComponent();
@@ -43,29 +46,36 @@ namespace Hospital {
 
 
         /*
-         * setHome is used for navigational purposes to and from the
-         * Login screen.
+         * Used to set variable used to go back to login screen
+         * \param Form logout - set variable home in order for navigation to login screen
          */
         public void setHome(Form logout) {
             homeScreen = logout;
         }
 
-        public void setPatient(PatientGetSet patient) {
+
+        /*
+         * Sets private patient variable and display appropriate
+         * features on screen based upon patient.
+         * \param PatientInfo patient - patient to be shown on form
+         */
+        public void setPatient(PatientInfo patient) {
             pat = patient;
 
             //Blank is used as if empty record then database doesnt return a date as null but
             //returns a date 1/01/0001
             DateTime blank = new DateTime(0001, 1, 01);
-            updateTable(pat.getPatient());
+            updateTable(pat.getPatientId());
 
             PatInfolbl.Text = "Patient Info: \r\n";
-            PatInfolbl.Text += pat.getFN() + " " + pat.getSN() + "\r\n";
+            PatInfolbl.Text += pat.getFName() + " " + pat.getSName() + "\r\n";
             currentRoomtxt.Text = "Current Room: " + pat.getRoom();
 
             if (pat.getDOB() != blank) {
                 PatInfolbl.Text += pat.getDOB();
             }
 
+            // Display appropriate button based upon role of user
             if (Role == "Doctor") {
                 Finishbtn.Visible = false;
                 if (pat.getRoom() == "E100") {
@@ -102,16 +112,23 @@ namespace Hospital {
             }
         }
 
-        // Logout user by returning to login screen
+
+        /*
+         * Logout and return to login screen
+         */
         private void Logoutbtn_Click(object sender, EventArgs e) {
             homeScreen.Show();
             Close();
         }
 
-        // Allows the user to view images of the selected patient
+
+        /*
+         * On Click event for button to open TestResultViewer form so
+         * user can view images of the selected patient
+         */
         private void ViewImgbtn_Click(object sender, EventArgs e) {
-            if (pat.getPatient() != -1) {
-                int patient = pat.getPatient();
+            if (pat.getPatientId() != -1) {
+                int patient = pat.getPatientId();
                 TestResultViewer Tests = new TestResultViewer(UserID, Role, patient);
                 Tests.Show();
             } else {
@@ -120,13 +137,14 @@ namespace Hospital {
             }
         }
 
+
         /*
-         * When a search via Surname is undertaken then a patients first name, 
-         * surname, date of birth and current room location are displayed.
+         * On Click event for button to search via Surname. When seartch
+         * is undertaken then display appropriate information on form
          */
         private void Searchbtn_Click(object sender, EventArgs e) {
             if (Seatxt.Text != "") {
-                PatientGetSet[] patients;
+                PatientInfo[] patients;
                 string Surname = Seatxt.Text;
 
                 patients = Patient.searchPatientSurname(Surname);
@@ -147,11 +165,14 @@ namespace Hospital {
             }
         }
 
+        /*
+         * Update patient information on form.
+         */
         private void updatePatient() {
-            pat = Patient.SearchPID(pat.getPatient());
+            pat = Patient.SearchPID(pat.getPatientId());
 
             currentRoomtxt.Text = "Current Room: " + pat.getRoom();
-            addHistory("Patient is booked for " + typeBooked.ToString());
+            addHistory("Patient is booked in room " + pat.getRoom() + " for " + typeBooked.ToString());
             Surgerybtn.Visible = false;
             Imagingbtn.Visible = false;
             ViewImgbtn.Visible = true;
@@ -159,18 +180,18 @@ namespace Hospital {
 
 
         /*
-         * Books patient for a Surgery and display message of completion
-         * or error.   
+         * On Click event for button to boook a surgery and 
+         * display message of completion or error.   
          */
         private void Surgerybtn_Click(object sender, EventArgs e) {
 
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 Finance finance = new Finance("Surgery", this);
                 finance.ShowDialog();
                 if (typeBooked != null) {
                     bool success = fac.bookSurgery(pat, typeBooked);
                     if (success == true) {
-                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.ToString(), typeBooked.ToString() + " Surgery booked",
+                        MessageBox.Show("Patient: " + pat.getPatientId() + " is now booked for " + typeBooked.ToString(), typeBooked.ToString() + " Surgery booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         updatePatient();
                     } else {
@@ -193,18 +214,18 @@ namespace Hospital {
 
 
         /*
-         * Books patient for a Imaging and display message of completion
-         * or error.
+         * On Click event for button to boook Imaging and 
+         * display message of completion or error.   
          */
         private void Imagingbtn_Click(object sender, EventArgs e) {
 
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 Finance finance = new Finance("Imaging", this);
                 finance.ShowDialog();
                 if (typeBooked != null) {
                     bool success = fac.bookImaging(pat, typeBooked, UserID);
                     if (success == true) {
-                        MessageBox.Show("Patient: " + pat.getPatient() + " is now booked for " + typeBooked.Type, typeBooked.ToString() + " booked",
+                        MessageBox.Show("Patient: " + pat.getPatientId() + " is now booked for " + typeBooked.Type, typeBooked.ToString() + " booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         updatePatient();
 
@@ -223,14 +244,15 @@ namespace Hospital {
         }
 
 
+
         /*
-         * When surgery or xray is complete return patient back to
-         * emergency room.
+         * On Click event for button to return patient back to
+         * emergency room. Button used when MedTech is finished with patient.
          */
         private void Finishbtn_Click(object sender, EventArgs e) {
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 fac.returnPatientToDoctor(pat);
-                pat = Patient.SearchPID(pat.getPatient());
+                pat = Patient.SearchPID(pat.getPatientId());
                 currentRoomtxt.Text = "Current Room: " + pat.getRoom();
                 MessageBox.Show("Procedure completed", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Finishbtn.Visible = false;
@@ -241,29 +263,42 @@ namespace Hospital {
             }
         }
 
+
+        /*
+         * On Click event for button to add content of the 
+         * addHistorytbx on form to the users history table.
+         */
         private void addHistorybtn_Click(object sender, EventArgs e) { //add history input via user
-            if (pat.getPatient() != -1) {
+            if (pat.getPatientId() != -1) {
                 addHistory(addHistorytbx.Text);
             }
         }
 
+
+        /*
+         * Add the history passed in paramater to the current patient's
+         * history table.
+         * \param string history - history being added to the patient's history table
+         */
         private void addHistory(string history) {
             try {
                 SqlConnection con = DBCon.DBConnect();
                 con.Open();
                 SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
-                command.Parameters.AddWithValue("@pid", pat.getPatient());
+                command.Parameters.AddWithValue("@pid", pat.getPatientId());
                 command.Parameters.AddWithValue("@userid", UserID);
                 command.Parameters.AddWithValue("@typedhistory", history);
                 command.ExecuteNonQuery();
                 con.Close();
-                updateTable(pat.getPatient());
+                updateTable(pat.getPatientId());
             } catch { 
             }
         }
 
 
-        //view history
+        /*
+         * Updates the history displayed in the DataGridView on form   
+         */
         private void updateTable(int PID) {
             SqlConnection con = DBCon.DBConnect();
             SqlCommand command = new SqlCommand("SELECT StaffID, History, Date FROM History WHERE PatientID = @pid ORDER BY Date DESC", con);
@@ -279,19 +314,27 @@ namespace Hospital {
             historyDataGridView.DataMember = "History";
         }
 
+
+        /*
+         * Pressing the enter key in the surname search textbox
+         * does the same function as if the search button was clicked.
+         */
         private void Seatxt_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 Searchbtn_Click(sender, e);
             }
         }
 
+
+        /*
+         * Pressing the enter key in the add history textbox
+         * does the same function as if the add history button was clicked.
+         */
         private void addHistorytbx_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 addHistorybtn_Click(sender, e);
             }
         }
-
-
 
     }
 }
