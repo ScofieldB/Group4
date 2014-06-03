@@ -9,30 +9,50 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+ * Form is used for System Admin to add/delete/adjust the user access control
+ * throughout the sytem.
+ */
 namespace Hospital {
     public partial class UserManagement : Form {
-        Form home;
-        Form back;
+        private Form home;
+        private Form back;
         private string userId;
         private Admin admin = new Admin();
 
+
+        /*
+         * Constructor to initialize form.
+         * \param string user - the userID of user logged in
+         */
         public UserManagement(string user) {
             userId = user;
             InitializeComponent();
         }
 
-        // Used to set variable used to go back to login screen
+        /*
+         * Used to set variable used to go back to login screen
+         * \param Form logout - provides navigation to login screen
+         * \param Form back - provides backwards navigation
+         */
         public void SetHome(Form logout, Form back) {
             home = logout;
             this.back = back;
         }
 
+
+        /*
+         * Button navigates back to previous form
+         */
         private void BackBtn_Click(object sender, EventArgs e) {
             back.Show();
             Close();
         }
 
-
+        /*
+         * Finds the role of the userID in the Usernametxt textbox
+         * and shows the role in the Rolecmb combobox
+         */
         private void Querybtn_Click(object sender, EventArgs e) {
             if (Usernametxt.Text != "") {
                 string role = admin.QueryUser(Usernametxt.Text);
@@ -96,7 +116,9 @@ namespace Hospital {
         }
 
 
-        // Delete the User input in Username text field from the database user table.
+        /*
+         * Delete the User input in Username text field from the database user table.
+         */
         private void Deletebtn_Click(object sender, EventArgs e) {
             if (Usernametxt.Text == userId) {
                 MessageBox.Show("User can not remove themselves from system. Please contact " +
@@ -125,11 +147,18 @@ namespace Hospital {
             }
         }
 
+        /*
+         * Logs the user out and system returns to login screen
+         */
         private void LogBtn_Click(object sender, EventArgs e) {
             home.Show();
             Close();
         }
 
+        /*
+         * Updates the role of the User input in Username text field in the database
+         * based upon role seleted in role combobox
+         */
         private void Updatebtn_Click(object sender, EventArgs e) {
             if (Usernametxt.Text == userId) {
                 MessageBox.Show("User can not update themselves in system. Please contact " +
@@ -166,6 +195,12 @@ namespace Hospital {
         }
 
 
+        /*
+         * Finds if any users exist in the database with the input userID
+         * \param string userID - userID being searched for
+         * \return int - returns how many uses have the userID
+         *               Should be either 0 or 1.
+         */
         private int CountUsers(string userID) {
             SqlConnection con = DBCon.DBConnect();
 

@@ -217,6 +217,10 @@ namespace Hospital {
         }
 
 
+        /*
+         * Clear all charges patient has accumulated within the ChargeHistory table
+         * \param int patientID - patientID of the patient who's charges are being cleared
+         */
         public static void ClearChargeHistory(int patientID) {
             SqlConnection con = DBCon.DBConnect();
             SqlCommand command = new SqlCommand("", con);

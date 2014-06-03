@@ -355,6 +355,13 @@ namespace Hospital {
         }
 
 
+        /*
+         * Updates chargeHistory table to keep a record of patient billable history while admitted.
+         * \param PatientInfo pat - the patient being charged
+         * \param string chargeType - the type of charge patient acquiring
+         * \param int chargeAmount - the dollar value of the new charge
+         * \return bool - return true if successful
+         */
         public bool UpdateChargeHistory(PatientInfo pat, string chargeType, int chargeAmount) {
             bool success = false;
             SqlCommand command = new SqlCommand("", con);

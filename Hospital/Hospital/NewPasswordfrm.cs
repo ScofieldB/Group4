@@ -17,10 +17,6 @@ namespace Hospital {
     public partial class NewPasswordfrm : Form {
         private string userID = "";
 
-        public NewPasswordfrm() {
-            InitializeComponent();
-        }
-
         /*
          * Constructor that sets global variable.
          */

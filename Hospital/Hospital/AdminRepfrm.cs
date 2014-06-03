@@ -40,10 +40,10 @@ namespace Hospital {
         private void Facilitiesbtn_Click(object sender, EventArgs e) {
             try {
                 ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Hospital\FacilitiesUsedRep.rpt");//source file location for the premade report, may need to be manually changed
-                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\chris\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf"); //output location, may need to be manually changed
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\FacilitiesUsedRep.rpt");//source file location for the premade report, may need to be manually changed
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf"); //output location, may need to be manually changed
 
-                System.Diagnostics.Process.Start(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\FacilitiesUsedRep.pdf");
             } catch {
                 MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -53,6 +53,7 @@ namespace Hospital {
         /*
          * Used to set variable used to go back to login screen
          * \param Form logout - set variable home in order for navigation to login screen
+         * \param Form back - set variable back in order for navigation to previous screen
          */
         public void SetHome(Form logout, Form back) {
             home = logout;
@@ -84,12 +85,12 @@ namespace Hospital {
             try {
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Hospital\OutstandingChargesRep.rpt");//source file location for the premade report, may need to be manually changed
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\OutstandingChargesRep.rpt");//source file location for the premade report, may need to be manually changed
 
                 //Exports generated report to PDF format
-                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\chris\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf"); //output location, may need to be manually changed
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf"); //output location, may need to be manually changed
 
-                System.Diagnostics.Process.Start(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\OutstandingCharges.pdf");
             } catch {
                 MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -104,12 +105,12 @@ namespace Hospital {
             try {
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Hospital\CurrentPatientsRep.rpt");//source file location for the premade report, may need to be manually changed
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\CurrentPatientsRep.rpt");//source file location for the premade report, may need to be manually changed
 
                 //Exports generated report to PDF format
-                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\chris\Documents\GitHub\Group4\Hospital\CurrentPatients.pdf"); //output location, may need to be manually changed
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentPatients.pdf"); //output location, may need to be manually changed
 
-                System.Diagnostics.Process.Start(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\CurrentPatients.pdf");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentPatients.pdf");
             } catch {
                 MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -124,12 +125,12 @@ namespace Hospital {
             try {
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Hospital\StaffRep.rpt");//source file location for the premade report, may need to be manually changed
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\StaffRep.rpt");//source file location for the premade report, may need to be manually changed
 
                 //Exports generated report to PDF format
-                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\chris\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf"); //output location, may need to be manually changed
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf"); //output location, may need to be manually changed
 
-                System.Diagnostics.Process.Start(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\CurrentStaff.pdf");
             } catch {
                 MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -164,16 +165,16 @@ namespace Hospital {
             try {
                 ReportDocument cryRpt = new ReportDocument();
 
-                cryRpt.Load(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Hospital\StaffVsPatientsRep.rpt"); //source file location for the premade report, may need to be manually changed
+                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\StaffVsPatientsRep.rpt"); //source file location for the premade report, may need to be manually changed
 
                 cryRpt.SetParameterValue("DoctorCount", doctors);
                 cryRpt.SetParameterValue("NurseCount", nurses);
                 cryRpt.SetParameterValue("PatientCount", patients);
 
                 //Exports generated report to PDF format
-                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\chris\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf"); //output location, may need to be manually changed
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf"); //output location, may need to be manually changed
 
-                System.Diagnostics.Process.Start(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf");
+                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\StaffVsPatientsRep.pdf");
             } catch {
                 MessageBox.Show("Something went wrong. Please make sure any previous reports are closed.", "Report was not generated.",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
