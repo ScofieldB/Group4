@@ -368,7 +368,7 @@ namespace Hospital {
                 command.ExecuteNonQuery();
                 success = true;
             } catch {
-
+                MessageBox.Show("hmmmn");
             };
             con.Close();
             return success;

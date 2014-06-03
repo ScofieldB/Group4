@@ -496,14 +496,14 @@ namespace Hospital {
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
 
-                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\Invoice.rpt");//source file location for the premade report, may need to be manually changed
+                cryRpt.Load(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Hospital\Invoice.rpt");//source file location for the premade report, may need to be manually changed
 
                 cryRpt.SetParameterValue("PatientID", pat.getPatientId());
                 cryRpt.SetParameterValue("charges", charges);
 
                 //Exports generated report to PDF format
-                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf"); //output location, may need to be manually changed
-                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Invoice.pdf");
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\chris\Documents\GitHub\Group4\Hospital\Invoice.pdf"); //output location, may need to be manually changed
+                System.Diagnostics.Process.Start(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Invoice.pdf");
             } else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient Invoice not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -519,7 +519,7 @@ namespace Hospital {
 
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
-                cryRpt.Load(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\Hospital\ExportPatientRep.rpt");//source file location for the premade report, may need to be manually changed
+                cryRpt.Load(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Hospital\ExportPatientRep.rpt");//source file location for the premade report, may need to be manually changed
 
                 //Variable delecaration and assignment
                 ParameterFieldDefinitions crParameterFieldDefinitions;
@@ -538,8 +538,8 @@ namespace Hospital {
                 crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
 
                 //Exports generated report to PDF format
-                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\PatientExport.pdf"); //output location, may need to be manually changed
-                System.Diagnostics.Process.Start(@"C:\Users\BScofield_2\Documents\GitHub\Group4\Hospital\PatientExport.pdf");
+                cryRpt.ExportToDisk(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, @"C:\Users\chris\Documents\GitHub\Group4\Hospital\PatientExport.pdf"); //output location, may need to be manually changed
+                System.Diagnostics.Process.Start(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\PatientExport.pdf");
 
             } else {
                 MessageBox.Show("Please enter a valid surname/PID into search box before generating PDF.", "Patient details PDF not generated.",

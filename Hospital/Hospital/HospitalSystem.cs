@@ -271,6 +271,7 @@ namespace Hospital {
         private void addHistorybtn_Click(object sender, EventArgs e) { //add history input via user
             if (pat.getPatientId() != -1) {
                 addHistory(addHistorytbx.Text);
+                addHistorytbx.Text = "";
             }
         }
 
