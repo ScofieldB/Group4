@@ -152,7 +152,7 @@
             this.addImageBtn.TabIndex = 7;
             this.addImageBtn.Text = "View Image";
             this.addImageBtn.UseVisualStyleBackColor = true;
-            this.addImageBtn.Click += new System.EventHandler(this.addImageBtn_Click);
+            this.addImageBtn.Click += new System.EventHandler(this.ViewImageBtn_Click);
             // 
             // addTestResultLinkBTN
             // 

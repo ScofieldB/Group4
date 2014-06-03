@@ -12,7 +12,9 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.IO;
 
-
+/*
+ * Form is responsible for all image selection and manipulation features
+ */
 namespace Hospital {
     public partial class TestResultViewer : Form {
         private Size multiplier = new Size(2, 2);
@@ -23,6 +25,13 @@ namespace Hospital {
         private int patientId;
         private int zoomValue = 0;
 
+
+        /*
+         * Constructor to initialize form
+         * \param string userID - userID of user logged in
+         * \parm string role - role of the user logged in
+         * \param int patient - patientID of the patient file being added to
+         */
         public TestResultViewer(string userID, string role, int patient) {
             patientId = patient;
             this.role = role;
@@ -38,7 +47,11 @@ namespace Hospital {
         }
 
 
-        private void LoadComboBox() {
+        /*
+         * Populates the images within the Image selection combo box
+         */
+        public void LoadComboBox() {
+            ImageSelectorCB.Items.Clear();
             try {
                 SqlConnection con = DBCon.DBConnect();
                 string query = "SELECT TestOrdered FROM Tests WHERE PatientID ='" + patientId + "' AND TestResults IS NOT NULL";
@@ -55,6 +68,10 @@ namespace Hospital {
             }
         }
 
+
+        /*
+         * Manipulates the current image displayed to zoom in.
+         */
         public void ZoomIn() {
 
             if (zoomValue < 2) {
@@ -77,6 +94,10 @@ namespace Hospital {
 
         }
 
+
+        /*
+         * Manipulates the current image displayed to zoom out.
+         */
         public void ZoomOut() {
 
             if (zoomValue > -3) {
@@ -99,30 +120,54 @@ namespace Hospital {
             }
         }
 
+
+        /*
+         * Button to manipulate the current image displayed to zoom in.
+         */
         private void ZoomInButton_Click(object sender, EventArgs e) {
             ZoomIn();
         }
 
+
+        /*
+         * Button to manipulate the current image displayed to zoom out.
+         */
         private void ZoomOutButton_Click(object sender, EventArgs e) {
             ZoomOut();
         }
 
+
+        /*
+         * Button to manipulate the current image displayed to rotate let.
+         */
         private void RotateLeftButton_Click(object sender, EventArgs e) {
             Image image = pictureBox1.Image;
             image.RotateFlip(RotateFlipType.Rotate90FlipNone);
             pictureBox1.Image = image;
         }
 
+
+        /*
+         * Button to manipulate the current image displayed to rotate right.
+         */
         private void RotateRightButton_Click(object sender, EventArgs e) {
             Image image = pictureBox1.Image;
             image.RotateFlip(RotateFlipType.Rotate270FlipNone);
             pictureBox1.Image = image;
         }
 
+
+        /*
+         * On Click event for button to navigate back once.
+         */
         private void BackButton_Click(object sender, EventArgs e) {
             ActiveForm.Close();
         }
 
+
+        /*
+         * When ImageSelector combo box index change event occurs, updates appropriate variable 
+         */
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
 
             if (ImageSelectorCB.SelectedItem != null) {
@@ -130,7 +175,10 @@ namespace Hospital {
             }
         }
 
-        private void addImageBtn_Click(object sender, EventArgs e) {
+        /*
+         * Button to display the chosen image in the image selection combobox.
+         */
+        private void ViewImageBtn_Click(object sender, EventArgs e) {
             try {
                 zoomValue = 0;
                 SqlConnection con = DBCon.DBConnect();
@@ -149,8 +197,8 @@ namespace Hospital {
                     //then passed to PictureBox.
                     Byte[] byteTestResultsImage = new Byte[0];
                     byteTestResultsImage = (Byte[])(ds.Tables["Tests"].Rows[RowCount - 1]["TestResults"]);
-                    MemoryStream ImageMemoryStream = new MemoryStream(byteTestResultsImage);
-                    pictureBox1.Image = Image.FromStream(ImageMemoryStream);
+                    MemoryStream imageMemoryStream = new MemoryStream(byteTestResultsImage);
+                    pictureBox1.Image = Image.FromStream(imageMemoryStream);
                     this.pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
                 }
                 con.Close();
@@ -160,9 +208,14 @@ namespace Hospital {
             }
         }
 
+
+        /*
+         * Button to open the TestResultAdd form in order to choose a new image
+         * to be added to patients file.
+         */
         private void addTestResultLinkBTN_Click(object sender, EventArgs e) {
-            TestResultAdd Tests = new TestResultAdd(userID, patientId);
-            Tests.Show();
+            TestResultAdd tests = new TestResultAdd(userID, patientId);
+            tests.Show();
         }
     }
 }

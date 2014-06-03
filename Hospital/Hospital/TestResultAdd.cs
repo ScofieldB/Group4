@@ -11,31 +11,47 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
 
+
+/*
+ * Form is responsible for selecting and then adding an image to a patient's file
+ * on database.
+ */
 namespace Hospital {
     public partial class TestResultAdd : Form {
 
         private string userID;
         private int patient;
 
+
+        /*
+         * Constructor to initialize form
+         * \param string userID - userID of user logged in
+         * \param int patientnum - patientID of the patient file being added to
+         */
         public TestResultAdd(string userID, int patientnum) {
             patient = patientnum;
             this.userID = userID;
             InitializeComponent();
         }
 
-        private void Loadbtn_Click(object sender, EventArgs e) {
-            LoadNewFile();
-        }
 
-        private void LoadNewFile() {
+        /*
+         * Opens a window for user to select where the image is located on the
+         * computer.
+         */
+        private void Loadbtn_Click(object sender, EventArgs e) {
             OpenFileDialog ofd = new OpenFileDialog();
             System.Windows.Forms.DialogResult dr = ofd.ShowDialog();
             if (dr == DialogResult.OK) {
-                UserSelectedFilePath = ofd.FileName;
+                userSelectedFilePath = ofd.FileName;
             }
         }
 
-        public string UserSelectedFilePath {
+
+        /*
+         * Getter/Setter for the userSelectedFilePath variable
+         */
+        public string userSelectedFilePath {
             get {
                 return filePathLbl.Text;
             }
@@ -45,6 +61,10 @@ namespace Hospital {
             }
         }
 
+        /*
+         * Button to upload the selected image to database that was found 
+         * by using the Load button
+         */
         private void Uploadbtn_Click(object sender, EventArgs e) {
             DateTime currentDT = DateTime.Now;
             try {
@@ -56,7 +76,7 @@ namespace Hospital {
                 cmd.Parameters.AddWithValue("@Date", currentDT);
                 cmd.Parameters.AddWithValue("@pat", patient);
 
-                string imageFilePath = UserSelectedFilePath;
+                string imageFilePath = userSelectedFilePath;
                 // string rawImageFilePath = userSelectedFilePath;
                 //  string ImageFilePath = rawImageFilePath.Replace(@"\", @"/");
                 Cancelbtn.Text = imageFilePath;
@@ -81,6 +101,9 @@ namespace Hospital {
 
         }
 
+        /*
+         * Cancel the selection of image to upload and closes the form
+         */
         private void Cancelbtn_Click(object sender, EventArgs e) {
             ActiveForm.Close();
         }
