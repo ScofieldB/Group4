@@ -14,7 +14,7 @@ namespace Hospital {
          * Returns the connection for use throughout program.
          */
         public static SqlConnection DBConnect() {
-            SqlConnection con = new SqlConnection(@"Server=LAPTOP;Integrated Security=true;Database=INB201;");
+            SqlConnection con = new SqlConnection(@"Server=CHRIS-LAPTOP;Integrated Security=true;Database=INB201;");
             return con;
         }
     }
