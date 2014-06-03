@@ -10,33 +10,33 @@ namespace HospitalUnitTests {
 
         [TestMethod]
         public void TestGetDetailsValid() {
-            user = login.getDetails("1000", "123abc");
+            user = login.GetDetails("1000", "123abc");
  
-            Assert.AreEqual("1000", user.getUser(), true);
+            Assert.AreEqual("1000", user.GetUser(), true);
         }
 
 
         [TestMethod]
         public void TestGetDetailsInvalidId() {
-            user = login.getDetails("9", "123abc");
+            user = login.GetDetails("9", "123abc");
 
-            Assert.AreEqual("", user.getUser(), true);
+            Assert.AreEqual("", user.GetUser(), true);
         }
 
 
         [TestMethod]
         public void TestGetDetailsInvalidPassword() {
-            user = login.getDetails("1000", "123");
+            user = login.GetDetails("1000", "123");
 
-            Assert.AreEqual("", user.getUser(), true);
+            Assert.AreEqual("", user.GetUser(), true);
         }
 
 
         [TestMethod]
         public void TestGetDetailsInvalidBoth() {
-            user = login.getDetails("9", "123");
+            user = login.GetDetails("9", "123");
 
-            Assert.AreEqual("", user.getUser(), true);
+            Assert.AreEqual("", user.GetUser(), true);
         }
     }
 }

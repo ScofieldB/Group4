@@ -12,14 +12,14 @@ namespace HospitalUnitTests {
         //Ensure Patient 100025 is currently not addmitted before running this test.
         [TestMethod]
         public void TestAdmitPatientValid() {
-            bool result = facilities.admitPatient(100025);
+            bool result = facilities.AdmitPatient(100025);
             Assert.IsTrue(result);
             facilities.DischargePatient(100025);
         }
 
         [TestMethod]
         public void TestAdmitPatientWrongId() {
-            bool result = facilities.admitPatient(25);
+            bool result = facilities.AdmitPatient(25);
             Assert.IsFalse(result, "False if patient either does not exist in system or is all ready admitted"); ;
         }
 
@@ -28,7 +28,7 @@ namespace HospitalUnitTests {
         public void TestDischargePatient() {
             string room = "";
             int patId = 100025;
-            bool result = facilities.admitPatient(patId);
+            bool result = facilities.AdmitPatient(patId);
             facilities.DischargePatient(patId);
 
             SqlConnection con = Hospital.DBCon.DBConnect();
@@ -89,18 +89,18 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
             bool result;
 
-            pat.setPatientId(100015);
-            facilities.admitPatient(pat.getPatientId());
-            pat.setRoom("E100");
+            pat.SetPatientId(100015);
+            facilities.AdmitPatient(pat.GetPatientId());
+            pat.SetRoom("E100");
             typeBooked.Cost = 700;
             typeBooked.Type = "Keyhole Surgery";
 
-            result = facilities.bookSurgery(pat, typeBooked);
+            result = facilities.BookSurgery(pat, typeBooked);
 
             Assert.IsTrue(result);
-            pat = Hospital.Patient.SearchPID(pat.getPatientId());
-            facilities.returnPatientToDoctor(pat);
-            facilities.DischargePatient(pat.getPatientId());
+            pat = Hospital.Patient.SearchPID(pat.GetPatientId());
+            facilities.ReturnPatientToDoctor(pat);
+            facilities.DischargePatient(pat.GetPatientId());
         }
 
         [TestMethod]
@@ -109,16 +109,16 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
             bool result;
 
-            pat.setPatientId(100015);
-            facilities.admitPatient(pat.getPatientId());
-            pat.setRoom("S100");
+            pat.SetPatientId(100015);
+            facilities.AdmitPatient(pat.GetPatientId());
+            pat.SetRoom("S100");
             typeBooked.Cost = 700;
             typeBooked.Type = "Keyhole Surgery";
 
-            result = facilities.bookSurgery(pat, typeBooked);
+            result = facilities.BookSurgery(pat, typeBooked);
 
             Assert.IsFalse(result);
-            facilities.DischargePatient(pat.getPatientId());
+            facilities.DischargePatient(pat.GetPatientId());
         }
 
         [TestMethod]
@@ -127,16 +127,16 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
             bool result;
 
-            pat.setPatientId(100015);
-            facilities.admitPatient(pat.getPatientId());
-            pat.setRoom("I100");
+            pat.SetPatientId(100015);
+            facilities.AdmitPatient(pat.GetPatientId());
+            pat.SetRoom("I100");
             typeBooked.Cost = 700;
             typeBooked.Type = "Keyhole Surgery";
 
-            result = facilities.bookSurgery(pat, typeBooked);
+            result = facilities.BookSurgery(pat, typeBooked);
 
             Assert.IsFalse(result);
-            facilities.DischargePatient(pat.getPatientId());
+            facilities.DischargePatient(pat.GetPatientId());
         }
 
         [TestMethod]
@@ -145,15 +145,15 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
             bool result;
 
-            pat.setPatientId(100015);
-            pat.setRoom("0");
+            pat.SetPatientId(100015);
+            pat.SetRoom("0");
             typeBooked.Cost = 700;
             typeBooked.Type = "Keyhole Surgery";
 
-            result = facilities.bookSurgery(pat, typeBooked);
+            result = facilities.BookSurgery(pat, typeBooked);
 
             Assert.IsFalse(result);
-            facilities.DischargePatient(pat.getPatientId());
+            facilities.DischargePatient(pat.GetPatientId());
         }
 
 
@@ -165,19 +165,19 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
             bool result;
 
-            pat.setPatientId(100013);
-            facilities.admitPatient(pat.getPatientId());
+            pat.SetPatientId(100013);
+            facilities.AdmitPatient(pat.GetPatientId());
 
-            pat.setRoom("E100");
+            pat.SetRoom("E100");
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
 
-            result = facilities.bookImaging(pat, typeBooked, UserID);
+            result = facilities.BookImaging(pat, typeBooked, UserID);
 
             Assert.IsTrue(result);
-            pat = Hospital.Patient.SearchPID(pat.getPatientId());
-            facilities.returnPatientToDoctor(pat);
-            facilities.DischargePatient(pat.getPatientId());
+            pat = Hospital.Patient.SearchPID(pat.GetPatientId());
+            facilities.ReturnPatientToDoctor(pat);
+            facilities.DischargePatient(pat.GetPatientId());
         }
 
         [TestMethod]
@@ -186,17 +186,17 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
             bool result;
 
-            pat.setPatientId(100013);
-            facilities.admitPatient(pat.getPatientId());
+            pat.SetPatientId(100013);
+            facilities.AdmitPatient(pat.GetPatientId());
 
-            pat.setRoom("S100");
+            pat.SetRoom("S100");
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
 
-            result = facilities.bookImaging(pat, typeBooked, UserID);
+            result = facilities.BookImaging(pat, typeBooked, UserID);
 
             Assert.IsFalse(result);
-            facilities.DischargePatient(pat.getPatientId());
+            facilities.DischargePatient(pat.GetPatientId());
         }
 
         [TestMethod]
@@ -205,17 +205,17 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
             bool result;
 
-            pat.setPatientId(100013);
-            facilities.admitPatient(pat.getPatientId());
+            pat.SetPatientId(100013);
+            facilities.AdmitPatient(pat.GetPatientId());
 
-            pat.setRoom("I100");
+            pat.SetRoom("I100");
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
 
-            result = facilities.bookImaging(pat, typeBooked, UserID);
+            result = facilities.BookImaging(pat, typeBooked, UserID);
 
             Assert.IsFalse(result);
-            facilities.DischargePatient(pat.getPatientId());
+            facilities.DischargePatient(pat.GetPatientId());
         }
 
         [TestMethod]
@@ -224,15 +224,15 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
             bool result;
 
-            pat.setPatientId(100013);
-            pat.setRoom("0");
+            pat.SetPatientId(100013);
+            pat.SetRoom("0");
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
 
-            result = facilities.bookImaging(pat, typeBooked, UserID);
+            result = facilities.BookImaging(pat, typeBooked, UserID);
 
             Assert.IsFalse(result);
-            facilities.DischargePatient(pat.getPatientId());
+            facilities.DischargePatient(pat.GetPatientId());
         }
 
         [TestMethod]
@@ -243,16 +243,16 @@ namespace HospitalUnitTests {
             Hospital.FinanceCmbItem typeBooked = new Hospital.FinanceCmbItem();
 
 
-            facilities.admitPatient(pat.getPatientId());
+            facilities.AdmitPatient(pat.GetPatientId());
             typeBooked.Cost = 200;
             typeBooked.Type = "Xray";
-            facilities.bookSurgery(pat, typeBooked);
+            facilities.BookSurgery(pat, typeBooked);
 
             SqlConnection con = Hospital.DBCon.DBConnect();
             con.Open();
             SqlCommand command = new SqlCommand(null, con);
             command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
-            command.Parameters.AddWithValue("@id", pat.getPatientId());
+            command.Parameters.AddWithValue("@id", pat.GetPatientId());
 
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -264,11 +264,11 @@ namespace HospitalUnitTests {
                 success = false;
             }
 
-            facilities.returnPatientToDoctor(pat);
+            facilities.ReturnPatientToDoctor(pat);
 
             command.Parameters.Clear();
             command.CommandText = "SELECT Room FROM Patient WHERE PatientID = @id";
-            command.Parameters.AddWithValue("@id", pat.getPatientId());
+            command.Parameters.AddWithValue("@id", pat.GetPatientId());
 
             reader = command.ExecuteReader();
             while (reader.Read()) {
@@ -283,7 +283,7 @@ namespace HospitalUnitTests {
                 success = true;
             }
 
-            facilities.DischargePatient(pat.getPatientId());
+            facilities.DischargePatient(pat.GetPatientId());
 
             Assert.IsTrue(success);
 

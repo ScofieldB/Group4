@@ -34,7 +34,7 @@ namespace Hospital {
          * Used to set variable used to go back to login screen
         * \param Form logout - set variable home in order for navigation to login screen
          */
-        public void setHome(Form logout) {
+        public void SetHome(Form logout) {
             home = logout;
         }
 
@@ -49,9 +49,9 @@ namespace Hospital {
         /*
          * On Click event for button to open AdminRepfrm form
          */
-        private void reportbtn_Click(object sender, EventArgs e) {
+        private void Reportbtn_Click(object sender, EventArgs e) {
             AdminRepfrm adminrepform = new AdminRepfrm();
-            adminrepform.setHome(home, ActiveForm);
+            adminrepform.SetHome(home, ActiveForm);
             ActiveForm.Hide();
             adminrepform.Show();
         }
@@ -60,9 +60,9 @@ namespace Hospital {
         /*
          * On Click event for button to open the UserManagement form.
          */
-        private void usermgmtbtn_Click(object sender, EventArgs e) {
+        private void Usermgmtbtn_Click(object sender, EventArgs e) {
             UserManagement usermgmt = new UserManagement(userID);
-            usermgmt.setHome(home, ActiveForm);
+            usermgmt.SetHome(home, ActiveForm);
             ActiveForm.Hide();
             usermgmt.Show();
         }

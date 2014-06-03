@@ -43,7 +43,7 @@ namespace Hospital {
             Login login = new Login();
             User user = null;
             try {
-                user = login.getDetails(Usernametxt.Text, Passwordtxt.Text);
+                user = login.GetDetails(Usernametxt.Text, Passwordtxt.Text);
             } catch {
                 MessageBox.Show("Username is Incorrect. Please try again.", "Login Failed",
                  MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -51,28 +51,28 @@ namespace Hospital {
 
             if (user != null) {
                 //Checks to see if Username exists. If it doesnt then username will be blank
-                if ((Usernametxt.Text == "") || (user.getUser() == "")) {
+                if ((Usernametxt.Text == "") || (user.GetUser() == "")) {
                     MessageBox.Show("Username or Password is Incorrect. Please try again.", "Login Failed",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
 
                     //Check if user has user generated generated password
-                    if (user.getConfirmed() == true) {
+                    if (user.GetConfirmed() == true) {
 
                         //Opens appropriate form depending on which role user is
-                        if (user.getRole() == "Admin") {
-                            Adminfrm adminform = new Adminfrm(user.getUser());
-                            adminform.setHome(ActiveForm);
+                        if (user.GetRole() == "Admin") {
+                            Adminfrm adminform = new Adminfrm(user.GetUser());
+                            adminform.SetHome(ActiveForm);
                             ActiveForm.Hide();
                             adminform.Show();
-                        } else if (user.getRole() == "Receptionist") {
-                            Reception reception = new Reception(user.getUser());
-                            reception.setHome(ActiveForm);
+                        } else if (user.GetRole() == "Receptionist") {
+                            Reception reception = new Reception(user.GetUser());
+                            reception.SetHome(ActiveForm);
                             ActiveForm.Hide();
                             reception.Show();
                         } else {
-                            HospitalSystem mainprogram = new HospitalSystem(user.getUser(), user.getRole());
-                            mainprogram.setHome(ActiveForm);
+                            HospitalSystem mainprogram = new HospitalSystem(user.GetUser(), user.GetRole());
+                            mainprogram.SetHome(ActiveForm);
                             ActiveForm.Hide();
                             mainprogram.Show();
                         }
@@ -80,7 +80,7 @@ namespace Hospital {
                     // If password is not user generated but was System Admin generated then ensure 
                     // user must update password.
                     } else {
-                        NewPasswordfrm newpw = new NewPasswordfrm(user.getUser());
+                        NewPasswordfrm newpw = new NewPasswordfrm(user.GetUser());
                         newpw.Show();
                     }
                 }

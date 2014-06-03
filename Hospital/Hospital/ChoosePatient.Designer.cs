@@ -58,7 +58,7 @@
             this.chooseCmb.Name = "chooseCmb";
             this.chooseCmb.Size = new System.Drawing.Size(513, 24);
             this.chooseCmb.TabIndex = 2;
-            this.chooseCmb.SelectedIndexChanged += new System.EventHandler(this.chooseCmb_SelectedIndexChanged);
+            this.chooseCmb.SelectedIndexChanged += new System.EventHandler(this.ChooseCmb_SelectedIndexChanged);
             // 
             // Confirmbtn
             // 

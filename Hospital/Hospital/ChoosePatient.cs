@@ -20,10 +20,10 @@ namespace Hospital {
         private Form homeScreen;
         private Reception previousRecep;
         private HospitalSystem previousHosp;
-        private string SurnameSearched;
+        private string surnameSearched;
         private static int chosenIndex;
-        private string UserID;
-        private string Role;
+        private string userID;
+        private string role;
 
 
         /*
@@ -35,10 +35,10 @@ namespace Hospital {
          * \param string Surname - Surname being searched
          * \param PatientInfo[] pats - List of patients to choose from
          */
-        public ChoosePatient(string User, string role, Form home, Form previous, string Surname, PatientInfo[] pats) {
+        public ChoosePatient(string user, string role, Form home, Form previous, string surname, PatientInfo[] pats) {
             homeScreen = home;
-            Role = role;
-            UserID = User;
+            this.role = role;
+            userID = user;
 
             if (role == "Reception") {
                 previousRecep = (Reception)previous;
@@ -46,14 +46,14 @@ namespace Hospital {
                 previousHosp = (HospitalSystem)previous;
             }
             patients = pats;
-            SurnameSearched = Surname;
+            surnameSearched = surname;
             InitializeComponent();
-            SearchSurnamelbl.Text += Surname;
+            SearchSurnamelbl.Text += surname;
 
             // Fill Choosecmb Combo box with patient details
             for (int i = 0; i < patients.Length; i++) {
-                chooseCmb.Items.Add("Firstname: " + patients[i].getFName() + "  --  DOB: " + patients[i].getDOB().ToString() +
-                    "  --  Address: " + patients[i].getAddress());
+                chooseCmb.Items.Add("Firstname: " + patients[i].GetFName() + "  --  DOB: " + patients[i].GetDOB().ToString() +
+                    "  --  Address: " + patients[i].GetAddress());
             }
             chooseCmb.SelectedIndex = 0;
         }
@@ -62,7 +62,7 @@ namespace Hospital {
         /*
          * When ChooseCmb index change event occurs, updates appropriate variables 
          */
-        private void chooseCmb_SelectedIndexChanged(object sender, EventArgs e) {
+        private void ChooseCmb_SelectedIndexChanged(object sender, EventArgs e) {
             chosenIndex = chooseCmb.SelectedIndex;
             chosen = patients[chosenIndex];
         }
@@ -73,13 +73,13 @@ namespace Hospital {
          * and returns user to the previous screen.
          */
         private void Confirmbtn_Click(object sender, EventArgs e) {
-            if (Role == "Reception") {
-                previousRecep.setPatient(chosen);
-                previousRecep.setHome(homeScreen);
+            if (role == "Reception") {
+                previousRecep.SetPatient(chosen);
+                previousRecep.SetHome(homeScreen);
                 ActiveForm.Close();
             } else {
-                previousHosp.setPatient(chosen);
-                previousHosp.setHome(homeScreen);
+                previousHosp.SetPatient(chosen);
+                previousHosp.SetHome(homeScreen);
                 ActiveForm.Close();
             }
 

@@ -14,9 +14,9 @@ namespace Hospital {
          * Add user access to system with specified userID and role.
          * Sets default password for new user to their surname.
          */
-        public string addUser(string userID, string role) {
+        public string AddUser(string userID, string role) {
             bool userExist = false;
-            string Surname = "";
+            string surname = "";
             con.Open();
 
             SqlCommand command = new SqlCommand("SELECT Count(*) FROM Staff WHERE StaffID = @id", con);
@@ -36,14 +36,14 @@ namespace Hospital {
                 command.Parameters.AddWithValue("@id", userID);
                 reader = command.ExecuteReader();
                 while (reader.Read()) {
-                    Surname = reader.GetString(0);
+                    surname = reader.GetString(0);
                 }
                 reader.Close();
                 command.Parameters.Clear();
 
                 //Used for hashing password
                 System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
-                byte[] data = System.Text.Encoding.ASCII.GetBytes(Surname);
+                byte[] data = System.Text.Encoding.ASCII.GetBytes(surname);
                 data = x.ComputeHash(data);
                 String md5Hash = System.Text.Encoding.ASCII.GetString(data);
 
@@ -55,11 +55,11 @@ namespace Hospital {
                 con.Close();
             }
 
-            return Surname;
+            return surname;
         }
 
 
-        public string queryUser(string userID) {
+        public string QueryUser(string userID) {
             string role = "";
             con.Open();
 
@@ -77,7 +77,7 @@ namespace Hospital {
         }
 
 
-        public void updateUser(string userID, string role) {
+        public void UpdateUser(string userID, string role) {
 
             con.Open();
 
@@ -85,13 +85,13 @@ namespace Hospital {
             command.Parameters.AddWithValue("@id", userID);
             SqlDataReader reader = command.ExecuteReader();
 
-            int CountOfUser = 0;
+            int countOfUser = 0;
             while (reader.Read()) {
-                CountOfUser = Convert.ToInt32(reader.GetInt32(0));
+                countOfUser = Convert.ToInt32(reader.GetInt32(0));
             }
             reader.Close();
 
-            if (CountOfUser == 1) {
+            if (countOfUser == 1) {
 
                 command.Parameters.Clear();
                 command.CommandText = "UPDATE Users SET Role = @role WHERE StaffID = @id";
@@ -108,7 +108,7 @@ namespace Hospital {
         /*
          * Remove specified userID from system.
          */
-        public void deleteUser(string user) {
+        public void DeleteUser(string user) {
             con.Open();
             SqlCommand command = new SqlCommand(null, con);
             command.CommandText = "DELETE FROM [dbo].[Users] WHERE StaffID = @id";

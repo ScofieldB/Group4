@@ -15,19 +15,18 @@ using System.IO;
 
 namespace Hospital {
     public partial class TestResultViewer : Form {
-        private Size Multiplier = new Size(2, 2);
+        private Size multiplier = new Size(2, 2);
 
-        private string Imagename;
+        private string imagename;
         private string role;
-        private string usersID;
-        private int patientnum;
+        private string userID;
+        private int patientId;
         private int zoomValue = 0;
 
-        public TestResultViewer(string UserID, string Role, int patient)
-        {
-            patientnum = patient;
-            role = Role;
-            usersID = UserID;
+        public TestResultViewer(string userID, string role, int patient) {
+            patientId = patient;
+            this.role = role;
+            this.userID = userID;
             InitializeComponent();
             this.pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             LoadComboBox();
@@ -42,7 +41,7 @@ namespace Hospital {
         private void LoadComboBox() {
             try {
                 SqlConnection con = DBCon.DBConnect();
-                string query = "SELECT TestOrdered FROM Tests WHERE PatientID ='" + patientnum + "' AND TestResults IS NOT NULL";
+                string query = "SELECT TestOrdered FROM Tests WHERE PatientID ='" + patientId + "' AND TestResults IS NOT NULL";
                 SqlDataAdapter da = new SqlDataAdapter(query, con);
                 con.Open();
                 DataSet ds = new DataSet();
@@ -59,21 +58,19 @@ namespace Hospital {
         public void ZoomIn() {
 
             if (zoomValue < 2) {
-                Image MyImage = pictureBox1.Image;
+                Image myImage = pictureBox1.Image;
 
-                Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width * Multiplier.Width),
-                    Convert.ToInt32(MyImage.Height * Multiplier.Height));
+                Bitmap myBitMap = new Bitmap(myImage, Convert.ToInt32(myImage.Width * multiplier.Width),
+                    Convert.ToInt32(myImage.Height * multiplier.Height));
 
-                Graphics Graphic = Graphics.FromImage(MyBitMap);
+                Graphics graphic = Graphics.FromImage(myBitMap);
 
-                Graphic.InterpolationMode = InterpolationMode.High;
+                graphic.InterpolationMode = InterpolationMode.High;
 
-                pictureBox1.Image = MyBitMap;
+                pictureBox1.Image = myBitMap;
 
                 zoomValue = zoomValue + 1;
-            }
-            else
-            {
+            } else {
                 MessageBox.Show("Cannot zoom further.", "Zoom Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -82,23 +79,21 @@ namespace Hospital {
 
         public void ZoomOut() {
 
-            if (zoomValue > -3){
+            if (zoomValue > -3) {
 
-                Image MyImage = pictureBox1.Image;
+                Image myImage = pictureBox1.Image;
 
-                Bitmap MyBitMap = new Bitmap(MyImage, Convert.ToInt32(MyImage.Width / Multiplier.Width),
-                    Convert.ToInt32(MyImage.Height / Multiplier.Height));
+                Bitmap myBitMap = new Bitmap(myImage, Convert.ToInt32(myImage.Width / multiplier.Width),
+                    Convert.ToInt32(myImage.Height / multiplier.Height));
 
-                Graphics Graphic = Graphics.FromImage(MyBitMap);
+                Graphics graphic = Graphics.FromImage(myBitMap);
 
-                Graphic.InterpolationMode = InterpolationMode.High;
+                graphic.InterpolationMode = InterpolationMode.High;
 
-                pictureBox1.Image = MyBitMap;
+                pictureBox1.Image = myBitMap;
 
-                zoomValue = zoomValue -1;
-            }
-            else
-            {
+                zoomValue = zoomValue - 1;
+            } else {
                 MessageBox.Show("Cannot zoom further.", "Zoom Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -113,15 +108,15 @@ namespace Hospital {
         }
 
         private void RotateLeftButton_Click(object sender, EventArgs e) {
-            Image im = pictureBox1.Image;
-            im.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            pictureBox1.Image = im;
+            Image image = pictureBox1.Image;
+            image.RotateFlip(RotateFlipType.Rotate90FlipNone);
+            pictureBox1.Image = image;
         }
 
         private void RotateRightButton_Click(object sender, EventArgs e) {
-            Image im = pictureBox1.Image;
-            im.RotateFlip(RotateFlipType.Rotate270FlipNone);
-            pictureBox1.Image = im;
+            Image image = pictureBox1.Image;
+            image.RotateFlip(RotateFlipType.Rotate270FlipNone);
+            pictureBox1.Image = image;
         }
 
         private void BackButton_Click(object sender, EventArgs e) {
@@ -131,7 +126,7 @@ namespace Hospital {
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
 
             if (ImageSelectorCB.SelectedItem != null) {
-                Imagename = ImageSelectorCB.SelectedValue.ToString();
+                imagename = ImageSelectorCB.SelectedValue.ToString();
             }
         }
 
@@ -143,7 +138,7 @@ namespace Hospital {
 
                 //Retrieve BLOB from database into DataSet.
                 SqlCommand cmd = new SqlCommand("SELECT TestResults FROM Tests WHERE TestOrdered = @Imagename", con);
-                cmd.Parameters.AddWithValue("@Imagename", Imagename);
+                cmd.Parameters.AddWithValue("@Imagename", imagename);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataSet ds = new DataSet();
                 da.Fill(ds, "Tests");
@@ -166,7 +161,7 @@ namespace Hospital {
         }
 
         private void addTestResultLinkBTN_Click(object sender, EventArgs e) {
-            TestResultAdd Tests = new TestResultAdd(usersID, patientnum);
+            TestResultAdd Tests = new TestResultAdd(userID, patientId);
             Tests.Show();
         }
     }

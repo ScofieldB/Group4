@@ -21,10 +21,10 @@ namespace Hospital {
 
         private Form home;
         private PatientInfo pat = new PatientInfo();
-        private string Role = "Reception";
+        private string role = "Reception";
 
         //Global variables
-        string UserID; //String value of the UserID/StaffID
+        string userID; //String value of the UserID/StaffID
 
 
         /*
@@ -33,12 +33,12 @@ namespace Hospital {
          */
         public Reception(string user) {
             InitializeComponent();
-            UserID = user;
+            userID = user;
 
             //Demo to confirm works by updating label on form
-            Welcomelbl.Text = "Welcome User:" + UserID;
+            Welcomelbl.Text = "Welcome User:" + userID;
 
-            clearFields();
+            ClearFields();
             Admitbtn.Visible = false;
             Newbtn.Visible = true;
             Dischargebtn.Visible = false;
@@ -47,10 +47,10 @@ namespace Hospital {
         }
 
         /*
-         * setHome is used for navigational purposes to and from the
+         * SetHome is used for navigational purposes to and from the
          * Login screen.
          */
-        public void setHome(Form logout) {
+        public void SetHome(Form logout) {
             home = logout;
         }
 
@@ -59,33 +59,33 @@ namespace Hospital {
          * information on screen based upon patient details.
          * \param PatientInfo patient - patient to be shown on form
          */
-        public void setPatient(PatientInfo patient) {
+        public void SetPatient(PatientInfo patient) {
 
             pat = patient;
-            PIDtxt.Text = pat.getPatientId().ToString();
-            Surtxt.Text = pat.getSName();
-            Firtxt.Text = pat.getFName();
-            DOBtxt.Text = pat.getDOB().ToString("dd/MM/yyyy");
-            if (pat.getGender() == "M") {
+            PIDtxt.Text = pat.GetPatientId().ToString();
+            Surtxt.Text = pat.GetSName();
+            Firtxt.Text = pat.GetFName();
+            DOBtxt.Text = pat.GetDOB().ToString("dd/MM/yyyy");
+            if (pat.GetGender() == "M") {
                 GenderCmb.SelectedIndex = 0;
             } else {
                 GenderCmb.SelectedIndex = 1;
             }
-            NOKtxt.Text = pat.getNextKin();
-            NOKNtxt.Text = pat.getNextKinPhone().ToString();
-            Addtxt.Text = pat.getAddress();
-            Homtxt.Text = pat.getPhone().ToString();
-            Mobtxt.Text = pat.getMobile().ToString();
-            chargeslbl.Text = "$" + pat.getCharges().ToString();
-            covTypeCmb.SelectedIndex = pat.getCoverType();
-            CovNtxt.Text = pat.getCoverNum().ToString();
-            Altxt.Text = pat.getAllergies();
-            CurrentRoomlbl.Text = pat.getRoom().ToString();
+            NOKtxt.Text = pat.GetNextKin();
+            NOKNtxt.Text = pat.GetNextKinPhone().ToString();
+            Addtxt.Text = pat.GetAddress();
+            Homtxt.Text = pat.GetPhone().ToString();
+            Mobtxt.Text = pat.GetMobile().ToString();
+            chargeslbl.Text = "$" + pat.GetCharges().ToString();
+            covTypeCmb.SelectedIndex = pat.GetCoverType();
+            CovNtxt.Text = pat.GetCoverNum().ToString();
+            Altxt.Text = pat.GetAllergies();
+            CurrentRoomlbl.Text = pat.GetRoom().ToString();
 
-            if (pat.getRoom() == "Discharged") {
+            if (pat.GetRoom() == "Discharged") {
                 Admitbtn.Visible = true;
                 Dischargebtn.Visible = false;
-            } else if (!pat.getRoom().StartsWith("E")) {
+            } else if (!pat.GetRoom().StartsWith("E")) {
                 Admitbtn.Visible = false;
                 Dischargebtn.Visible = false;
             } else {
@@ -114,23 +114,23 @@ namespace Hospital {
             if (regex.IsMatch(Seatxt.Text)) {
                 //sets up array of PatientInfo
                 PatientInfo[] patients;
-                string Surname = Seatxt.Text;
+                string surname = Seatxt.Text;
 
-                patients = Patient.searchPatientSurname(Surname);
+                patients = Patient.SearchPatientSurname(surname);
 
                 //If array length is 0, no patients found, generate error message, clear fields and hide admit
                 if (patients.Length == 0) {
-                    clearFields();
+                    ClearFields();
                     MessageBox.Show("Patient could not be found in system. Please confirm spelling " +
                         "or add a new patient.", "Patient not found.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Admitbtn.Visible = false;
                     //If array length is 1
                 } else if (patients.Length == 1) {
-                    setPatient(patients[0]);
+                    SetPatient(patients[0]);
                     //Else open ChoosePatient window
                 } else {
-                    ChoosePatient choosePat = new ChoosePatient(UserID, Role, home, this, Surname, patients);
+                    ChoosePatient choosePat = new ChoosePatient(userID, role, home, this, surname, patients);
                     choosePat.Show();
                 }
             } else {
@@ -249,8 +249,8 @@ namespace Hospital {
                 command.ExecuteScalar();
 
                 //Returned value stringed and entered into textbox
-                int PID = Convert.ToInt32(command.Parameters["@PATID"].Value);
-                PIDtxt.Text = PID.ToString();
+                int patientID = Convert.ToInt32(command.Parameters["@PATID"].Value);
+                PIDtxt.Text = patientID.ToString();
 
                 con.Close();
 
@@ -263,14 +263,14 @@ namespace Hospital {
             }
 
             if (success == true) {
-                setPatient(Patient.SearchPID(Int32.Parse(PIDtxt.Text)));
+                SetPatient(Patient.SearchPID(Int32.Parse(PIDtxt.Text)));
                 MessageBox.Show("Patient: " + Surtxt.Text + ", " + Firtxt.Text + " is now admitted.", "Patient Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
         //Clears textboxes and set drop downs to default states, resets button and label visiblity
-        private void clearFields() {
+        private void ClearFields() {
             pat = null;
             Seatxt.Text = "";
             PIDtxt.Text = "";
@@ -299,7 +299,7 @@ namespace Hospital {
          * Clears the information displayed on screen.
          */
         private void Clrbtn_Click(object sender, EventArgs e) {
-            clearFields();
+            ClearFields();
         }
 
         /*
@@ -309,17 +309,17 @@ namespace Hospital {
             Facilities fac = new Facilities();
 
             if (PIDtxt.Text != "" && PIDtxt.Text != "0" && CurrentRoomlbl.Text == "Discharged") {
-                bool success = fac.admitPatient(pat.getPatientId());
+                bool success = fac.AdmitPatient(pat.GetPatientId());
                 if (success == true) {
-                    Patient.updateAdmitCharge(pat.getPatientId(), pat.getCoverType());
-                    MessageBox.Show("Patient: " + pat.getSName() + ", " + pat.getFName() + " is now admitted.", "Patient Admitted",
+                    Patient.UpdateAdmitCharge(pat.GetPatientId(), pat.GetCoverType());
+                    MessageBox.Show("Patient: " + pat.GetSName() + ", " + pat.GetFName() + " is now admitted.", "Patient Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    pat = Patient.SearchPID(pat.getPatientId());
-                    CurrentRoomlbl.Text = pat.getRoom();
-                    chargeslbl.Text = "$" + pat.getCharges().ToString();
+                    pat = Patient.SearchPID(pat.GetPatientId());
+                    CurrentRoomlbl.Text = pat.GetRoom();
+                    chargeslbl.Text = "$" + pat.GetCharges().ToString();
                     Admitbtn.Visible = false;
                     Dischargebtn.Visible = true;
-                    updateHistory("Admitted");
+                    UpdateHistory("Admitted");
                 } else {
                     MessageBox.Show("Patient was not admitted. Emergency room full", "Patient not Admitted",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -338,18 +338,18 @@ namespace Hospital {
          */
         private void Savbtn_Click(object sender, EventArgs e) {
             if (pat != null) {
-                int PID = pat.getPatientId();
+                int patientID = pat.GetPatientId();
 
                 string surname;
                 if (Surtxt.Text == "") {
-                    surname = pat.getSName();
+                    surname = pat.GetSName();
                 } else {
                     surname = Surtxt.Text;
                 }
 
                 string firstname;
                 if (Firtxt.Text == "") {
-                    firstname = pat.getFName();
+                    firstname = pat.GetFName();
                 } else {
                     firstname = Firtxt.Text;
                 }
@@ -358,7 +358,7 @@ namespace Hospital {
                 if (DateTime.TryParse(DOBtxt.Text, out DOB)) {
                     //Do Nothing
                 } else {
-                    DOB = pat.getDOB();
+                    DOB = pat.GetDOB();
                 }
 
                 string gender;
@@ -412,7 +412,7 @@ namespace Hospital {
                 "CoverNumber = @covern, Status = @stat, NextOfKin = @nok, NextOfKinPhone = @nokp, Room = @room WHERE PatientID = @pid");
                 SqlCommand command = new SqlCommand(updatequery, con);
 
-                command.Parameters.AddWithValue("@pid", PID);
+                command.Parameters.AddWithValue("@pid", patientID);
                 command.Parameters.AddWithValue("@first", firstname);
                 command.Parameters.AddWithValue("@sur", surname);
                 command.Parameters.AddWithValue("@gen", gender);
@@ -431,8 +431,8 @@ namespace Hospital {
                 command.ExecuteNonQuery();
 
                 //Update labels on screen
-                setPatient(Patient.SearchPID(pat.getPatientId()));
-                updateHistory("Update");
+                SetPatient(Patient.SearchPID(pat.GetPatientId()));
+                UpdateHistory("Update");
                 MessageBox.Show("Update Succesfully");
                 con.Close();
             } else {
@@ -443,62 +443,62 @@ namespace Hospital {
 
 
         private void Dischargebtn_Click(object sender, EventArgs e) {
-            pat = Patient.SearchPID(pat.getPatientId());
+            pat = Patient.SearchPID(pat.GetPatientId());
             int charges = Patient.DischargePatient(pat);
 
 
             if (charges > 0) {
                 try {
-                    createInvoice(charges);
+                    CreateInvoice(charges);
                 } catch {
                     MessageBox.Show("Something went wrong. Please make sure any previous invoices are close.", "Patient Invoice not generated.",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
-            MessageBox.Show("Patient: " + pat.getSName() + ", " + pat.getFName() + " is now discharged with a final bill of $"
+            MessageBox.Show("Patient: " + pat.GetSName() + ", " + pat.GetFName() + " is now discharged with a final bill of $"
                             + charges, "Patient Discharged", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-            pat = Patient.SearchPID(pat.getPatientId());
-            CurrentRoomlbl.Text = pat.getRoom();
+            pat = Patient.SearchPID(pat.GetPatientId());
+            CurrentRoomlbl.Text = pat.GetRoom();
             Dischargebtn.Visible = false;
             Admitbtn.Visible = true;
             chargeslbl.Text = "$0";
-            updateHistory("Discharged");
-            Patient.clearChargeHistory(pat.getPatientId());
+            UpdateHistory("Discharged");
+            Patient.ClearChargeHistory(pat.GetPatientId());
         }
 
-        private void updateHistory(string historyType) {
-            string TypedHistory;
+        private void UpdateHistory(string historyType) {
+            string typedHistory;
 
             if (historyType == "Admitted") {
-                TypedHistory = historyType + " to Hospital";
+                typedHistory = historyType + " to Hospital";
             } else if (historyType == "Discharged") {
-                TypedHistory = historyType + " from Hospital";
+                typedHistory = historyType + " from Hospital";
             } else {
-                TypedHistory = "Patient Details updated";
+                typedHistory = "Patient Details updated";
             }
 
             SqlConnection con = DBCon.DBConnect();
             con.Open();
-            SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
-            command.Parameters.AddWithValue("@pid", pat.getPatientId());
-            command.Parameters.AddWithValue("@userid", UserID);
-            command.Parameters.AddWithValue("@typedhistory", TypedHistory);
+            SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, getDate());", con);
+            command.Parameters.AddWithValue("@pid", pat.GetPatientId());
+            command.Parameters.AddWithValue("@userid", userID);
+            command.Parameters.AddWithValue("@typedhistory", typedHistory);
             command.ExecuteNonQuery();
             con.Close();
         }
 
 
-        private void createInvoice(int charges) {
+        private void CreateInvoice(int charges) {
 
-            if (pat.getPatientId() != -1) {
+            if (pat.GetPatientId() != -1) {
                 //Intantiates new Report Document, loads document based off rpt template.
                 ReportDocument cryRpt = new ReportDocument();
 
                 cryRpt.Load(@"C:\Users\chris\Documents\GitHub\Group4\Hospital\Hospital\Invoice.rpt");//source file location for the premade report, may need to be manually changed
 
-                cryRpt.SetParameterValue("PatientID", pat.getPatientId());
+                cryRpt.SetParameterValue("PatientID", pat.GetPatientId());
                 cryRpt.SetParameterValue("charges", charges);
 
                 //Exports generated report to PDF format
@@ -514,7 +514,7 @@ namespace Hospital {
          * of the searched patients personal details and history, based on predefined report structure.
          * Report uses PIDtext.Text as a parameter for filtering in crystal report            
          */
-        private void hardCopybtn_Click(object sender, EventArgs e) {
+        private void HardCopybtn_Click(object sender, EventArgs e) {
             if (Surtxt.Text != "" && Surtxt.Text != " ") {
 
                 //Intantiates new Report Document, loads document based off rpt template.

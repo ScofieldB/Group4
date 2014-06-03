@@ -15,7 +15,7 @@ namespace HospitalUnitTests {
          */
         [TestMethod]
         public void TestAddUser() {
-            string surname = admin.addUser("1008", "Doctor");
+            string surname = admin.AddUser("1008", "Doctor");
             Assert.AreEqual("Burney", surname);
 
             con.Open();
@@ -42,7 +42,7 @@ namespace HospitalUnitTests {
         [TestMethod]
         public void TestAddUserInvalidId() {
             string userid = "0";
-            string surname = admin.addUser(userid, "Doctor");
+            string surname = admin.AddUser(userid, "Doctor");
             Assert.AreEqual("", surname);
         }
 
@@ -68,7 +68,7 @@ namespace HospitalUnitTests {
             Assert.AreEqual("Doctor", result, true);
 
             result = "";
-            admin.deleteUser("1008");
+            admin.DeleteUser("1008");
 
             command.Parameters.Clear();
             command.CommandText = "SELECT Role FROM Users WHERE StaffID = @id";
@@ -90,7 +90,7 @@ namespace HospitalUnitTests {
             string userId = "1";
             string result = "";
             Hospital.Admin admin = new Hospital.Admin();
-            admin.deleteUser(userId);
+            admin.DeleteUser(userId);
 
             con.Open();
 

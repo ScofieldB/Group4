@@ -24,9 +24,9 @@ namespace Hospital {
         /*
          * Constructor that sets global variable.
          */
-        public NewPasswordfrm(string User) {
+        public NewPasswordfrm(string user) {
             InitializeComponent();
-            userID = User;
+            userID = user;
         }
 
 
@@ -39,7 +39,7 @@ namespace Hospital {
 
             if (NewPwtxt.Text == VerifyPwtxt.Text) {
                 Login login = new Login();
-                login.newPassword(userID, NewPwtxt.Text);
+                login.NewPassword(userID, NewPwtxt.Text);
 
                 MessageBox.Show("Username: " + userID + " password has now been updated.", "New Password updated",
                 MessageBoxButtons.OK, MessageBoxIcon.Asterisk);

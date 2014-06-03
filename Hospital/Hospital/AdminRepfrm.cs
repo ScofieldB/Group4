@@ -54,7 +54,7 @@ namespace Hospital {
          * Used to set variable used to go back to login screen
          * \param Form logout - set variable home in order for navigation to login screen
          */
-        public void setHome(Form logout, Form back) {
+        public void SetHome(Form logout, Form back) {
             home = logout;
             this.back = back;
         }

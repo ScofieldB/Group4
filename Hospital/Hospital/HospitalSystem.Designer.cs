@@ -145,7 +145,7 @@
             this.addHistorybtn.TabIndex = 39;
             this.addHistorybtn.Text = "Add History";
             this.addHistorybtn.UseVisualStyleBackColor = true;
-            this.addHistorybtn.Click += new System.EventHandler(this.addHistorybtn_Click);
+            this.addHistorybtn.Click += new System.EventHandler(this.AddHistorybtn_Click);
             // 
             // addHistorytbx
             // 
@@ -154,7 +154,7 @@
             this.addHistorytbx.Name = "addHistorytbx";
             this.addHistorytbx.Size = new System.Drawing.Size(416, 20);
             this.addHistorytbx.TabIndex = 40;
-            this.addHistorytbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.addHistorytbx_KeyDown);
+            this.addHistorytbx.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AddHistorytbx_KeyDown);
             // 
             // ViewImgbtn
             // 

@@ -16,124 +16,124 @@ namespace Hospital {
 
         private DateTime dob;
 
-        public int getPatientId() {
+        public int GetPatientId() {
             return patientId;
         }
 
-        public void setPatientId(int PID) {
+        public void SetPatientId(int PID) {
             patientId = PID;
         }
 
-        public string getPhone() {
+        public string GetPhone() {
             return phone;
         }
 
-        public void setPhone(string PH) {
+        public void SetPhone(string PH) {
             phone = PH;
         }
 
-        public string getMobile() {
+        public string GetMobile() {
             return mobile;
         }
 
-        public void setMobile(string MB) {
+        public void SetMobile(string MB) {
             mobile = MB;
         }
 
-        public int getCoverType() {
+        public int GetCoverType() {
             return covertype;
         }
 
 
-        public void setCoverType(int CT) {
+        public void SetCoverType(int CT) {
             covertype = CT;
         }
 
-        public int getCoverNum() {
+        public int GetCoverNum() {
             return covernumber;
         }
 
-        public void setCoverNum(int CN) {
+        public void SetCoverNum(int CN) {
             covernumber = CN;
         }
 
-        public string getNextKinPhone() {
+        public string GetNextKinPhone() {
             return kinphone;
         }
 
-        public void setNextKinPhone(string KinPh) {
+        public void SetNextKinPhone(string KinPh) {
             kinphone = KinPh;
         }
 
-        public int getCharges() {
+        public int GetCharges() {
             return charges;
         }
 
-        public void setCharges(int newCharge) {
+        public void SetCharges(int newCharge) {
             charges = newCharge;
         }
 
-        public string getFName() {
+        public string GetFName() {
             return firstname;
         }
 
-        public void setFName(string FName) {
+        public void SetFName(string FName) {
             firstname = FName;
         }
 
-        public string getSName() {
+        public string GetSName() {
             return surname;
         }
 
-        public void setSName(string SName) {
+        public void SetSName(string SName) {
             surname = SName;
         }
 
-        public string getAddress() {
+        public string GetAddress() {
             return address;
         }
 
-        public void setAddress(string Add) {
+        public void SetAddress(string Add) {
             address = Add;
         }
 
-        public string getAllergies() {
+        public string GetAllergies() {
             return allergies;
         }
 
-        public void setAllergies(string All) {
+        public void SetAllergies(string All) {
             allergies = All;
         }
 
-        public string getNextKin() {
+        public string GetNextKin() {
             return nextofkin;
         }
 
-        public void setNextKin(string NK) {
+        public void SetNextKin(string NK) {
             nextofkin = NK;
         }
 
-        public string getGender() {
+        public string GetGender() {
             return gender;
         }
 
-        public void setGender(string Gen) {
+        public void SetGender(string Gen) {
             gender = Gen;
         }
 
-        public string getRoom() {
+        public string GetRoom() {
             return room;
         }
 
-        public void setRoom(string rm) {
+        public void SetRoom(string rm) {
             room = rm;
         }
 
-        public DateTime getDOB() {
+        public DateTime GetDOB() {
             return dob;
         }
 
-        public void setDOB(DateTime DOB) {
+        public void SetDOB(DateTime DOB) {
             dob = DOB;
         }
     }

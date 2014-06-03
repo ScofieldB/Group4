@@ -32,53 +32,53 @@ namespace Hospital {
 
             //Read the whole lot, if 
             while (reader.Read()) {
-                pat.setPatientId(reader.GetInt32(0));
-                pat.setFName(reader.GetString(1));
-                pat.setSName(reader.GetString(2));
-                pat.setGender(reader.GetString(3));
-                pat.setDOB(reader.GetDateTime(4));
+                pat.SetPatientId(reader.GetInt32(0));
+                pat.SetFName(reader.GetString(1));
+                pat.SetSName(reader.GetString(2));
+                pat.SetGender(reader.GetString(3));
+                pat.SetDOB(reader.GetDateTime(4));
 
                 if (!reader.IsDBNull(5)) {
-                    pat.setAddress(reader.GetString(5));
+                    pat.SetAddress(reader.GetString(5));
                 } else {
-                    pat.setAddress("");
+                    pat.SetAddress("");
                 }
 
                 if (!reader.IsDBNull(6)) {
-                    pat.setPhone(reader.GetString(6));
+                    pat.SetPhone(reader.GetString(6));
                 } else {
-                    pat.setPhone("Unknown");
+                    pat.SetPhone("Unknown");
                 }
 
                 if (!reader.IsDBNull(7)) {
-                    pat.setMobile(reader.GetString(7));
+                    pat.SetMobile(reader.GetString(7));
                 } else {
-                    pat.setMobile("Unknown");
+                    pat.SetMobile("Unknown");
                 }
 
                 if (!reader.IsDBNull(8)) {
-                    pat.setAllergies(reader.GetString(8));
+                    pat.SetAllergies(reader.GetString(8));
                 }
 
-                pat.setCoverType(reader.GetInt32(9));
+                pat.SetCoverType(reader.GetInt32(9));
 
                 if (!reader.IsDBNull(10)) {
-                    pat.setCoverNum(reader.GetInt32(10));
+                    pat.SetCoverNum(reader.GetInt32(10));
                 }
 
                 if (!reader.IsDBNull(12)) {
-                    pat.setNextKin(reader.GetString(12));
+                    pat.SetNextKin(reader.GetString(12));
                 } else {
-                    pat.setNextKin("");
+                    pat.SetNextKin("");
                 }
                 if (!reader.IsDBNull(13)) {
-                    pat.setNextKinPhone(reader.GetString(13));
+                    pat.SetNextKinPhone(reader.GetString(13));
                 } else {
-                    pat.setNextKinPhone("Unknown");
+                    pat.SetNextKinPhone("Unknown");
                 }
 
-                pat.setRoom(reader.GetString(14));
-                pat.setCharges(reader.GetInt32(15));
+                pat.SetRoom(reader.GetString(14));
+                pat.SetCharges(reader.GetInt32(15));
             }
             reader.Close();
             con.Close();
@@ -92,9 +92,9 @@ namespace Hospital {
          * \return PatientInfo - either a valid patient object 
          *                          or a blank patient object
          */
-        public static PatientInfo[] searchPatientSurname(string surname) {
-            PatientInfo[] Patients;
-            int Patientcount = 0;
+        public static PatientInfo[] SearchPatientSurname(string surname) {
+            PatientInfo[] patients;
+            int patientcount = 0;
 
             SqlConnection con = DBCon.DBConnect();
 
@@ -105,50 +105,50 @@ namespace Hospital {
             SqlDataReader reader = command.ExecuteReader();
 
             while (reader.Read()) {
-                Patientcount = reader.GetInt32(0);
+                patientcount = reader.GetInt32(0);
             }
 
             reader.Close();
             command.Parameters.Clear();
 
 
-            if (Patientcount == 1) {
-                Patients = new PatientInfo[1];
+            if (patientcount == 1) {
+                patients = new PatientInfo[1];
 
                 command.CommandText = "SELECT PatientID FROM Patient WHERE Surname = @surname";
                 command.Parameters.AddWithValue("@surname", surname);
                 reader = command.ExecuteReader();
 
                 while (reader.Read()) {
-                    Patients[0] = SearchPID(reader.GetInt32(0));
+                    patients[0] = SearchPID(reader.GetInt32(0));
                 }
 
             } else {
-                int PosInPatients = 0;
-                int[] PID = new int[Patientcount];
-                string[] FirstN = new string[Patientcount];
-                DateTime[] DOB = new DateTime[Patientcount];
-                string[] Address = new string[Patientcount];
-                Patients = new PatientInfo[Patientcount];
+                int posInPatients = 0;
+                int[] patientID = new int[patientcount];
+                string[] firstN = new string[patientcount];
+                DateTime[] DOB = new DateTime[patientcount];
+                string[] address = new string[patientcount];
+                patients = new PatientInfo[patientcount];
 
                 command.CommandText = "SELECT PatientID FROM Patient WHERE Surname = @surname";
                 command.Parameters.AddWithValue("@surname", surname);
                 reader = command.ExecuteReader();
 
                 while (reader.Read()) {
-                    PID[PosInPatients] = reader.GetInt32(0);
-                    PosInPatients++;
+                    patientID[posInPatients] = reader.GetInt32(0);
+                    posInPatients++;
                 }
 
-                for (int i = 0; i < PID.Length; i++) {
-                    PatientInfo pat = SearchPID(PID[i]);
-                    Patients[i] = pat;
+                for (int i = 0; i < patientID.Length; i++) {
+                    PatientInfo pat = SearchPID(patientID[i]);
+                    patients[i] = pat;
                 }
             }
 
             con.Close();
 
-            return Patients;
+            return patients;
         }
 
 
@@ -159,7 +159,7 @@ namespace Hospital {
          */
         public static int DischargePatient(PatientInfo pat) {
             Facilities fac = new Facilities();
-            int totalCharges = fac.DischargePatient(pat.getPatientId());
+            int totalCharges = fac.DischargePatient(pat.GetPatientId());
 
             return totalCharges;
         }
@@ -172,14 +172,14 @@ namespace Hospital {
          * \param int patientCoverT - level for the Cover Type of patient
          * \return int - admission fee for patient
          */
-        public static int updateAdmitCharge(int patientID, int patientCoverT) {
+        public static int UpdateAdmitCharge(int patientID, int patientCoverT) {
             int charge = -1;
             string chargeType = "";
             SqlConnection con = DBCon.DBConnect();
 
             PatientInfo pat = Patient.SearchPID(patientID);
 
-            if (pat.getPatientId() != -1) {
+            if (pat.GetPatientId() != -1) {
 
                 con.Open();
 
@@ -208,7 +208,7 @@ namespace Hospital {
                     con.Close();
 
                     Facilities fac = new Facilities();
-                    fac.updateChargeHistory(pat, "Admission", charge);
+                    fac.UpdateChargeHistory(pat, "Admission", charge);
                 }
 
             }
@@ -217,7 +217,7 @@ namespace Hospital {
         }
 
 
-        public static void clearChargeHistory(int patientID) {
+        public static void ClearChargeHistory(int patientID) {
             SqlConnection con = DBCon.DBConnect();
             SqlCommand command = new SqlCommand("", con);
             con.Open();

@@ -21,10 +21,10 @@ namespace Hospital {
          * \return User - If password does not match one stored on database return empty userID
          *                data contained within User returned otherwise return valid User.
          */
-        public User getDetails(string username, string password) {
+        public User GetDetails(string username, string password) {
             User user = new User();
 
-            password = getHash(password);
+            password = GetHash(password);
             string checkpw = "";
             SqlConnection con = DBCon.DBConnect();
 
@@ -35,17 +35,17 @@ namespace Hospital {
 
             while (reader.Read()) {
                 checkpw = reader.GetString(1);
-                user.setRole(reader.GetString(2));
-                user.setConfirmed(reader.GetBoolean(3));
+                user.SetRole(reader.GetString(2));
+                user.SetConfirmed(reader.GetBoolean(3));
             }
             reader.Close();
             con.Close();
 
             if (checkpw == password) {
-                user.setUser(username);
+                user.SetUser(username);
                 return user;
             } else {
-                user.setUser("");
+                user.SetUser("");
                 return user;
             }
         }
@@ -57,8 +57,8 @@ namespace Hospital {
          * \param string userID - UserID to update password for.
          * \param string newPw - new Password user wishes to update system with.
          */
-        public void newPassword(string userID, string newPw) {
-            string md5Hash = getHash(newPw);
+        public void NewPassword(string userID, string newPw) {
+            string md5Hash = GetHash(newPw);
 
             SqlConnection con = DBCon.DBConnect();
             con.Open();
@@ -80,7 +80,7 @@ namespace Hospital {
          * \param string password - password wished to be hashed
          * \return string - hashed version of the password
          */
-        public string getHash(string password) {
+        public string GetHash(string password) {
             System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
             byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
             data = x.ComputeHash(data);

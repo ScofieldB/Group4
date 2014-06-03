@@ -22,8 +22,8 @@ namespace Hospital {
         private FinanceCmbItem typeBooked;
 
         //Global variables
-        private string UserID; //String value of the UserID/StaffID
-        private string Role; //String value of the role User logged in under.
+        private string userID; //String value of the UserID/StaffID
+        private string role; //String value of the role User logged in under.
 
 
         /*
@@ -34,13 +34,12 @@ namespace Hospital {
          */
         public HospitalSystem(string user, string role) {
             InitializeComponent();
-            UserID = user;
-            Role = role;
-                ViewImgbtn.Visible = false;
-                Surgerybtn.Visible = false;
-                Imagingbtn.Visible = false;
-                Finishbtn.Visible = false;
-
+            userID = user;
+            this.role = role;
+            ViewImgbtn.Visible = false;
+            Surgerybtn.Visible = false;
+            Imagingbtn.Visible = false;
+            Finishbtn.Visible = false;
         }
 
 
@@ -49,7 +48,7 @@ namespace Hospital {
          * Used to set variable used to go back to login screen
          * \param Form logout - set variable home in order for navigation to login screen
          */
-        public void setHome(Form logout) {
+        public void SetHome(Form logout) {
             homeScreen = logout;
         }
 
@@ -59,26 +58,26 @@ namespace Hospital {
          * features on screen based upon patient.
          * \param PatientInfo patient - patient to be shown on form
          */
-        public void setPatient(PatientInfo patient) {
+        public void SetPatient(PatientInfo patient) {
             pat = patient;
 
             //Blank is used as if empty record then database doesnt return a date as null but
             //returns a date 1/01/0001
             DateTime blank = new DateTime(0001, 1, 01);
-            updateTable(pat.getPatientId());
+            UpdateTable(pat.GetPatientId());
 
             PatInfolbl.Text = "Patient Info: \r\n";
-            PatInfolbl.Text += pat.getFName() + " " + pat.getSName() + "\r\n";
-            currentRoomtxt.Text = "Current Room: " + pat.getRoom();
+            PatInfolbl.Text += pat.GetFName() + " " + pat.GetSName() + "\r\n";
+            currentRoomtxt.Text = "Current Room: " + pat.GetRoom();
 
-            if (pat.getDOB() != blank) {
-                PatInfolbl.Text += pat.getDOB();
+            if (pat.GetDOB() != blank) {
+                PatInfolbl.Text += pat.GetDOB();
             }
 
             // Display appropriate button based upon role of user
-            if (Role == "Doctor") {
+            if (role == "Doctor") {
                 Finishbtn.Visible = false;
-                if (pat.getRoom() == "E100") {
+                if (pat.GetRoom() == "E100") {
                     Surgerybtn.Visible = true;
                     Imagingbtn.Visible = true;
                     ViewImgbtn.Visible = true;
@@ -88,13 +87,13 @@ namespace Hospital {
                     ViewImgbtn.Visible = false;
                 }
 
-            } else if (Role == "MedTech") {
-                if (pat.getRoom().Contains('I'))
+            } else if (role == "MedTech") {
+                if (pat.GetRoom().Contains('I'))
                 {
                     Finishbtn.Visible = true;
                     ViewImgbtn.Visible = true;
                 }
-                else if (pat.getRoom().Contains('S'))
+                else if (pat.GetRoom().Contains('S'))
                 {
                     Finishbtn.Visible = true;
                     ViewImgbtn.Visible = true;
@@ -127,9 +126,9 @@ namespace Hospital {
          * user can view images of the selected patient
          */
         private void ViewImgbtn_Click(object sender, EventArgs e) {
-            if (pat.getPatientId() != -1) {
-                int patient = pat.getPatientId();
-                TestResultViewer Tests = new TestResultViewer(UserID, Role, patient);
+            if (pat.GetPatientId() != -1) {
+                int patient = pat.GetPatientId();
+                TestResultViewer Tests = new TestResultViewer(userID, role, patient);
                 Tests.Show();
             } else {
                 MessageBox.Show("Please search for a patient.", "Patient Search required",
@@ -145,17 +144,17 @@ namespace Hospital {
         private void Searchbtn_Click(object sender, EventArgs e) {
             if (Seatxt.Text != "") {
                 PatientInfo[] patients;
-                string Surname = Seatxt.Text;
+                string surname = Seatxt.Text;
 
-                patients = Patient.searchPatientSurname(Surname);
+                patients = Patient.SearchPatientSurname(surname);
 
                 if (patients.Length == 0) {
                     MessageBox.Show("Patient could not be found in system.", "Patient try again.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else if (patients.Length == 1) {
-                    setPatient(patients[0]);
+                    SetPatient(patients[0]);
                 } else {
-                    ChoosePatient choosePat = new ChoosePatient(UserID, Role, homeScreen, this, Surname, patients);
+                    ChoosePatient choosePat = new ChoosePatient(userID, role, homeScreen, this, surname, patients);
                     choosePat.Show();
                 }
 
@@ -168,11 +167,11 @@ namespace Hospital {
         /*
          * Update patient information on form.
          */
-        private void updatePatient() {
-            pat = Patient.SearchPID(pat.getPatientId());
+        private void UpdatePatient() {
+            pat = Patient.SearchPID(pat.GetPatientId());
 
-            currentRoomtxt.Text = "Current Room: " + pat.getRoom();
-            addHistory("Patient is booked in room " + pat.getRoom() + " for " + typeBooked.ToString());
+            currentRoomtxt.Text = "Current Room: " + pat.GetRoom();
+            AddHistory("Patient is booked in room " + pat.GetRoom() + " for " + typeBooked.ToString());
             Surgerybtn.Visible = false;
             Imagingbtn.Visible = false;
             ViewImgbtn.Visible = true;
@@ -185,15 +184,15 @@ namespace Hospital {
          */
         private void Surgerybtn_Click(object sender, EventArgs e) {
 
-            if (pat.getPatientId() != -1) {
+            if (pat.GetPatientId() != -1) {
                 Finance finance = new Finance("Surgery", this);
                 finance.ShowDialog();
                 if (typeBooked != null) {
-                    bool success = fac.bookSurgery(pat, typeBooked);
+                    bool success = fac.BookSurgery(pat, typeBooked);
                     if (success == true) {
-                        MessageBox.Show("Patient: " + pat.getPatientId() + " is now booked for " + typeBooked.ToString(), typeBooked.ToString() + " Surgery booked",
+                        MessageBox.Show("Patient: " + pat.GetPatientId() + " is now booked for " + typeBooked.ToString(), typeBooked.ToString() + " Surgery booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        updatePatient();
+                        UpdatePatient();
                     } else {
                         MessageBox.Show("Patient surgery was not booked.", "Surgery not booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -208,7 +207,7 @@ namespace Hospital {
             }
         }
 
-        public void setBookedType(FinanceCmbItem type) {
+        public void SetBookedType(FinanceCmbItem type) {
             typeBooked = type;
         }
 
@@ -219,15 +218,15 @@ namespace Hospital {
          */
         private void Imagingbtn_Click(object sender, EventArgs e) {
 
-            if (pat.getPatientId() != -1) {
+            if (pat.GetPatientId() != -1) {
                 Finance finance = new Finance("Imaging", this);
                 finance.ShowDialog();
                 if (typeBooked != null) {
-                    bool success = fac.bookImaging(pat, typeBooked, UserID);
+                    bool success = fac.BookImaging(pat, typeBooked, userID);
                     if (success == true) {
-                        MessageBox.Show("Patient: " + pat.getPatientId() + " is now booked for " + typeBooked.Type, typeBooked.ToString() + " booked",
+                        MessageBox.Show("Patient: " + pat.GetPatientId() + " is now booked for " + typeBooked.Type, typeBooked.ToString() + " booked",
                         MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        updatePatient();
+                        UpdatePatient();
 
                     } else {
                         MessageBox.Show("Patient " + typeBooked.ToString() + " was not booked.", typeBooked.ToString() + " not booked",
@@ -250,10 +249,10 @@ namespace Hospital {
          * emergency room. Button used when MedTech is finished with patient.
          */
         private void Finishbtn_Click(object sender, EventArgs e) {
-            if (pat.getPatientId() != -1) {
-                fac.returnPatientToDoctor(pat);
-                pat = Patient.SearchPID(pat.getPatientId());
-                currentRoomtxt.Text = "Current Room: " + pat.getRoom();
+            if (pat.GetPatientId() != -1) {
+                fac.ReturnPatientToDoctor(pat);
+                pat = Patient.SearchPID(pat.GetPatientId());
+                currentRoomtxt.Text = "Current Room: " + pat.GetRoom();
                 MessageBox.Show("Procedure completed", "Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Finishbtn.Visible = false;
                 ViewImgbtn.Visible = false;
@@ -268,9 +267,9 @@ namespace Hospital {
          * On Click event for button to add content of the 
          * addHistorytbx on form to the users history table.
          */
-        private void addHistorybtn_Click(object sender, EventArgs e) { //add history input via user
-            if (pat.getPatientId() != -1) {
-                addHistory(addHistorytbx.Text);
+        private void AddHistorybtn_Click(object sender, EventArgs e) { //add history input via user
+            if (pat.GetPatientId() != -1) {
+                AddHistory(addHistorytbx.Text);
                 addHistorytbx.Text = "";
             }
         }
@@ -281,17 +280,17 @@ namespace Hospital {
          * history table.
          * \param string history - history being added to the patient's history table
          */
-        private void addHistory(string history) {
+        private void AddHistory(string history) {
             try {
                 SqlConnection con = DBCon.DBConnect();
                 con.Open();
                 SqlCommand command = new SqlCommand("INSERT INTO History (PatientID, StaffID, History, Date) VALUES (@pid, @userid, @typedhistory, GetDate());", con);
-                command.Parameters.AddWithValue("@pid", pat.getPatientId());
-                command.Parameters.AddWithValue("@userid", UserID);
+                command.Parameters.AddWithValue("@pid", pat.GetPatientId());
+                command.Parameters.AddWithValue("@userid", userID);
                 command.Parameters.AddWithValue("@typedhistory", history);
                 command.ExecuteNonQuery();
                 con.Close();
-                updateTable(pat.getPatientId());
+                UpdateTable(pat.GetPatientId());
             } catch { 
             }
         }
@@ -300,16 +299,16 @@ namespace Hospital {
         /*
          * Updates the history displayed in the DataGridView on form   
          */
-        private void updateTable(int PID) {
+        private void UpdateTable(int patID) {
             SqlConnection con = DBCon.DBConnect();
             SqlCommand command = new SqlCommand("SELECT StaffID, History, Date FROM History WHERE PatientID = @pid ORDER BY Date DESC", con);
-            command.Parameters.AddWithValue("@pid", PID);
+            command.Parameters.AddWithValue("@pid", patID);
 
-            SqlDataAdapter DataAdapter = new SqlDataAdapter();
-            DataAdapter.SelectCommand = command;
+            SqlDataAdapter dataAdapter = new SqlDataAdapter();
+            dataAdapter.SelectCommand = command;
             DataSet ds = new DataSet();
             con.Open();
-            DataAdapter.Fill(ds, "History");
+            dataAdapter.Fill(ds, "History");
             con.Close();
             historyDataGridView.DataSource = ds;
             historyDataGridView.DataMember = "History";
@@ -331,9 +330,9 @@ namespace Hospital {
          * Pressing the enter key in the add history textbox
          * does the same function as if the add history button was clicked.
          */
-        private void addHistorytbx_KeyDown(object sender, KeyEventArgs e) {
+        private void AddHistorytbx_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
-                addHistorybtn_Click(sender, e);
+                AddHistorybtn_Click(sender, e);
             }
         }
 

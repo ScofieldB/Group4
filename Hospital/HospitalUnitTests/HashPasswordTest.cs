@@ -10,10 +10,10 @@ namespace HospitalUnitTests {
         public void TestGetHashValid() {
             string result = "";
             Hospital.Login login = new Hospital.Login();
-            result = login.getHash("123abc");
+            result = login.GetHash("123abc");
             Assert.AreEqual("?D?Wi?sa?????m(", result, true);
 
-            result = login.getHash("test123");
+            result = login.GetHash("test123");
             Assert.AreEqual("??G??????vh????", result, true);
         }
 
@@ -22,7 +22,7 @@ namespace HospitalUnitTests {
         public void TestGetHashInvalid() {
             string result = "";
             Hospital.Login login = new Hospital.Login();
-            result = login.getHash("abc123");
+            result = login.GetHash("abc123");
             Assert.AreNotEqual("?D?Wi?sa?????m(", result, true);
         }
     }

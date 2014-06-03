@@ -15,27 +15,27 @@ namespace Hospital {
         private string role;
         private bool confirmed;
 
-        public string getUser() {
+        public string GetUser() {
             return username;
         }
 
-        public void setUser(string user) {
+        public void SetUser(string user) {
             username = user;
         }
 
-        public string getRole() {
+        public string GetRole() {
             return role;
         }
 
-        public void setRole(string role) {
+        public void SetRole(string role) {
             this.role = role;
         }
 
-        public bool getConfirmed() {
+        public bool GetConfirmed() {
             return confirmed;
         }
 
-        public void setConfirmed(bool con) {
+        public void SetConfirmed(bool con) {
             confirmed = con;
         }
     }

@@ -543,7 +543,7 @@
             this.hardCopybtn.Text = "Export Data";
             this.hardCopybtn.UseVisualStyleBackColor = true;
             this.hardCopybtn.Visible = false;
-            this.hardCopybtn.Click += new System.EventHandler(this.hardCopybtn_Click);
+            this.hardCopybtn.Click += new System.EventHandler(this.HardCopybtn_Click);
             // 
             // Homtxt
             // 

@@ -22,7 +22,7 @@ namespace Hospital {
         }
 
         // Used to set variable used to go back to login screen
-        public void setHome(Form logout, Form back) {
+        public void SetHome(Form logout, Form back) {
             home = logout;
             this.back = back;
         }
@@ -35,7 +35,7 @@ namespace Hospital {
 
         private void Querybtn_Click(object sender, EventArgs e) {
             if (Usernametxt.Text != "") {
-                string role = admin.queryUser(Usernametxt.Text);
+                string role = admin.QueryUser(Usernametxt.Text);
 
                 switch (role) {
 
@@ -74,18 +74,18 @@ namespace Hospital {
          */
         private void Newbtn_Click(object sender, EventArgs e) {
 
-            string Surname = "";
+            string surname = "";
 
             try {
-                Surname = admin.addUser(Usernametxt.Text, Rolecmb.SelectedItem.ToString());
+                surname = admin.AddUser(Usernametxt.Text, Rolecmb.SelectedItem.ToString());
 
-                if (Surname == "") {
+                if (surname == "") {
                     MessageBox.Show("StaffID " + Usernametxt.Text + " is not a valid userame"
-                                    + Surname, "User Not Added",
+                                    + surname, "User Not Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else {
                     MessageBox.Show("StaffID " + Usernametxt.Text + " has now been added to system with password: "
-                                    + Surname, "User Added",
+                                    + surname, "User Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             } catch (Exception) {
@@ -104,12 +104,12 @@ namespace Hospital {
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
 
-                int CountOfUser = countUsers(userId);
+                int countOfUser = CountUsers(userId);
 
-                if (CountOfUser > 0) {
+                if (countOfUser > 0) {
 
                     try {
-                        admin.deleteUser(Usernametxt.Text);
+                        admin.DeleteUser(Usernametxt.Text);
 
                         MessageBox.Show("StaffID " + Usernametxt.Text + " has now been deleted from system", "User deleted",
                             MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
@@ -136,13 +136,13 @@ namespace Hospital {
                     "another Admin if you wish to proceed", "User Not Updated",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else {
-                int CountOfUser = countUsers(userId);
+                int countOfUser = CountUsers(userId);
 
-                if (CountOfUser > 0) {
+                if (countOfUser > 0) {
 
                     if (Rolecmb.SelectedIndex >= 0) {
                         try {
-                            admin.updateUser(Usernametxt.Text, Rolecmb.SelectedItem.ToString());
+                            admin.UpdateUser(Usernametxt.Text, Rolecmb.SelectedItem.ToString());
 
                             MessageBox.Show("StaffID " + Usernametxt.Text + " has now been updated in system " +
                                 "to " + Rolecmb.SelectedItem.ToString(), "User deleted",
@@ -166,7 +166,7 @@ namespace Hospital {
         }
 
 
-        private int countUsers(string userID) {
+        private int CountUsers(string userID) {
             SqlConnection con = DBCon.DBConnect();
 
             con.Open();
@@ -175,15 +175,15 @@ namespace Hospital {
             command.Parameters.AddWithValue("@id", Usernametxt.Text);
             SqlDataReader reader = command.ExecuteReader();
 
-            int CountOfUser = 0;
+            int countOfUser = 0;
             while (reader.Read()) {
-                CountOfUser = Convert.ToInt32(reader.GetInt32(0));
+                countOfUser = Convert.ToInt32(reader.GetInt32(0));
             }
             reader.Close();
 
             con.Close();
 
-            return CountOfUser;
+            return countOfUser;
         }
 
     }

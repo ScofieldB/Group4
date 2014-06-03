@@ -74,7 +74,7 @@
             this.reportbtn.TabIndex = 15;
             this.reportbtn.Text = "Reports";
             this.reportbtn.UseVisualStyleBackColor = true;
-            this.reportbtn.Click += new System.EventHandler(this.reportbtn_Click);
+            this.reportbtn.Click += new System.EventHandler(this.Reportbtn_Click);
             // 
             // usermgmtbtn
             // 
@@ -92,7 +92,7 @@
             this.usermgmtbtn.TabIndex = 16;
             this.usermgmtbtn.Text = "User Mgmt";
             this.usermgmtbtn.UseVisualStyleBackColor = true;
-            this.usermgmtbtn.Click += new System.EventHandler(this.usermgmtbtn_Click);
+            this.usermgmtbtn.Click += new System.EventHandler(this.Usermgmtbtn_Click);
             // 
             // Adminfrm
             // 

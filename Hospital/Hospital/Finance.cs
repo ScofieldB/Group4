@@ -27,7 +27,7 @@ namespace Hospital {
 
         private void Confirmbtn_Click(object sender, EventArgs e) {
             FinanceCmbItem choice = (FinanceCmbItem)Choicescmb.SelectedItem;
-            previousForm.setBookedType(choice);
+            previousForm.SetBookedType(choice);
             Close();
         }
 

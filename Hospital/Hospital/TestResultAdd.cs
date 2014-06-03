@@ -14,13 +14,12 @@ using System.Drawing.Imaging;
 namespace Hospital {
     public partial class TestResultAdd : Form {
 
-        private string UserID;
+        private string userID;
         private int patient;
 
-        public TestResultAdd(string usersID, int patientnum)
-        {
+        public TestResultAdd(string userID, int patientnum) {
             patient = patientnum;
-            UserID = usersID;
+            this.userID = userID;
             InitializeComponent();
         }
 
@@ -32,11 +31,11 @@ namespace Hospital {
             OpenFileDialog ofd = new OpenFileDialog();
             System.Windows.Forms.DialogResult dr = ofd.ShowDialog();
             if (dr == DialogResult.OK) {
-                userSelectedFilePath = ofd.FileName;
+                UserSelectedFilePath = ofd.FileName;
             }
         }
 
-        public string userSelectedFilePath {
+        public string UserSelectedFilePath {
             get {
                 return filePathLbl.Text;
             }
@@ -47,26 +46,26 @@ namespace Hospital {
         }
 
         private void Uploadbtn_Click(object sender, EventArgs e) {
-            DateTime CurrentDT = DateTime.Now;
+            DateTime currentDT = DateTime.Now;
             try {
                 //Set up connection to be opened.
                 SqlConnection con = DBCon.DBConnect();
                 SqlCommand cmd = new SqlCommand("UPDATE Tests SET TestResults = @TestResults, UploadedByStaffID = @user, DateUploaded = @date WHERE TestResults IS NULL AND PatientID = @pat", con);
 
-                cmd.Parameters.AddWithValue("@user", UserID);
-                cmd.Parameters.AddWithValue("@Date", CurrentDT);
+                cmd.Parameters.AddWithValue("@user", userID);
+                cmd.Parameters.AddWithValue("@Date", currentDT);
                 cmd.Parameters.AddWithValue("@pat", patient);
 
-                string ImageFilePath = userSelectedFilePath;
-               // string rawImageFilePath = userSelectedFilePath;
-              //  string ImageFilePath = rawImageFilePath.Replace(@"\", @"/");
-                Cancelbtn.Text = ImageFilePath;
+                string imageFilePath = UserSelectedFilePath;
+                // string rawImageFilePath = userSelectedFilePath;
+                //  string ImageFilePath = rawImageFilePath.Replace(@"\", @"/");
+                Cancelbtn.Text = imageFilePath;
 
                 //Read jpg into file stream, and from there into Byte array.
-                FileStream ImageFileStream = new FileStream(ImageFilePath, FileMode.Open, FileAccess.Read);
-                Byte[] bytTestResultsImage = new Byte[ImageFileStream.Length];
-                ImageFileStream.Read(bytTestResultsImage, 0, bytTestResultsImage.Length);
-                ImageFileStream.Close();
+                FileStream imageFileStream = new FileStream(imageFilePath, FileMode.Open, FileAccess.Read);
+                Byte[] bytTestResultsImage = new Byte[imageFileStream.Length];
+                imageFileStream.Read(bytTestResultsImage, 0, bytTestResultsImage.Length);
+                imageFileStream.Close();
 
                 //Create parameter for insert command and add to SqlCommand object.
                 SqlParameter prm = new SqlParameter("@TestResults", SqlDbType.VarBinary, bytTestResultsImage.Length, ParameterDirection.Input, false,
