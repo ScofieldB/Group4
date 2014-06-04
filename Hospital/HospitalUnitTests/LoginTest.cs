@@ -11,7 +11,7 @@ namespace HospitalUnitTests {
         [TestMethod]
         public void TestGetDetailsValid() {
             user = login.GetDetails("1000", "test123");
- 
+
             Assert.AreEqual("1000", user.GetUser(), true);
         }
 

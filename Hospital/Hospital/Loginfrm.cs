@@ -74,8 +74,8 @@ namespace Hospital {
                             mainprogram.Show();
                         }
 
-                    // If password is not user generated but was System Admin generated then ensure 
-                    // user must update password.
+                        // If password is not user generated but was System Admin generated then ensure 
+                        // user must update password.
                     } else {
                         NewPasswordfrm newpw = new NewPasswordfrm(user.GetUser());
                         newpw.Show();

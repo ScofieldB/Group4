@@ -594,13 +594,13 @@ namespace Hospital {
                     MessageBox.Show("Please Enter Date of Birth not in the future.");
                     DOBtxt.Text = "";
                 }
-                //not greater than 120 years
+                    //not greater than 120 years
                 else if (patDate < past) {
                     MessageBox.Show("Please Enter Date of Birth not older than 120 years.");
                     DOBtxt.Text = "";
                 }
             }
-            //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
+                //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
             catch (Exception) {
                 MessageBox.Show("Please do not leave spaces in date of birth.");
                 DOBtxt.Text = "";

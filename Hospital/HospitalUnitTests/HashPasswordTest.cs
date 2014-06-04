@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HospitalUnitTests {
     [TestClass]
-    public class HashPasswordTest {   
+    public class HashPasswordTest {
 
         // Tests a valid hashed password result
         [TestMethod]

@@ -79,7 +79,7 @@ namespace Hospital {
             } else {
                 MessageBox.Show("StaffID: " + Usernametxt.Text + " does not exist in system.", "Invalid user",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }           
+            }
         }
 
         /*

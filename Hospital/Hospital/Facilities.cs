@@ -315,7 +315,7 @@ namespace Hospital {
          */
         private void CheckCover(PatientInfo pat, FinanceCmbItem typeBooked) {
             SqlCommand command = new SqlCommand("", con);
-            
+
             //If user has no Private cover then charge the patient
             if (pat.GetCoverType() == 0) {
                 con.Open();
@@ -324,7 +324,7 @@ namespace Hospital {
                 command.Parameters.AddWithValue("@patID", pat.GetPatientId());
                 command.ExecuteNonQuery();
                 con.Close();
-                UpdateChargeHistory(pat, typeBooked.Type, typeBooked.Cost);                
+                UpdateChargeHistory(pat, typeBooked.Type, typeBooked.Cost);
             }
             con.Open();
             command.Parameters.Clear();

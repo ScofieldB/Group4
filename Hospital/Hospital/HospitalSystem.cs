@@ -83,17 +83,13 @@ namespace Hospital {
                 }
 
             } else if (role == "MedTech") {
-                if (pat.GetRoom().Contains('I'))
-                {
+                if (pat.GetRoom().Contains('I')) {
                     Finishbtn.Visible = true;
                     ViewImgbtn.Visible = true;
-                }
-                else if (pat.GetRoom().Contains('S'))
-                {
+                } else if (pat.GetRoom().Contains('S')) {
                     Finishbtn.Visible = true;
                     ViewImgbtn.Visible = true;
-                }
-                else {
+                } else {
                     Finishbtn.Visible = false;
                     ViewImgbtn.Visible = false;
                 }
@@ -278,7 +274,7 @@ namespace Hospital {
                 command.ExecuteNonQuery();
                 con.Close();
                 UpdateTable(pat.GetPatientId());
-            } catch { 
+            } catch {
             }
         }
 

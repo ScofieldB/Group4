@@ -14,7 +14,7 @@ namespace HospitalUnitTests {
         [TestMethod]
         public void TestSearchPIDValid() {
             Hospital.PatientInfo pat = Hospital.Patient.SearchPID(100009);
-            
+
             Assert.AreEqual(100009, pat.GetPatientId());
             Assert.AreEqual("Emily", pat.GetFName(), true);
 
@@ -131,7 +131,7 @@ namespace HospitalUnitTests {
 
             con.Open();
             SqlCommand command = new SqlCommand(null, con);
-            
+
             command.Parameters.Clear();
             command.CommandText = "UPDATE Patient SET TotalCharges = @charges WHERE PatientID = @id";
             command.Parameters.AddWithValue("@charges", pat.GetCharges());
