@@ -15,6 +15,7 @@ namespace HospitalUnitTests {
          */
         [TestMethod]
         public void TestAddUser() {
+            admin.DeleteUser("1008");
             string surname = admin.AddUser("1008", "Doctor");
             Assert.AreEqual("Burney", surname);
 
