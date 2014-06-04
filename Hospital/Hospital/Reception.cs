@@ -46,6 +46,7 @@ namespace Hospital {
         /*
          * SetHome is used for navigational purposes to and from the
          * Login screen.
+         * \param Form logout - provides navigation features back to login screen
          */
         public void SetHome(Form logout) {
             home = logout;
@@ -472,7 +473,7 @@ namespace Hospital {
         }
 
         /* Query updates patient history based on current patient status as moving through procedures.
-         * /param string historyType
+         * /param string historyType - the history to be updated into database
          */
         private void UpdateHistory(string historyType) {
             string typedHistory;

@@ -13,6 +13,8 @@ namespace Hospital {
         /*
          * Add user access to system with specified userID and role.
          * Sets default password for new user to their surname.
+         * \param string userID - userID to be added to system
+         * \param string role - role of the user being added to system
          */
         public string AddUser(string userID, string role) {
             bool userExist = false;
@@ -59,6 +61,11 @@ namespace Hospital {
         }
 
 
+        /*
+         * Queries the role of the userID passed as parameter
+         * \param string userID - userID being queried
+         * \return string - the role of the user being queried
+         */
         public string QueryUser(string userID) {
             string role = "";
             con.Open();
@@ -77,6 +84,11 @@ namespace Hospital {
         }
 
 
+        /*
+         * If the user exists, update teh user with supplied role
+         * \param string userID - userID to be updated
+         * \param string role - role to update userID to
+         */
         public void UpdateUser(string userID, string role) {
 
             con.Open();
@@ -107,12 +119,13 @@ namespace Hospital {
 
         /*
          * Remove specified userID from system.
+         * \param string userId - userId of the user to be deleted
          */
-        public void DeleteUser(string user) {
+        public void DeleteUser(string userId) {
             con.Open();
             SqlCommand command = new SqlCommand(null, con);
             command.CommandText = "DELETE FROM [dbo].[Users] WHERE StaffID = @id";
-            command.Parameters.AddWithValue("@id", user);
+            command.Parameters.AddWithValue("@id", userId);
             command.ExecuteNonQuery();
             con.Close();
         }

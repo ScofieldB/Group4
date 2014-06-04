@@ -10,7 +10,7 @@ namespace HospitalUnitTests {
 
         [TestMethod]
         public void TestGetDetailsValid() {
-            user = login.GetDetails("1000", "123abc");
+            user = login.GetDetails("1000", "test123");
  
             Assert.AreEqual("1000", user.GetUser(), true);
         }
@@ -18,7 +18,7 @@ namespace HospitalUnitTests {
 
         [TestMethod]
         public void TestGetDetailsInvalidId() {
-            user = login.GetDetails("9", "123abc");
+            user = login.GetDetails("9", "test123");
 
             Assert.AreEqual("", user.GetUser(), true);
         }
