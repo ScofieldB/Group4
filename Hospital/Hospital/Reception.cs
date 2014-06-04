@@ -24,7 +24,6 @@ namespace Hospital {
         private string role = "Reception";
         private string userID;
 
-
         /*
          * Sets up form and updates UserID variable with user parameter passed.
          * \param string user - UserID of user logged in
@@ -96,7 +95,9 @@ namespace Hospital {
             hardCopybtn.Visible = true;
         }
 
-        // Logout user by returning to login screen
+        /*
+         * Logout user by returning to login screen
+         */
         private void Logoutbtn_Click(object sender, EventArgs e) {
             home.Show();
             Close();
@@ -138,9 +139,10 @@ namespace Hospital {
             }
         }
 
-        //Creates new patient record based off of details entered in receptionist form.
-        //Matches values in fields to valid datatypes acceptable by database field 
-        //Sets defaults in fields where fields cannot accept NULL
+        /* Creates new patient record based off of details entered in receptionist form.
+         * Matches values in fields to valid datatypes acceptable by database field 
+         * Sets defaults in fields where fields cannot accept NULL
+         */
         private void Newbtn_Click(object sender, EventArgs e) {
             bool success = true;
             SqlConnection con = DBCon.DBConnect();
@@ -236,7 +238,7 @@ namespace Hospital {
             }
 
             //adds patient to default discharged state
-            command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 4).Value = "0";
+            command.Parameters.Add("@room", System.Data.SqlDbType.NVarChar, 10).Value = "Discharged";
 
             //Sets directionality of @PATID to be returned after primary/record generation
             command.Parameters.Add("@PATID", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -267,7 +269,9 @@ namespace Hospital {
             }
         }
 
-        //Clears textboxes and set drop downs to default states, resets button and label visiblity
+        /*
+         * Clears textboxes and set drop downs to default states, resets button and label visiblity
+         */
         private void ClearFields() {
             pat = null;
             Seatxt.Text = "";
@@ -399,7 +403,7 @@ namespace Hospital {
                 if (CurrentRoomlbl.Text != "") {
                     room = CurrentRoomlbl.Text;
                 } else {
-                    room = "0";
+                    room = "Discharged";
                 }
 
                 SqlConnection con = DBCon.DBConnect();
@@ -439,11 +443,12 @@ namespace Hospital {
             }
         }
 
-
+        /* On Click Discharges patient, checks if current pat object loaded has enough charges to
+         * discharge, generates crystal report invoice, resets room and charges of patient.
+         */
         private void Dischargebtn_Click(object sender, EventArgs e) {
             pat = Patient.SearchPID(pat.GetPatientId());
             int charges = Patient.DischargePatient(pat);
-
 
             if (charges > 0) {
                 try {
@@ -466,6 +471,9 @@ namespace Hospital {
             Patient.ClearChargeHistory(pat.GetPatientId());
         }
 
+        /* Query updates patient history based on current patient status as moving through procedures.
+         * /param string historyType
+         */
         private void UpdateHistory(string historyType) {
             string typedHistory;
 
@@ -487,7 +495,10 @@ namespace Hospital {
             con.Close();
         }
 
-
+        /* Generates and outputs Crystral Report Invoice used for discharging a patient.
+         * Called by Dischargebtn
+         * /param Int charges - charges for patient based on pat object
+         */
         private void CreateInvoice(int charges) {
 
             if (pat.GetPatientId() != -1) {
@@ -545,7 +556,9 @@ namespace Hospital {
             }
         }
 
-        //Name validation when changing element
+        /*
+         *Name validation using regex when user leaves element focus
+         */
         private void Name_Validating(object sender, CancelEventArgs e) {
             string reg = @"^[a-zA-Z' -]{1,20}$";//regex allows only english characters, spaces, hyphen or apostrophe
             if (!Regex.IsMatch(this.Surtxt.Text.Trim(), reg)) {
@@ -553,7 +566,9 @@ namespace Hospital {
             }
         }
 
-        //Number validation when changing element
+        /*
+         *Number validation using regex when user leaves element focus
+         */
         private void CovNum_Validating(object sender, CancelEventArgs e) {
             string reg = @"^[0-9]+$";//regex allows only numbers
             if (!Regex.IsMatch(this.CovNtxt.Text.Trim(), reg) || (int.Parse(CovNtxt.Text) > 1000000)) {
@@ -562,7 +577,9 @@ namespace Hospital {
             }
         }
 
-        //Validation for date entry, cannot be future or over 120 years.
+        /*
+         *Validation for date entry, cannot be future or over 120 years.
+         */
         private void Date_Validating(object sender, CancelEventArgs e) {
 
             //Try catch for DOB validation
@@ -577,20 +594,22 @@ namespace Hospital {
                     MessageBox.Show("Please Enter Date of Birth not in the future.");
                     DOBtxt.Text = "";
                 }
-                    //not greater than 120 years
+                //not greater than 120 years
                 else if (patDate < past) {
                     MessageBox.Show("Please Enter Date of Birth not older than 120 years.");
                     DOBtxt.Text = "";
                 }
             }
-                //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
+            //catch for any exception that could be thrown, mostly because of spaces in conversion of string to datetime
             catch (Exception) {
                 MessageBox.Show("Please do not leave spaces in date of birth.");
                 DOBtxt.Text = "";
             }
         }
 
-        //Address validation when changing element
+        /*
+         * Address and allergies validation using regex when user leaves element focus
+         */
         private void Add_Validating(object sender, CancelEventArgs e) {
             string reg = @"^[0-9a-zA-Z' ,./-]{1,500}$";//regex allows only select few special characters
             if (!Regex.IsMatch(this.Addtxt.Text.Trim(), reg)) {
@@ -598,7 +617,9 @@ namespace Hospital {
             }
         }
 
-
+        /*
+         * On Enter Seachbtn_Click
+         */
         private void Seatxt_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 Searchbtn_Click(sender, e);

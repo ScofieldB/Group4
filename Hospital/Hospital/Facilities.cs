@@ -15,7 +15,6 @@ namespace Hospital {
 
         private SqlConnection con = DBCon.DBConnect();
 
-
         /*
          * Update database with patient allocated to Emergency and update
          * the room bed allocations.
@@ -72,12 +71,9 @@ namespace Hospital {
                     admitted = false;
                 }
             }
-
             con.Close();
-
             return admitted;
         }
-
 
         /*
          * Update database that patient is now moved to Surgery room and update
@@ -113,11 +109,9 @@ namespace Hospital {
                     UpdateFacilities(pat, newRoomCapacity, newRoom);
                     CheckCover(pat, typeBooked);
                 }
-
             }
             return success;
         }
-
 
         /*
          * Update database that patient is now moved to Imaging room and update
@@ -152,7 +146,6 @@ namespace Hospital {
                     AddImagingRequest(pat, typeBooked, userID);
                     CheckCover(pat, typeBooked);
                 }
-
             }
             return success;
         }
@@ -176,7 +169,6 @@ namespace Hospital {
             cmd.ExecuteNonQuery();
             con.Close();
         }
-
 
         /*
          * Update database when sending patient back to doctor and update
@@ -206,10 +198,8 @@ namespace Hospital {
                 if (success == true) {
                     UpdateFacilities(pat, newRoomCapacity, newRoom);
                 }
-
             }
         }
-
 
         /*
          * Update patient to new room and change room bed allocations within database.
@@ -233,14 +223,12 @@ namespace Hospital {
             }
             reader.Close();
 
-
             //Move patient to new bed facility and remove 1 bedding space
             command.Parameters.Clear();
             command.CommandText = "UPDATE Facilities SET Capacity = @cap WHERE Room = @room";
             command.Parameters.AddWithValue("@cap", newRoomCapacity - 1);
             command.Parameters.AddWithValue("@room", newRoom);
             command.ExecuteNonQuery();
-
 
             //Update room moved from to have an available bed slot free.
             command.Parameters.Clear();
@@ -259,7 +247,6 @@ namespace Hospital {
             con.Close();
         }
 
-
         /*
          * Discharges patient from the Emergency room.
          * \param int patID - patientID of the patient being discharged
@@ -268,7 +255,6 @@ namespace Hospital {
         public int DischargePatient(int patId) {
             int capacity = 0;
             int totalCharges = 0;
-
 
             PatientInfo pat = Patient.SearchPID(patId);
 
@@ -284,7 +270,6 @@ namespace Hospital {
                 command.ExecuteNonQuery();
 
                 command.Parameters.Clear();
-
 
                 command.CommandText = "SELECT Capacity FROM Facilities WHERE RoomType = 'Emergency'";
                 SqlDataReader reader = command.ExecuteReader();
@@ -310,7 +295,6 @@ namespace Hospital {
 
                 reader.Close();
 
-
                 //Clear the charges from the Patient file.
                 command.Parameters.Clear();
                 command.CommandText = "UPDATE Patient SET TotalCharges = 0 WHERE PatientID = @patID";
@@ -319,10 +303,8 @@ namespace Hospital {
 
                 con.Close();
             }
-
             return totalCharges;
         }
-
 
         /*
          * Checks the patients health cover details and update the outstanding
@@ -333,7 +315,6 @@ namespace Hospital {
          */
         private void CheckCover(PatientInfo pat, FinanceCmbItem typeBooked) {
             SqlCommand command = new SqlCommand("", con);
-
             
             //If user has no Private cover then charge the patient
             if (pat.GetCoverType() == 0) {
@@ -353,7 +334,6 @@ namespace Hospital {
 
             con.Close();
         }
-
 
         /*
          * Updates chargeHistory table to keep a record of patient billable history while admitted.
@@ -381,5 +361,4 @@ namespace Hospital {
             return success;
         }
     }
-
 }
