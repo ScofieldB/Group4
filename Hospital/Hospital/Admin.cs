@@ -54,11 +54,13 @@ namespace Hospital {
                 command.ExecuteNonQuery();
                 con.Close();
             }
-
             return surname;
         }
 
-
+        /* Queries current user for role
+         * /param strig userID
+         * /return Role
+         */
         public string QueryUser(string userID) {
             string role = "";
             con.Open();
@@ -76,7 +78,9 @@ namespace Hospital {
             return role;
         }
 
-
+        /* Updates role of user if only one matching is found
+         * /param string userID, string role
+         */
         public void UpdateUser(string userID, string role) {
 
             con.Open();
@@ -99,9 +103,7 @@ namespace Hospital {
                 command.Parameters.AddWithValue("@role", role);
                 command.ExecuteNonQuery();
             }
-
             con.Close();
-
         }
 
 

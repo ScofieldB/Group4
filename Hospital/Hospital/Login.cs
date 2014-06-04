@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 /*
  * Class responsible for all business logic in relation to the 
  * management of the login system.
@@ -50,7 +49,6 @@ namespace Hospital {
             }
         }
 
-
         /*
          * When user updates their password first hash the password and then
          * update database with hashed pw.
@@ -72,7 +70,6 @@ namespace Hospital {
 
             con.Close();
         }
-
 
         /* 
          * getHash is used to encrypt the string paramater into a md5 hashed string and return the 

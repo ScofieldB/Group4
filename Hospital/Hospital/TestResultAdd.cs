@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Imaging;
 
-
 /*
  * Form is responsible for selecting and then adding an image to a patient's file
  * on database.
@@ -21,7 +20,6 @@ namespace Hospital {
 
         private string userID;
         private int patient;
-
 
         /*
          * Constructor to initialize form
@@ -34,7 +32,6 @@ namespace Hospital {
             InitializeComponent();
         }
 
-
         /*
          * Opens a window for user to select where the image is located on the
          * computer.
@@ -46,7 +43,6 @@ namespace Hospital {
                 userSelectedFilePath = ofd.FileName;
             }
         }
-
 
         /*
          * Getter/Setter for the userSelectedFilePath variable
@@ -98,7 +94,6 @@ namespace Hospital {
                 con.Close();
                 ActiveForm.Close();
             } catch (Exception ex) { MessageBox.Show(ex.Message); }
-
         }
 
         /*

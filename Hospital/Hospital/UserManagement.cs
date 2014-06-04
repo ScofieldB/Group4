@@ -20,7 +20,6 @@ namespace Hospital {
         private string userId;
         private Admin admin = new Admin();
 
-
         /*
          * Constructor to initialize form.
          * \param string user - the userID of user logged in
@@ -40,7 +39,6 @@ namespace Hospital {
             this.back = back;
         }
 
-
         /*
          * Button navigates back to previous form
          */
@@ -58,7 +56,6 @@ namespace Hospital {
                 string role = admin.QueryUser(Usernametxt.Text);
 
                 switch (role) {
-
 
                     case "Doctor":
                         Rolecmb.SelectedIndex = 0;
@@ -82,10 +79,8 @@ namespace Hospital {
             } else {
                 MessageBox.Show("StaffID: " + Usernametxt.Text + " does not exist in system.", "Invalid user",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            
+            }           
         }
-
 
         /*
          * Check if username input into username text field allready exists as a staff member.
@@ -112,9 +107,7 @@ namespace Hospital {
                 MessageBox.Show("Please input a valid StaffID and select a role", "User Not Added",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
 
         /*
          * Delete the User input in Username text field from the database user table.
@@ -191,9 +184,7 @@ namespace Hospital {
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
-
 
         /*
          * Finds if any users exist in the database with the input userID
@@ -220,6 +211,5 @@ namespace Hospital {
 
             return countOfUser;
         }
-
     }
 }

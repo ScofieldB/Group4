@@ -24,15 +24,12 @@ namespace Hospital {
             InitializeComponent();
         }
 
-
-
         /*
          * Exit the program
          */
         private void Exitbtn_Click(object sender, EventArgs e) {
             Close();
         }
-
 
         /*
          * Once login is clicked will hash the password input by user and compare hashed password to that which
@@ -89,6 +86,5 @@ namespace Hospital {
             Usernametxt.Text = "";
             Passwordtxt.Text = "";
         }
-
     }
 }

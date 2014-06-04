@@ -89,7 +89,6 @@ namespace Hospital {
                 Admitbtn.Visible = false;
                 Dischargebtn.Visible = true;
             }
-
             Savbtn.Visible = true;
             Newbtn.Visible = false;
             hardCopybtn.Visible = true;
@@ -618,7 +617,8 @@ namespace Hospital {
         }
 
         /*
-         * On Enter Seachbtn_Click
+         * Pressing the enter key in the surname search textbox
+         * does the same function as if the search button was clicked.
          */
         private void Seatxt_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {

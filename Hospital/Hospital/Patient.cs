@@ -13,7 +13,6 @@ namespace Hospital {
     */
     public class Patient {
 
-
         /*
          * Searches database for Patent via patientID
          * \param int PID - patientID to be searched
@@ -111,7 +110,6 @@ namespace Hospital {
             reader.Close();
             command.Parameters.Clear();
 
-
             if (patientcount == 1) {
                 patients = new PatientInfo[1];
 
@@ -145,12 +143,9 @@ namespace Hospital {
                     patients[i] = pat;
                 }
             }
-
             con.Close();
-
             return patients;
         }
-
 
         /*
          * Discharge patient from system
@@ -163,7 +158,6 @@ namespace Hospital {
 
             return totalCharges;
         }
-
 
         /*
          * Updates the patients admission fee to outstanding charges based upon 
@@ -197,7 +191,6 @@ namespace Hospital {
 
                 command.Parameters.Clear();
 
-
                 if (charge > -1) {
                     con.Open();
                     command.CommandText = "UPDATE Patient SET TotalCharges = TotalCharges + @cost WHERE PatientID = @patID";
@@ -210,12 +203,9 @@ namespace Hospital {
                     Facilities fac = new Facilities();
                     fac.UpdateChargeHistory(pat, "Admission", charge);
                 }
-
             }
-
             return charge;
         }
-
 
         /*
          * Clear all charges patient has accumulated within the ChargeHistory table

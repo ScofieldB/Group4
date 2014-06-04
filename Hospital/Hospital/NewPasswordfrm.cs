@@ -25,7 +25,6 @@ namespace Hospital {
             userID = user;
         }
 
-
         /*
          * Once clicked the new password will be hashed and then stored into database. Also update Confirmed
          * column in database to 1 to show that password is no longer admin generated but is infact a password

@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 /*
  * Form is used as the main window that doctors, med techs and nurses log into which has
  * all features available to these roles.
@@ -24,7 +23,6 @@ namespace Hospital {
         //Global variables
         private string userID; //String value of the UserID/StaffID
         private string role; //String value of the role User logged in under.
-
 
         /*
          * Costructor that sets up Hopsital form used by doctors and medical technicians.
@@ -42,8 +40,6 @@ namespace Hospital {
             Finishbtn.Visible = false;
         }
 
-
-
         /*
          * Used to set variable used to go back to login screen
          * \param Form logout - set variable home in order for navigation to login screen
@@ -51,7 +47,6 @@ namespace Hospital {
         public void SetHome(Form logout) {
             homeScreen = logout;
         }
-
 
         /*
          * Sets private patient variable and display appropriate
@@ -111,7 +106,6 @@ namespace Hospital {
             }
         }
 
-
         /*
          * Logout and return to login screen
          */
@@ -119,7 +113,6 @@ namespace Hospital {
             homeScreen.Show();
             Close();
         }
-
 
         /*
          * On Click event for button to open TestResultViewer form so
@@ -135,7 +128,6 @@ namespace Hospital {
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         /*
          * On Click event for button to search via Surname. When seartch
@@ -176,7 +168,6 @@ namespace Hospital {
             Imagingbtn.Visible = false;
             ViewImgbtn.Visible = true;
         }
-
 
         /*
          * On Click event for button to boook a surgery and 
@@ -242,8 +233,6 @@ namespace Hospital {
             }
         }
 
-
-
         /*
          * On Click event for button to return patient back to
          * emergency room. Button used when MedTech is finished with patient.
@@ -262,7 +251,6 @@ namespace Hospital {
             }
         }
 
-
         /*
          * On Click event for button to add content of the 
          * addHistorytbx on form to the users history table.
@@ -273,7 +261,6 @@ namespace Hospital {
                 addHistorytbx.Text = "";
             }
         }
-
 
         /*
          * Add the history passed in paramater to the current patient's
@@ -295,7 +282,6 @@ namespace Hospital {
             }
         }
 
-
         /*
          * Updates the history displayed in the DataGridView on form   
          */
@@ -314,7 +300,6 @@ namespace Hospital {
             historyDataGridView.DataMember = "History";
         }
 
-
         /*
          * Pressing the enter key in the surname search textbox
          * does the same function as if the search button was clicked.
@@ -325,7 +310,6 @@ namespace Hospital {
             }
         }
 
-
         /*
          * Pressing the enter key in the add history textbox
          * does the same function as if the add history button was clicked.
@@ -335,6 +319,5 @@ namespace Hospital {
                 AddHistorybtn_Click(sender, e);
             }
         }
-
     }
 }

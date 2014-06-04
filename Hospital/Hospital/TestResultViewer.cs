@@ -25,7 +25,6 @@ namespace Hospital {
         private int patientId;
         private int zoomValue = 0;
 
-
         /*
          * Constructor to initialize form
          * \param string userID - userID of user logged in
@@ -45,7 +44,6 @@ namespace Hospital {
                 addTestResultLinkBTN.Visible = false;
             }
         }
-
 
         /*
          * Populates the images within the Image selection combo box
@@ -67,7 +65,6 @@ namespace Hospital {
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         /*
          * Manipulates the current image displayed to zoom in.
@@ -91,9 +88,7 @@ namespace Hospital {
                 MessageBox.Show("Cannot zoom further.", "Zoom Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
 
         /*
          * Manipulates the current image displayed to zoom out.
@@ -120,7 +115,6 @@ namespace Hospital {
             }
         }
 
-
         /*
          * Button to manipulate the current image displayed to zoom in.
          */
@@ -128,14 +122,12 @@ namespace Hospital {
             ZoomIn();
         }
 
-
         /*
          * Button to manipulate the current image displayed to zoom out.
          */
         private void ZoomOutButton_Click(object sender, EventArgs e) {
             ZoomOut();
         }
-
 
         /*
          * Button to manipulate the current image displayed to rotate let.
@@ -146,7 +138,6 @@ namespace Hospital {
             pictureBox1.Image = image;
         }
 
-
         /*
          * Button to manipulate the current image displayed to rotate right.
          */
@@ -156,14 +147,12 @@ namespace Hospital {
             pictureBox1.Image = image;
         }
 
-
         /*
          * On Click event for button to navigate back once.
          */
         private void BackButton_Click(object sender, EventArgs e) {
             ActiveForm.Close();
         }
-
 
         /*
          * When ImageSelector combo box index change event occurs, updates appropriate variable 
@@ -207,7 +196,6 @@ namespace Hospital {
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         /*
          * Button to open the TestResultAdd form in order to choose a new image
